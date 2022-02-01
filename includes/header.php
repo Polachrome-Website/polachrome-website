@@ -25,7 +25,7 @@
         <nav>
             
             <div class="logo">
-                <img src="logo.png" alt="Polachrome Logo">  
+                <img src="images/logo.png" alt="Polachrome Logo">  
             </div>
             <div class="nav-items">
                 <li><a href="#">HOME</a></li>

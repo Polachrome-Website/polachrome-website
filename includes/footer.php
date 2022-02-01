@@ -9,7 +9,7 @@
                             <img src="logo.png" alt="">
                         </div>
                         <p>Insert a short description here.</p>
-                        <img src="mop.png"alt="">
+                        <img src="images/mop.png"alt="">
                     </div>
                 </div>
   
@@ -41,7 +41,7 @@
                     <div class="footer-widget">
                         <h6>CERTIFICATES</h6>
                         <div class="dti-logo">
-                            <img src="dti.png">
+                            <img src="images/dti.png">
                         </div>       
                     </div>
                 </div>

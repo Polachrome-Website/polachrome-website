@@ -4,6 +4,9 @@
         <head>
         <!--Main css-->
         <link rel="stylesheet" href="styles/login.css">
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.all.min.js"></script>
         </head>
 
         <!--Body-->
@@ -23,7 +26,7 @@
                                 <div class="form-group">
                                     <span class="icon"><i class="fas fa-lock"></i></span>
                                     <input class="myInput" type="password" name="password" placeholder="Password" id="password" required>
-                                    <p><a href="forgot-pw.html">Forgot password?</a></p>
+                                    <p><a href="reset-pw.php">Forgot password?</a></p>
                                 </div>
 
                                 <input type="submit" name="submit" class="btn" value="Sign in">
@@ -53,7 +56,16 @@
                 echo "<p>Fill in all fields</p>";
             }
             else if ($_GET["error"] == "loginError") {
-                echo "<p>Incorrect Login Credentials!</p>";
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    title: 'Login Error!',
+                    text: 'Incorrect Login Credentials. Please Try Again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
             }
         }
     ?>
@@ -68,6 +80,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
         <script src="script.js"></script>
       
     </body>

@@ -1,39 +1,43 @@
     <?php 
         include_once 'includes/header.php'
-    ?>
+    ?>  
+        <head>
+        <!--Main css-->
+        <link rel="stylesheet" href="styles/login.css">
+        </head>
 
-        <div class="container">
+        <!--Body-->
+        <div class="d-flex justify-content-center">
             <div class="card">
                 <div class="row">
                     <div class="col-md-6">
                         <!--Left side, Sign in-->
                         <div class="left">
-                            <form action="includes/login.inc.php" method="post" class="signin textcenter">
-                                <header>PolaChrome Sign in</header>
+                            <form action="includes/login.inc.php" method="post" class="signin text-center">
+                                <header>Sign in</header>
                                 <div class="form-group">
                                     <span class="icon"><i class="fas fa-user"></i></span>
-                                    <input class="myInput" type="text" name="userName" placeholder="Username/Email" id="username" required>
+                                    <input class="myInput" type="text" name="userName" placeholder="Username" id="username" required>
                                 </div>
 
                                 <div class="form-group">
                                     <span class="icon"><i class="fas fa-lock"></i></span>
-                                    <input class="myInput" type="password" name="pWord" placeholder="Password" id="password" required>
-                                    <p>Forgot password?</p>
+                                    <input class="myInput" type="password" name="password" placeholder="Password" id="password" required>
+                                    <p><a href="forgot-pw.html">Forgot password?</a></p>
                                 </div>
 
-                                <input type="submit" class="btn" value="Sign in">
-                                <p class="signup">Dont have an account yet? <a href="#">Sign up.</a></p> <!--insert sign up.html-->
-
+                                <input type="submit" name="submit" class="btn" value="Sign in">
+                                <p class="signup">Dont have an account yet? <a href="signup.php">Sign up.</a></p>
                             </form>
                         </div>
                     </div>
 
                     <!--Right side, Continue as Guest-->
-                    <div class="md-col-6">
+                    <div class="col-md-6">
                         <div class="right">
                             <div class="box">
                                 <p>Shop PolaChrome without signing in:</p>
-                                <input type="button" class="btn" value="Continue as Guest"/>
+                                <a href="home.html"><button class="btn">Continue as Guest</button></a>
                             </div>
                         </div>
                     </div>
@@ -41,6 +45,7 @@
                 </div>
             </div>
         </div>
+
 
         <?php 
         if (isset($_GET["error"])) {

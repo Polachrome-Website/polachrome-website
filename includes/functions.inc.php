@@ -1,9 +1,11 @@
+
 <?php
 
-function emptyInputSignup($firstName, $lastName, $userName, $email, $pWord, $pWordRepeat){
+
+function emptyInputSignup($fullName, $userName, $email, $password, $passwordRepeat){
     $result;
 
-    if (empty($firstName) || empty($lastName) || empty($userName) || empty($email) || empty($pWord) || empty($pWordRepeat)) {
+    if (empty($fullName) || empty($userName) || empty($email) || empty($password) || empty($passwordRepeat)) {
         $result = true; //return true if there are empty fields
     }
     else{
@@ -39,10 +41,10 @@ function invalidEmail($email){
     }
 }
 
-function pwdMatch($pWord, $pWordRepeat){
+function pwdMatch($password, $passwordRepeat){
     $result;
 
-    if ($pWord !== $pWordRepeat) {
+    if ($password !== $passwordRepeat) {
         $result = true; 
     }
     else{
@@ -57,7 +59,7 @@ function uidExists($conn, $userName, $email){
    $stmt = mysqli_stmt_init($conn);
 
    if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("location: ../register.php?error=stmtfailed");
+    header("location: ../signup.php?error=stmtfailed");
     exit();
    }
 
@@ -78,31 +80,36 @@ function uidExists($conn, $userName, $email){
 
 }
 
-function createUser($conn, $userName, $email, $pWord, $lastName, $firstName){
-    $sql = "INSERT INTO user_account (userName, email, pWord, lastName, firstName) VALUES (?, ?, ?, ?, ?);";   //first colon to close SQL, second to close PHP 
+function createUser($conn, $userName, $email, $password, $fullName){
+    $sql = "INSERT INTO user_account (userName, email, password, fullName) VALUES (?, ?, ?, ?);";   //first colon to close SQL, second to close PHP 
     $stmt = mysqli_stmt_init($conn);
  
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-     header("location: ../register.php?error=stmtfailed");
+     header("location: ../signup.php?error=stmtfailed");
      exit();
     }
 
-    $hashedPwd = password_hash($pWord, PASSWORD_DEFAULT); //PHP Hashing, Built-in on PHP, constantly updated compared to others
+    $hashedPwd = password_hash($password, PASSWORD_DEFAULT); //PHP Hashing, Built-in on PHP, constantly updated compared to others
  
-    mysqli_stmt_bind_param($stmt, "sssss", $userName, $email, $hashedPwd, $lastName, $firstName);
+    mysqli_stmt_bind_param($stmt, "ssss", $userName, $email, $hashedPwd, $fullName);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    header("location: ../register.php?error=none");
+    // $_SESSION['status'] = "You have successfully registered your account!";
+    // $_SESSION['status_code'] = "success";
+
+    header("location: ../signup.php?error=none");
+
+   
     exit();
  
  }
 
  
-function emptyInputLogin($userName, $pWord){
+function emptyInputLogin($userName, $password){
     $result;
 
-    if (empty($userName) || empty($pWord)) {
+    if (empty($userName) || empty($password)) {
         $result = true; //return true if there are empty fields
     }
     else{
@@ -112,7 +119,7 @@ function emptyInputLogin($userName, $pWord){
     return $result;
 }
 
-function loginUser($conn, $userName, $pWord){
+function loginUser($conn, $userName, $password){
     $uidExists = uidExists($conn, $userName, $userName);
 
     if ($uidExists === false) {
@@ -120,8 +127,8 @@ function loginUser($conn, $userName, $pWord){
         exit();
     }
 
-    $pwdHashed = $uidExists["pWord"];
-    $checkPwd = password_verify($pWord, $pwdHashed);
+    $pwdHashed = $uidExists["password"];
+    $checkPwd = password_verify($password, $pwdHashed);
 
     if ($checkPwd === false) {
         header("location: ../index.php?error=loginError");
@@ -133,7 +140,9 @@ function loginUser($conn, $userName, $pWord){
         $_SESSION["userID"] = $uidExists["userID"];
         $_SESSION["userName"] = $uidExists["userName"];
 
-        header("location: ../login.php");
+        header("location: ../home.php");
         exit();
     }
 }
+?>
+

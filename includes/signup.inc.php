@@ -1,40 +1,46 @@
+<head>
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
 <?php
 
 if (isset($_POST["submit"])) {
     
-    $firstName = $_POST["firstName"];
-    $lastName = $_POST["lastName"];
+    $fullName = $_POST["fullName"];
     $userName = $_POST["userName"];
     $email = $_POST["email"];
-    $pWord = $_POST["pWord"];
-    $pWordRepeat = $_POST["pWordRepeat"];
+    $password = $_POST["password"];
+    $passwordRepeat = $_POST["passwordRepeat"];
 
     require_once 'db.php';
     require_once 'functions.inc.php';
 
-    if (emptyInputSignup($firstName, $lastName, $userName, $email, $pWord, $pWordRepeat) !== false) {
-        header("location: ../register.php?error=emptyinput");
+    if (emptyInputSignup($fullName, $userName, $email, $password, $passwordRepeat) !== false) {
+        header("location: ../signup.php?error=emptyinput");
         exit();
     }
     if (invalidUserName($userName) !== false) {
-        header("location: ../register.php?error=invalidUsername");
+        header("location: ../signup.php?error=invalidUsername");
         exit();
     }
     if (invalidEmail($email) !== false) {
-        header("location: ../register.php?error=invalidemail");
+        header("location: ../signup.php?error=invalidemail");
         exit();
     }
-    if (pwdMatch($pWord, $pWordRepeat) !== false) {
-        header("location: ../register.php?error=passwordmatcherror");
+    if (pwdMatch($password, $passwordRepeat) !== false) {
+        
+        header("location: ../signup.php?error=passwordmatcherror");
         exit();
     }
     if (uidExists($conn, $userName, $email) !== false) {
-        header("location: ../register.php?error=usernametaken");
+        
+        header("location: ../signup.php?error=usernametaken");
         exit();
     }
-    createUser($conn, $userName, $email, $pWord, $lastName, $firstName);
+    createUser($conn, $userName, $email, $password, $fullName);
 }
 else{
-    header("location: ../register.php");
+    header("location: ../signup.php");
     exit();
 }

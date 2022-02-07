@@ -14,27 +14,20 @@
         <!--Font Awesome icons-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
-        <!--Polaroid Font-->
-        <link href="//db.onlinewebfonts.com/c/1e5b7f8cdbcb1e579a6e53aaadaf0b67?family=FF+Real+Head" rel="stylesheet" type="text/css"/>
-
-        <!--Main css-->
-        <link rel="stylesheet" href="login.css">
     </head>
     <body>
-
+        <!--Navbar-->
         <nav>
-            
             <div class="logo">
-                <img src="images/logo.png" alt="Polachrome Logo">  
+                <img src="images/logo.png" alt="PolaChrome-logo">
             </div>
             <div class="nav-items">
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">PRODUCT</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">CONTACT US</a></li>
-                <li><a href="#">TESTIMONIALS</a></li>
-            
+                <li><a class="red" href="home.html">HOME</a></li>
+                <li><a class="orange"  href="faq.html">FAQs</a></li>
+                <li><a class="yellow" href="product.html">PRODUCT</a></li>
+                <li><a class="green"  href="about.html">ABOUT</a></li>
+                <li><a class="blue"  href="contact.html">CONTACT US</a></li>
+                <li><a class="red" href="testimonial.html">TESTIMONIALS</a></li>
             </div>
 
             <div class="search-icon">
@@ -64,5 +57,5 @@
             <div class="menu-icon">
                 <span class="fas fa-bars"></span>
             </div>
-           
         </nav>
+        <!--End of Navbar section-->

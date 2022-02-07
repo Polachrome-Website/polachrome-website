@@ -26,14 +26,21 @@
             </h3>
             <p> You will receive a link to create a new password via email</p>
             <div class="card-text">
-                <form>
+                <form action="includes/reset-request.inc.php" method="post">
                     <div class="form-group">
                         
-                        <input type="email" class="form-control form-control-sm" placeholder="email">
+                        <input type="email" name="email" class="form-control form-control-sm" placeholder="Enter your e-mail address">
                     </div>
 
-                    <button type="submit" class="btn btn-dark btn-block">Send password reset link</button>
+                    <button type="submit" name="reset-request-submit" class="btn btn-dark btn-block">Send password reset link</button>
                 </form>
+				<?php
+					if (isset($_GET["reset"])) {
+						if ($_GET["reset"] == "success") {
+							echo '<p class="">Check your e-mail!</p>';
+						}
+					}
+				?>
             </div>
 
         </div>

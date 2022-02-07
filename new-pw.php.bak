@@ -29,6 +29,7 @@
 				<?php
 					$selector = $_GET["selector"];
 					$validator = $_GET["validator"];
+					$error = "Please fill both fields.";
 					
 					if(empty($selector) || empty($validator)) {
 						echo "Could not validate your request.";
@@ -39,6 +40,18 @@
 							<form action="includes/reset-password.inc.php" method="post">
 								<input type="hidden" name="selector" value="<?php echo $selector ?>">
 								<input type="hidden" name="validator" value="<?php echo $validator ?>">
+								<input type="password" name="pwd" placeholder="Enter a new password">
+								<input type="password" name="pwd-repeat" placeholder="Repeat new password">
+								<?php
+								/* if ($_SERVER["REQUEST_METHOD"] == "POST") {
+									if (empty($_POST["pwd"]) || empty($_POST["pwd-repeat"])) {
+										echo $error
+									} else {
+										
+									}
+								} */
+								?>
+								<button type="submit" name="reset-password-submit">Reset Password</button>
 							</form>
 							
 							<?php

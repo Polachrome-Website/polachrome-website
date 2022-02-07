@@ -29,6 +29,7 @@
 				<?php
 					$selector = $_GET["selector"];
 					$validator = $_GET["validator"];
+					$error = "Please fill both fields.";
 					
 					if(empty($selector) || empty($validator)) {
 						echo "Could not validate your request.";

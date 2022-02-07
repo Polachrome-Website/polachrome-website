@@ -6,7 +6,7 @@ if (isset($_POST["reset-request-submit"])){
 	
 	$url = "www.polachrome.com/forgottenpassword/create-new-passwoprd.php?selector=" . $selector . "&validator=" . bin2hex($token); 
 	
-	$expires = date("U") + 1800;
+	$expires = date("U") + 180;
 	
 	require 'db.php';
 	
@@ -61,7 +61,8 @@ if (isset($_POST["reset-request-submit"])){
             echo "Message could not be sent...";
          }
 	
-	header("Location: ../reset-pw.php?reset=success");
+	echo $url;
+	/* header("Location: ../reset-pw.php?reset=success"); */
 	
 } else {
 	header("Location: ../index.php");

@@ -123,8 +123,7 @@
                     text: 'You have successfully registered your account!',
                     icon: 'success',
                     confirmButtonText: 'OK'
-                  }).then(function() {
-                    window.location = '../index.php';
+                  })
                 
                 </script>";
             }

@@ -5,6 +5,9 @@
     <head>
     <!--Main css-->
         <link rel="stylesheet" href="styles/signup.css">
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.all.min.js"></script>
     </head>
 
  <!--Body-->
@@ -41,6 +44,93 @@
                 </form>
             </div>
         </div>
+
+        <?php 
+        if (isset($_GET["error"])) {
+            if ($_GET["error"] == "emptyinput") {
+                echo "<p>Fill in all fields</p>";
+            }
+            else if ($_GET["error"] == "invalidUsername") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Error. Please choose a proper username.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
+            else if ($_GET["error"] == "invalidemail") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Invalid Email. Please Try Again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
+            else if ($_GET["error"] == "passwordmatcherror") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Password does not match! Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
+            else if ($_GET["error"] == "weakpassword") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
+            else if ($_GET["error"] == "stmtfailed") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Something went wrong, please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
+            else if ($_GET["error"] == "usernametaken") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    html: 'Username/Email already taken. <br>Kindly choose a new one.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
+            else if ($_GET["error"] == "none") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'You have successfully registered your account!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                  }).then(function() {
+                    window.location = '../index.php';
+                
+                </script>";
+            }
+            
+        }
+    ?>
 
         <?php 
             include("includes/footer.php")

@@ -1,8 +1,3 @@
-<head>
-  <script src="jquery-3.3.1.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-</head>
-
 <?php
 
 if (isset($_POST["submit"])) {
@@ -29,8 +24,11 @@ if (isset($_POST["submit"])) {
         exit();
     }
     if (pwdMatch($password, $passwordRepeat) !== false) {
-        
         header("location: ../signup.php?error=passwordmatcherror");
+        exit();
+    }
+    if (pwdStrength($password) !== false) {
+        header("location: ../signup.php?error=weakpassword");
         exit();
     }
     if (uidExists($conn, $userName, $email) !== false) {
@@ -41,6 +39,6 @@ if (isset($_POST["submit"])) {
     createUser($conn, $userName, $email, $password, $fullName);
 }
 else{
-    header("location: ../signup.php");
+    header("location: ../signup.php?error=none");
     exit();
 }

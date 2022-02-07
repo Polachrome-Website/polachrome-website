@@ -14,7 +14,7 @@ if (isset($_POST["reset-request-submit"])){
 	
 	$sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?;";
 	$stmt = mysqli_stmt_init($conn);
-	if (!mysqli_stmt_prepare($stmt, $sql) {
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
 		echo "There was an error!";
 		exit();
 	} else {
@@ -25,7 +25,7 @@ if (isset($_POST["reset-request-submit"])){
 	
 	$sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);";
 	$stmt = mysqli_stmt_init($conn);
-	if (!mysqli_stmt_prepare($stmt, $sql) {
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
 		echo "There was an error!";
 		exit();
 	} else {
@@ -37,6 +37,7 @@ if (isset($_POST["reset-request-submit"])){
 	
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
+
 	
 	$to = $userEmail;
 	
@@ -46,11 +47,19 @@ if (isset($_POST["reset-request-submit"])){
 	$message .= '<p>Here is your password reset link: </br>';
 	$message .= '<a href="' . $url . '">' . $url . '</a></p>';
 	
-	$headers = "From: Test <polacrhome@gmail.com>\r\n";
-	$headers .= "Reply-To: polachrome@gmail.com\r\n";
+	$headers = "From: Test <bobbylebobz@gmail.com>\r\n";
+	$headers .= "Reply-To: bobbylebobz@gmail.com\r\n";
 	$headers .= "Content-type: text/html\r\n";
 	
-	mail($to, $subject, $message, $headers);
+	
+	
+	$retval = mail ($to,$subject,$message,null,$headers);
+         
+         if( $retval == true ) {
+            echo "Message sent successfully...";
+         }else {
+            echo "Message could not be sent...";
+         }
 	
 	header("Location: ../reset-pw.php?reset=success");
 	

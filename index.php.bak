@@ -18,7 +18,7 @@
                                 <div class="form-group">
                                     <span class="icon"><i class="fas fa-lock"></i></span>
                                     <input class="myInput" type="password" name="pWord" placeholder="Password" id="password" required>
-                                    <a href=reset-pw.php><p>Forgot password?</p></a>
+                                    <p>Forgot password?</p>
                                 </div>
 
                                 <input type="submit" class="btn" value="Sign in">

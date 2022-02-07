@@ -8,10 +8,10 @@
 		$passwordRepeat = $_POST["pwd-repeat"];
 		
 		if(empty($password) || empty($passwordRepeat)) {
-			header ("Location: ../login.php?newpwd=empty");
+			header ("Location: ../index.php?newpwd=empty");
 			exit();
 		} else if ($password != $passwordRepeat) {
-			header ("Location: ../login.php?newpwd=pwdnotsame");
+			header ("Location: ../index.php?newpwd=pwdnotsame");
 			exit();
 		}
 		
@@ -76,7 +76,7 @@
 								} else {
 									mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
 									mysqli_stmt_execute($stmt);
-									header("LOCATION: ../login.php?newpwd=passwordupdated");
+									header("LOCATION: ../index.php?newpwd=passwordupdated");
 								}
 							}
 						}

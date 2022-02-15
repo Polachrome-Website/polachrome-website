@@ -58,7 +58,7 @@
 							exit();
 						} else {
 							
-							$sql = "UPDATE user_account SET pWord=? WHERE email=?";
+							$sql = "UPDATE user_account SET password=? WHERE email=?";
 							$stmt = mysqli_stmt_init($conn);
 							if (!mysqli_stmt_prepare($stmt, $sql)) {
 								echo "There was an error! 4";

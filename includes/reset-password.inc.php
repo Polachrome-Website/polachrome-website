@@ -30,7 +30,7 @@
 			
 			$result = mysqli_stmt_get_result($stmt);
 			if (!$row = mysqli_fetch_assoc($result)) {
-				echo "Please resubmit your reset request.";
+				echo "Please resubmit your reset request. hdhfd";
 				exit();
 			} else {
 				

@@ -15,7 +15,10 @@ if (isset($_POST["reset-request-submit"])){
 	$selector = bin2hex(random_bytes(8));
 	$token = random_bytes(32);
 	
-	$url = "www.polachrome.com/forgottenpassword/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token); 
+
+	
+	$url = "http://" . $_SERVER["HTTP_HOST"] . "/new-pw.php?selector=" . $selector . "&validator=" . bin2hex($token);
+	// $url = "www.polachrome.com/forgottenpassword/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token); 
 	
 	$expires = date("U") + 180;
 	
@@ -84,7 +87,8 @@ if (isset($_POST["reset-request-submit"])){
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 		$mail->send();
-		echo 'Message has been sent';
+		echo $url; 
+	 	header("Location: ../reset-pw.php?reset=success"); 
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 	}

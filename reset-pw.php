@@ -23,10 +23,10 @@
                 <form action="includes/reset-request.inc.php" method="post">
                     <div class="form-group">
                         
-                        <input type="email" class="form-control form-control-sm" placeholder="Enter your e-mail address">
+                        <input type="email" name="email" class="form-control form-control-sm" placeholder="Enter your e-mail address">
                     </div>
 
-                    <button type="submit" class="btn btn-dark btn-block">Send password reset link</button>
+                    <button type="submit" name="reset-request-submit" class="btn btn-dark btn-block">Send password reset link</button>
                 </form>
 
                 <?php

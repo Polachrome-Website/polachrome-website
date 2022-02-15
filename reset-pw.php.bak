@@ -34,6 +34,13 @@
 
                     <button type="submit" name="reset-request-submit" class="btn btn-dark btn-block">Send password reset link</button>
                 </form>
+				<?php
+					if (isset($_GET["reset"])) {
+						if ($_GET["reset"] == "success") {
+							echo '<p class="">Check your e-mail!</p>';
+						}
+					}
+				?>
             </div>
 
         </div>

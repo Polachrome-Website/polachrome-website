@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<?php
+	include_once 'includes/header.php'
+?>
     <head>
+	<link rel="stylesheet" href="styles/signup.css">
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
+	<script src="sweetalert2.all.min.js"></script>
         <title>Reset Password</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="reset-pw.css">
@@ -15,6 +21,29 @@
    <link href="//db.onlinewebfonts.com/c/1e5b7f8cdbcb1e579a6e53aaadaf0b67?family=FF+Real+Head" rel="stylesheet" type="text/css"/>--> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
+	<?php
+		if (isset($_GET["error"])) {
+			if ($_GET["error"] == "empty") {
+				echo "<script type='text/javascript'>
+				
+				Swal.fire({
+					text: 'Please fill both text fields.',
+					icon: 'error',
+					confirmButtonText: 'OK'
+				})
+				</script>";
+			} elseif ($_GET["error"] == "pwdnotsame") { 
+				echo "<script type='text/javascript'>
+				
+				Swal.fire({
+					text: 'Passwords do not match.',
+					icon: 'error',
+					confirmButtonText: 'OK'
+				})
+				</script>";
+			} 
+		}
+	?>
     </head>
 
 <body>
@@ -40,9 +69,9 @@
 							<form action="includes/reset-password.inc.php" method="post">
 								<input type="hidden" name="selector" value="<?php echo $selector ?>">
 								<input type="hidden" name="validator" value="<?php echo $validator ?>">
-								<input type="password" name="pwd" placeholder="Enter a new password">
-								<input type="password" name="pwd-repeat" placeholder="Repeat new password">
-								<button type="submit" name="reset-password-submit">Reset Password</button>
+								<br><input type="password" name="pwd" class="form-control form-control-sm" placeholder="Enter a new password"><br>
+								<input type="password" name="pwd-repeat" class="form-control form-control-sm" placeholder="Repeat new password">
+								<button type="submit" name="reset-password-submit" class="btn btn-dark btn-block">Reset Password</button>
 							</form>
 							
 							<?php
@@ -55,7 +84,7 @@
         </div>
 
     </div>
-
+	
 
 </body>
     

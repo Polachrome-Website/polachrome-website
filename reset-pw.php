@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<?php
+	include_once 'includes/header.php'
+?>
     <head>
+		<link rel="stylesheet" href="styles/signup.css">
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
+		<script src="sweetalert2.all.min.js"></script>
         <title>Reset Password</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="reset-pw.css">

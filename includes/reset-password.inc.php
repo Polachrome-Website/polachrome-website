@@ -8,10 +8,10 @@
 		$passwordRepeat = $_POST["pwd-repeat"];
 		
 		if(empty($password) || empty($passwordRepeat)) {
-			header ("Location: ../index.php?newpwd=empty"); 
+			header ("Location: ../new-pw.php?error=empty&selector=" . $selector . "&validator=" . $validator); 
 			exit();
 		} else if ($password != $passwordRepeat) {
-			header ("Location: ../index.php?newpwd=pwdnotsame"); 
+			header ("Location: ../new-pw.php?error=pwdnotsame&selector=" . $selector . "&validator=" . $validator); 
 			exit();
 		}
 		

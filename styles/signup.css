@@ -11,26 +11,28 @@
    
 }
 
+
 body{
+    background-image: url(img/testimonial-bg.png);
+    background-size: cover;
+    min-height:60vh;
+    position:relative;
+    background-repeat: no-repeat;
     height: 100%;
-    background: white;
     font-family: font-face="Polaroid";
     flex-direction: column;
-    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container{
     background: white;
     width: fit-content;
     height: 100%;
-    padding: 70px;
-    border-radius: 15px;
     margin-top: 90px;
-    margin-bottom: 100px;
-    -webkit-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-    -moz-box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-    box-shadow: 0px 10px 40px -10px rgba(0,0,0,0.7);
-}
+    margin-bottom: 30px;
+    padding: 40px;
+    border-radius: 15px;
+} 
 
 .icon{
   position: absolute;
@@ -72,14 +74,15 @@ header{
   padding: 7px;
   margin-top: 15px;
   font-size: 14px;
-  -webkit-box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.7);
-  -moz-box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.7);
-  box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.7);
 }
 
 .btn:hover{
-  background: linear-gradient(black,rgb(59, 59, 59));
+  background-color: transparent;
+  color:black;
+  border: solid black 1px;
 }
+
+
 
 
 
@@ -87,9 +90,14 @@ nav{
   background-color: whitesmoke;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
   flex-wrap: wrap;
   align-items: center;
-  height: 48px;
+  height: 55px;
   padding: 0 30px;
   
 }
@@ -116,8 +124,8 @@ nav .nav-items li{
 
 nav .nav-items li a{
   color: black;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 630;
   text-decoration: none;
 }
 
@@ -368,97 +376,95 @@ nav .cart-icon:hover{
 
   }
 
-  footer{
-    background-color: whitesmoke;
-    position: relative;
-    bottom: 0px;
-    width: 100%;
-    height: min-content;
-  
-    margin-top: 50px;
+/*Footer section*/  
+footer{
+  background-color: black;
+  color:white;
+  position: relative;
+  width: 100%;
+  height: min-content;
+
+}
+
+.footer-about{
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.footer-about a:hover{
+  color: #f04231;
+}
+
+.footer-about img{
+  max-width: 100%;
+  height:40px;
+  margin-left: 10px;
+}
+
+
+.footer-about h3{
+  font-family: font-face="FF Real Head";
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.footer-about p{
+  font-family: font-face="FF Real Head";
+  font-size: 12px;
+  margin-left: 15px;
+}
+
+.footer-widget{
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-widget H6{
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.social-icon ul{
+  padding-left: 0;
+}
+
+.footer-widget li{
+  line-height: 25px;
+  list-style: none;
+  font-family: font-face="FF Real Head";
+}
+
+.footer-widget ul li a{
+  line-height: 20px;
+  list-style: none;
   }
-  
-  .footer-about{
-    font-size: 14px;
-    margin-top: 20px;
-  }
-  
-  .footer-about a:hover{
-    color: #f04231;
-  }
-  
-  .footer-about img{
-    max-width: 100%;
-    height:40px;
-    margin-left: 10px;
-  }
-  
-  
-  .footer-about h3{
-    font-family: font-face="FF Real Head";
-    font-weight: 700;
-    font-size: 20px;
-    margin-left: 15px;
-  }
-  
-  .footer-about p{
-    font-family: font-face="FF Real Head";
-    font-size: 12px;
-    margin-left: 15px;
-  }
-  
-  .footer-widget{
-    font-size: 14px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .footer-widget H6{
-    font-size: 16px;
-    font-weight: 700;
-  }
-  
-  .social-icon ul{
-    padding-left: 0;
-  }
-  
-  .footer-widget li{
-    line-height: 25px;
-    list-style: none;
-    font-family: font-face="FF Real Head";
-  }
-  
-  .footer-widget ul li a{
-    line-height: 20px;
-    list-style: none;
-  }
-  
-  .footer-widget ul li:hover{
-    color: #F04231;
-  }
-  
-  .social-icon li a{
-    color: black;
-    font-family: font-face="FF Real Head";
-  }
-  
-  .social-icon li{
-    color: black;
-    font-family: font-face="FF Real Head";
-  }
-  
-  .social-icon li a:hover{
-    color: #F04231;
-  }
-  
-  .dti-logo img{
-    max-width: 100%;
-    height:40px;
-  }
-  
-  .footer-copyright-text{
-    border-top: 1px solid gray;
-    padding: 10px 0;
-    font-family: font-face="FF Real Head";
-    font-size: 12px;
-  }
+
+.footer-widget ul li:hover{
+  color: #F04231;
+}
+
+.social-icon li a{
+  color: white;
+  font-family: font-face="FF Real Head";
+}
+
+.social-icon li{
+  color: white;
+  font-family: font-face="FF Real Head";
+}
+
+.social-icon li a:hover{
+  color: #F04231;
+}
+
+.dti-logo img{
+  max-width: 100%;
+  height:40px;
+}
+
+.footer-copyright-text{
+  font-family: font-face="FF Real Head";
+  font-size: 12px;
+}

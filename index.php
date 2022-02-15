@@ -69,8 +69,7 @@
             }
         }
     ?>
-        
-        <a href="register.php">TEST FOR SIGNUP Backend</a>
+    
         <!-- Footer -->
         <?php 
             include("includes/footer.php")

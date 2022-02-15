@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start();  //start mo ung session sa page, kapag may naglogin meron info na masstore sa session...
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +26,15 @@
 <body>
 
     <?php
-        if(isset($_SESSION["userName"])){
-            echo "<p>LOGIN SUCCESS! Welcome, " . $_SESSION["userName"] . "</p>";
+        if(isset($_SESSION["userID"])){ //ung if statement na to, check niya kung nag eexist ung key na yon
+            //sample ng pagtawag 
+
+            echo "<p>LOGIN SUCCESS! Welcome, " . $_SESSION["fullName"] . "</p>"; //dahil nageexist, pprint niya ung value
+
+            echo '<input type="text" value="'.$_SESSION['email'].'"></input>';
         }
+
+        
     ?>
 
 </body>

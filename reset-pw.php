@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <title>Reset Password</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="reset-pw.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <!--Bootstrap Cdn-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
-    <!--Font Awesome icons-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<?php 
+    include_once 'includes/header.php'
+ ?>  
 
-   <!--Polaroid Font 
-   <link href="//db.onlinewebfonts.com/c/1e5b7f8cdbcb1e579a6e53aaadaf0b67?family=FF+Real+Head" rel="stylesheet" type="text/css"/>--> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<head>
+    <!--Main css-->
+    <link rel="stylesheet" href="styles/reset-pw.css">
 
-    </head>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+</head>
+
 
 <body>
 
@@ -26,20 +20,32 @@
             </h3>
             <p> You will receive a link to create a new password via email</p>
             <div class="card-text">
-                <form>
+                <form action="includes/reset-request.inc.php" method="post">
                     <div class="form-group">
                         
-                        <input type="email" class="form-control form-control-sm" placeholder="email">
+                        <input type="email" class="form-control form-control-sm" placeholder="Enter your e-mail address">
                     </div>
 
                     <button type="submit" class="btn btn-dark btn-block">Send password reset link</button>
                 </form>
+
+                <?php
+					if (isset($_GET["reset"])) {
+						if ($_GET["reset"] == "success") {
+							echo '<p class="">Check your e-mail!</p>';
+						}
+					}
+				?>
+                
             </div>
 
         </div>
 
     </div>
 
+    <?php 
+            include("includes/footer.php")
+    ?>
 
 </body>
     

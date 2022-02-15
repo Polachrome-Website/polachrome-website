@@ -19,7 +19,7 @@
         <!--Navbar-->
         <nav>
             <div class="logo">
-                <img src="images/logo.png" alt="PolaChrome-logo">
+                <img src="img/logo.png" alt="PolaChrome-logo">
             </div>
             <div class="nav-items">
                 <li><a class="red" href="home.html">HOME</a></li>

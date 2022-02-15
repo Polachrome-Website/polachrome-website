@@ -11,7 +11,8 @@
     </head>
 
  <!--Body-->
- <div class="container">
+ <div class="bg-img"> <!--Background img-->
+    <div class="container">
             <div class="d-flex justify-content-center">
                 <form action="includes/signup.inc.php" method="post" class="signup textcenter">
                     <header>Create your account</header>
@@ -44,6 +45,7 @@
                 </form>
             </div>
         </div>
+</div>
 
         <?php 
         if (isset($_GET["error"])) {

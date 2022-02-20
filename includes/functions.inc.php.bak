@@ -132,8 +132,7 @@ function loginUser($conn, $userName, $pWord){
 
         $_SESSION["userID"] = $uidExists["userID"];
         $_SESSION["userName"] = $uidExists["userName"];
-		$_SESSION["firstName"] = $uidExists["firstName"];
-		$_SESSION["lastName"] = $uidExists["lastName"];
+		$_SESSION["fullName"] = $uidExists["fullName"];
 		$_SESSION["email"] = $uidExists["email"];
 
         header("location: ../login.php");

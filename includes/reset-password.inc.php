@@ -30,7 +30,7 @@
 			
 			$result = mysqli_stmt_get_result($stmt);
 			if (!$row = mysqli_fetch_assoc($result)) {
-				echo "Please resubmit your reset request.";
+				echo "Please resubmit your reset request. 1";
 				exit();
 			} else {
 				
@@ -38,7 +38,7 @@
 				$tokenCheck = password_verify($tokenBin, $row["pwdResetToken"]);
 				
 				if ($tokenCheck === false) {
-					echo "Please resubmit your reset request.";
+					echo "Please resubmit your reset request. 2";
 					exit();
 				} elseif ($tokenCheck == true) {
 					
@@ -47,7 +47,7 @@
 					$sql = "SELECT * FROM user_account WHERE email=?;";
 					$stmt = mysqli_stmt_init($conn);
 					if (!mysqli_stmt_prepare($stmt, $sql)) {
-						echo "There was an error! 2";
+						echo "There was an error! 2";x
 						exit();
 					} else {
 						mysqli_stmt_bind_param($stmt, "s", $tokenEmail);

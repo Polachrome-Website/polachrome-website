@@ -47,7 +47,7 @@
 					$sql = "SELECT * FROM user_account WHERE email=?;";
 					$stmt = mysqli_stmt_init($conn);
 					if (!mysqli_stmt_prepare($stmt, $sql)) {
-						echo "There was an error! 2";x
+						echo "There was an error! 2";
 						exit();
 					} else {
 						mysqli_stmt_bind_param($stmt, "s", $tokenEmail);

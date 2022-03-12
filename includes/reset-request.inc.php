@@ -71,13 +71,13 @@ if (isset($_POST["reset-request-submit"])){
          }else {
             echo "Message could not be sent...";
          }
-	
-	echo $url; */
+	 */
+	echo $url;
 	/* header("Location: ../reset-pw.php?reset=success"); */
 	
 	
 	//Create an instance; passing `true` enables exceptions
-	$mail = new PHPMailer(true);
+	/* $mail = new PHPMailer(true);
 
 	try {
 		//Server settings
@@ -117,7 +117,7 @@ if (isset($_POST["reset-request-submit"])){
 		echo 'Message has been sent';
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-	}
+	} */
 
 
 }

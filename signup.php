@@ -2,13 +2,17 @@
         include_once 'includes/header.php'
 ?>
 
-    <head>
-    <!--Main css-->
-        <link rel="stylesheet" href="styles/signup.css">
+      <title>Sign up for PolaChrome</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--Bootsrap 4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="sweetalert2.all.min.js"></script>
-    </head>
+        <!--Font Awesome icons-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+        
+        <!--Main css-->
+        <link rel="stylesheet" href="styles/signup.css">
 
  <!--Body-->
  <div class="bg-img"> <!--Background img-->
@@ -89,7 +93,7 @@
                 echo "<script type='text/javascript'>
                 
                 Swal.fire({
-                    text: 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.',
+                    text: 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character (!,@,#,$,%,^)',
                     icon: 'error',
                     confirmButtonText: 'OK'
                   })
@@ -133,14 +137,15 @@
         }
     ?>
 
-        <?php 
-            include("includes/footer.php")
-        ?>
-
+       
            <!--Bootsrap JS cdn-->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="script.js"></script>
+       
       
     </body>
+    <?php
+        include("includes/footer.php");
+    ?>
+    </html>

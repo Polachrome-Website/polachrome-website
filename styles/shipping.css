@@ -1,192 +1,208 @@
-@font-face {
-  font-family: Polaroid;
-  src: url(font/FF\ Real\ Head\ Pro/);
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-    outline: none;
-      
-}
-
-
 body{
-    height: 100%;
-    font-family: font-face="Polaroid";
-    overflow-x: hidden;
-    min-width: 100vh;
-    display: flex;
-    flex-direction: column;
+  font-family: font-face="Polaroid";
+  background-color: #f2f2f2 !important;
+  overflow-x: hidden;
 }
 
-.container{
-  position: absolute;
-  max-width: 800px;
-  height: 500px;
-  margin: auto;
-}
-
-.icon{
-  position: absolute;
-  margin-left: 15px;
-  margin-top: 5px;
-}
-
-.left{
-  position: relative;
-  border-radius: 25px;
-  height: 100%;
-  padding: 25px;
-  padding-left: 50px;
+.row-header{
+  margin-top: 10px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
+  justify-content: space-between;
 }
 
-.left p{
-  font-size: 13px;
-  color: black;
-  text-align: right;
-  margin-top: 5px;
-  margin-bottom: 30px;
+.row-header .header-summary{
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
-.left p:hover{
- color:#f04231;
-}
-
-.left .signup{
-  font-size: 13px;
-  color: black;
-  text-align: center;
-  margin-top: 5px;
-  margin-bottom: 30px;
-}
-
-.left .signup:hover{
-  color: black;
-}
-
-
-.signup a:hover{
-  color: #F04231;
-}
-
-.row{
-  height: 100%;
-}
-
-.card{
-  position: relative;
-  margin-top: 142px;
-  margin-bottom: 20px;
-  height: 100%;
+.rounded-circle{
   border-radius: 15px;
-  background-color: white;
+  background-color: gray;
+  width: 40px;
+  margin-right: 10px;
 }
 
-.left header{
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 40px;
+.row-header p{
   text-align: center;
+  font-weight: bold;
+  color: white;
 }
 
-.left .myInput{
-  background-color: white;
-  width: 230px;
-  border-radius: 7px;
-  padding: 7px;
-  padding-left: 50px;
-  border: none;
+
+.item{
+    border-top: 1px solid #efefef;
+}
+
+.row-div
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.product-name{
+  font-weight: bold;
   font-size: 14px;
+}
+.variation{
+  font-size: 12px;
+}
+
+.quantity{
+  font-size: 12px;
+}
+
+.price{
+  font-size: 13px;
+  color: red;
+  font-weight: bold;
+}
+
+
+.row-subtotal{
+    border-top: 2px solid #efefef;
+    display: flex;
+    justify-content: space-between;
+    line-height: 8px;
+}
+
+.row-discount{
+    display: flex;
+    justify-content: space-between;
+    line-height: 8px;
+}
+
+.row-shipping-fee{
+    display: flex;
+    justify-content: space-between;
+    line-height: 8px;
+}
+
+.row-total{
+    display: flex;
+    justify-content: space-between;
+    line-height: 8px;
+}
+
+.row-subtotal .row,
+.row-discount .row,
+.row-shipping-fee .row,
+.row-total .row{
+    margin: 10px;
+    font-size: 14px;
+}
+
+.row-total .row{
+    font-weight: bold;
+}
+
+
+.shipping-header{
+  font-weight: bold;
+  font-size: 18px;
+}
+.form-control{
+  background-color: white;
+  border: none !important;
+  border-radius: 7px !important;
+  padding: 7px;
   -webkit-box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
   -moz-box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
   box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
 }
-
-.left .myInput:focus{
-  outline: none;
-}
-
-.form-group a{
-  color: black;
-}
-
-.form-group a:hover{
-  color: #f04231;
-}
-
-.right{
-  position: relative;
-  border-radius: 15px;
-  height: 100%;
-  padding: 30px;
-  color:white;
-  font-size: 12px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: black;
-
-}
-
-.right p{
+.row-btn{
   text-align: center;
-  font-size: 14px;
+}
+.row-btn .btn{
+  width: 300px;
+  padding: 4px;
+  margin-top: 10px;
+
+}
+
+.card{
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: white;
+}
+
+.action-btn{
+  justify-content: flex-end;
+  flex-direction: row;
+  text-align: right;
+  margin: 10px 10px 0px 0px;
+}
+
+.action-btn .btn{
+  border:none;
+  border-radius: 7px !important;
   margin-bottom: 10px;
-}
-
-.right .btn{
-  background:white;
-  color: black;
-  width: 230px;
-  border:none;
-  border-radius: 7px;
   padding: 7px;
-  margin-top: 0px;
-  font-size: 14px;
+  width: 220px;
+  margin-left: 10px;
 }
 
-.btn{
-  background:black;
+.action-btn .btn-return{
+  background-color: gray;
   color: white;
-  width: 230px;
-  border:none;
-  border-radius: 7px;
-  padding: 7px;
-  font-size: 14px;
 }
 
-.btn:hover{
- background-color: transparent;
- color:black;
- border: solid black 1px;
+/*Breadcrumb Navigation*/
+.breadcrumbs{
+  padding: 10px;
+  margin-left: 10px;
 }
 
-.btn-guest{
-  background:white;
+.breadcrumbs_item{
+  display: inline-block;
+  margin-top: 10vh;
+}
+
+.breadcrumbs_item a{
+  text-decoration: none;
+  list-style: none;
   color: black;
-  width: 230px;
-  border:none;
-  border-radius: 7px;
-  padding: 7px;
-  font-size: 14px;
+  font-weight: 500;
 }
 
-.btn-guest:hover{
-  background-color: black;
-  color:white;
-  border: solid white 1px;
+.breadcrumbs_item a:hover{
+  color: gray;
 }
 
-/*Navba section*/
+.breadcrumbs_item .active{
+  color: #78BE20;
+}
+
+.breadcrumbs_item:not(:last-of-type)::after{
+  content:'\203a';
+  font-size: larger;
+  margin: 0 5px;
+  color: black;
+}
+
+
+
+@media only screen and (max-width: 768px){
+  .action-btn{
+  display: flex;
+  flex-direction: column;
+  }
+  .action-btn .btn{
+    width: 98%;
+    margin-left: 10px;
+    margin-right: 0px;
+  }
+
+  .card{
+    margin-bottom: 10px;
+  }
+
+}
+
+/*Navbar section*/
 nav{
   background-color: whitesmoke;
   display: flex;
@@ -475,99 +491,98 @@ nav .cart-icon:hover{
 
   }
 
-
-/*Footer section*/  
+  /*Footer section*/  
 footer{
   background-color: black;
   color:white;
-  position: fixed;
+  position: relative;
   bottom: 0px;
   width: 100%;
   height: min-content;
-
+  margin-top: 30px;
 }
 
 .footer-about{
-  font-size: 14px;
-  margin-top: 20px;
+font-size: 14px;
+margin-top: 20px;
 }
 
 .footer-about a:hover{
-  color: #f04231;
+color: #f04231;
 }
 
 .footer-about img{
-  max-width: 100%;
-  height:40px;
-  margin-left: 10px;
+max-width: 100%;
+height:40px;
+margin-left: 10px;
 }
 
 
 .footer-about h3{
-  font-family: font-face="FF Real Head";
-  font-weight: 700;
-  font-size: 20px;
-  margin-left: 15px;
+font-family: font-face="FF Real Head";
+font-weight: 700;
+font-size: 20px;
+margin-left: 15px;
 }
 
 .footer-about p{
-  font-family: font-face="FF Real Head";
-  font-size: 12px;
-  margin-left: 15px;
+font-family: font-face="FF Real Head";
+font-size: 12px;
+margin-left: 15px;
 }
 
 .footer-widget{
-  font-size: 14px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+font-size: 14px;
+margin-top: 20px;
+margin-bottom: 20px;
 }
 
 .footer-widget H6{
-  font-size: 16px;
-  font-weight: 700;
+font-size: 16px;
+font-weight: 700;
 }
 
 .social-icon ul{
-  padding-left: 0;
+padding-left: 0;
 }
 
 .footer-widget li{
-  line-height: 25px;
-  list-style: none;
-  font-family: font-face="FF Real Head";
+line-height: 25px;
+list-style: none;
+font-family: font-face="FF Real Head";
 }
 
 .footer-widget ul li a{
-  line-height: 20px;
-  list-style: none;
-  margin-left: -30px;
-  text-decoration: none;
-  }
+line-height: 20px;
+list-style: none;
+margin-left: -30px;
+text-decoration: none;
+}
 
 .footer-widget ul li:hover{
-  color: #F04231;
+color: #F04231;
 }
 
 .social-icon li a{
-  color: white;
-  font-family: font-face="FF Real Head";
+color: white;
+font-family: font-face="FF Real Head";
 }
 
 .social-icon li{
-  color: white;
-  font-family: font-face="FF Real Head";
+color: white;
+font-family: font-face="FF Real Head";
 }
 
 .social-icon li a:hover{
-  color: #F04231;
+color: #F04231;
 }
 
 .dti-logo img{
-  max-width: 100%;
-  height:40px;
+max-width: 100%;
+height:40px;
 }
 
 .footer-copyright-text{
-  font-family: font-face="FF Real Head";
-  font-size: 12px;
-}
+font-family: font-face="FF Real Head";
+font-size: 12px;
+}    

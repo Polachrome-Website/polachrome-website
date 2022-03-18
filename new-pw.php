@@ -1,8 +1,14 @@
-<?php 
-    include_once 'includes/header.php'
- ?>  
-
+<!DOCTYPE html>
+<html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <!--Bootsrap 4-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Font Awesome icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
     <!--Main css-->
     <link rel="stylesheet" href="styles/reset-pw.css">
 
@@ -25,7 +31,16 @@
 					$error = "Please fill both fields.";
 					
 					if(empty($selector) || empty($validator)) {
-						echo "Could not validate your request.";
+						echo "<script type='text/javascript'>
+                
+						Swal.fire({	
+							text: 'Could not validate your request. Please Try Again.',
+							icon: 'error',
+							confirmButtonText: 'OK'
+						  })
+						
+						</script>";
+
 					} else {
 						if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false) {
 							?>
@@ -33,8 +48,8 @@
 							<form action="includes/reset-password.inc.php" method="post">
 								<input type="hidden" name="selector" value="<?php echo $selector ?>">
 								<input type="hidden" name="validator" value="<?php echo $validator ?>">
-								<br><input type="password" name="pwd" class="form-control form-control-sm" placeholder="Enter a new password"><br>
-								<input type="password" name="pwd-repeat" class="form-control form-control-sm" placeholder="Repeat new password">
+								<br><input type="password" name="pwd" class="form-control form-control-sm" placeholder="Enter a new password" required><br>
+								<input type="password" name="pwd-repeat" class="form-control form-control-sm" placeholder="Repeat new password" required>
 								<button type="submit" name="reset-password-submit" class="btn btn-dark btn-block">Reset Password</button>
 							</form>
 							
@@ -48,47 +63,49 @@
         </div>
 
     </div>
-	
-    
-    <?php 
-            include("includes/footer.php")
-    ?>
-    
-    <?php
-		if (isset($_GET["error"])) {
-			if ($_GET["error"] == "empty") {
-				echo "<script type='text/javascript'>
-				
-				Swal.fire({
-					text: 'Please fill both text fields.',
-					icon: 'error',
-					confirmButtonText: 'OK'
-				})
-				</script>";
-                
-			} elseif ($_GET["error"] == "pwdnotsame") { 
-				echo "<script type='text/javascript'>
-				
-				Swal.fire({
-					text: 'Passwords do not match.',
-					icon: 'error',
-					confirmButtonText: 'OK'
-				})
-				</script>";
 
-			}  else if ($_GET["error"] == "weakpassword") {
+	<?php 
+        if (isset($_GET["error"])) {
+			if ($_GET["error"] == "pwdnotsame") {
                 echo "<script type='text/javascript'>
                 
                 Swal.fire({
-                    text: 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.',
+                    text: 'Password does not match! Please try again.',
                     icon: 'error',
                     confirmButtonText: 'OK'
                   })
                 
                 </script>";
             }
-		}
-	?>
+			else if ($_GET["error"] == "weakpwd") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character (!,@,#,$,%,^)',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
+			else if ($_GET["error"] == "none") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'You have successfully registered your account!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
+        }
+    ?>
+	
+    
+    <?php 
+            include("includes/footer.php")
+    ?>
 
 
 </body>

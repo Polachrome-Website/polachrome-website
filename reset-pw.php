@@ -1,8 +1,14 @@
-<?php 
-    include_once 'includes/header.php'
- ?>  
-
+<!DOCTYPE html>
+<html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <!--Bootsrap 4-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Font Awesome icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
     <!--Main css-->
     <link rel="stylesheet" href="styles/reset-pw.css">
 
@@ -23,16 +29,40 @@
                 <form action="includes/reset-request.inc.php" method="post">
                     <div class="form-group">
                         
-                        <input type="email" name="email" class="form-control form-control-sm" placeholder="Enter your e-mail address">
+                        <input type="email" name="email" class="myInput" placeholder="Enter your e-mail address" required>
                     </div>
 
-                    <button type="submit" name="reset-request-submit" class="btn btn-dark btn-block">Send password reset link</button>
+                    <button type="submit" name="reset-request-submit" class="btn btn-reset btn-dark">Send password reset link</button>
                 </form>
+                    <a href="login.php"><button type="submit" class="btn-cancel">Cancel</button></a>
 
                 <?php
 					if (isset($_GET["reset"])) {
 						if ($_GET["reset"] == "success") {
-							echo '<p class="">Check your e-mail!</p>';
+                            echo "<script type='text/javascript'>
+                
+                            Swal.fire({
+                                text: 'Kindly check your inbox or spam folder for the reset link.',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                              })
+                            
+                            </script>";
+						}
+					}
+
+                    if (isset($_GET["reset"])) {
+						if ($_GET["reset"] == "notregistered") {
+                            echo "<script type='text/javascript'>
+                
+                                Swal.fire({
+                                    title: 'Error',
+                                    text: 'This email is not yet registered. Please try again.',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                })
+                                
+                                </script>";
 						}
 					}
 				?>
@@ -48,4 +78,4 @@
     ?>
 
 </body>
-    
+</html>

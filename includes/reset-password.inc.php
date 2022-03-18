@@ -1,5 +1,12 @@
+<head>
+    <!--for alert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+</head>
+
 <?php
-	
+	include("functions.inc.php");
+
 	if (isset($_POST["reset-password-submit"])) {
 		
 		$selector = $_POST["selector"];
@@ -8,10 +15,18 @@
 		$passwordRepeat = $_POST["pwd-repeat"];
 		
 		if(empty($password) || empty($passwordRepeat)) {
-			header ("Location: ../new-pw.php?error=empty&selector=" . $selector . "&validator=" . $validator); 
+
+			include("../new-pw.php?error=empty&selector=" . $selector . "&validator=" . $validator);
 			exit();
-		} else if ($password != $passwordRepeat) {
+		} 
+		
+		else if (pwdMatch($password, $passwordRepeat) !== false) {
 			header ("Location: ../new-pw.php?error=pwdnotsame&selector=" . $selector . "&validator=" . $validator); 
+			exit();
+		}
+		
+		 else if(pwdStrength($password) !== false){
+			header ("Location: ../new-pw.php?error=weakpwd&selector=" . $selector . "&validator=" . $validator); 
 			exit();
 		}
 		
@@ -30,7 +45,7 @@
 			
 			$result = mysqli_stmt_get_result($stmt);
 			if (!$row = mysqli_fetch_assoc($result)) {
-				echo "Please resubmit your reset request. hdhfd";
+				echo "Please resubmit your reset request.";
 				exit();
 			} else {
 				
@@ -76,7 +91,7 @@
 								} else {
 									mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
 									mysqli_stmt_execute($stmt);
-									header("LOCATION: ../index.php?newpwd=passwordupdated");
+									header("LOCATION: ../login.php?newpwd=passwordupdated");
 								}
 							}
 						}
@@ -87,6 +102,6 @@
 		}
 		
 	} else {
-	header("Location: ../index.php");
+	header("Location: ../login.php");
 	}
 ?>

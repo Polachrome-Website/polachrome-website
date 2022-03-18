@@ -39,6 +39,6 @@ if (isset($_POST["submit"])) {
     createUser($conn, $userName, $email, $password, $fullName);
 }
 else{
-    header("location: ../signup.php?error=none");
+    header("location: ../login.php?register=success");
     exit();
 }

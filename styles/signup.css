@@ -13,7 +13,7 @@
 
 
 body{
-    background-image: url(img/testimonial-bg.png);
+    background-image: url(../img/testimonial.png);
     background-size: cover;
     min-height:60vh;
     position:relative;

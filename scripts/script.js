@@ -31,4 +31,3 @@ cancelSearchBtn.onclick = ()=>{
   searchBtn.classList.remove("hide");
   
 }
-

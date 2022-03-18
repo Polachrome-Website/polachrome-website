@@ -1,7 +1,6 @@
 
 <?php
 
-
 function emptyInputSignup($fullName, $userName, $email, $password, $passwordRepeat){
     $result;
 
@@ -74,6 +73,27 @@ function pwdStrength($password){
     }
 }
 
+function pwdStrengthReset($password,$passwordRepeat){
+    $result;
+    $passwordStrengthReset = $password;
+
+   // Validate password strength
+    $uppercase = preg_match('@[A-Z]@', $password,$passwordRepeat);
+    $lowercase = preg_match('@[a-z]@', $password,$passwordRepeat);
+    $number    = preg_match('@[0-9]@', $password,$passwordRepeat);
+    $specialChars = preg_match('@[^\w]@', $password,$passwordRepeat);
+
+    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password,$passwordRepeat) < 8) {
+         $result = true; 
+    }
+    else{
+        $result = false;
+
+    return $result;
+    }
+}
+
+
 
 function uidExists($conn, $userName, $email){
    $sql = "SELECT * FROM user_account WHERE userName = ? OR email = ?;";   //first colon to close SQL, second to close PHP 
@@ -145,7 +165,7 @@ function loginUser($conn, $userName, $password){
 
 
     if ($uidExists === false) {
-        header("location: ../index.php?error=loginError");
+        header("location: ../login.php?error=loginError");
         exit();
     }
 
@@ -153,7 +173,7 @@ function loginUser($conn, $userName, $password){
     $checkPwd = password_verify($password, $pwdHashed);
 
     if ($checkPwd === false) {
-        header("location: ../index.php?error=loginError");
+        header("location: ../login.php?error=loginError");
         exit();
     }
     else if($checkPwd === true){
@@ -169,9 +189,10 @@ function loginUser($conn, $userName, $password){
         $_SESSION["email"] = $uidExists["email"];
 
 
-        header("location: ../home.php");
+        header("location: ../index.php");
         exit();
     }
 }
+
 ?>
 

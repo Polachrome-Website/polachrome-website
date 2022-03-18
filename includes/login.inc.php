@@ -7,7 +7,7 @@ require_once 'db.php';
 require_once 'functions.inc.php';
 
 if (emptyInputLogin($userName, $password) !== false) {
-    header("location: ../index.php?error=emptyinput");
+    header("location: ../login.php?error=emptyinput");
     exit();
 }
 

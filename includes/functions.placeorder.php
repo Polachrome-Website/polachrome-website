@@ -1,4 +1,8 @@
 <?php
+require_once "shoppingCart.php";
+
+
+
 
 $db = mysqli_connect("localhost","root","123456","polachrome_db");
 /// begin getRealIpUser functions ///
@@ -22,35 +26,77 @@ function getRealIpUser(){
 /// begin add_cart functions ///
 
 function add_cart(){
-    if(isset($_GET['add_cart'])){
 
-        global $db;
-
-        $ip_add = getRealIpUser();
-
-        $p_id = $_GET['add_cart'];
-
-        $product_qty = $_POST['product_qty'];
-
-        $check_product = "select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
-
-        $run_check = mysqli_query($db,$check_product);
-        
-        if(mysqli_num_rows($run_check)>0){
-            
-            echo "<script>alert('This product has already added in cart')</script>";
-            echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
-            
-        }else{
-            
-            $query = "insert into cart (p_id,ip_add,qty) values ('$p_id','$ip_add','$product_qty')";
-            
-            $run_query = mysqli_query($db,$query);
-            
-            echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
-            
-        }
+    if(isset($_SESSION['userID'])){
+        $user_id = $_SESSION['userID'];
     }
+    // if(isset($_SESSION['guest'])){
+    //     $user_id = $_SESSION['guest'];
+    // }
+
+    
+    $shoppingCart = new ShoppingCart();
+    if(isset($_GET['action'])){
+        switch ($_GET['action']){
+        case "add_cart":
+            if(! empty($_POST["product_qty"])){
+
+                $p_id = $_GET["code"];
+
+                $productResult = $shoppingCart->getProductByCode($_GET["code"]);
+                
+                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["prod_id"], $user_id);
+
+                if (! empty($cartResult)) {
+                    // Update cart item quantity in database
+                    $newQuantity = $cartResult[0]["qty"] + $_POST["product_qty"];
+                    $shoppingCart->updateCartQuantity($newQuantity, $cartResult[0]["id"]);
+                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                } else {
+                    // Add to cart table
+                    $shoppingCart->addToCart($productResult[0]["prodID"], $_POST["product_qty"], $user_id);
+                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                }
+            }
+            break;
+            case "remove":
+                // Delete single entry from the cart
+                $shoppingCart->deleteCartItem($_GET["id"]);
+                break;
+            case "empty":
+                // Empty cart
+                $shoppingCart->emptyCart($user_id);
+                break;
+    }
+}
+
+// global $db;
+
+// // $ip_add = getRealIpUser();
+
+// $p_id = $_GET['code'];
+
+// $product_qty = $_POST['product_qty'];
+
+// $check_product = "select * from cart where user_id='$user_id' AND p_id='$p_id'";
+
+// $run_check = mysqli_query($db,$check_product);
+
+// if(mysqli_num_rows($run_check)>0){
+    
+//     echo "<script>alert('This product has already added in cart')</script>";
+//     echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+    
+// }else{
+    
+//     $query = "insert into cart (p_id,user_id,qty) values ('$p_id','$user_id','$product_qty')";
+    
+//     $run_query = mysqli_query($db,$query);
+    
+//     echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+    
+//     }
+//     }
 }
 
 /// finish add_cart functions ///
@@ -60,9 +106,15 @@ function add_cart(){
 function items(){
     global $db;
 
-    $ip_add = getRealIpUser();
-
-    $get_items = "select * from cart where ip_add='$ip_add'";
+    // $ip_add = getRealIpUser();
+    if(isset($_SESSION['userID'])){
+        $user_id = $_SESSION['userID'];
+    }
+    // else{
+    //     $user_id = mt_rand(2000,9000);
+    // }
+    
+    $get_items = "select * from cart where user_id='$user_id'";
 
     $run_items = mysqli_query($db,$get_items);
 
@@ -82,9 +134,17 @@ function items(){
 function items_qty(){
     global $db;
 
-    $ip_add = getRealIpUser();
+    // $ip_add = getRealIpUser();
 
-    $get_items = "select SUM(qty) as qty_total from cart where ip_add='$ip_add'";
+    if(isset($_SESSION['userID'])){
+        $user_id = $_SESSION['userID'];
+    }
+    // else{
+    //    $user_id = mt_rand(2000,9000);
+    // }
+
+
+    $get_items = "select SUM(qty) as qty_total from cart where user_id='$user_id'";
 
     $run_items = mysqli_query($db,$get_items);
 
@@ -92,5 +152,9 @@ function items_qty(){
         echo $row['qty_total'];
     }
 }
+
+
+
+
 
 ?>

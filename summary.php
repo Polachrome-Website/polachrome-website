@@ -38,10 +38,30 @@
                         </div>
                         
                         <?php
-                            
-                            $ip_add = getRealIpUser();
 
-                            $select_cart = "select * from cart where ip_add='$ip_add'";
+                            if(isset($_SESSION['userID'])){
+                                $user_id = $_SESSION['userID'];
+                            }
+
+                            if(isset($_POST['submit-payment'])){
+
+                                $shipping_full_name = $_POST['shipping_full_name'];
+
+                                $shipping_email = $_POST['shipping_email'];
+
+                                $shipping_reg_pro_cit_brgy = $_POST['shipping_reg_pro_cit_brgy'];
+
+                                $shipping_strt_bldg_hn = $_POST['shipping_strt_bldg_hn'];
+
+                                $shipping_contact = $_POST['shipping_contact'];
+
+                                $shipping_zip = $_POST['shipping_zip'];
+
+                            }
+                                                        
+                            // $ip_add = getRealIpUser();
+
+                            $select_cart = "select * from cart where user_id='$user_id'";
                                         
                             $run_cart = mysqli_query($conn,$select_cart);
                             
@@ -53,7 +73,7 @@
 
                             while($row_cart = mysqli_fetch_array($run_cart)){
             
-                                $pro_id = $row_cart['p_id'];
+                                $pro_id = $row_cart['prod_id'];
                     
                                 $pro_qty = $row_cart['qty'];
                     
@@ -127,23 +147,50 @@
                             <div class="row">Total:</div>
                             <div class="row">₱<?php echo "$total_fee";?></div>
                         </div>
-                    
-                    </div>
-                    
+                    </div>  
                 </div>
+                <?php
+                                  if(isset($_POST["submit-payment"])){
 
+                                    $shipping_full_name = $_POST['shipping_full_name'];
+    
+                                    $shipping_email = $_POST['shipping_email'];
+    
+                                    $shipping_reg_pro_cit_brgy = $_POST['shipping_reg_pro_cit_brgy'];
+    
+                                    $shipping_strt_bldg_hn = $_POST['shipping_strt_bldg_hn'];
+    
+                                    $shipping_contact = $_POST['shipping_contact'];
+    
+                                    $shipping_zip = $_POST['shipping_zip'];
+
+                                    $mode_payment = $_POST['flexRadioDefault'];
+
+                                    $_SESSION['s_mode_payment'] = $mode_payment;  
+    
+                                }
+                         
+                                ?>
                 <!--Summary-->
+              
                 <div class="col-md-8 order-md-1 mt-1">
                     <div class="card p-4">
                         <div class="row-buyer-summary">
                             <div class="buyer-summary">Buyer Information</div>
                             <a href="#">Edit</a>
                         </div>
-
+                        <form action="includes/order.confirm.php" id="formOrderSubmit" method="POST">
                         <div class="buyer-content">
-                            <p class="name">John Doe</p>
-                            <p class="email">johndoe@gmail.com</p>
-                            <p class="number">09169876789</p>
+                        <input type="hidden" id="user_id" name="s_shipping_full_name"  value="<?php echo $_SESSION['userID']; ?>" required >
+                            <p class="name"><?php echo $_SESSION['s_shipping_full_name']; ?></p>
+                            <input type="hidden" id="full_name" name="s_shipping_full_name"  value="<?php echo $_SESSION['s_shipping_full_name']; ?>" required >
+
+                            <p class="email"><?php echo $_SESSION['s_shipping_email']; ?></p>
+                            <input type="hidden" id="email" name="s_shipping_email"  value="<?php echo $_SESSION['s_shipping_email']; ?>" required >
+
+                            <p class="number"><?php echo $_SESSION['s_shipping_contact']; ?></p>
+                            <input type="hidden" id="contact" name="s_shipping_contact"  value="<?php echo $_SESSION['s_shipping_contact']; ?>" required >
+
                         </div>
 
                         <div class="row-shipping-summary">
@@ -152,9 +199,13 @@
                         </div>
 
                         <div class="shipping-content">
-                            <p class="name">Name</p>
-                            <p class="address">Street Name, Building, House No.</p>
-                            <p class="address-cont">City, Country</p>
+                            <p class="name"><?php echo $_SESSION['s_shipping_full_name']; ?></p>
+                            <p class="address"><?php echo $_SESSION['s_shipping_strt_bldg_hn']; ?></p>
+                            <input type="hidden" id="strt_bldg_hn" name="s_shipping_strt_bldg_hn"  value="<?php echo $_SESSION['s_shipping_strt_bldg_hn']; ?>" required >
+
+                            <p class="address-cont"><?php echo $_SESSION['s_shipping_reg_pro_cit_brgy']; ?></p>
+                            <input type="hidden" id="reg_pro_cit_brgy" name="s_shipping_reg_pro_cit_brgy"  value="<?php echo $_SESSION['s_shipping_reg_pro_cit_brgy']; ?>" required >
+
                         </div>
 
                         <div class="row-payment-summary">
@@ -163,19 +214,77 @@
                         </div>
 
                         <div class="payment-content">
-                            <p class="payment-mode">Cash on Delivery</p>
+                            <p class="payment-mode"><?php echo $_SESSION['s_mode_payment']; ?></p>
+                            <input type="hidden" id="pay_mode" name="payment_mode"  value="<?php echo $_SESSION['s_mode_payment'];  ?>" required >
                         </div>
                     </div>
+                      
                     <!--Action Buttons-->
                     <div class="action-btn">
-                        <button type="submit" class="btn btn-return">Return to Payment</button>
-                        <button type="submit" class="btn btn-dark btn-proceed">Confirm Order</button>
+                        <button type="submit" class="btn btn-return"><a href="payment.php" style="all:unset;">Return to Payment</button></a>
+                        <button type="submit" id="orderConfirm" name="confirm-order" class="btn btn-dark btn-proceed">Confirm Order</button>
                     </div>
-                   
+                    
                 </div>
             </div>
+            </form>
         </div>
-    <script src="navbar.js"></script>
+       
+    <script src="scripts/navbar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+
+    <script>
+         $(document).ready(function (){
+             $('#orderConfirm').on('click',function(e){
+                 e.preventDefault();
+                 
+                 Swal.fire({
+                    title: "Confirm Order?",
+                    text: "Please make sure that all details are correct.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#00C851",
+                    confirmButtonText: "Place Order",
+                    cancelButtonText: "Cancel",
+                 }).then((result) => {
+                    
+                    var user_id = $('#user_id').val();
+                    var full_name = $('#full_name').val();
+                    var email = $('#email').val();
+                    var contact = $('#contact').val();
+                    var strt_bldg_hn = $('#strt_bldg_hn').val();
+                    var reg_pro_cit_brgy = $('#reg_pro_cit_brgy').val();
+                    var pay_mode = $('#pay_mode').val();
+
+                    if(result.isConfirmed){
+                        $.ajax({
+                            url:'includes/order.confirm.php',
+                            type:'post',
+                            data:{
+                                send_user_id:user_id,
+                                send_full_name:full_name,
+                                send_email:email,
+                                send_contact:contact,
+                                send_strt_bldg_hn:strt_bldg_hn,
+                                send_reg_pro_cit_brgy:reg_pro_cit_brgy,
+                                send_pay_mode:pay_mode
+                            },success:function(data,result){
+                                console.log(data);
+                                // $('#formOrderSubmit').submit();
+                                window.location.href = 'upload-payment.php';
+                                
+                            } 
+                        });
+                        // $('#formOrderSubmit').submit();
+                    }
+                 });
+             });
+         });
+
+    </script>
     </body>
 
    <!--Footer Section-->

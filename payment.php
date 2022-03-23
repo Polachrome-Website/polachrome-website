@@ -36,10 +36,14 @@
                         </div>
                         
                         <?php
-                            
-                            $ip_add = getRealIpUser();
+                            if(isset($_SESSION['userID'])){
+                                $user_id = $_SESSION['userID'];
+                            }
 
-                            $select_cart = "select * from cart where ip_add='$ip_add'";
+                            
+                            // $ip_add = getRealIpUser();
+
+                            $select_cart = "select * from cart where user_id='$user_id'";
                                         
                             $run_cart = mysqli_query($conn,$select_cart);
                             
@@ -51,7 +55,7 @@
 
                             while($row_cart = mysqli_fetch_array($run_cart)){
             
-                                $pro_id = $row_cart['p_id'];
+                                $pro_id = $row_cart['prod_id'];
                     
                                 $pro_qty = $row_cart['qty'];
                     
@@ -129,34 +133,69 @@
                             
                     </div>
                 </div>
+                                <?php
+                                  if(isset($_POST["submit-shipping"])){
 
+                                    $shipping_full_name = $_POST['shipping_full_name'];
+    
+                                    $shipping_email = $_POST['shipping_email'];
+    
+                                    $shipping_reg_pro_cit_brgy = $_POST['shipping_reg_pro_cit_brgy'];
+    
+                                    $shipping_strt_bldg_hn = $_POST['shipping_strt_bldg_hn'];
+    
+                                    $shipping_contact = $_POST['shipping_contact'];
+    
+                                    $shipping_zip = $_POST['shipping_zip'];
+
+                                    //store values in session to be accessed.
+
+                                    $_SESSION['s_shipping_full_name'] = $shipping_full_name;
+
+                                    $_SESSION['s_shipping_email'] = $shipping_email;
+
+                                    $_SESSION['s_shipping_reg_pro_cit_brgy'] = $shipping_reg_pro_cit_brgy;
+
+                                    $_SESSION['s_shipping_strt_bldg_hn'] = $shipping_strt_bldg_hn;
+
+                                    $_SESSION['s_shipping_contact'] = $shipping_contact;
+
+                                    $_SESSION['s_shipping_zip'] = $shipping_zip;
+
+    
+                                }
+                         
+                                ?>
                 <!--Payment Method-->
+               
                 <div class="col-md-8 order-md-1 mt-1">
                     <div class="card p-4">
                         <div class="row-header-payment">
-                            <div class="header-payment">Choose payment method:</div>
+                            <div class="header-payment">Choose payment method: </div>
                         </div>
+                        <form action="summary.php" method="POST">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" id="option1">
-                            <input type="hidden" name="pay_gcash" value="Gcash">
+                            <input class="form-check-input" name="flexRadioDefault" type="radio" id="option1" value="Gcash">
+                            <!-- <input type="hidden" name="pay_gcash" value="Gcash"> -->
                             <label class="form-check-label" for="option1">
                               Gcash
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option2">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option2" value="Paymaya">
                             <label class="form-check-label" for="option2">
                              Paymaya
                             </label>
+                           
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option3">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option3" value="Bank Transfer">
                             <label class="form-check-label" for="option3">
                              Bank Transfer
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option4">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option4" value="Cash on Delivery">
                             <label class="form-check-label" for="option4">
                              Cash on Delivery
                             </label>
@@ -166,22 +205,66 @@
                             <div class="guidelines">Payment Guidelines:</div>
                         </div>
                         <div class="row-guidelines-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. 
+                            <p id="payment-guideline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. 
                                 Sed finibus placerat tortor, tempus posuere quam dignissim eget. Mauris pharetra nunc consectetur, rutrum ex eget, bibendum lacus.
                                  In et laoreet lectus. Integer tristique, lectus et egestas sagittis, leo tortor tincidunt nunc, vitae condimentum ex ex nec purus. 
                                  Proin sollicitudin orci nec auctor volutpat..</p>
                         </div>
-                     
+                 
                     </div>
+
+                    <!-- begin storing shipping address values to be passed on summary page -->
+                    <input type="hidden" name="shipping_full_name"  class="text-box" value="<?php echo $shipping_full_name ?>" required >
+                    <input type="hidden" name="shipping_email"  class="text-box" value="<?php echo $shipping_email ?>" required >
+                    <input type="hidden" name="shipping_reg_pro_cit_brgy"  class="text-box" value="<?php echo $shipping_reg_pro_cit_brgy ?>" required >
+                    <input type="hidden" name="shipping_strt_bldg_hn"  class="text-box" value="<?php echo $shipping_strt_bldg_hn ?>" required >
+                    <input type="hidden" name="shipping_contact"  class="text-box" value="<?php echo $shipping_contact ?>" required >
+                    <input type="hidden" name="shipping_zip"  class="text-box" value="<?php echo $shipping_zip ?>" required >
+                    <!-- end storing shipping address values to be passed on summary page -->
+
+             
                     <div class="action-btn">
                         <button type="submit" class="btn btn-return"><a href="shipping.php" style="all:unset;">Return to Shipping</a></button>
-                        <button type="submit" class="btn btn-dark btn-proceed"><a href="summary.php" style="all:unset;">View Order Summary</a></button>
+                        <button type="submit" name="submit-payment" class="btn btn-dark btn-proceed">View Order Summary</button>
                     </div>
-                   
+                    
                 </div>
+            </form>
             </div>
         </div>
-    <script src="navbar.js"></script>
+    <script src="scripts/navbar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  
+
+    <script>
+        //jquery script for choosing payment method and their specific instructions
+        $(document).ready(function (){
+
+            $("input[type='radio']:first").attr('checked',true);  //set first radio btn as default
+
+            $("input[type='radio']").change(function(){  //enable radio btn change and change the text as the selection change
+                switch ($("input[type='radio']:checked").val()){
+                    case 'Gcash':
+                        $("#payment-guideline").text("GCASH ang iyong napili. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
+                        break;
+                    case 'Paymaya':
+                        $("#payment-guideline").text("PAYMAYA ang iyong napili. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
+                        break;
+                    case 'Bank Transfer':
+                        $("#payment-guideline").text("BANK TRANSFER ang iyong napili. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
+                        break;
+                    case 'Cash on Delivery':
+                        $("#payment-guideline").text("CASH ON DELIVERY ang iyong napili. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
+                        break;
+                    default:
+                        $("#payment-guideline").text("Instructions for each payment method displayed here");
+                };
+
+            }).change();      //for default radio btn to reflect text changes    
+
+        });  
+                                
+    </script>
     </body>
 
    <!--Footer Section-->

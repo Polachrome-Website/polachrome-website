@@ -1,4 +1,13 @@
 
+.btn-increment-decrement {
+    display: inline-block;
+    padding: 5px 0px;
+    background: #e2e2e2;
+    width: 30px;
+    text-align: center;
+    cursor:pointer;
+}
+
 /*Cart Mobile View */
 body{
   height: 100%;

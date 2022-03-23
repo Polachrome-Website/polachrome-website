@@ -45,8 +45,8 @@
 
     <!--Body-->
 
-      <?php add_cart(); ?>
-    <form action="product-info.php?add_cart=<?php echo $product_id; ?>" method="post">
+    <?php add_cart(); ?>
+    <form action="product-info.php?action=add_cart&code=<?php echo $product_id; ?>" method="post">
     <div class = "card-wrapper">
       <div class = "card">
         <!-- card left -->

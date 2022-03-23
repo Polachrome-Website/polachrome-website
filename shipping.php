@@ -41,9 +41,12 @@
                         
                         <?php
                             
-                            $ip_add = getRealIpUser();
+                            if(isset($_SESSION['userID'])){
+                                $user_id = $_SESSION['userID'];
+                            }
+                            // $ip_add = getRealIpUser();
 
-                            $select_cart = "select * from cart where ip_add='$ip_add'";
+                            $select_cart = "select * from cart where user_id='$user_id'";
                                         
                             $run_cart = mysqli_query($conn,$select_cart);
                             
@@ -57,7 +60,7 @@
                                     
                             while($row_cart = mysqli_fetch_array($run_cart)){
             
-                                $pro_id = $row_cart['p_id'];
+                                $pro_id = $row_cart['prod_id'];
                     
                                 $pro_qty = $row_cart['qty'];
                     
@@ -151,6 +154,7 @@
                         <div class="shipping-header mb-3">Shipping Details</div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
+                                <form action="payment.php" method="post">   <!--begin shipping form--> 
                                 <input type="text" class="form-control" name="shipping_full_name"
                                 placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Full Name";}?>"
                                 value = "<?php if(isset($_SESSION["userID"])){ echo $_SESSION["fullName"];}?>"
@@ -195,18 +199,26 @@
                                     >
                             </div>
                         </div>
+                        <?php
+                            //store information in session to be accessed in the summary page
+
+                            $_SESSION['product_title'] = $product_title;
+                            
+                        
+                        ?>
 
                         
                     </div>
+               
+                    
                     <div class="action-btn">
                         <button type="submit" class="btn btn-return"><a href="cart.php" style="all:unset;">Return to Cart</button></a>
-                        <button type="submit" class="btn btn-dark btn-proceed"><a href="payment.php" style="all:unset;">Proceed to Payment</button></a>
+                        <button type="submit" class="btn btn-dark btn-proceed" name="submit-shipping">Proceed to Payment</button>
                     </div>
                    
                 </div>
-
-
             </div>
+            </form>   <!--end shipping form-->    
         </div>
     <script src="navbar.js"></script>
     </body>

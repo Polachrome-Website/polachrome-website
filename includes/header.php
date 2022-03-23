@@ -39,6 +39,11 @@
 
     }//end fetch address if user exists
 
+    // if(! isset($_SESSION['userID'])){
+    //     $_SESSION['guestID'] = mt_rand(2000,9000);
+    // }
+
+
     //begin fetch product for prod-info
     if(isset($_GET['prodID'])){
 
@@ -84,7 +89,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Bootsrap 4-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    
         <!--Font Awesome icons-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
@@ -95,9 +100,12 @@
         <!-- <link rel="stylesheet" href="styles/cart.header.scss"> -->
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="sweetalert2.all.min.js"></script>
+        <!-- <script src="sweetalert2.all.min.js"></script> -->
 
-
+        <!-- <script>
+            sessionStorage.setItem('guestID',"<?php echo $_SESSION['guestID'] ?>");
+        </script> -->
+        
     </head>
     <body>
         <!--Navbar-->

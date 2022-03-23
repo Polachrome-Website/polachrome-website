@@ -15,6 +15,51 @@
         <title>Cart</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/cart.css">
+        <script src="jquery-3.2.1.min.js"></script>
+    <script>
+    function increment_quantity(cart_id, price) {
+        var inputQuantityElement = $("#input-quantity-"+cart_id);
+        var newQuantity = parseInt($(inputQuantityElement).val())+1;
+        var newPrice = newQuantity * price;
+        save_to_db(cart_id, newQuantity, newPrice);
+    }
+
+    function decrement_quantity(cart_id, price) {
+        var inputQuantityElement = $("#input-quantity-"+cart_id);
+        if($(inputQuantityElement).val() > 1) 
+        {
+        var newQuantity = parseInt($(inputQuantityElement).val()) - 1;
+        var newPrice = newQuantity * price;
+        save_to_db(cart_id, newQuantity, newPrice);
+        }
+    }
+
+    function save_to_db(cart_id, new_quantity, newPrice) {
+        var inputQuantityElement = $("#input-quantity-"+cart_id);
+        var priceElement = $("#cart-price-"+cart_id);
+        $.ajax({
+            url : "update_cart_quantity.php",
+            data : "cart_id="+cart_id+"&new_quantity="+new_quantity,
+            type : 'post',
+            success : function(response) {
+                $(inputQuantityElement).val(new_quantity);
+                $(priceElement).text("$"+newPrice);
+                var totalQuantity = 0;
+                $("input[id*='input-quantity-']").each(function() {
+                    var cart_quantity = $(this).val();
+                    totalQuantity = parseInt(totalQuantity) + parseInt(cart_quantity);
+                });
+                $("#total-quantity").text(totalQuantity);
+                var totalItemPrice = 0;
+                $("div[id*='cart-price-']").each(function() {
+                    var cart_price = $(this).text().replace("$","");
+                    totalItemPrice = parseInt(totalItemPrice) + parseInt(cart_price);
+                });
+                $("#total-price").text(totalItemPrice);
+            }
+        });
+    }
+        </script>
     </head>
 
     <body>
@@ -52,9 +97,17 @@
 
         <?php
         
-        $ip_add = getRealIpUser();
+        if(isset($_SESSION['userID'])){
+            $user_id = $_SESSION['userID'];
+        }
+        // if(isset($_SESSION['guestID'])){
+        //     $user_id = $_SESSION['guestID'];
+        // }
+        
 
-        $select_cart = "select * from cart where ip_add='$ip_add'";
+       /// $ip_add = getRealIpUser();
+
+        $select_cart = "select * from cart where user_id='$user_id'";
                        
         $run_cart = mysqli_query($conn,$select_cart);
         
@@ -70,7 +123,7 @@
 
         while($row_cart = mysqli_fetch_array($run_cart)){
             
-            $pro_id = $row_cart['p_id'];
+            $pro_id = $row_cart['prod_id'];
 
             $pro_qty = $row_cart['qty'];
 
@@ -132,9 +185,11 @@
                             <div class="quantity-controls-md">
                                 <div class="quantity-edit-controls">
                                    
-                                    <button><a href="cart.php?remove=<?php echo $pro_id;?>" style="text-decoration:none; color:black;">-</a></button>
-                                    <input type="number" name="qty" value="<?php echo "$pro_qty";?>" readonly/>
-                                    <button><a href="cart.php?add=<?php echo $pro_id;?>" style="text-decoration:none; color:black;">+</a>
+                                <div class="btn-increment-decrement" onClick="decrement_quantity(<?php echo $item["cart_id"]; ?>, '<?php echo $item["price"]; ?>')">-</div><input class="input-quantity"
+                        id="input-quantity-<?php echo $item["cart_id"]; ?>" value="<?php echo $pro_qty; ?>">
+                        
+                        <div class="btn-increment-decrement"
+                        onClick="increment_quantity(<?php echo $item["cart_id"]; ?>, '<?php echo $pro_qty; ?>')">+</div>
                                    
                                 </div>
                             </div>
@@ -238,6 +293,7 @@
             </div>
         </div>
         <script src="navbar.js"></script> 
+
     </body>
 
 

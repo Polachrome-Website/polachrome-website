@@ -14,7 +14,7 @@
        <div class="container">
            <h1>Products</h1>
               
-            <div class="row"> <!-- row Begin -->
+            <div class="row"> 
                 
                 <?php
 
@@ -49,28 +49,20 @@
                         $prodImg1 = $row_products['prodImg1'];
                         
                         echo "
-                        
-                            <div class='col-md-3 col-sm-6 my-3 my-md-0 '>
-
-                             <div class='card shadow'>
-                                <div>
-                                <a href='product-info.php?prodID=$prodID'>
-                                <img src='admin_area/product_images/$prodImg1' class='prod-img img-fluid'/>
-                                </div>
-                                  
-                                    <div class='card-body'>
-                                    
-                                    <h6 class='card-title'> $prodName </h6>
-
-                                    <h6 class='card-text'> ₱$prodPrice </h6>
-                                    </div>
-                                </div>
-                            </div>                              
+                    
+                            <div class='col'>
+                                <a href='product-info.php?prodID=$prodID' class='card'>
+                            <div class='prod-img img-fluid' style='background-image: url(admin_area/product_images/$prodImg1);'></div>
+                                <h6>$prodName</h2>
+                                <h6>₱$prodPrice </h6>
+                                </a>
+                            </div>
+                     
                         ";
                     }
                 ?>
-        
-        </div> <!-- row Finish -->
+            </div>  <!-- row Finish -->
+        </div> <!-- container Finish -->
 
 
         <!--Bootsrap JS cdn-->

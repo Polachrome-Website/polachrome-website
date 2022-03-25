@@ -86,7 +86,7 @@ class ShoppingCart extends DBController{
     
     function updateCartQuantity($quantity, $cart_id)
     {
-        $query = "UPDATE cart SET  qty = ? WHERE id= ?";
+        $query = "UPDATE cart SET  qty = ? WHERE cart_id= ?";
         
         $params = array(
             array(
@@ -104,7 +104,7 @@ class ShoppingCart extends DBController{
     
     function deleteCartItem($cart_id)
     {
-        $query = "DELETE FROM cart WHERE id = ?";
+        $query = "DELETE FROM cart WHERE cart_id = ?";
         
         $params = array(
             array(

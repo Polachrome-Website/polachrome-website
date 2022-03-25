@@ -7,13 +7,13 @@ const form = document.querySelector("form");
 menuBtn.onclick = ()=>{
   items.classList.add("active");
   menuBtn.classList.add("hide");
-  searchBtn.classList.add("hide");
+  // searchBtn.classList.add("hide");
   cancelMenuBtn.classList.add("show");
 }
 cancelMenuBtn.onclick = ()=>{
   items.classList.remove("active");
   menuBtn.classList.remove("hide");
-  searchBtn.classList.remove("hide");
+  // searchBtn.classList.remove("hide");
   cancelMenuBtn.classList.remove("show");
   form.classList.remove("active"); 
 }

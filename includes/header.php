@@ -1,5 +1,10 @@
 <?php
     session_start();
+    $session_id = session_id();
+    
+    // $sessionkey = hash("sha256", openssl_random_pseudo_bytes($session_key_length));
+    // $_SESSION['guest_id']  = mt_rand();
+    $_SESSION['guest_id'] = $session_id;
     include("includes/db.php");
     include("includes/functions.placeorder.php");
 ?>
@@ -108,6 +113,7 @@
         
     </head>
     <body>
+
         <!--Navbar-->
         <nav>
             <div class="logo">
@@ -158,6 +164,7 @@
                     else{
                        echo "<li><a class='red' href='#'>NOT LOGGED</a></li>";
                        echo "<li><a class='red' href='login.php'>LOG IN</a></li>";
+                       echo "G_ID: ".$_SESSION['guest_id'];
                     }
 
                 ?>
@@ -192,13 +199,23 @@
             ?>
 
             <div class="cart-icon">
-                <a href="cart.php" style="all:unset;"><span style="font-size: 130%; background: inherit;" class="fas fa-shopping-cart"><?php items(); ?></span></a>
+                <a href="cart.php" style="all:unset;"><span style="font-size: 130%; background: inherit;" class="fas fa-shopping-cart">
+                <?php 
+                    if(isset($_SESSION["userID"])){
+                        items(); 
+                    }
+                    else{
+                        guest_items();
+
+                    }
+                 ?>
+            
+                </span></a>
             </div>
 
             <div class="menu-icon">
                 <span class="fas fa-bars"></span>
-            </div>
-            
+            </div>  
         </nav>
         <!--End of Navbar section-->
 

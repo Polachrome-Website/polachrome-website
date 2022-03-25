@@ -15,13 +15,20 @@
         <title>Cart</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/cart.css">
-        <script src="jquery-3.2.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>   
     <script>
     function increment_quantity(cart_id, price) {
+        var productQuantity = $('#product-quantity');
         var inputQuantityElement = $("#input-quantity-"+cart_id);
-        var newQuantity = parseInt($(inputQuantityElement).val())+1;
-        var newPrice = newQuantity * price;
-        save_to_db(cart_id, newQuantity, newPrice);
+ 
+        if($(inputQuantityElement).val() < $(productQuantity).each().val()){
+            
+            var newQuantity = parseInt($(inputQuantityElement).val())+1;
+        
+            var newPrice = newQuantity * price;
+            save_to_db(cart_id, newQuantity, newPrice);
+        } 
+     
     }
 
     function decrement_quantity(cart_id, price) {
@@ -43,7 +50,7 @@
             type : 'post',
             success : function(response) {
                 $(inputQuantityElement).val(new_quantity);
-                $(priceElement).text("$"+newPrice);
+                $(priceElement).text("₱"+newPrice);
                 var totalQuantity = 0;
                 $("input[id*='input-quantity-']").each(function() {
                     var cart_quantity = $(this).val();
@@ -52,7 +59,7 @@
                 $("#total-quantity").text(totalQuantity);
                 var totalItemPrice = 0;
                 $("div[id*='cart-price-']").each(function() {
-                    var cart_price = $(this).text().replace("$","");
+                    var cart_price = $(this).text().replace("₱","");
                     totalItemPrice = parseInt(totalItemPrice) + parseInt(cart_price);
                 });
                 $("#total-price").text(totalItemPrice);
@@ -63,7 +70,32 @@
     </head>
 
     <body>
+    <?php
+        
+        if(isset($_SESSION['userID'])){
+            $user_id = $_SESSION['userID'];
+            $select_cart = "select * from cart where user_id='$user_id'";
+        }
 
+        else{
+            $guest_id = $_SESSION['guest_id'];
+            $select_cart = "select * from cart where user_id='$guest_id'";
+        }
+        // if(isset($_SESSION['guestID'])){
+        //     $user_id = $_SESSION['guestID'];
+        // }
+        
+
+       /// $ip_add = getRealIpUser();
+
+       
+                       
+        $run_cart = mysqli_query($conn,$select_cart);
+        
+        $count = mysqli_num_rows($run_cart);
+
+        $total = 0;
+   ?>
         <!--Breadcrumb Navigation-->
         <div class="sub-nav">
             <ul class="breadcrumbs">
@@ -95,32 +127,10 @@
                         <p></p> 
                     </div>
 
-        <?php
+       
         
-        if(isset($_SESSION['userID'])){
-            $user_id = $_SESSION['userID'];
-        }
-        // if(isset($_SESSION['guestID'])){
-        //     $user_id = $_SESSION['guestID'];
-        // }
-        
-
-       /// $ip_add = getRealIpUser();
-
-        $select_cart = "select * from cart where user_id='$user_id'";
-                       
-        $run_cart = mysqli_query($conn,$select_cart);
-        
-        $count = mysqli_num_rows($run_cart);
-
-        $total = 0;
-        
-        if($count < 1){
-            echo "<p> Cart is Empty</p>";
-        } 
-        
-        else{
-
+    <?php
+    
         while($row_cart = mysqli_fetch_array($run_cart)){
             
             $pro_id = $row_cart['prod_id'];
@@ -158,9 +168,11 @@
                     $_SESSION['total'] = $total;
                 
         ?>  
-        
-         <!--Cart Items-->
-         <div class="cart-item">
+         <?php add_cart();
+         ?>
+         <?php echo $user_id; ?>
+                <!--Cart Items-->
+                <div class="cart-item">
                         <form action="shipping.php">
                             <div class="cart-product">
                             <div>
@@ -179,25 +191,35 @@
                                 </div>
                             </div>
 
-                            <div class="unit-price">
+                            <div class="unit-price" id="cart-price-<?php echo $row_cart["cart_id"]; ?>">
                                 <h6> ₱<?php echo "$only_price";?></h6>
                             </div>
                             <div class="quantity-controls-md">
                                 <div class="quantity-edit-controls">
                                    
-                                <div class="btn-increment-decrement" onClick="decrement_quantity(<?php echo $item["cart_id"]; ?>, '<?php echo $item["price"]; ?>')">-</div><input class="input-quantity"
-                        id="input-quantity-<?php echo $item["cart_id"]; ?>" value="<?php echo $pro_qty; ?>">
+                                <input type="hidden" id="product-quantity" value="<?php echo $row_products["quantity"]; ?>" readonly/>
+                                
+                                <div class="btn-increment-decrement" onClick="decrement_quantity(<?php echo $row_cart["cart_id"]; ?>, '<?php echo $row_products["price"]; ?>')">-</div>
+                                <input type="number" class="input-quantity" id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["price"]; ?>">
                         
-                        <div class="btn-increment-decrement"
-                        onClick="increment_quantity(<?php echo $item["cart_id"]; ?>, '<?php echo $pro_qty; ?>')">+</div>
-                                   
+
+                                    <!-- <button>-</button>
+                                    <input type="number " value="1" readonly/>
+                                    <button>+</button> -->
+
+                                <div class="btn-increment-decrement"
+                                onClick="increment_quantity(<?php echo $row_cart["cart_id"]; ?>, '<?php echo $row_products["price"]; ?>')">+</div>
+                                        
                                 </div>
                             </div>
                             <div class="product-total">
                                 <h6>$<?php echo "$sub_total";?></h6>
                             </div>
                             <div class="remove-md">
-                                <button type="submit" name="update"><span>Remove Item</span></button>
+                                <!-- <button type="submit" name="update"><span>Remove Item</span></button> -->
+                                <a id="remove-item" href="cart.php?action=remove&id=<?php echo $row_cart["cart_id"]; ?>">
+                                    Remove 
+                                </a>
                             </div>
                            
                             <!--remove item and quantity btn in mobile ver-->
@@ -214,15 +236,16 @@
 
                         </form>
                     </div>
-                </div>
+          
 
                 <?php 
                         } 
                     } 
-                }
+                
                 ?>
 
                 <?php 
+
 
                 if(isset($_GET['add'])){
 
@@ -277,7 +300,7 @@
                
 
                 ?>
-    
+            </div> <!--End mycart -->
                 <!--Action Buttons-->
                 <div class="checkout-subtotal">
                     <div class="product-subtotal">
@@ -292,7 +315,7 @@
                 </div>
             </div>
         </div>
-        <script src="navbar.js"></script> 
+        <script src="scripts/navbar.js"></script> 
 
     </body>
 

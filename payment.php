@@ -14,7 +14,7 @@
                     <a href="cart.php" class="cart-link ">Cart</a>
                 </li>
                 <li class="breadcrumbs_item">
-                    <a href="shipping.php" class="shipping-link">Shipping</a>
+                    <a href="shipping.php" onClick="go-shipping" class="shipping-link">Shipping</a>
                 </li>
                 <li class="breadcrumbs_item">
                     <a href="payment.php" class="payment-link active">Payment</a>
@@ -233,8 +233,7 @@
             </div>
         </div>
     <script src="scripts/navbar.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>     
 
     <script>
         //jquery script for choosing payment method and their specific instructions

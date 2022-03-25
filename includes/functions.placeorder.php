@@ -30,10 +30,13 @@ function add_cart(){
     if(isset($_SESSION['userID'])){
         $user_id = $_SESSION['userID'];
     }
+    // if(!isset($_SESSION['userID'])){
+    //     $user_id = $_SESSION['guest_id']
+    // }
+
     // if(isset($_SESSION['guest'])){
     //     $user_id = $_SESSION['guest'];
     // }
-
     
     $shoppingCart = new ShoppingCart();
     if(isset($_GET['action'])){
@@ -70,6 +73,7 @@ function add_cart(){
     }
 }
 
+
 // global $db;
 
 // // $ip_add = getRealIpUser();
@@ -101,6 +105,48 @@ function add_cart(){
 
 /// finish add_cart functions ///
 
+
+function add_cart_guest(){
+   
+    $user_id = $_SESSION['guest_id'];
+ 
+    
+    $shoppingCart = new ShoppingCart();
+    if(isset($_GET['action'])){
+        switch ($_GET['action']){
+        case "add_cart":
+            if(! empty($_POST["product_qty"])){
+
+                $p_id = $_GET["code"];
+
+                $productResult = $shoppingCart->getProductByCode($_GET["code"]);
+                
+                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["prod_id"], $user_id);
+
+                if (! empty($cartResult)) {
+                    // Update cart item quantity in database
+                    $newQuantity = $cartResult[0]["qty"] + $_POST["product_qty"];
+                    $shoppingCart->updateCartQuantity($newQuantity, $cartResult[0]["id"]);
+                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                } else {
+                    // Add to cart table
+                    $shoppingCart->addToCart($productResult[0]["prodID"], $_POST["product_qty"], $user_id);
+                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                }
+            }
+            break;
+            case "remove":
+                // Delete single entry from the cart
+                $shoppingCart->deleteCartItem($_GET["id"]);
+                break;
+            case "empty":
+                // Empty cart
+                $shoppingCart->emptyCart($user_id);
+                break;
+        }
+    }
+}
+
 //begin items function ///
 
 function items(){
@@ -115,6 +161,29 @@ function items(){
     // }
     
     $get_items = "select * from cart where user_id='$user_id'";
+
+    $run_items = mysqli_query($db,$get_items);
+
+    $count_items = mysqli_num_rows($run_items);
+
+    if($count_items > 0){
+        echo $count_items;
+    }else{
+        echo "0";
+    }
+}
+
+
+function guest_items(){
+    global $db;
+
+    // $ip_add = getRealIpUser();
+    $guest_id = $_SESSION['guest_id'];
+    // else{
+    //     $user_id = mt_rand(2000,9000);
+    // }
+    
+    $get_items = "select * from cart where user_id='$guest_id'";
 
     $run_items = mysqli_query($db,$get_items);
 
@@ -152,8 +221,6 @@ function items_qty(){
         echo $row['qty_total'];
     }
 }
-
-
 
 
 

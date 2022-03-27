@@ -11,4 +11,10 @@ if (emptyInputLogin($userName, $password) !== false) {
     exit();
 }
 
-loginUser($conn, $userName, $password);
+if($userName === "polachrome_admin" || $userName === "polachrome@gmail.com"){
+    adminUser($conn, $userName, $password);
+}else{
+    loginUser($conn, $userName, $password);
+}
+
+

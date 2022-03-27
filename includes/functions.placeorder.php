@@ -208,6 +208,9 @@ function items_qty(){
     if(isset($_SESSION['userID'])){
         $user_id = $_SESSION['userID'];
     }
+    else{
+        $user_id = $_SESSION['guest_id'];
+    }
     // else{
     //    $user_id = mt_rand(2000,9000);
     // }

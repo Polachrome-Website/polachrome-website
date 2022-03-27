@@ -170,7 +170,7 @@
         ?>  
          <?php add_cart();
          ?>
-         <?php echo $user_id; ?>
+         <!-- <?php echo $user_id; ?> -->
                 <!--Cart Items-->
                 <div class="cart-item">
                         <form action="shipping.php">

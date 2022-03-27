@@ -39,6 +39,9 @@
                             if(isset($_SESSION['userID'])){
                                 $user_id = $_SESSION['userID'];
                             }
+                            else{
+                                $user_id = $_SESSION['guest_id'];
+                            }
 
                             
                             // $ip_add = getRealIpUser();

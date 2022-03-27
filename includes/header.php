@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $session_id = session_id();
+    $session_id = 12345;
     
     // $sessionkey = hash("sha256", openssl_random_pseudo_bytes($session_key_length));
     // $_SESSION['guest_id']  = mt_rand();
@@ -161,7 +161,10 @@
                        echo "<p> Welcome, " . $_SESSION["fullName"] . " </p>";
                        echo "<li><a class='red' href='includes/logout.inc.php'>LOG OUT</a></li>";
                     }
-                    else{
+                    if(isset($_SESSION['admin_email'])){
+                        echo "Viewing as ADMIN";
+                    }
+                    if(!isset($_SESSION["userID"]) && (!isset($_SESSION['admin_email'])) ){
                        echo "<li><a class='red' href='#'>NOT LOGGED</a></li>";
                        echo "<li><a class='red' href='login.php'>LOG IN</a></li>";
                        echo "G_ID: ".$_SESSION['guest_id'];

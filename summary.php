@@ -42,6 +42,9 @@
                             if(isset($_SESSION['userID'])){
                                 $user_id = $_SESSION['userID'];
                             }
+                            else{
+                                $user_id = $_SESSION['guest_id'];
+                            }
 
                             if(isset($_POST['submit-payment'])){
 
@@ -181,8 +184,18 @@
                         </div>
                         <form action="includes/order.confirm.php" id="formOrderSubmit" method="POST">
                         <div class="buyer-content">
-                        <input type="hidden" id="user_id" name="s_shipping_full_name"  value="<?php echo $_SESSION['userID']; ?>" required >
+                            
+                            <input type="hidden" id="user_id" name="s_shipping_full_name"  
+                                value="<?php 
+                                    if(isset($_SESSION['userID'])){
+                                        echo $_SESSION['userID']; 
+                                    }else{
+                                        echo $_SESSION['guest_id']; 
+                                    }
+                                ?>" required >
+
                             <p class="name"><?php echo $_SESSION['s_shipping_full_name']; ?></p>
+
                             <input type="hidden" id="full_name" name="s_shipping_full_name"  value="<?php echo $_SESSION['s_shipping_full_name']; ?>" required >
 
                             <p class="email"><?php echo $_SESSION['s_shipping_email']; ?></p>
@@ -262,6 +275,7 @@
                         $.ajax({
                             url:'includes/order.confirm.php',
                             type:'post',
+                            dataType: 'json', // tell jQuery to parse the response JSON
                             data:{
                                 send_user_id:user_id,
                                 send_full_name:full_name,
@@ -271,11 +285,14 @@
                                 send_reg_pro_cit_brgy:reg_pro_cit_brgy,
                                 send_pay_mode:pay_mode
                             },success:function(data,result){
-                                console.log(data);
+                                console.log(data, result);
                                 // $('#formOrderSubmit').submit();
-                                window.location.href = 'upload-payment.php';
+                                window.location.href = 'upload-payment.php?status=success&refno=' + data.id;
+
+                                // document.location = json.location;
                                 
-                            } 
+                            },
+                            error: function(xhr, ajaxOptions, thrownerror) { }
                         });
                         // $('#formOrderSubmit').submit();
                     }

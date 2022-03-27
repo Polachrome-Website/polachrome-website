@@ -121,6 +121,35 @@ function uidExists($conn, $userName, $email){
 
 }
 
+
+
+function adminExists($conn, $userName, $email){
+    $sql = "SELECT * FROM admin WHERE admin_username = ? OR admin_email = ?;";   //first colon to close SQL, second to close PHP 
+    $stmt = mysqli_stmt_init($conn);
+ 
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+     header("location: ../signup.php?error=stmtfailed");
+     exit();
+    }
+ 
+    mysqli_stmt_bind_param($stmt, "ss", $userName, $email);
+    mysqli_stmt_execute($stmt);
+ 
+    $resultData = mysqli_stmt_get_result($stmt);
+ 
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        return $row;
+    }
+    else{
+     $result = false;
+     return $result;
+    }
+ 
+    mysqli_stmt_close($stmt);
+ 
+ }
+ 
+
 function createUser($conn, $userName, $email, $password, $fullName){
     $sql = "INSERT INTO user_account (userName, email, password, fullName) VALUES (?, ?, ?, ?);";   //first colon to close SQL, second to close PHP 
     $stmt = mysqli_stmt_init($conn);
@@ -194,5 +223,31 @@ function loginUser($conn, $userName, $password){
     }
 }
 
+function adminUser($conn, $userName, $password){
+    $adminExists = adminExists($conn, $userName, $userName);
+
+    if ($adminExists === false) {
+
+        header("location: ../login.php?error=loginError");
+        exit();
+    }
+
+        $adminPwdHashed = $adminExists["admin_pass"];
+        $checkAdminPwd = password_verify($password, $adminPwdHashed);
+
+        if ($checkAdminPwd === false) {
+            header("location: ../login.php?error=loginError");
+            exit();
+        }else if($checkAdminPwd === true){
+            session_start();
+            
+            $_SESSION['admin_email'] = $adminExists['admin_email']; 
+            
+            header("location: ../admin_area/index.php?dashboard");
+            exit();
+            
+    }
+
+}
 ?>
 

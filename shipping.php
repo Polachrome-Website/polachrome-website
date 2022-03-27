@@ -44,6 +44,9 @@
                             if(isset($_SESSION['userID'])){
                                 $user_id = $_SESSION['userID'];
                             }
+                                else{
+                                    $user_id = $_SESSION['guest_id'];
+                                }
                             // $ip_add = getRealIpUser();
 
                             $select_cart = "select * from cart where user_id='$user_id'";
@@ -172,7 +175,7 @@
                         <div class="row mb-3">
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" name="shipping_reg_pro_cit_brgy"
-                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Region, Province, City, Barangay";}?>"
+                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Barangay, City, Province";}?>"
                                 value = "<?php if(isset($_SESSION["userID"]))
                                 { echo $address_brgy . ", " . $address_city . ", " . $address_region;}?>">
                             </div>

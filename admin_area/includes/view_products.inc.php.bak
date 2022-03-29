@@ -1,0 +1,40 @@
+<?php
+	include 'includes/db.php';
+	
+	if isset(isset($_POST['deletesend']{
+		$unique=$_POST['deletesend'];
+		
+		$sql = "DELETE from products WHERE prodID='".$unique."'";
+		$result = mysqli_query($conn,$sql);
+		
+	}
+	
+	if isset(isset($_POST['deletevarsend']{
+		$unique=$_POST['deletevarsend'];
+		
+		$sql = "DELETE FROM product_variation WHERE varID='".$unique."'";
+	
+		if ($conn->query($sql) === TRUE) {
+			echo "Variation deleted successfully";
+		} else {
+			echo "Variation deleting record: " . $conn->error;
+		}
+		header("LOCATION: ../admin_product?variationdelete=success");
+		exit();
+		
+	}
+	
+	if (isset($_POST["address-delete"])){
+		$address = $_POST["address"];
+		require_once 'db.php';
+		$sql = "DELETE FROM user_account_address WHERE addressID='".$address."'";
+	
+		if ($conn->query($sql) === TRUE) {
+			echo "Record deleted successfully";
+		} else {
+			echo "Error deleting record: " . $conn->error;
+		}
+		header("LOCATION: ../address.php?addressdelete=success");
+		exit();
+	}
+?>

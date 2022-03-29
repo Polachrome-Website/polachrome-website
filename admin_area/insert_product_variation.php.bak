@@ -81,7 +81,7 @@ include("includes/db.php");
                                    
                                    ";
                                    ?>
-								   <input type="hidden" name="prodID"  class="text-box" value="<?php echo $prodName ?>" >
+								   <input type="hidden" name="prodID"  class="text-box" value="<?php echo $prodID ?>" >
 								   <?php
                                }
                                

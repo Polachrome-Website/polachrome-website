@@ -22,25 +22,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
 	<?php
-		if ($_GET["error"] == "empty") {
-			echo "<script type='text/javascript'>
-			
-			Swal.fire({
-				text: 'Please fill both text fields.',
-				icon: 'error',
-				confirmButtonText: 'OK'
-			})
-			</script>";
-		} elseif ($_GET["error"] == "pwdnotsame") { 
-			echo "<script type='text/javascript'>
-			
-			Swal.fire({
-				text: 'Passwords do not match.',
-				icon: 'error',
-				confirmButtonText: 'OK'
-			})
-			</script>";
-		} 
+		if (isset($_GET["error"])) {
+			if ($_GET["error"] == "empty") {
+				echo "<script type='text/javascript'>
+				
+				Swal.fire({
+					text: 'Please fill both text fields.',
+					icon: 'error',
+					confirmButtonText: 'OK'
+				})
+				</script>";
+			} elseif ($_GET["error"] == "pwdnotsame") { 
+				echo "<script type='text/javascript'>
+				
+				Swal.fire({
+					text: 'Passwords do not match.',
+					icon: 'error',
+					confirmButtonText: 'OK'
+				})
+				</script>";
+			} 
+		}
 	?>
     </head>
 

@@ -73,8 +73,8 @@ include("includes/db.php");
                                while ($row_var=mysqli_fetch_array($run_var)){
                                    
                                    $prodID = $row_var['prodID'];
-                                   $prodName = $row_var['prodName'];
                                    
+                                   $prodName = $row_var['prodName'];
                                    echo "
                                    
                                    <option value='$prodName'> $prodName </option>

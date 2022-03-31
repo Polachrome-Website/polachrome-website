@@ -138,7 +138,7 @@
         <div class="col-lg-3 col-md-6 col sm-6">
             <div class="footer-about">
                 <h3>Contact Us</h3>
-                <p><a href="contact.html">Get in touch</a> with our customer service team.</p>
+                <p><a href="contact.php">Get in touch</a> with our customer service team.</p>
                 <img src="img/mop.png">
             </div>
         </div>
@@ -148,9 +148,9 @@
             <div class="footer-widget">
                 <h6>ABOUT</h6>
                 <ul class="social-icon">
-                <li><a href="about.html">PolaChrome</a></li>
-                <li><a href="features.html">Polaroid Features</a></li>
-                <li><a href="chart.html">Comparison Chart</a></li>
+                <li><a href="about.php">PolaChrome</a></li>
+                <li><a href="about.php">Polaroid Features</a></li>
+                <li><a href="about.php">Comparison Chart</a></li>
                 </ul>
             </div>
         </div>

@@ -28,6 +28,9 @@
             .choose-file{
                 margin-left:320px;
             }
+            .order{
+                margin-top: 80px;
+            }
 					
 		</style>
 
@@ -35,8 +38,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!--Main CSS-->
     <link rel="stylesheet" href="styles/upload-payment.css">
-    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
-    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -47,20 +48,16 @@
 
     <form action="includes/proof.inc.php" method="POST" enctype="multipart/form-data">
    <div class="card">
-    <div class="row upload">
-
-        <img src="img/dragdrop.png">
-        <h2>Upload Proof of Payment </h2>
+  
+        <center>
+        <h2 class="order"> Order Successfully Placed! </h2>
         <input name="reference_no" type="hidden" value="<?php echo $reference_no ?>">
-        <p> Reference No.: <?php echo $reference_no ?> </p>
-
-        <input type="file" name="img_payment" class="choose-file" required>
-    
+        <p> Reference No.: <?php echo $reference_no ?></p>
+        <p> Kindly take note of your reference number.
+            <br> You may track your order through this <a href="#">link.</a></p>
+        </center>
         <!-- <h5>kindly send your image <a href="">here</a></h5> -->
        
-    
-    </div>
-    <button type="submit" name="payment-upload" class="btn">Upload</button>
     </form>
  
     </div>
@@ -74,8 +71,7 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
      <script src="scripts/navbar.js"></script>
-     <script>Dropzone.discover();</script>
-
+     
      
      <?php 
         if (isset($_GET["status"])) {
@@ -83,18 +79,7 @@
                 echo "<script type='text/javascript'>
                 
                 Swal.fire({
-                    text: 'Your order was successfully placed. Kindly upload a proof of payment and take note of your reference number for order tracking.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                  })
-                
-                </script>";
-            }
-            if ($_GET["status"] == "uploadsuccess") {
-                echo "<script type='text/javascript'>
-                
-                Swal.fire({
-                    text: 'Your payment was successfully posted. You may track the status of your order through the order tracking page.',
+                    text: 'Your order was successfully placed.',
                     icon: 'success',
                     confirmButtonText: 'OK'
                   })

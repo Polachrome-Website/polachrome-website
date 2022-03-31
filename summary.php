@@ -13,7 +13,7 @@
         <div class="sub-nav">
             <ul class="breadcrumbs">
                 <li class="breadcrumbs_item">
-                    <a href="cart.php" class="cart-link">Cart</a>
+                <a href="cart.php?item=<?php if(isset($_SESSION["userID"])){echo items();} else{echo guest_items();}?>" class="cart-link">Cart</a>
                 </li>
                 <li class="breadcrumbs_item">
                     <a href="shipping.php" class="shipping-link ">Shipping</a>
@@ -245,6 +245,7 @@
        
     <script src="scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
 
@@ -286,10 +287,12 @@
                                 send_pay_mode:pay_mode
                             },success:function(data,result){
                                 console.log(data, result);
-                                // $('#formOrderSubmit').submit();
-                                window.location.href = 'upload-payment.php?status=success&refno=' + data.id;
-
-                                // document.location = json.location;
+                               	   // $('#formOrderSubmit').submit();
+                                if(data.pay == "Cash on Delivery"){
+                                    window.location.href = 'success.order.cod.php?status=success&refno=' + data.id;
+                                }else{
+                                    window.location.href = 'upload-payment.php?status=success&refno=' + data.id;
+                                }
                                 
                             },
                             error: function(xhr, ajaxOptions, thrownerror) { }
@@ -310,7 +313,7 @@
             <div class="col-lg-3 col-md-6 col sm-6">
                 <div class="footer-about">
                     <h3>We're here to help</h3>
-                    <p><a href="contact.html">Get in touch</a> with our customer service team.</p>
+                    <p><a href="contact.php">Get in touch</a> with our customer service team.</p>
                     <img src="img/mop.png">
                 </div>
             </div>
@@ -320,9 +323,9 @@
                 <div class="footer-widget">
                     <h6>ABOUT</h6>
                     <ul class="social-icon">
-                    <li><a href="about.html">PolaChrome</a></li>
-                    <li><a href="features.html">Polaroid Features</a></li>
-                    <li><a href="chart.html">Comparison Chart</a></li>
+                    <li><a href="about.php">PolaChrome</a></li>
+                    <li><a href="about.php">Polaroid Features</a></li>
+                    <li><a href="about.php">Comparison Chart</a></li>
                     </ul>
                 </div>
             </div>

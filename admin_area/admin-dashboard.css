@@ -1,75 +1,73 @@
+
+
 body{
-  height: 100%;
-  font-family: font-face="Polaroid";
-  min-width: 100vh;
-  background-color: #f2f2f2;
+    height: 100%;
+    background: whitesmoke !important;
+    overflow-x: hidden;
+    font-family: font-face="Polaroid";
+    margin: 0 !important;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+.sidebar{
+    position: fixed;
+    height: 100%;
+    width: 240px;
+    background: #0A2558;
+    transition: all 0.5s ease;
+    margin-left: 0;
+    padding-left: 0%;
+  }
+  
+  .sidebar.active{
+    width: 100px;
+  }
+   
+  .sidebar h6{
+    margin-top: 80px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 400;
+  }
+  .sidebar .nav-links{
+    margin-top: 10px;
+  }
 
+  .sidebar .nav-links li{
+    position: relative;
+    list-style: none;
+    height: 50px;
 
-.container{
-  min-height:75vh;
-}
+  }
 
-.container h1{
-  position: relative;
-  margin-top: 100px;
-  margin-bottom: 30px;
+  .sidebar .nav-links li a{
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  }
 
-  font-size: 40px;
-  font-weight: 700;
-  color:black;
-}
-
-.card{
-  position: relative;
-  background-color: white;
-  height: 300px;
-  width: 250px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-
-  padding: 20px;
-  transform: 0.5s ease-in-out;
-  cursor: pointer;
-}
-
-.card:hover{
-  transform: scale(1.07);
-}
-
-.card h2{
-  color:black;  
-}
-.card h6{
-  color:black;  
-}
-
-.prod-img{
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  height:250px;
-  width: 200px;
-  margin-bottom: 20px;
-  border-radius: 15px;
-}
-
-
-
-
+  .sidebar .nav-links li a.active{
+    background: #081D45;
+  }
+  .sidebar .nav-links li a:hover{
+    background: #081D45;
+  }
+ 
+ 
+  
+  
 
 
 
 
-
-
-
-
-
-
-/*Navba section*/
+/*Navbar Section */
+  
 nav{
+     
     background-color: whitesmoke;
     display: flex;
     justify-content: space-between;
@@ -211,6 +209,7 @@ nav{
   }
   
   @media (max-width: 1140px) {
+   
     nav{
       padding: 0px;
       margin: 0px;
@@ -358,14 +357,16 @@ nav{
     }
   
   
-  /*Footer section*/  
+  
+     /*Footer section*/  
   footer{
     background-color: black;
     color:white;
-    position: relative;
-    margin-top: 8vh;
     width: 100%;
-    height: max-content;
+    position: relative;
+    bottom: 0px;
+    height: min-content;
+    margin-top: 30px;
   }
   
   .footer-about{
@@ -421,7 +422,8 @@ nav{
   .footer-widget ul li a{
     line-height: 20px;
     list-style: none;
-    margin-left: -40px;
+    margin-left: -30px;
+    text-decoration: none;
     }
   
   .footer-widget ul li:hover{
@@ -450,4 +452,5 @@ nav{
   .footer-copyright-text{
     font-family: font-face="FF Real Head";
     font-size: 12px;
-  }
+  }    
+  

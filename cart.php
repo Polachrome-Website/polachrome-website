@@ -7,6 +7,12 @@
         print_r($_POST['prodID']);
     }
 
+    if(isset($_GET["item"])){
+        if($_GET["item"] == 0){
+            include("cart_empty.php");
+        }else if ($_GET["item"] > 0){
+    
+
 ?>
 
 
@@ -88,8 +94,6 @@
 
        /// $ip_add = getRealIpUser();
 
-       
-                       
         $run_cart = mysqli_query($conn,$select_cart);
         
         $count = mysqli_num_rows($run_cart);
@@ -100,7 +104,7 @@
         <div class="sub-nav">
             <ul class="breadcrumbs">
                 <li class="breadcrumbs_item">
-                    <a href="cart.php" class="cart-link active">Cart</a>
+                <a href="cart.php?item=<?php if(isset($_SESSION["userID"])){echo items();} else{echo guest_items();}?>" class="cart-link active">Cart</a>
                 </li>
                 <li class="breadcrumbs_item">
                     <a href="shipping.php" class="shipping-link ">Shipping</a>
@@ -168,8 +172,8 @@
                     $_SESSION['total'] = $total;
                 
         ?>  
-         <?php add_cart();
-         ?>
+         <!-- <?php add_cart();
+         ?> -->
          <!-- <?php echo $user_id; ?> -->
                 <!--Cart Items-->
                 <div class="cart-item">
@@ -217,7 +221,7 @@
                             </div>
                             <div class="remove-md">
                                 <!-- <button type="submit" name="update"><span>Remove Item</span></button> -->
-                                <a id="remove-item" href="cart.php?action=remove&id=<?php echo $row_cart["cart_id"]; ?>">
+                                <a id="remove-item" class="remove-me" href="cart.php?action=remove&item=<?php if(isset($_SESSION["userID"])){echo items();} else{echo guest_items();}?>&id=<?php echo $row_cart["cart_id"]; ?>">
                                     Remove 
                                 </a>
                             </div>
@@ -267,11 +271,26 @@
                 }
                  
                  if(isset($_GET['remove'])){
-                     $qty = $_GET['qty'];
-                    
-                     $qty--;
 
-                     header("cart.php");
+                     $id = $_GET['id'];
+
+                     $item = $_GET['item'];
+
+                     $query = "DELETE FROM cart WHERE id = $id";
+                     
+                     $stmt = mysqli_stmt_init($conn);
+
+                     if(!mysqli_stmt_prepare($stmt, $query)) {
+                        header("location: ../signup.php?error=stmtfailed");
+                        exit();
+                       }else{
+                            mysqli_stmt_bind_param($stmt, "s", $id);
+                            mysqli_stmt_execute($stmt);
+                            mysqli_stmt_close($stmt);
+                           
+                            header("location: cart.php?item=" . $item);
+                            exit();
+                        }
                  }
 
                  function update_cart(){
@@ -316,9 +335,20 @@
             </div>
         </div>
         <script src="scripts/navbar.js"></script> 
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
+        <script> 
+            $(document).ready(function (){
+                $(".remove-md").dblclick(function() { 
+                    //code executed on jQuery double click rather than mouse double click
+                    alert('dblclick');
+                    }); 
+            });
+            
+        </script>
     </body>
-
+<?php } }?>
 
     <!--Footer Section-->
  <footer class="footer">
@@ -327,7 +357,7 @@
         <div class="col-lg-3 col-md-6 col sm-6">
             <div class="footer-about">
                 <h3>We're here to help</h3>
-                <p><a href="contact.html">Get in touch</a> with our customer service team.</p>
+                <p><a href="contact.php">Get in touch</a> with our customer service team.</p>
                 <img src="img/mop.png">
             </div>
         </div>
@@ -337,9 +367,9 @@
             <div class="footer-widget">
                 <h6>ABOUT</h6>
                 <ul class="social-icon">
-                <li><a href="about.html">PolaChrome</a></li>
-                <li><a href="features.html">Polaroid Features</a></li>
-                <li><a href="chart.html">Comparison Chart</a></li>
+                <li><a href="about.php">PolaChrome</a></li>
+                <li><a href="about.php">Polaroid Features</a></li>
+                <li><a href="about.php">Comparison Chart</a></li>
                 </ul>
             </div>
         </div>

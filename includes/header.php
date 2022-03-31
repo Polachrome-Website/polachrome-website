@@ -126,14 +126,19 @@
                 </a>
                 </li>
 
-                <li><a class="orange" style="<?php if($active=='FAQs') echo"color:#FF8200";?>"  href="faq.php">
-                    FAQs
+                <li><a class="yellow" 
+                style="<?php if($active=='Product') echo"color:#ffb80c";?>" href="product.php">
+                    PRODUCTS
                 </a>
                 </li>
 
-                <li><a class="yellow" 
-                style="<?php if($active=='Product') echo"color:#ffb80c";?>" href="product.php">
-                    PRODUCT
+                <li><a class="red" style="<?php if($active=='Testimonials') echo"color:#F04231";?>" href="testimonial.php">
+                    TESTIMONIALS
+                </a>
+                </li>
+
+                <li><a class="orange" style="<?php if($active=='FAQs') echo"color:#FF8200";?>"  href="faq.php">
+                    FAQs
                 </a>
                 </li>
 
@@ -147,10 +152,7 @@
                 </a>
                 </li>
 
-                <li><a class="red" style="<?php if($active=='Testimonials') echo"color:#F04231";?>" href="testimonial.php">
-                    TESTIMONIALS
-                </a>
-                </li>
+             
                
             </div>
 
@@ -202,7 +204,9 @@
             ?>
 
             <div class="cart-icon">
-                <a href="cart.php" style="all:unset;"><span style="font-size: 130%; background: inherit;" class="fas fa-shopping-cart">
+                <a href="cart.php?item=<?php if(isset($_SESSION["userID"])){echo items();} else{echo guest_items();}?>" style="all:unset;">
+                <span style="font-size: 130%; background: inherit;" class="fas fa-shopping-cart">
+                       
                 <?php 
                     if(isset($_SESSION["userID"])){
                         items(); 
@@ -212,7 +216,6 @@
 
                     }
                  ?>
-            
                 </span></a>
             </div>
 
@@ -221,9 +224,6 @@
             </div>  
         </nav>
         <!--End of Navbar section-->
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
 
 <!-- <script>
 	//jquery method movemouse check

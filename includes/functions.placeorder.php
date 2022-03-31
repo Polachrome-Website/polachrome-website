@@ -74,6 +74,7 @@ function add_cart(){
 }
 
 
+
 // global $db;
 
 // // $ip_add = getRealIpUser();

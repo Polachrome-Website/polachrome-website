@@ -69,11 +69,11 @@ include("includes/db.php");
 
                    <div class="form-group"><!-- form-group Begin -->
                        
-                       <label class="col-md-3 control-label"> Product Quantity </label> 
+                       <label for="update_quantity" class="col-md-3 control-label"> Product Quantity </label> 
                        
                        <div class="col-md-6"><!-- col-md-6 Begin -->
                            
-                           <input name="product_quantity" type="text" class="form-control" required>
+                           <input name="product_quantity" type="text" class="form-control" id="update_quantity" required>
                            
                        </div><!-- col-md-6 Finish -->
                         
@@ -103,17 +103,17 @@ include("includes/db.php");
                                
                                <?php 
                                
-                               $get_cat = "select * from products";
+                               $get_cat = "select * from categories";
                                $run_cat = mysqli_query($conn,$get_cat);
                                
                                while ($row_cat=mysqli_fetch_array($run_cat)){
                                    
-                                   $catID = $row_cat['prodID'];
-                                   $catTitle = $row_cat['prodName'];
+                                   $catID = $row_cat['catID'];
+                                   $catTitle = $row_cat['catTitle'];
                                    
                                    echo "
                                    
-                                   <option value='$prodName'> $prodName </option>
+                                   <option value='$catID'> $catTitle </option>
                                    
                                    ";
                                    

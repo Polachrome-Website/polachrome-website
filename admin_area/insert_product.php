@@ -69,7 +69,7 @@ include("includes/db.php");
 
                    <div class="form-group"><!-- form-group Begin -->
                        
-                       <label class="col-md-3 control-label"> Product Quantity </label> 
+                       <label for="" class="col-md-3 control-label"> Product Quantity </label> 
                        
                        <div class="col-md-6"><!-- col-md-6 Begin -->
                            

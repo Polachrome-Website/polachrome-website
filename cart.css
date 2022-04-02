@@ -1,7 +1,7 @@
 
 /*Cart Mobile View */
 body{
-  height: 100%;
+  height: fit-content;
   font-family: font-face="Polaroid";
   background-color: #f2f2f2 !important;
   overflow-x: hidden;

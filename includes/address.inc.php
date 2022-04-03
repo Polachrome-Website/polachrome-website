@@ -2,8 +2,9 @@
 
 if (isset($_POST["address-edit"])){
 	$addressid = $_POST['address'];
-	require_once 'db.php';
+	include('db.php');
 	header("LOCATION: ../user-profile.php?addressid=" . $addressid);
+	// echo "<script>window.open('../user-profile.php?addressid=$addressid','_self')</script>";
 }
 
 if (isset($_POST["address-save"])){

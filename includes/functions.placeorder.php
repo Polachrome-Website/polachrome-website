@@ -41,38 +41,95 @@ function add_cart(){
     $shoppingCart = new ShoppingCart();
     if(isset($_GET['action'])){
         switch ($_GET['action']){
-        case "add_cart":
-            if(! empty($_POST["product_qty"])){
+            case "add_cart":
+                if(!empty($_POST["product_qty"])){ //begin !empty product qty post
+                    
+                    global $db;
 
-                $p_id = $_GET["code"];
+                    $p_id = $_GET["code"];
+    
+                    $pro_qty = $_POST["product_qty"];
+    
+                    $get_products = "SELECT * FROM products WHERE prodID='$p_id'";
+    
+                    //get cart items by product
+                    $get_cart = "SELECT * FROM cart WHERE prod_id='$p_id' and user_id='$user_id'";
+    
+                    $run_cart = mysqli_query($db,$get_cart);
 
-                $productResult = $shoppingCart->getProductByCode($_GET["code"]);
-                
-                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["prod_id"], $user_id);
+                    while($row_cart = mysqli_fetch_array($run_cart)){
 
-                if (! empty($cartResult)) {
-                    // Update cart item quantity in database
-                    $newQuantity = $cartResult[0]["qty"] + $_POST["product_qty"];
-                    $shoppingCart->updateCartQuantity($newQuantity, $cartResult[0]["id"]);
-                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
-                } else {
-                    // Add to cart table
-                    $shoppingCart->addToCart($productResult[0]["prodID"], $_POST["product_qty"], $user_id);
-                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                        $cart_id = $row_cart['cart_id'];
+
+                        $cart_qty = $row_cart['qty'];
+                    }
+            
+                    $count = mysqli_num_rows($run_cart);
+    
+    
+                    if(!empty($count)){
+                        //update cart item quantity in database
+                        $newQuantity = $cart_qty + $pro_qty;
+
+                        $update_qty = "UPDATE cart SET qty='$newQuantity' WHERE cart_id='$cart_id'";
+    
+                        $run_cart = mysqli_query($db,$update_qty);
+    
+                        echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+    
+                    }
+                    else{
+    
+                        $insert_cart = "INSERT into cart (prod_id, user_id, qty) VALUES (?,?,?)";
+            
+                        $cart_stmt = mysqli_stmt_init($db);
+            
+                        if (!mysqli_stmt_prepare($cart_stmt, $insert_cart)) {
+                            header("location: ../product-info.php?prodID=" . $p_id . "&error=stmtfailed");
+                            exit();
+                           }
+                        else{
+                            mysqli_stmt_bind_param($cart_stmt, "iii", $p_id, $user_id, $pro_qty);
+                            mysqli_stmt_execute($cart_stmt);
+                            mysqli_stmt_close($cart_stmt);
+    
+                            echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                            exit();
+                    }
                 }
-            }
+    
+            }//finish !empty product qty post
             break;
             case "remove":
-                // Delete single entry from the cart
-                $shoppingCart->deleteCartItem($_GET["id"]);
-                break;
+            // Delete single entry from the cart
+            
+            //get cart items by product
+               
+            global $db;
+
+            $cart_id = $_GET["id"];
+
+            $delete_cart = "DELETE from cart WHERE cart_id='$cart_id'";
+
+            $run_cart = mysqli_query($db,$delete_cart);
+
+            echo "<script>window.open('cart.php','_self')</script>";
+
+            break;
+
             case "empty":
                 // Empty cart
-                $shoppingCart->emptyCart($user_id);
+                global $db;
+
+                $empty_cart = "DELETE from cart WHERE user_id='$user_id'";
+
+                $run_empty = mysqli_query($db,$empty_cart);
+
+                echo "<script>window.open('cart.php','_self')</script>";
+
                 break;
     }
 }
-
 
 
 // global $db;
@@ -111,38 +168,108 @@ function add_cart_guest(){
    
     $user_id = $_SESSION['guest_id'];
  
-    
     $shoppingCart = new ShoppingCart();
     if(isset($_GET['action'])){
         switch ($_GET['action']){
-        case "add_cart":
-            if(! empty($_POST["product_qty"])){
+            case "add_cart":
+                if(!empty($_POST["product_qty"])){ //begin !empty product qty post
+                    
+                    global $db;
 
-                $p_id = $_GET["code"];
+                    $p_id = $_GET["code"];
+    
+                    $pro_qty = $_POST["product_qty"];
+    
+                    $get_products = "SELECT * FROM products WHERE prodID='$p_id'";
 
-                $productResult = $shoppingCart->getProductByCode($_GET["code"]);
-                
-                $cartResult = $shoppingCart->getCartItemByProduct($productResult[0]["prod_id"], $user_id);
+                    $run_products = mysqli_query($db,$get_products);
 
-                if (! empty($cartResult)) {
-                    // Update cart item quantity in database
-                    $newQuantity = $cartResult[0]["qty"] + $_POST["product_qty"];
-                    $shoppingCart->updateCartQuantity($newQuantity, $cartResult[0]["id"]);
-                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
-                } else {
-                    // Add to cart table
-                    $shoppingCart->addToCart($productResult[0]["prodID"], $_POST["product_qty"], $user_id);
-                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                    while($row_products = mysqli_fetch_array($run_products)){
+
+                        $product_tbl_quantity = $row_products['quantity'];
+
+                    }
+            
+                    //get cart items by product
+                    $get_cart = "SELECT * FROM cart WHERE prod_id='$p_id' and user_id='$user_id'";
+    
+                    $run_cart = mysqli_query($db,$get_cart);
+
+                    while($row_cart = mysqli_fetch_array($run_cart)){
+
+                        $cart_id = $row_cart['cart_id'];
+
+                        $cart_qty = $row_cart['qty'];
+                    }
+            
+                    $count = mysqli_num_rows($run_cart);
+    
+    
+                    if(!empty($count)){
+                            if($cart_qty != $product_tbl_quantity){
+                            //update cart item quantity in database
+                            $newQuantity = $cart_qty + $pro_qty;
+
+                            $update_qty = "UPDATE cart SET qty='$newQuantity' WHERE cart_id='$cart_id'";
+        
+                            $run_cart = mysqli_query($db,$update_qty);
+        
+                            echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                        }
+                        else{
+                            set_message("You have exceeded ung stock na meron lang kami");
+                            echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                        }
+                    }
+                    else{
+    
+                        $insert_cart = "INSERT into cart (prod_id, user_id, qty) VALUES (?,?,?)";
+            
+                        $cart_stmt = mysqli_stmt_init($db);
+            
+                        if (!mysqli_stmt_prepare($cart_stmt, $insert_cart)) {
+                            header("location: ../product-info.php?prodID=" . $p_id . "&error=stmtfailed");
+                            exit();
+                           }
+                        else{
+                            mysqli_stmt_bind_param($cart_stmt, "iii", $p_id, $user_id, $pro_qty);
+                            mysqli_stmt_execute($cart_stmt);
+                            mysqli_stmt_close($cart_stmt);
+    
+                            echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                            exit();
+                    }
                 }
-            }
+    
+            }//finish !empty product qty post
             break;
             case "remove":
-                // Delete single entry from the cart
-                $shoppingCart->deleteCartItem($_GET["id"]);
-                break;
+            // Delete single entry from the cart
+            
+            //get cart items by product
+               
+            global $db;
+
+            $cart_id = $_GET["id"];
+
+            $delete_cart = "DELETE from cart WHERE cart_id='$cart_id'";
+
+            $run_cart = mysqli_query($db,$delete_cart);
+
+            echo "<script>window.open('cart.php','_self')</script>";
+
+            break;
+
             case "empty":
                 // Empty cart
-                $shoppingCart->emptyCart($user_id);
+                global $db;
+
+                $empty_cart = "DELETE from cart WHERE user_id='$user_id'";
+
+                $run_empty = mysqli_query($db,$empty_cart);
+
+                echo "<script>window.open('cart.php','_self')</script>";
+
                 break;
         }
     }

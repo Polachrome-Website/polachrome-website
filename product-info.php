@@ -132,8 +132,8 @@
             </div>
         </div>
         
-        <button type = "submit" name = "add-cart" class = "add-to-card-btn">Add to Cart <i class = "fas fa-shopping-cart"></i></button>
-        <input type='hidden' name='productID' value='$product_id'>
+        <button type = "submit" name = "add_cart" class = "add-to-card-btn">Add to Cart <i class = "fas fa-shopping-cart"></i></button>
+        <input type='hidden' name='productID' value="<?php echo $product_id; ?>">
         </form>
 
           <!--Product information-->

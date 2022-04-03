@@ -1,73 +1,132 @@
-
-
 body{
-    height: 100%;
-    background: whitesmoke !important;
-    overflow-x: hidden;
-    font-family: font-face="Polaroid";
-    margin: 0 !important;
-    padding: 0;
-    box-sizing: border-box;
+  height: 100%;
+  font-family: font-face="Polaroid";
+  background-color: #f2f2f2;
+  overflow-x: hidden;
 }
 
-.sidebar{
-    position: fixed;
-    height: 100%;
-    width: 240px;
-    background: #0A2558;
-    transition: all 0.5s ease;
-    margin-left: 0;
-    padding-left: 0%;
-  }
+body {
+  font-family: font-face="Polaroid";
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.sidebar-container {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #1a1a1a;
+  color: #fff;
+  padding-top: 50px;
+}
+
+.content-container {
+  padding-top: 50px;
+}
+
+.sidebar-logo {
+  padding-top: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.sidebar-navigation {
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+  list-style-type: none;
+  position: relative;
+}
+
+.sidebar-navigation li {
+  background-color: transparent;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  line-height: 40px;
+}
+
+.sidebar-navigation li a {
+  padding: 10px 15px 10px 30px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar-navigation li .fa {
+  margin-right: 20px;
+}
+
+.sidebar-navigation li a:active,
+.sidebar-navigation li a:hover,
+.sidebar-navigation li a:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+
+.sidebar-navigation .active{
+  background-color: #198CD9;
+}
+
+.sidebar-navigation a:hover{
+  background-color: #198CD9;
+}
+
+.sidebar-navigation .header {
+  font-size: 12px;
+  text-transform: uppercase;
+  background-color: #151515;
+  padding: 10px 15px 10px 30px;
+}
+
+.sidebar-navigation .header::before {
+  background-color: transparent;
+}
+
+.content-container {
+  padding-left: 200px;
+}
+
+ img {
+   width: 70px;
+  max-width: 100px;
+  height: 9vh;
+  max-height: 9vh;
+}
+
+.card1 .fa-chevron-circle-right{
+  color: #198CD9;
+}
+
+.card-footer{
+  background-color: rgb(172, 136, 136);
+}
+
+
+.row p{
+  display: inline-block;
   
-  .sidebar.active{
-    width: 100px;
-  }
-   
-  .sidebar h6{
-    margin-top: 80px;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 400;
-  }
-  .sidebar .nav-links{
-    margin-top: 10px;
-  }
+}
 
-  .sidebar .nav-links li{
-    position: relative;
-    list-style: none;
-    height: 50px;
+p .quantity{
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 8px;
+}
 
-  }
-
-  .sidebar .nav-links li a{
-    height: 100%;
-    width: 100%;
-    display: inline-block;
-    align-items: center;
-    text-decoration: none;
-    transition: all 0.4s ease;
-  }
-
-  .sidebar .nav-links li a.active{
-    background: #081D45;
-  }
-  .sidebar .nav-links li a:hover{
-    background: #081D45;
-  }
- 
- 
-  
-  
-
+p .products{
+  font-size: 16px;
+}
 
 
 
 /*Navbar Section */
-  
 nav{
-     
+   
     background-color: whitesmoke;
     display: flex;
     justify-content: space-between;
@@ -355,102 +414,99 @@ nav{
       }
   
     }
-  
-  
-  
-     /*Footer section*/  
-  footer{
-    background-color: black;
-    color:white;
-    width: 100%;
-    position: relative;
-    bottom: 0px;
-    height: min-content;
-    margin-top: 30px;
+
+/*Footer section*/  
+footer{
+  background-color: black;
+  color:white;
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  height: min-content;
+  margin-top: 30px;
+}
+
+.footer-about{
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.footer-about a:hover{
+  color: #f04231;
+}
+
+.footer-about img{
+  max-width: 100%;
+  height:40px;
+  margin-left: 10px;
+}
+
+
+.footer-about h3{
+  font-family: font-face="FF Real Head";
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.footer-about p{
+  font-family: font-face="FF Real Head";
+  font-size: 12px;
+  margin-left: 15px;
+}
+
+.footer-widget{
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-widget H6{
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.social-icon ul{
+  padding-left: 0;
+}
+
+.footer-widget li{
+  line-height: 25px;
+  list-style: none;
+  font-family: font-face="FF Real Head";
+}
+
+.footer-widget ul li a{
+  line-height: 20px;
+  list-style: none;
+  margin-left: -30px;
+  text-decoration: none;
   }
-  
-  .footer-about{
-    font-size: 14px;
-    margin-top: 20px;
-  }
-  
-  .footer-about a:hover{
-    color: #f04231;
-  }
-  
-  .footer-about img{
-    max-width: 100%;
-    height:40px;
-    margin-left: 10px;
-  }
-  
-  
-  .footer-about h3{
-    font-family: font-face="FF Real Head";
-    font-weight: 700;
-    font-size: 20px;
-    margin-left: 15px;
-  }
-  
-  .footer-about p{
-    font-family: font-face="FF Real Head";
-    font-size: 12px;
-    margin-left: 15px;
-  }
-  
-  .footer-widget{
-    font-size: 14px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .footer-widget H6{
-    font-size: 16px;
-    font-weight: 700;
-  }
-  
-  .social-icon ul{
-    padding-left: 0;
-  }
-  
-  .footer-widget li{
-    line-height: 25px;
-    list-style: none;
-    font-family: font-face="FF Real Head";
-  }
-  
-  .footer-widget ul li a{
-    line-height: 20px;
-    list-style: none;
-    margin-left: -30px;
-    text-decoration: none;
-    }
-  
-  .footer-widget ul li:hover{
-    color: #F04231;
-  }
-  
-  .social-icon li a{
-    color: white;
-    font-family: font-face="FF Real Head";
-  }
-  
-  .social-icon li{
-    color: white;
-    font-family: font-face="FF Real Head";
-  }
-  
-  .social-icon li a:hover{
-    color: #F04231;
-  }
-  
-  .dti-logo img{
-    max-width: 100%;
-    height:40px;
-  }
-  
-  .footer-copyright-text{
-    font-family: font-face="FF Real Head";
-    font-size: 12px;
-  }    
-  
+
+.footer-widget ul li:hover{
+  color: #F04231;
+}
+
+.social-icon li a{
+  color: white;
+  font-family: font-face="FF Real Head";
+}
+
+.social-icon li{
+  color: white;
+  font-family: font-face="FF Real Head";
+}
+
+.social-icon li a:hover{
+  color: #F04231;
+}
+
+.dti-logo img{
+  max-width: 100%;
+  height:40px;
+}
+
+.footer-copyright-text{
+  font-family: font-face="FF Real Head";
+  font-size: 12px;
+}    

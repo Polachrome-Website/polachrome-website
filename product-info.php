@@ -132,10 +132,15 @@
             </div>
         </div>
         
+        <?php 
+           if(isset($_SESSION['admin_email'])){
+            
+          }else{
+        ?>
         <button type = "submit" name = "add_cart" class = "add-to-card-btn">Add to Cart <i class = "fas fa-shopping-cart"></i></button>
         <input type='hidden' name='productID' value="<?php echo $product_id; ?>">
         </form>
-
+        <?php } ?>
           <!--Product information-->
           <div class = "product-detail">
             <br><br>

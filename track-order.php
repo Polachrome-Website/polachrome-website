@@ -1,4 +1,5 @@
 <?php
+    $active = "Track";
     include("includes/header.php");
 
 ?>
@@ -11,6 +12,12 @@
     </head>
     <body>
 
+        <?php
+            if(isset($_GET['refno'])){
+                $ref_no = $_GET['refno'];
+            }
+        
+        ?>
         <!--Body-->
         <div class="container">
             <div class="row">
@@ -21,7 +28,21 @@
             <form action="track-order-summary.php" method="POST"> 
                 <div class="row">
                     <div class="col">
-                        <input type="text" oninvalid="this.setCustomValidity('Enter Numers')" onkeydown="return validateIsNumericInput(event)" name="track-reference" class="text-box text-center" placeholder="Enter your reference number" required>
+                    <?php
+                        if(isset($_GET['refno'])){
+                            $ref_no = $_GET['refno'];
+                        
+                        echo "<input type='text' oninvalid='this.setCustomValidity('Enter Numbers')' onkeydown='return validateIsNumericInput(event)' name='track-reference' class='text-box text-center'
+                        value='$ref_no' required>";
+                        } 
+                        else{
+                            echo "<input type='text' oninvalid='this.setCustomValidity('Enter Numbers')' onkeydown='return validateIsNumericInput(event)' name='track-reference' class='text-box text-center'
+                            placeholder='Enter your reference number' required>";
+                        }
+                      ?>
+
+                    <!-- <input type="text" oninvalid="this.setCustomValidity('Enter Numers')" onkeydown="return validateIsNumericInput(event)" name="track-reference" class="text-box text-center"
+                        placeholder="Enter your reference number"  required> -->
                     </div>
                     <!-- <div class="col">
                         <p>Customer ID<input type="text" name="email" class="text-box" placeholder="Customer ID" required></p>

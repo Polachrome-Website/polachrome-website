@@ -7,8 +7,6 @@
     
         $select_order = "SELECT * from tbl_orders where invoice_no='$reference_no'";
 
-        
-    
     }
 
 ?>

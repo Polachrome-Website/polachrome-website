@@ -176,7 +176,7 @@
                         <form action="shipping.php">
                             <div class="cart-product">
                             <div>
-                            <img  class="product-image" src="admin_area/product_images/<?php echo $product_img1; ?>" alt="Product 3a">
+                            <img class="product-image" src="admin_area/product_images/<?php echo $product_img1; ?>" alt="Product Img">
                              </div> 
                             <div class="cart-header">
                                     <div class="product-info">
@@ -236,70 +236,13 @@
 
                         </form>
                     </div>
-          
 
                 <?php 
                         } 
-                     
-                
                 ?>
-
-                <?php 
-
-
-                if(isset($_GET['add'])){
-
-                    $query = "SELECT * FROM products WHERE prodID=" . $_GET['add'];
-                    $run_query = mysqli_query($conn,$query);
-
-                    while($row = mysqli_fetch_array($run_query)) {
-
-                        if($row['quantity'] != $_SESSION['item_quantity']) {
-                  
-                          $_SESSION['item_quantity']+=1;
-                          echo  "<script> location.replace('cart.php') </script>";
                 
-                        }else {
-                            set_message("We only have " . $row['quantity'] . " " . "{$row['prodName']}" . " available");
-                            redirect("cart.php");
-                          }
-                    }
-                }
-                 
-                 if(isset($_GET['remove'])){
-                     $qty = $_GET['qty'];
-                    
-                     $qty--;
+                <?php } ?>   <!-- end while loop for fetch cart -->
 
-                     header("cart.php");
-                 }
-
-                 function update_cart(){
-                    
-                    global $conn;
-                    
-                    if(isset($_POST['update'])){
-                        
-                            $pro_id = $_POST['pro_id'];
-
-                            $delete_product = "delete from cart where p_id='$pro_id'";
-                            
-                            $run_delete = mysqli_query($conn,$delete_product);
-                            
-                            if($run_delete){
-                                
-                                echo "<script>window.open('cart.php','_self')</script>";
-                                
-                            }
-                    
-                    }
-                    
-                }
-               
-               echo @$up_cart = update_cart();
-               
-
-                ?>
             </div> <!--End mycart -->
                 <!--Action Buttons-->
                 <div class="checkout-subtotal">
@@ -317,7 +260,6 @@
         </div>
         <script src="scripts/navbar.js"></script> 
 
-        <?php } ?>   <!-- end while loop for fetch cart -->
    
     </body>
 

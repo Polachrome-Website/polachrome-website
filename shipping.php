@@ -161,15 +161,15 @@
                                 <input type="text" class="form-control" name="shipping_full_name"
                                 placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Full Name";}?>"
                                 value = "<?php if(isset($_SESSION["userID"])){ echo $_SESSION["fullName"];}?>"
-                                > 
+                                required> 
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                            <input type="text" class="form-control" name="shipping_email"
+                            <input type="email" class="form-control" name="shipping_email"
                                 placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Email";}?>"
                                 value = "<?php if(isset($_SESSION["userID"])){ echo $_SESSION["email"];}?>"
-                                > 
+                                required> 
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -177,7 +177,7 @@
                                 <input type="text" class="form-control" name="shipping_reg_pro_cit_brgy"
                                 placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Barangay, City, Province";}?>"
                                 value = "<?php if(isset($_SESSION["userID"]))
-                                { echo $address_brgy . ", " . $address_city . ", " . $address_region;}?>">
+                                { echo $address_brgy . ", " . $address_city . ", " . $address_region;}?>" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -186,20 +186,21 @@
                                 <input type="text" class="form-control" name="shipping_strt_bldg_hn"
                                 placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Street Name, Building, House no.";}?>"
                                 value = "<?php if(isset($_SESSION["userID"]))
-                                { echo $address_strt . ", " . $address_bldg;}?>">
+                                { echo $address_strt . ", " . $address_bldg;}?>" required>
                             </div>
                         </div>
                         <div class="row mb-3 align-items-center g-3">
                             <div class="col-sm-6">
                                 <input type="text" class="form-control myInput" name="shipping_contact"
                                 placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Phone Number";}?>"
-                                value = "<?php if(isset($_SESSION["userID"])){ echo $address_contact;}?>">
+                                value = "<?php if(isset($_SESSION["userID"])){ echo $address_contact;}?>"
+                                oninvalid="this.setCustomValidity('Enter Numers')" onkeydown="return validateIsNumericInput(event)" required>
                             </div>
                             <div class="col-sm-6">
                                     <input type="text" class="form-control myInput" name="shipping_zip" 
                                     placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Postal Code";}?>"
                                     value = "<?php if(isset($_SESSION["userID"])){ echo $address_zip;}?>"
-                                    >
+                                    oninvalid="this.setCustomValidity('Enter Numers')" onkeydown="return validateIsNumericInput(event)" required>
                             </div>
                         </div>
                         <?php
@@ -224,6 +225,31 @@
             </form>   <!--end shipping form-->    
         </div>
     <script src="navbar.js"></script>
+
+    <script>
+
+        /**
+        Checks the ASCII code input by the user is one of the following:
+            - Between 48 and 57: Numbers along the top row of the keyboard
+            - Between 96 and 105: Numbers in the numeric keypad
+            - Either 8 or 46: The backspace and delete keys enabling user to change their input
+            - Either 37 or 39: The left and right cursor keys enabling user to navigate their input
+        */
+
+        function validateIsNumericInput(evt) {
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            permittedKeys = [8, 46, 37, 39]
+            if ((ASCIICode >= 48 && ASCIICode <= 57) || (ASCIICode >= 96 && ASCIICode <= 105)) {
+                return true;
+            };
+            if (permittedKeys.includes(ASCIICode)) {
+                return true;
+            };
+            return false;
+        }
+
+</script>
+
     </body>
     
  <!--Footer Section-->

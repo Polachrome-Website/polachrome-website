@@ -11,14 +11,10 @@ if(!isset($_SESSION['admin_email'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Insert Products </title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
+	<title>Insert Product</title>
+	<meta name="viewport" conntent="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
     
 <div class="row"><!-- row Begin -->
@@ -89,7 +85,7 @@ if(!isset($_SESSION['admin_email'])){
                        
                        <div class="col-md-6"><!-- col-md-6 Begin -->
                            
-                           <textarea name="product_info" cols="19" rows="6" class="form-control"></textarea>
+                           <textarea name="product_info" cols="19" rows="6" class="form-control" required></textarea>
                            
                        </div><!-- col-md-6 Finish -->
                         
@@ -101,7 +97,7 @@ if(!isset($_SESSION['admin_email'])){
                        
                        <div class="col-md-6"><!-- col-md-6 Begin -->
                            
-                           <select name="product_category" class="form-control"><!-- form-control Begin -->
+                           <select name="product_category" class="form-control" required><!-- form-control Begin -->
                                
                                <option> Select a Category </option>
                                
@@ -133,19 +129,6 @@ if(!isset($_SESSION['admin_email'])){
 
                     <div class="form-group"><!-- form-group Begin -->
                        
-                       <label class="col-md-3 control-label"> Add Variation </label> 
-                       
-                       <div class="col-md-6"><!-- col-md-6 Begin -->
-                           
-                        <a href="insert_product_variation.php"><input name="submit" value="Add Variation" type="button" class="btn btn-primary form-control"></a>
-                           
-                       </div><!-- col-md-6 Finish -->
-                        
-                    </div><!-- form-group Finish -->
-
-
-                    <div class="form-group"><!-- form-group Begin -->
-                       
                        <label class="col-md-3 control-label"> Product Price </label> 
                        
                        <div class="col-md-6"><!-- col-md-6 Begin -->
@@ -174,7 +157,7 @@ if(!isset($_SESSION['admin_email'])){
                       
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
-                          <input name="product_img2" type="file" class="form-control">
+                          <input name="product_img2" type="file" class="form-control" required>
                           
                       </div><!-- col-md-6 Finish -->
                        
@@ -215,7 +198,7 @@ if(!isset($_SESSION['admin_email'])){
 </div><!-- row Finish -->
         
     <script src="js/jquery-331.min.js"></script>
-    <script src="js/bootstrap-337.min.js"></script> 
+
 
 </body>
 </html>
@@ -270,7 +253,7 @@ try {
         mysqli_stmt_close($stmt);
 
         echo "<script>alert('Product has been inserted sucessfully')</script>";
-        echo "<script>window.open('insert_product.php','_self')</script>";
+        echo "<script>window.open('index.php?insert_product','_self')</script>";
        
     }
     

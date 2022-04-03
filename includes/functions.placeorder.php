@@ -354,5 +354,51 @@ function items_qty(){
 }
 
 
+// function customerDetails(){
+    
+//     if(isset($_POST['send_pay_mode'])){
+
+//         $user_id = $_POST['send_user_id'];
+    
+//         $shipping_full_name = $_POST['send_full_name'];
+    
+//         $shipping_email = $_POST['send_email'];
+    
+//         $shipping_contact = $_POST['send_contact'];
+    
+//         $shipping_strt_bldg_hn = $_POST['send_strt_bldg_hn'];
+    
+//         $shipping_reg_pro_cit_brgy = $_POST['send_reg_pro_cit_brgy'];
+    
+//         $address = $shipping_strt_bldg_hn . $shipping_reg_pro_cit_brgy;
+    
+//         $payment_mode = $_POST['send_pay_mode'];  
+    
+//         $total = 0;
+    
+//         $ship_fee = 45.00;
+    
+//         $invoice_no = mt_rand();
+    
+//         $date_now = date("Y-m-d");
+    
+//         $order_status = "Pending";
+    
+//         $insert_customer_details = "INSERT into tbl_orders_customers (customer_id, invoice_no, c_address, c_email, c_contact) 
+//         VALUES(?,?,?,?,?)";
+//         $customer_details_stmt = mysqli_stmt_init($conn);
+//         if (!mysqli_stmt_prepare($customer_details_stmt, $insert_customer_details)) {
+//             header("location: ../summary.php?error=stmtfailed");
+//             exit();
+//         }else{
+//             mysqli_stmt_bind_param($customer_details_stmt, "iissi", $user_id, $invoice_no, $address, $shipping_email, $shipping_contact);
+//             mysqli_stmt_execute($customer_details_stmt);
+//             mysqli_stmt_close($customer_details_stmt);
+//             exit();
+                
+//         }
+//     }
+// }
+
 
 ?>

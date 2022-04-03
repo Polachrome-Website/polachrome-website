@@ -7,7 +7,7 @@
         <title>Products</title>
       
         <!--Main css-->
-        <link rel="stylesheet" href="styles/product.css">
+        <link rel="stylesheet" href="styles/product-new.css">
         <style>
             .isDisabled{
                 color: currentColor;
@@ -92,6 +92,59 @@
                 ?>
               
             </div>  <!-- row Finish -->
+
+            <center>
+                <div class="row">
+                   <ul class="pagination"> <!-- pagination Begin -->
+
+                   <?php
+
+                   $query = "select * from products";
+
+                   $result = mysqli_query($conn,$query);
+
+                   $total_records = mysqli_num_rows($result);
+
+                   $total_pages = ceil($total_records / $per_page);
+
+                        echo "
+                        
+                            <li class='page-item'>
+
+                                <a href='product.php?page=1'>".'First Page'."</a>
+
+                            </li>
+                        
+                        ";
+
+                        for($i=1; $i<=$total_pages; $i++){
+
+                            echo "
+                        
+                            <li class='page-item'>
+
+                                <a href='product.php?page=".$i."'>".$i."</a>
+
+                            </li>
+                        
+                        ";
+                            
+                        };
+                        
+                        echo "
+                        
+                        <li class='page-item'>
+
+                            <a href='product.php?page=$total_pages'>".'Last Page'."</a>
+
+                        </li>
+                    
+                    ";
+
+                    ?>
+
+                    </ul>
+                    </div>
             
         </div> <!-- container Finish -->
 
@@ -100,6 +153,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="scripts/navbar.js"></script>
+        <script src="scripts/cart-dropdown.js"></script>
         <script>
             link.addEventListener('click', function (event) {
                 if (this.parentElement.classList.contains('isDisabled')) {

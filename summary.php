@@ -180,12 +180,13 @@
                     <div class="card p-4">
                         <div class="row-buyer-summary">
                             <div class="buyer-summary">Buyer Information</div>
-                            <a href="#">Edit</a>
+                            <a href="shipping.php">Edit</a>
                         </div>
+                
                         <form action="includes/order.confirm.php" id="formOrderSubmit" method="POST">
                         <div class="buyer-content">
                             
-                            <input type="hidden" id="user_id" name="s_shipping_full_name"  
+                            <input type="hidden" id="user_id" name="s_shipping_user_id"  
                                 value="<?php 
                                     if(isset($_SESSION['userID'])){
                                         echo $_SESSION['userID']; 
@@ -249,61 +250,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
 
-    <script>
-         $(document).ready(function (){
-             $('#orderConfirm').on('click',function(e){
-                 e.preventDefault();
-                 
-                 Swal.fire({
-                    title: "Confirm Order?",
-                    text: "Please make sure that all details are correct.",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#00C851",
-                    confirmButtonText: "Place Order",
-                    cancelButtonText: "Cancel",
-                 }).then((result) => {
-                    
-                    var user_id = $('#user_id').val();
-                    var full_name = $('#full_name').val();
-                    var email = $('#email').val();
-                    var contact = $('#contact').val();
-                    var strt_bldg_hn = $('#strt_bldg_hn').val();
-                    var reg_pro_cit_brgy = $('#reg_pro_cit_brgy').val();
-                    var pay_mode = $('#pay_mode').val();
-
-                    if(result.isConfirmed){
-                        $.ajax({
-                            url:'includes/order.confirm.php',
-                            type:'post',
-                            dataType: 'json', // tell jQuery to parse the response JSON
-                            data:{
-                                send_user_id:user_id,
-                                send_full_name:full_name,
-                                send_email:email,
-                                send_contact:contact,
-                                send_strt_bldg_hn:strt_bldg_hn,
-                                send_reg_pro_cit_brgy:reg_pro_cit_brgy,
-                                send_pay_mode:pay_mode
-                            },success:function(data,result){
-                                console.log(data, result);
-                               	   // $('#formOrderSubmit').submit();
-                                if(data.pay == "Cash on Delivery"){
-                                    window.location.href = 'success.order.cod.php?status=success&refno=' + data.id;
-                                }else{
-                                    window.location.href = 'upload-payment.php?status=success&refno=' + data.id;
-                                }
-                                
-                            },
-                            error: function(xhr, ajaxOptions, thrownerror) { }
-                        });
-                        // $('#formOrderSubmit').submit();
-                    }
-                 });
-             });
-         });
-
-    </script>
+    
     </body>
 
    <!--Footer Section-->

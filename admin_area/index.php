@@ -96,14 +96,24 @@
                         
                         include("insert_product.php");
                     
-                }   if(isset($_GET['view_products'])){
+                }    if(isset($_GET['add_variation'])){
+                        
+                        include("insert_product_variation.php");
+                
+                }  
+                    if(isset($_GET['view_products'])){
                         
                         include("admin_products.php");
 
-                 }  if(isset($_GET['view_registered'])){
+                }  if(isset($_GET['view_registered'])){
                         
                         include("admin_user_view.php");
-                }
+
+                }   if(isset($_GET['view_orders'])){
+                        
+                        include("admin_orders_view.php");
+                }   
+                
                 
                 ?>
                 

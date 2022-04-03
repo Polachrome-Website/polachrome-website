@@ -54,7 +54,7 @@
         <input name="reference_no" type="hidden" value="<?php echo $reference_no ?>">
         <p> Reference No.: <?php echo $reference_no ?></p>
         <p> Kindly take note of your reference number.
-            <br> You may track your order through this <a href="#">link.</a></p>
+            <br> You may track your order through this <a href="track-order.php?refno=<?php echo $reference_no; ?>">link.</a></p>
         </center>
         <!-- <h5>kindly send your image <a href="">here</a></h5> -->
        

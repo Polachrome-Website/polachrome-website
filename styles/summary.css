@@ -235,7 +235,7 @@ body{
 
 /*Navbar section*/
 nav{
-    background-color: whitesmoke;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     position: fixed;

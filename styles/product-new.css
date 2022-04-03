@@ -1,0 +1,249 @@
+body{
+  height: 100%;
+  font-family: font-face="Polaroid";
+  min-width: 100vh;
+  background-color: #f2f2f2;
+}
+
+.container{
+  min-height:75vh;
+}
+
+/*Search bar */
+ form{
+  display: flex;
+  height: 34px;
+  padding: 2px;
+  background: white;
+  min-width: 18%!important; 
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+ form .search-data{
+  width: 100%;
+  height: 100%;
+  padding: 0px 10px;
+  color: black;
+  font-size: 13px;
+  border: none;
+  font-weight: 500;
+  background: none;
+}
+
+ form button{
+  padding: 0 17px;
+  color: #fff;
+  font-size: 12px;
+  background: black;
+  border: none;
+  border-radius: 36px;
+  cursor: pointer;
+  transition: .2s all;
+}
+
+input[type=search]{
+  border: none;
+  outline: none;
+}
+
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+/*End of search bar*/
+
+
+.container h1{
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 700;
+  color:black;
+}
+
+.card{
+  position: relative;
+  background-color: white;
+  height: 300px;
+  width: 250px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+
+  padding: 20px;
+  transform: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.card:hover{
+  transform: scale(1.07);
+}
+
+.card h2{
+  color:black;  
+}
+.card h6{
+  color:black;  
+}
+
+.prod-img{
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height:250px;
+  width: 200px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+
+/*pagination*/
+.pagination{
+  margin-top: 40px;
+  margin-bottom: 0px;
+  justify-content: center;
+}
+.pagination ul{
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 5px;
+  border-radius: 50px;
+  text-align: center;
+}
+.pagination ul li{
+  color: #777;
+  list-style: none;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.pagination ul li.numb{
+  list-style: none;
+  height: 45px;
+  width: 45px;
+  margin: 0 3px;
+  line-height: 45px;
+  border-radius: 50%;
+}
+.pagination ul li.numb.first{
+  margin: 0px 3px 0 -5px;
+}
+.pagination ul li.numb.last{
+  margin: 0px -5px 0 3px;
+}
+.pagination ul li.dots{
+  font-size: 22px;
+  cursor: default;
+}
+.pagination ul li.btn{
+  padding: 0 20px;
+  border-radius: 50px;
+}
+.pagination li.active,
+.pagination ul li.numb:hover,
+.pagination ul li:first-child:hover,
+.pagination ul li:last-child:hover{
+  color: #fff;
+  background: black;
+}
+
+
+  
+  /*Footer section*/  
+  footer{
+    background-color: black;
+    color:white;
+    position: relative;
+    margin-top: 8vh;
+    width: 100%;
+    height: max-content;
+  }
+  
+  .footer-about{
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  
+  .footer-about a:hover{
+    color: #f04231;
+  }
+  
+  .footer-about img{
+    max-width: 100%;
+    height:40px;
+    margin-left: 10px;
+  }
+  
+  
+  .footer-about h3{
+    font-family: font-face="FF Real Head";
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 15px;
+  }
+  
+  .footer-about p{
+    font-family: font-face="FF Real Head";
+    font-size: 12px;
+    margin-left: 15px;
+  }
+  
+  .footer-widget{
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-widget H6{
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  .social-icon ul{
+    padding-left: 0;
+  }
+  
+  .footer-widget li{
+    line-height: 25px;
+    list-style: none;
+    font-family: font-face="FF Real Head";
+  }
+  
+  .footer-widget ul li a{
+    line-height: 20px;
+    list-style: none;
+    margin-left: -40px;
+    }
+  
+  .footer-widget ul li:hover{
+    color: #F04231;
+  }
+  
+  .social-icon li a{
+    color: white;
+    font-family: font-face="FF Real Head";
+  }
+  
+  .social-icon li{
+    color: white;
+    font-family: font-face="FF Real Head";
+  }
+  
+  .social-icon li a:hover{
+    color: #F04231;
+  }
+  
+  .dti-logo img{
+    max-width: 100%;
+    height:40px;
+  }
+  
+  .footer-copyright-text{
+    font-family: font-face="FF Real Head";
+    font-size: 12px;
+  }

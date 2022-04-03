@@ -258,13 +258,13 @@
                               
                               <?php 
                               
-                                  $get_customer = "select * from user_account where userID='$c_id'";
+                                  $get_customer = "select * from tbl_orders_customers where customer_id='$c_id'";
                               
                                   $run_customer = mysqli_query($conn,$get_customer);
                               
                                   $row_customer = mysqli_fetch_array($run_customer);
                               
-                                  $customer_email = $row_customer['email'];
+                                  $customer_email = $row_customer['c_email'];
                               
                                   echo $customer_email;
                               
@@ -421,7 +421,7 @@
                 
                 <div class="text-right"><!-- text-right begin -->
                     
-                    <a href="index.php?view_orders"><!-- a href begin -->
+                    <a href="index.php?view_registered"><!-- a href begin -->
                         
                         View All Registered Users <i class="fa fa-arrow-circle-right"></i>
                         

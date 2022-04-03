@@ -7,13 +7,10 @@ include("includes/db.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Insert Products </title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
+	<title>Insert Product Variation</title>
+	<meta name="viewport" conntent="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
     
@@ -79,13 +76,11 @@ include("includes/db.php");
                                    
                                    <option value='$prodName'> $prodName </option>
                                    
-                                   ";
-                                   ?>
-								   <input type="hidden" name="prodID"  class="text-box" value="<?php echo $prodID ?>" >
-								   <?php
+                                   "; 
                                }
                                
                                ?>
+                                <input type="hidden" name="prodID"  class="text-box" value="<?php echo $prodID ?>">
                                
                            </select><!-- form-control Finish -->
                            
@@ -147,7 +142,7 @@ include("includes/db.php");
                       
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
-                          <input name="product_img2" type="file" class="form-control">
+                          <input name="product_img2" type="file" class="form-control" required>
                           
                       </div><!-- col-md-6 Finish -->
                        
@@ -188,7 +183,6 @@ include("includes/db.php");
 </div><!-- row Finish -->
         
     <script src="js/jquery-331.min.js"></script>
-    <script src="js/bootstrap-337.min.js"></script> 
 
 </body>
 </html>

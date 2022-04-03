@@ -161,8 +161,8 @@
             
             
             <li><!-- li begin -->
-                <a href="index.php?view_customers"><!-- a href begin -->
-                    <i class="fa fa-fw fa-users"></i> View Customers
+                <a href="index.php?view_registered"><!-- a href begin -->
+                    <i class="fa fa-fw fa-users"></i> View Registered Users
                 </a><!-- a href finish -->
             </li><!-- li finish -->
             

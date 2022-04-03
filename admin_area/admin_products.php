@@ -3,17 +3,23 @@
 <head>
 	<title>View Products</title>
 	<meta name="viewport" conntent="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="admin-dashboard.css">
+	<!-- <link rel="stylesheet" href="admin-dashboard.css"> -->
 	<!--Bootstrap Cdn-->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+-->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+
+
 	
 	<!--Font Awesome iconns-->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 	<link href='https://unpkg.com/boxiconns@2.0.7/css/boxiconns.min.css' rel='stylesheet'>
-	<!-- <script type="text/javascript" src='jquery-3.3.1.min.js'></script> -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 
 <!--Polaroid Font 
 <link href="//db.onlinewebfonts.com/c/1e5b7f8cdbcb1e579a6e53aaadaf0b67?family=FF+Real+Head" rel="stylesheet" type="text/css"/>--> 
@@ -22,7 +28,7 @@
 <body>
 	
 	<!--Navbar-->
-	<nav>
+	<!-- <nav>
 		<div class="logo">
 			<img src="img/logo.png" alt="PolaChrome-logo">
 		</div>
@@ -65,7 +71,7 @@
 		</div>
 	
 	</nav>
-	
+	 -->
 	<!--Sidebar-->
 	<!--<div class="sidebar">
 		<h6>Admin</h6>
@@ -116,8 +122,8 @@
 		</ul>
 	</div> -->
 	
-	
-	<!-- <script>
+<!-- 	
+	<script>
 		let sidebar = document.querySelector(".sidebar");
 		let sidebarBtn = document.querySelector(".sidebarBtn");
 		sidebarBtn.onclick = function() {
@@ -127,9 +133,9 @@
 			}else
 				sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 		}
-	</script> -->
+	</script>
 	
-	<script src="navbar.js"></script>
+	<script src="navbar.js"></script> -->
 	
 	<div class="row"><!-- row 1 begin -->
 		<div class="col-lg-12"><!-- col-lg-12 begin -->
@@ -143,42 +149,136 @@
 		</div><!-- col-lg-12 finish -->
 	</div><!-- row 1 finish -->
 
-
 	<!-- Modal -->
 	<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		  </div>
-		  <div class="modal-body">
-			...
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary">Save changes</button>
-		  </div>
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalLabel">Update Product</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="update_prodID">Product ID</label>
+					<input type="text" class="form-control" id="update_prodID" disabled>
+				</div>
+				<div class="form-group"><!-- form-group Begin -->
+                      <label for="update_prodName" class="col-md-3 control-label"> Product Name </label> 
+						<input name="product_name" type="text" class="form-control" id="update_prodName" >
+                   </div><!-- form-group Finish -->
+				<div class="form-group">
+					<label for="update_prodInfo">Product Info</label><br>
+					<textarea name="update_prodInfo" cols="19" rows="6" class="form-control" id="update_prodInfo"></textarea>
+				</div>
+				<label class="col-md-3 control-label" for="update_catID"> Category </label> 
+				<div id="displayCatList"></div>
+				
+				<label class="col-md-3 control-label"> Product Images </label> 
+				<div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img1" type="file" class="form-control" id="update_prodImg1" >
+                       
+                 </div><!-- form-group Finish -->
+                   
+                   <div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img2" type="file" class="form-control" id="update_prodImg2">
+                       
+                   </div><!-- form-group Finish -->
+                   
+                   <div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img3" type="file" class="form-control form-height-custom" id="update_prodImg3">
+                       
+                   </div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="update_price" class="col-md-3 control-label"> Product Price </label> 
+					<input name="product_price" type="text" class="form-control" id="update_price" >
+				</div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="update_quantity" class="col-md-3 control-label"> Quantity </label> 
+					<input name="product_quantity" type="text" class="form-control"  id="update_quantity" >
+				</div><!-- form-group Finish -->
+			</div>
+			<div class="modal-footer">
+				<input type="hidden" id="hiddendata">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success" onclick="updateDetails()">Save changes</button>
+			</div>
+			</div>
 		</div>
-	  </div>
+	</div>
+	
+	<div class="modal fade" id="updateVarModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalCenterTitle">Update Product</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="update_varID">Product ID</label>
+					<input type="text" class="form-control" id="update_varID" disabled>
+				</div>
+				<div class="form-group"><!-- form-group Begin -->
+                      <label for="update_varName" class="col-md-3 control-label"> Variation Name </label> 
+						<input name="product_name" type="text" class="form-control" id="update_varName">
+                   </div><!-- form-group Finish -->
+				<label class="col-md-3 control-label"> Product Images </label> 
+				<div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img1" type="file" class="form-control" id="update_prodImg1" >
+                       
+                 </div><!-- form-group Finish -->
+                   
+                   <div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img2" type="file" class="form-control" id="update_prodImg2">
+                       
+                   </div><!-- form-group Finish -->
+                   
+                   <div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img3" type="file" class="form-control form-height-custom" id="update_prodImg3">
+                       
+                   </div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="update_varprice" class="col-md-3 control-label"> Product Price </label> 
+					<input name="product_price" type="text" class="form-control" id="update_varprice">
+				</div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="update_varquantity" class="col-md-3 control-label"> Quantity </label> 
+					<input name="product_quantity" type="text" class="form-control"  id="update_varquantity">
+				</div><!-- form-group Finish -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-dark" onclick="UpdateVarDetails()">Save changes</button>
+				<input type="hidden" id="hiddenvardata">
+			</div>
+			</div>
+		</div>
 	</div>
 	
 	<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalCenterTitle">Are you sure you want to delete <?php echo $pro_var; ?>?</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		  </div>
-		  <div class="modal-body">
-			...
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary">Save changes</button>
-		  </div>
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalCenterTitle">Are you sure you want to delete <?php echo $pro_var; ?>?</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				...
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+			</div>
 		</div>
-	  </div>
 	</div>
 
 	<div class="row"><!-- row 2 begin -->
@@ -194,123 +294,8 @@
 				
 				<div class="panel-body"><!-- panel-body begin -->
 					<div class="table-responsive"><!-- table-responsive begin -->
-						<table class="table table-striped table-bordered table-hover"><!-- table table-striped table-bordered table-hover begin -->
-							
-							<thead><!-- thead begin -->
-								<tr><!-- tr begin -->
-									<th> Product ID: </th>
-									<th> Product Name: </th>
-									<th> Product Info: </th>
-									<th> Product Category: </th>
-									<th> Product Images: </th>
-									<th> Product Price: </th>
-									<th> Product Quantity: </th>
-									<th> Product Manage: </th>
-								</tr><!-- tr finish -->
-							</thead><!-- thead finish -->
-							
-							<tbody><!-- tbody begin -->
-								
-								<?php 
-									
-									include("includes/db.php");
-									$i=0;
-									$get_pro = "select * from products";
-									$run_pro = mysqli_query($conn,$get_pro);
-									while($row_pro=mysqli_fetch_array($run_pro)){
-										
-										$pro_id = $row_pro['prodID'];
-										$pro_title = $row_pro['prodName'];
-										$pro_info = $row_pro['prodInfo'];
-										$pro_cat = $row_pro['catID'];
-										$pro_img1 = $row_pro['prodImg1'];
-										$pro_img2 = $row_pro['prodImg2'];
-										$pro_img3 = $row_pro['prodImg3'];
-										$pro_price = $row_pro['price'];
-										$pro_quant = $row_pro['quantity'];
-										$i++;
-								
-								?>
-								<tr><!-- tr begin -->
-									<td> <?php echo $i; ?> </td>
-									<td> <?php echo $pro_title; ?> 
-										<input type="hidden" id="pro_id" value="<?=$pro_id?>" />
-										<input type="hidden" id="pro_title" value="<?=$pro_title?>" />
-										<input type="hidden" id="pro_info" value="<?=$pro_info?>" />
-										<input type="hidden" id="pro_cat" value="<?=$pro_cat?>" />
-										<input type="hidden" id="pro_img1" value="<?=$pro_img1?>" />
-										<input type="hidden" id="pro_img2" value="<?=$pro_img2?>" />
-										<input type="hidden" id="pro_img3" value="<?=$pro_img3?>" />
-										<input type="hidden" id="pro_price" value="<?=$pro_price?>" />
-										<input type="hidden" id="pro_quant" value="<?=$pro_quant?>" />
-									</td>
-									<td> <?php echo $pro_info; ?> </td>
-									<td> <?php echo $pro_cat; ?> </td>
-									<td> 
-										<img src="product_images/<?php echo $pro_img1; ?>" width="60" height="60">
-										<img src="product_images/<?php echo $pro_img2; ?>" width="60" height="60">
-										<img src="product_images/<?php echo $pro_img3; ?>" width="60" height="60">
-									</td>
-									<td> PHP <?php echo $pro_price; ?> </td>
-									<td> <?php echo $pro_quant; ?> </td>
-									<td>
-										<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#updateModal">
-											Update
-										</button>
-										<button class = "btn btn-danger" onclick="DeleteProduct()">Delete</button>
-									</td>
-									
-									<?php 
-										$get_pro = "select * from product_variation WHERE prodID = '" . $pro_id . "'";
-										$run_pro = mysqli_query($conn,$get_pro);
-										while($row_pro=mysqli_fetch_array($run_pro)){
-											$var_id = $row_pro['varID'];
-											$pro_var = $row_pro['prodVariation'];
-											$pro_img1 = $row_pro['prodImg1'];
-											$pro_img2 = $row_pro['prodImg2'];
-											$pro_img3 = $row_pro['prodImg3'];
-											$pro_price = $row_pro['price'];
-											$pro_quant = $row_pro['quantity'];
-									
-									?>
-									
-									<tr><!-- tr begin -->
-										<td> <?php echo $i . " - Variation"; ?> </td>
-										<td> <?php echo $pro_title, " - ", $pro_var; ?>  </td>
-										<td colspan = 2> 
-											<input type="hidden" id="var_id" value="<?=$var_id?>" />
-											<input type="hidden" id="pro_var" value="<?=$pro_var?>" />
-											<input type="hidden" id="pro_img1" value="<?=$pro_img1?>" />
-											<input type="hidden" id="pro_img2" value="<?=$pro_img2?>" />
-											<input type="hidden" id="pro_img3" value="<?=$pro_img3?>" />
-											<input type="hidden" id="pro_price" value="<?=$pro_price?>" />
-											<input type="hidden" id="pro_quant" value="<?=$pro_quant?>" />
-										</td>
-										<td> 
-											<img src="product_images/<?php echo $pro_img1; ?>" width="60" height="60">
-											<img src="product_images/<?php echo $pro_img2; ?>" width="60" height="60">
-											<img src="product_images/<?php echo $pro_img3; ?>" width="60" height="60">
-										</td>
-										<td> PHP <?php echo $pro_price; ?> </td>
-										<td> <?php echo $pro_quant; ?> </td>
-										<td> 
-											<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#updateModal">
-												Update
-											</button>
-											<!-- <button class = "btn btn-danger" onclick="DeleteVariation(<?php echo $pro_id; ?>)">Delete</button> -->
-											<button class="btn btn-danger" onclick="DeleteVariation()">Delete</button>
-											
-										</td>
-									</tr><!-- tr finish -->
-									
-									<?php } ?>
-								</tr><!-- tr finish -->
-								
-								<?php } ?>
-								
-							</tbody><!-- tbody finish -->
-							
-						</table><!-- table table-striped table-bordered table-hover finish -->
+						<div id="displayDataTable"></div>
+						
 					</div><!-- table-responsive finish -->
 				</div><!-- panel-body finish -->
 				
@@ -320,22 +305,39 @@
 
 	<script>
 	
-		/* $(document).ready(function(){
-			
-			function DeleteVariation(deleteid){
-				
-				$.ajax({
-					url:"",
-					type:"post",
-					data:{
-					},
-					success:function(data,status){
-						document.getElementById("demo").innerHTML = "Success";
-					}
-				});
-			};
-		}); */
-	
+		$(document).ready(function(){
+				displayData(),
+				displayCatalog();
+		});
+		
+		function displayCatalog(){
+			var displayCatalog="true";
+			$.ajax({
+				url:"includes/admin_products.inc.php",
+				type:'post',
+				data:{
+					displayCatSend: displayCatalog
+				},
+				success:function(data,status){
+					$('#displayCatList').html(data);
+				}
+			})
+		}
+		
+		function displayData(){
+			var displayData="true";
+			$.ajax({
+				url:"includes/admin_products.inc.php",
+				type:'post',
+				data:{
+					displaySend: displayData
+				},
+				success:function(data,status){
+					$('#displayDataTable').html(data);
+				}
+			})
+		}
+		
 		function DeleteProduct(deleteid){
 			
 			var deleteid=$('#pro_id').val();
@@ -348,13 +350,12 @@
 				},
 				success:function(data,status){
 					console.log(status);
-				},
+				}
 			});
 		}
 		
-		function DeleteVariation(){
-			
-			var deleteid=$('#var_id').val();
+		
+		function DeleteVariation(deleteid){
 			
 			$.ajax({
 				url:"includes/admin_products.inc.php",
@@ -363,18 +364,85 @@
 					deletevarsend:deleteid
 				},
 				success:function(data,status){
-					console.log(status);
-				},
+					displayData();
+				}
 			});
 		}
 		
 		function GetDetails(updateid){
-			$('hiddendata').val(updateid);
+			$('#hiddendata').val(updateid);
 			
-			$.POST("includes/admin_products.inc.php", {updateid:updateid}, function(data,
-			status){
-				var userid = JSON.parse(data);
-			});	
+			$.post("includes/admin_products.inc.php", {updateid:updateid}, function(data,status){
+				var prodID = JSON.parse(data);
+				$('#update_prodID').val(prodID.prodID)
+				$('#update_prodName').val(prodID.prodName)
+				$('#update_prodInfo').val(prodID.prodInfo)
+				$('#update_catID').val(prodID.catID)
+				/*$('#update_prodImg1').val(prodID.prodImg1)
+				$('#update_prodImg2').val(prodID.prodImg2)
+				$('#update_prodImg3').val(prodID.prodImg3) */
+				$('#update_price').val(prodID.price)
+				$('#update_quantity').val(prodID.quantity)
+			});
+			
+			$('#updateModal').modal('show');
+		}
+		
+		function GetVarDetails(updatevarid){
+			$('#hiddenvardata').val(updatevarid);
+			
+			$.post("includes/admin_products.inc.php", {updatevarid:updatevarid}, function(data,status){
+				var varID = JSON.parse(data);
+				$('#update_varID').val(varID.prodID)
+				$('#update_varName').val(varID.prodVariation)
+				/* $('#update_prodImg1').val(varID.prodImg1)
+				$('#update_prodImg2').val(varID.prodImg2)
+				$('#update_prodImg3').val(varID.prodImg3) */
+				$('#update_varprice').val(varID.price)
+				$('#update_varquantity').val(varID.quantity)
+			});
+			
+			$('#updateVarModal').modal('show');
+		}
+		
+		function updateDetails(){
+			var update_prodName=$('#update_prodName').val();
+			var update_prodInfo=$('#update_prodInfo').val();
+			var update_catID=$('#update_catID').val();
+			var update_price=$('#update_price').val();
+			var update_quantity=$('#update_quantity').val();
+			var hiddendata=$('#hiddendata').val();
+			
+			$.post("includes/admin_products.inc.php", {
+				update_prodName:update_prodName,
+				update_prodInfo:update_prodInfo,
+				update_catID:update_catID,
+				update_quantity:update_quantity,
+				update_price:update_price,
+				hiddendata:hiddendata
+				}, function(data,status){
+					$('#updateModal').modal('hide');
+					displayData();
+			});
+			
+		}
+		
+		function UpdateVarDetails(){
+			var update_prodName=$('#update_varName').val();
+			var update_price=$('#update_varprice').val();
+			var update_quantity=$('#update_varquantity').val();
+			var hiddendata=$('#hiddenvardata').val();
+			
+			$.post("includes/admin_products.inc.php", {
+				update_prodName:update_prodName,
+				update_quantity:update_quantity,
+				update_price:update_price,
+				hiddenvardata:hiddendata
+				}, function(data,status){
+					$('#updateVarModal').modal('hide');
+					displayData();
+			});
+			
 		}
 	
 	

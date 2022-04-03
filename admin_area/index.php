@@ -96,6 +96,13 @@
                         
                         include("insert_product.php");
                     
+                }   if(isset($_GET['view_products'])){
+                        
+                        include("admin_products.php");
+
+                 }  if(isset($_GET['view_registered'])){
+                        
+                        include("admin_user_view.php");
                 }
                 
                 ?>

@@ -1,24 +1,19 @@
-
 .btn-increment-decrement {
-    display: inline-block;
-    padding: 5px 0px;
-    background: #e2e2e2;
-    width: 30px;
-    text-align: center;
-    cursor:pointer;
+  display: inline-block;
+  padding: 5px 0px;
+  background: #e2e2e2;
+  width: 30px;
+  text-align: center;
+  cursor:pointer;
 }
+
 
 /*Cart Mobile View */
 body{
-  height: 100%;
+  height: fit-content;
   font-family: font-face="Polaroid";
   background-color: #f2f2f2 !important;
   overflow-x: hidden;
-}
-
-a {
-  text-decoration: none;
-  background-color: none;
 }
 .cart{
     margin-top: 20px;
@@ -69,6 +64,7 @@ a {
 
 .product-image{
     height: 80px;
+    background-image: url(img/polaroid-lab.png);
     border-radius: 7px;
     background-size: cover;
     background-repeat: no-repeat;

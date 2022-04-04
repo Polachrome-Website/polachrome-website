@@ -160,7 +160,7 @@
                    </div><!-- form-group Finish -->
 				<div class="form-group">
 					<label for="update_prodInfo">Product Info</label><br>
-					<textarea name="update_prodInfo" cols="19" rows="6" class="form-control" id="update_prodInfo"><div id="prod_info"></div></textarea>
+					<textarea name="update_prodInfo" cols="19" rows="6" class="form-control" id="update_prodInfo"></textarea>
 				</div>
 				<label class="col-md-3 control-label" for="update_catID"> Category </label> 
 				<div id="displayCatList"></div>
@@ -193,7 +193,7 @@
 				</div><!-- form-group Finish -->
 			</div>
 			<div class="modal-footer">
-				<input type="hidden" id="hiddendata">
+				<input type="text" id="hiddendata">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-dark" onclick="updateDetails()">Save changes</button>
 			</div>
@@ -257,15 +257,108 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalCenterTitle">Are you sure you want to delete <?php echo $pro_var; ?>?</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<h5 class="modal-title" id="exampleModalCenterTitle">Delete Product?</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
 			</div>
 			<div class="modal-body">
-				...
+				<div class="form-group">
+					<label for="del_prodID">Product ID</label>
+					<input type="text" class="form-control" id="del_prodID" disabled>
+				</div>
+				<div class="form-group"><!-- form-group Begin -->
+                      <label for="del_prodName" class="col-md-3 control-label"> Product Name </label> 
+						<input name="product_name" type="text" class="form-control" id="del_prodName" disabled>
+                   </div><!-- form-group Finish -->
+				<div class="form-group">
+					<label for="del_prodInfo">Product Info</label><br>
+					<textarea name="del_prodInfo" cols="19" rows="6" class="form-control" id="del_prodInfo" disabled></textarea>
+				</div>
+				<label class="col-md-3 control-label" for="del_catID"> Category </label> 
+				<div id="displayCatList"></div>
+				
+				<label class="col-md-3 control-label"> Product Images </label> 
+				<div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img1" type="file" class="form-control" id="del_prodImg1" disabled>
+                       
+                 </div><!-- form-group Finish -->
+                   
+                   <div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img2" type="file" class="form-control" id="del_prodImg2" disabled>
+                       
+                   </div><!-- form-group Finish -->
+                   
+                   <div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img3" type="file" class="form-control form-height-custom" id="del_prodImg3" disabled>
+                       
+                   </div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="del_price" class="col-md-3 control-label"> Product Price </label> 
+					<input name="product_price" type="text" class="form-control" id="del_price" disabled>
+				</div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="del_quantity" class="col-md-3 control-label"> Quantity </label> 
+					<input name="product_quantity" type="text" class="form-control"  id="del_quantity" disabled>
+				</div><!-- form-group Finish -->
+			</div>
+			<div class="modal-footer">
+				<input type="text" id="hiddendeldata">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger" onclick="deleteDetails()">Delete</button>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="deleteVarModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalCenterTitle">Delete Product?</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="del_varID">Product ID</label>
+					<input type="text" class="form-control" id="del_varID" disabled>
+				</div>
+				<div class="form-group"><!-- form-group Begin -->
+                      <label for="del_varName" class="col-md-3 control-label"> Variation Name </label> 
+						<input name="product_name" type="text" class="form-control" id="del_varName" disabled>
+                   </div><!-- form-group Finish -->
+				<label class="col-md-3 control-label"> Product Images </label> 
+				<div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img1" type="file" class="form-control" id="del_prodImg1" disabled>
+                       
+                 </div><!-- form-group Finish -->
+                   
+                   <div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img2" type="file" class="form-control" id="del_prodImg2" disabled>
+                       
+                   </div><!-- form-group Finish -->
+                   
+                   <div class="form-group"><!-- form-group Begin -->
+                          
+                          <input name="product_img3" type="file" class="form-control form-height-custom" id="del_prodImg3" disabled>
+                       
+                   </div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="del_varprice" class="col-md-3 control-label"> Product Price </label> 
+					<input name="product_price" type="text" class="form-control" id="del_varprice" disabled>
+				</div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="del_varquantity" class="col-md-3 control-label"> Quantity </label> 
+					<input name="product_quantity" type="text" class="form-control"  id="del_varquantity" disabled>
+				</div><!-- form-group Finish -->
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-danger" onclick="deleteVarDetails()">Delete</button>
+				<input type="hidden" id="hiddendelvardata">
 			</div>
 			</div>
 		</div>
@@ -395,6 +488,42 @@
 			$('#updateVarModal').modal('show');
 		}
 		
+		function GetDelDetails(updateid){
+			$('#hiddendeldata').val(updateid);
+			
+			$.post("includes/admin_products.inc.php", {delid:updateid}, function(data,status){
+				var prodID = JSON.parse(data);
+				$('#del_prodID').val(prodID.prodID)
+				$('#del_prodName').val(prodID.prodName)
+				$('#del_prodInfo').val(prodID.prodInfo)
+				$('#del_catID').val(prodID.catID)
+				/*$('#del_prodImg1').val(prodID.prodImg1)
+				$('#del_prodImg2').val(prodID.prodImg2)
+				$('#del_prodImg3').val(prodID.prodImg3) */
+				$('#del_price').val(prodID.price)
+				$('#del_quantity').val(prodID.quantity)
+			});
+			
+			$('#deleteModal').modal('show');
+		}
+		
+		function GetDelVarDetails(updatevarid){
+			$('#hiddendelvardata').val(updatevarid);
+			
+			$.post("includes/admin_products.inc.php", {delvarid:updatevarid}, function(data,status){
+				var varID = JSON.parse(data);
+				$('#del_varID').val(varID.prodID)
+				$('#del_varName').val(varID.prodVariation)
+				/* $('#del_prodImg1').val(varID.prodImg1)
+				$('#del_prodImg2').val(varID.prodImg2)
+				$('#del_prodImg3').val(varID.prodImg3) */
+				$('#del_varprice').val(varID.price)
+				$('#del_varquantity').val(varID.quantity)
+			});
+			
+			$('#deleteVarModal').modal('show');
+		}
+		
 		function updateDetails(){
 			var update_prodName=$('#update_prodName').val();
 			var update_prodInfo=$('#update_prodInfo').val();
@@ -430,6 +559,30 @@
 				hiddenvardata:hiddendata
 				}, function(data,status){
 					$('#updateVarModal').modal('hide');
+					displayData();
+			});
+			
+		}
+		
+		function deleteDetails(){
+			var hiddendata=$('#hiddendeldata').val();
+			
+			$.post("includes/admin_products.inc.php", {
+				hiddendeldata:hiddendata
+				}, function(data,status){
+					$('#deleteModal').modal('hide');
+					displayData();
+			});
+			
+		}
+		
+		function deleteVarDetails(){
+			var hiddendata=$('#hiddendelvardata').val();
+			
+			$.post("includes/admin_products.inc.php", {
+				hiddendelvardata:hiddendata
+				}, function(data,status){
+					$('#deleteVarModal').modal('hide');
 					displayData();
 			});
 			

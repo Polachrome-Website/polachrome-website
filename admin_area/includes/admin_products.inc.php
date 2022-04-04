@@ -3,15 +3,15 @@
 	
 	extract($_POST);
 	
-	if(isset($_POST['deletesend'])){
-		$unique=$_POST['deletesend'];
+	if(isset($_POST['hiddendeldata'])){
+		$unique=$_POST['hiddendeldata'];
 		$sql = "DELETE from products WHERE prodID='".$unique."'";
 		$result = mysqli_query($conn,$sql);
 		
 	}
 	
-	if(isset($_POST['deletevarsend'])){
-		$unique=$_POST['deletevarsend'];
+	if(isset($_POST['hiddendelvardata'])){
+		$unique=$_POST['hiddendelvardata'];
 		$sql = "DELETE FROM product_variation WHERE varID='".$unique."'";
 		$result = mysqli_query($conn,$sql);
 		
@@ -76,7 +76,9 @@
 										<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="GetDetails('.$pro_id.')">
 											Update
 										</button>
-										<button class = "btn btn-danger" onclick="DeleteProduct('.$pro_id.')">Delete</button>
+										<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="GetDelDetails('.$pro_id.')">
+											Delete
+										</button>
 									</td>
 									</tr><!-- tr finish -->
 									';
@@ -116,7 +118,9 @@
 														Update
 													</button>
 													<!-- <button class = "btn btn-danger" onclick="DeleteVariation('.$pro_id.')">Delete</button> -->
-													<button class="btn btn-danger" onclick="DeleteVariation('.$var_id.')">Delete</button>
+													<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteVarModal" onclick="GetDelVarDetails('.$var_id.')">
+														Delete
+													</button>
 													
 												</td>
 											</tr><!-- tr finish -->';
@@ -164,6 +168,38 @@
 	if(isset($_POST['updatevarid'])){
 		
 		$varID=$_POST['updatevarid'];
+		
+		$sql = "SELECT * FROM product_variation WHERE varID = $varID";
+		$result = mysqli_query($conn, $sql);
+		$response = array();
+		while($row = mysqli_fetch_assoc($result)){
+			$response = $row;
+		}
+		echo json_encode($response);
+	}else{
+		$response['status']=200;
+		$response['message']="Invalid or data not found";
+	}
+	
+	if(isset($_POST['delid'])){
+		
+		$prodID=$_POST['delid'];
+		
+		$sql = "SELECT * FROM products WHERE prodID = $prodID";
+		$result = mysqli_query($conn, $sql);
+		$response = array();
+		while($row = mysqli_fetch_assoc($result)){
+			$response = $row;
+		}
+		echo json_encode($response);
+	}else{
+		$response['status']=200;
+		$response['message']="Invalid or data not found";
+	}
+	
+	if(isset($_POST['delvarid'])){
+		
+		$varID=$_POST['delvarid'];
 		
 		$sql = "SELECT * FROM product_variation WHERE varID = $varID";
 		$result = mysqli_query($conn, $sql);

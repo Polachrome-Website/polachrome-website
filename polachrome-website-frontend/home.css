@@ -130,6 +130,7 @@ body{
   height: 350px;
   width: 200px;
   margin-left: 200px;
+  margin-right: 10px;
   border-radius: 35px;
 
   display: block;
@@ -138,7 +139,7 @@ body{
 }
 
 
-.instant-films{
+.films{
   background-image: url(img/instant-films.png);
   background-size:cover;
   background-repeat: no-repeat;
@@ -155,7 +156,7 @@ body{
   background-repeat: no-repeat;
   height: 350px;
   width: 200px;
-  margin-left: 60px;
+  margin-left: 55px;
   border-radius: 35px;
   position: relative;
   padding: 20px;
@@ -184,7 +185,7 @@ body{
 
 .section-2{
   background-color: white;
-  height: 270px;
+  height: fit-content;
   width: 90%;
   margin: auto;
   margin-top: 30px;
@@ -192,14 +193,70 @@ body{
   border-radius: 25px;
 }
 
+
 .featured-img{
-  background-color: black;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position-y:center;
+  margin-top: -90px;
   height: 200px;
   width: 300px;
   margin-left: 30px;
   margin-top: 0px;
   border-radius: 25px;
   position: relative;
+}
+
+/*featured products css*/
+.card{
+  position: relative;
+  background-color: white;
+  height: 300px;
+  width: 250px;
+  border-radius: 15px;
+  border-color: white;
+
+  padding: 20px;
+  transform: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.card h2{
+  color:black;  
+}
+.card h3{
+  color:black;  
+  font-size: 20px;
+  text-align: center;
+}
+
+.featured-btn{
+  background:black;
+  color: white;
+  width: 100px;
+  border:none;
+  border-radius: 7px;
+  padding: 7px;
+  margin-top: 15px;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featured-btn:hover{
+  background-color:white;
+  color:black;
+  outline: solid black 1px;
+}
+
+.prod-img{
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height:100%;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 15px;
 }
 
 .btn{

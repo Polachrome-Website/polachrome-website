@@ -33,7 +33,7 @@ body{
 }
 
 .bg-img{
-    height: 220vh;
+    height: fit-content;
     background-image: url(img/home-bg.png);
     background-attachment: fixed;
     background-size: cover;
@@ -193,19 +193,29 @@ body{
   border-radius: 25px;
 }
 
+h2{
+  text-align: center;
+}
 
 .featured-img{
   background-repeat: no-repeat;
   background-size: 100%;
   background-position-y:center;
-  margin-top: -90px;
   height: 200px;
   width: 300px;
   margin-left: 30px;
-  margin-top: 0px;
+  margin-top: -90px;
   border-radius: 25px;
   position: relative;
 }
+
+h3{
+  color:black;  
+  font-size: 20px;
+  text-align: left;
+}
+
+
 
 /*featured products css*/
 .card{
@@ -268,7 +278,6 @@ body{
   padding: 7px;
   margin-top: 15px;
   font-size: 14px;
-  margin-left: 800px;
 }
 
 
@@ -278,10 +287,6 @@ body{
   width: 100px;
   border:solid black 1px;
   border-radius: 7px;
-  padding: 7px;
-  margin-top: 15px;
-  font-size: 14px;
-  margin-left: 800px;
 }
 
 

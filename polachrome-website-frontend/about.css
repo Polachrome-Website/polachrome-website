@@ -11,7 +11,7 @@ body{
     min-width: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #191919;
+    background-color: black;
 }
 
 .container{

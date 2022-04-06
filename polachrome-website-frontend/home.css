@@ -53,8 +53,9 @@ body{
   text-align: center;
   position: relative;
   border-color: solid black;
-  -webkit-filter: blur(.6px);
-  transform: translateZ(0)
+  -webkit-filter: blur(.01px);
+  transform: translateZ(0);
+  text-shadow: 5px 5px 10px rgba(0,0,0,.2)
 }
 
 

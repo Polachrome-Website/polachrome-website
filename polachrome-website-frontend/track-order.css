@@ -13,7 +13,7 @@
   
   body{
       height: 100%;
-      background: #F4F4F4;
+      background-color: white;
       font-family: font-face="Polaroid";
       padding-top: 20px;
       overflow-x: hidden;
@@ -23,7 +23,7 @@
 
 /*css for body*/
 .container{
-    background: white;
+    background-color: white;
     width: 100%;
     height: 100%;
     padding: 70px;
@@ -34,10 +34,15 @@
 
     text-align: center;
     justify-content: center;
+    background-color: rgba(255,255,255,0.1);
+    border: solid black 1px;
+    backdrop-filter: blur(10px);
 }
 
-.container h5{
-    font-weight: 500;
+.container h1{
+    font-weight: 700;
+    color: black;
+    font-size: 50px;
     margin: auto;
     text-align: center;
     display: flex;
@@ -53,7 +58,7 @@
 }
 
 .text-box{
-    background: #f4f4f4;
+    background: whitesmoke;
     color: black;
     border: none;
     

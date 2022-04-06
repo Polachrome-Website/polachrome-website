@@ -51,7 +51,9 @@ body{
 }
 
 .card .icon{
-    background-color: gray;
+    background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 80px;
     width: 85px;
     border-radius: 10px;

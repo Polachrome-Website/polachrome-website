@@ -2,6 +2,8 @@
     font-family: Polaroid;
     src: url(font/FF\ Real\ Head\ Pro/);
   }
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
   
   *{
       margin:0;
@@ -34,7 +36,7 @@ body{
 
 .bg-img{
     height: fit-content;
-    background-image: url(img/home-bg.png);
+    background-image: url(img/HomePage2.png);
     background-attachment: fixed;
     background-size: cover;
 }
@@ -44,12 +46,51 @@ body{
   height: 600px;
 }
 
+.title{
+  color: white;
+  font-family: 'Bangers', cursive;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  border-color: solid black;
+  -webkit-filter: blur(.01px);
+  transform: translateZ(0);
+  text-shadow: 5px 5px 10px rgba(0,0,0,.2)
+}
+
+
+h5{
+  font-size: 40px;
+  margin-top: -60px;
+  text-shadow: black;
+  text-shadow: 1px 2px rgba(0,0,0,0.5);
+}
+
+.btn-main{
+  background-color: transparent;
+  color: white;
+  padding: 7px;
+  font-size: 20px;
+  font-weight: 400;
+  border-radius:7px; 
+  border-color: solid black 0.5px; 
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-main:hover{
+  background-color: black;
+  color: white;
+}
 
 .section-1{
   background-color: white;
   height: 550px;
   width: 100%;
-  margin-top: 60vh;
+  margin-top: 25vh;
   padding: 30px;
 }
 
@@ -67,7 +108,8 @@ body{
   width: 100%;
   height: 100%;
   background-color: rgba(255,255,255,0.5);
-  backdrop-filter: blur(3px);
+  border-radius: 30px;
+  backdrop-filter: blur(1.5px);
   color: black;
   opacity: 0;
   transition: opacity 0.25s; 
@@ -151,7 +193,7 @@ body{
 }
 
 .accessories{
-  background-image: url(img/printers.png);
+  background-image: url(img/accessories.png);
   background-size:cover;
   background-repeat: no-repeat;
   height: 350px;
@@ -233,6 +275,7 @@ h3{
 
 .card h2{
   color:black;  
+  font-family: Bang;
 }
 .card h3{
   color:black;  

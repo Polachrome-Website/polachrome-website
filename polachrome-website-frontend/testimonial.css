@@ -21,13 +21,12 @@ body{
 }
 
 .bg-img{
-    background-image: url(img/testimonial-bg.png);
+    background-image: url(img/testimonials-colored.png);
     background-size: cover;
     min-height:75vh;
     position:relative;
     background-repeat: no-repeat;
     color:white;
-    text-shadow: 5px 5px 5px rgba(0,0,0,.2)
 }
 
 

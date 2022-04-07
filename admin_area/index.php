@@ -35,6 +35,18 @@
 
         //finish fetch PRODUCT deets
 
+        //for low stock product//
+
+        $low_stock_product = 5;
+
+        $select_low = "select * from products where quantity <='$low_stock_product'";
+
+        $run_low = mysqli_query($conn,$select_low);
+
+        $count_low = mysqli_num_rows($run_low);
+
+        //finsish for low stock product//
+
         //begin fetch PRODUCT CATERGORIES deets
 
         $get_p_categories = "select * from categories";
@@ -54,6 +66,7 @@
         $count_customers = mysqli_num_rows($run_customers);
 
         //finish fetch USERS deets
+
 
         //begin fetch ORDER deets
 

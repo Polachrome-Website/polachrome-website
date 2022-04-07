@@ -21,15 +21,6 @@ if(!isset($_SESSION['admin_email'])){
     
     <div class="col-lg-12"><!-- col-lg-12 Begin -->
         
-        <ol class="breadcrumb"><!-- breadcrumb Begin -->
-            
-            <li class="active"><!-- active Begin -->
-                
-                <i class="fa fa-dashboard"></i> Dashboard / Insert Products
-                
-            </li><!-- active Finish -->
-            
-        </ol><!-- breadcrumb Finish -->
         
     </div><!-- col-lg-12 Finish -->
     

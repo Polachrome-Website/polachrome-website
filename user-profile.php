@@ -8,6 +8,20 @@
            
     </head>
 
+<?php
+    if(isset($_SESSION['userID'])){
+        
+        $get_uid = $_SESSION['userID'];
+
+        $get_user = "select * from user_account where userID='$get_uid'";
+
+        $run_user = mysqli_query($conn,$get_user);
+
+        while($row_user=mysqli_fetch_array($run_user)){
+            $accountPoints = $row_user['accountPoints'];
+        }
+    }
+?>
 
 <body>
 
@@ -42,15 +56,15 @@
                                     <h6 class="mb-0">Name</h6>
                                 </div>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" value="<?php echo $_SESSION['fullName'];?>">
+                                    <input id="newfullname" type="text" class="form-control" value="<?=$_SESSION["fullName"]?>">
                                 </div>
                             </div>
-                            <div class="row mb-3">
+							<div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Username</h6>
                                 </div>
-                                <div class="col-sm-9 ">
-                                    <input type="text" class="form-control" value="<?php echo $_SESSION['fullName'];?>">
+                                <div class="col-sm-9">
+                                    <input id="newusername" type="text" class="form-control" value="<?=$_SESSION["userName"]?>">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -58,13 +72,13 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" value="<?php echo $_SESSION['email'];?>">
+                                    <input id="newemail" type="email" class="form-control" value="<?=$_SESSION["email"]?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 ">
-                                    <input type="button" class="btn-update" value="Update">
+                                    <input type="button" class="btn-update" onclick="updateUser(<?=$_SESSION["userID"]?>)" value="Update">
                                 </div>
                             </div>
                            
@@ -76,7 +90,9 @@
                        <div class="card mb-3 ">
                            <div class="card-body mb-3">
                             <h5 class="d-flex align-items-center mb-3">My Rewards</h5>
-                            <p class="d-flex flex-column text-center">Reward Points: 1250</p>
+                            <p class="d-flex flex-column text-center">
+                                <?php if(is_null($accountPoints)){ echo "Reward Points: 0"; }else{ echo "Reward Points: " . $accountPoints; }?>
+                            </p>
                             <div class="accordion earn-points">
                                 <h5><i class="fas fa-chevron-circle-down down-icon"></i>Ways to earn reward points </h5>
                                 
@@ -236,6 +252,44 @@
                                 ?>
 
                                 <!-- begin Modal -->
+                                
+                                 <!-- Password Modal -->
+                                <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">New Password</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div id="displayResult"></div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="hidden" id="hiddendata">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div><!-- END Password Modal -->
+
+                                    <!-- User Modal -->
+                                    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalCenterTitle"><div id="displayUserResult"></div></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="hidden" id="hiddendata">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- END User Modal -->
+
                                   <!-- Modal -->
                                     <div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -279,7 +333,7 @@
                                         </form>
                                         <div class="modal-footer">
                                             <button type="submit" name="address-delete" class="btn btn-edit btn-danger">Delete</button>
-                                            <button type="submit" name="address-edit" class="btn btn-success">Set Default</button>
+                                            <button type="submit" name="address-select" class="btn btn-success">Set Default</button>
                                         </div>
                                         </div>
                                     </div>
@@ -347,19 +401,19 @@
                          <div class="row mb-3">
                             
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Old Password">
+                                <input type="text" class="form-control" id="oldpw" placeholder="Old Password" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="New Password">
+                                <input type="text" class="form-control" id="newpw" placeholder="New Password" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                           
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Re-enter new password">
+                                <input type="text" class="form-control" id="confpw" placeholder="Re-enter new password" required>
                             </div>
                         </div>
                             
@@ -367,10 +421,9 @@
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
-                                <input type="button" class="btn-update" value="Update">
+                                <input type="button" id="btn-update-pass" class="btn-update" onclick="updatePassword(<?=$_SESSION["userID"]?>)" value="Update">
                             </div>
                         </div>
-                        
                         </div>
                     </div>
                 </div>
@@ -383,13 +436,140 @@
     </div>
     </div>
     
+    <?php
+        
+        if (isset($_GET["action"])) {
+            if ($_GET["action"] == "updatepwsuccess") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Password was updated successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                
+                </script>";
+            }
+            if ($_GET["action"] == "updatepwnotmatch") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Password does not match! Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
+                
+                </script>";
+            }
+            if ($_GET["action"] == "updateoldpwnotmatch") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Password does not match! Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
+                
+                </script>";
+            }
+            if ($_GET["action"] == "errorweakpw") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character (!,@,#,$,%,^)',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
+                
+                </script>";
+            }
+        }
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
+    ?>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>       
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="scripts/navbar.js"></script>
     
     <!--FAQs script-->
     <script src="faq.js"></script>
+
+    <!-- <script>
+
+    $(document).ready(function (){
+        $('#orderConfirm').on('click',function(e){
+            e.preventDefault();
+
+            Swal.fire({
+                    title: "Confirm Order?",
+                    text: "Please make sure that all details are correct.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#00C851",
+                    confirmButtonText: "Place Order",
+                    cancelButtonText: "Cancel",
+                 }).then((result) => {
+
+                    var oldpw=$('#oldpw').val();
+                    var newpw=$('#newpw').val();
+                    var confpw=$('#confpw').val();
+
+
+                 });
+        });
+    });
+            
+    </script> -->
+
+    <script>
+	
+	
+    function updateUser(userID){
+		var newfullname=$('#newfullname').val();
+		var newemail=$('#newemail').val();
+		var newusername=$('#newusername').val();
+		
+		$.post("includes/functions.inc.php", {
+			newfullname:newfullname,
+			newemail:newemail,
+			newusername:newusername,
+			userUID:userID
+			}, function(data,status){
+				$('#userModal').modal('show');
+				$('#displayUserResult').html(data);
+		});
+		
+	}
+	
+	function updatePassword(userID){
+
+		var oldpw=$('#oldpw').val();
+		var newpw=$('#newpw').val();
+		var confpw=$('#confpw').val();
+		
+		$.post("includes/functions.inc.php", {
+			oldpw:oldpw,
+			newpw:newpw,
+			confpw:confpw,
+			passUID:userID
+			}, function(data,status){
+				$('#passwordModal').modal('show');
+				$('#displayResult').html(data);
+				clearText();
+		});
+		
+	}
+	
+	function clearPassText(){
+		$('#oldpw').val("");
+		$('#newpw').val("");
+		$('#confpw').val("");
+	}
+		
+    </script>
+
 
     <!-- View modal script -->
     <script>

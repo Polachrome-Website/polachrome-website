@@ -107,7 +107,6 @@
                         
                         <i class="fa fa-fw fa-tag"></i> Products
                         <i class="fa fa-fw fa-caret-down"></i>
-                        
                 </a><!-- a href finish -->
                 
                 <ul id="products" class="collapse"><!-- collapse begin -->

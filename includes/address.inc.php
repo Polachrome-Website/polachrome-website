@@ -7,6 +7,14 @@ if (isset($_POST["address-edit"])){
 	// echo "<script>window.open('../user-profile.php?addressid=$addressid','_self')</script>";
 }
 
+
+if (isset($_POST["address-select"])){
+	$addressid = $_POST['address'];
+	include('db.php');
+	header("LOCATION: ../user-profile.php?addressid=" . $addressid . "addresssuccess");
+	// echo "<script>window.open('../user-profile.php?addressid=$addressid','_self')</script>";
+}
+
 if (isset($_POST["address-save"])){
 	$addressid = $_POST["addressid"];
 	$contactNum = $_POST["contactNum"];

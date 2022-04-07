@@ -9,7 +9,7 @@
 -->
 	<!--Font Awesome iconns-->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
 	<link href='https://unpkg.com/boxiconns@2.0.7/css/boxiconns.min.css' rel='stylesheet'>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
@@ -18,118 +18,7 @@
 <link href="//db.onlinewebfonts.com/c/1e5b7f8cdbcb1e579a6e53aaadaf0b67?family=FF+Real+Head" rel="stylesheet" type="text/css"/>--> 
 </head>
 
-
 <body>
-	
-	<!--Navbar-->
-	<!-- <nav>
-		<div class="logo">
-			<img src="img/logo.png" alt="PolaChrome-logo">
-		</div>
-		<div class="nav-items">
-			<li><a class="red" href="home.html">HOME</a></li>
-			<li><a class="orange"  href="faq.html">FAQs</a></li>
-			<li><a class="yellow" href="product.html">PRODUCT</a></li>
-			<li><a class="green"  href="about.html">ABOUT</a></li>
-			<li><a class="blue"  href="conntact.html">CONTACT US</a></li>
-			<li><a class="red" href="testimonial.html">TESTIMONIALS</a></li>
-			<li><a class="orange" href="track-order.html">TRACK ORDER</a></li>
-		</div>
-	
-		<div class="search-iconn">
-			<span class="fas fa-search"></span>
-		</div>
-	
-		<div class="cancel-search-iconn">
-			<span class="fas fa-times"></span>
-		</div>
-	
-		<div class="cancel-iconn">
-			<span class="fas fa-times"></span>
-		</div>
-	
-		<form action="#">
-			<input type="search" class="search-data" placeholder="Search" required>
-			<button type="submit" class="fas fa-search"></button>
-		</form>
-	
-		<div class="user-iconn">
-			<span class="fas fa-user"></span>
-		</div>
-		<div class="cart-iconn">
-			<span class="fas fa-shopping-cart"></span>
-		</div>
-	
-		<div class="menu-iconn">
-			<span class="fas fa-bars"></span>
-		</div>
-	
-	</nav>
-	 -->
-	<!--Sidebar-->
-	<!--<div class="sidebar">
-		<h6>Admin</h6>
-		<ul class="nav-links">
-		
-			<li>
-			<a href="#" class="active">
-				<i class='bx bx-grid-alt' ></i>
-				<span class="links_name">Dashboard</span>
-			</a>
-			</li>
-			<li>
-			<a href="#">
-				<i class='bx bx-user' ></i>
-				<span class="links_name">My Profile</span>
-			</a>
-			</li>
-			<li>
-			<a href="#">
-				<i class='bx bx-box' ></i>
-				<span class="links_name" href="admin_products.php">Products</span>
-			</a>
-			</li>
-			<li>
-			<a href="#">
-				<i class='bx bx-category' ></i>
-				<span class="links_name">Categories</span>
-			</a>
-			</li>
-			<li>
-			<a href="#">
-				<i class='bx bxs-user-account' ></i>
-				<span class="links_name">Customers</span>
-			</a>
-			</li>
-			<li>
-			<a href="#">
-				<i class='bx bx-cart' ></i>
-				<span class="links_name">Orders</span>
-			</a>
-			</li>
-			<li>
-			<a href="#">
-				<i class='bx bx-heart' ></i>
-				<span class="links_name">Personalize</span>
-			</a>
-			</li>
-		</ul>
-	</div> -->
-	
-<!-- 	
-	<script>
-		let sidebar = document.querySelector(".sidebar");
-		let sidebarBtn = document.querySelector(".sidebarBtn");
-		sidebarBtn.onclick = function() {
-			sidebar.classList.toggle("active");
-			if(sidebar.classList.conntains("active")){
-				sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-			}else
-				sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-		}
-	</script>
-	
-	<script src="navbar.js"></script> -->
 	
 	<div class="row"><!-- row 1 begin -->
 		<div class="col-lg-12"><!-- col-lg-12 begin -->
@@ -159,32 +48,33 @@
 					<input type="text" class="form-control" id="update_prodID" disabled>
 				</div>
 				<div class="form-group"><!-- form-group Begin -->
-                      <label for="update_prodName" class="col-md-3 control-label"> Product Name </label> 
-						<input name="product_name" type="text" class="form-control" id="update_prodName" >
-                   </div><!-- form-group Finish -->
+					<label for="update_prodName" class="col-md-3 control-label"> Product Name </label> 
+					<input name="product_name" type="text" class="form-control" id="update_prodName" >
+				</div><!-- form-group Finish -->
 				<div class="form-group">
-					<label for="update_prodInfo">Product Info</label><br>
-					<textarea name="update_prodInfo" cols="19" rows="6" class="form-control" id="update_prodInfo"></textarea>
-				</div>
+                    <label for="update_prodInfos">Product Info</label><br>
+                    <textarea name="update_prodInfos" cols="19" rows="6" class="form-control" id="update_prodInfo"></textarea>
+                </div>
 				<label class="col-md-3 control-label" for="update_catID"> Category </label> 
 				<div id="displayCatList"></div>
 				
 				<label class="col-md-3 control-label"> Product Images </label> 
+				<div class="form-group" id="displayProdImages"></div>
 				<div class="form-group"><!-- form-group Begin -->
                           
-                          <input name="product_img1" type="file" class="form-control" id="update_prodImg1" >
+                          <input name="upload_prodImgs1" type="file" class="form-control" id="upload_prodImg1" >
                        
                  </div><!-- form-group Finish -->
                    
                    <div class="form-group"><!-- form-group Begin -->
                           
-                          <input name="product_img2" type="file" class="form-control" id="update_prodImg2">
+                          <input name="upload_prodImgs2" type="file" class="form-control" id="upload_prodImg2">
                        
                    </div><!-- form-group Finish -->
                    
                    <div class="form-group"><!-- form-group Begin -->
                           
-                          <input name="product_img3" type="file" class="form-control form-height-custom" id="update_prodImg3">
+                          <input name="upload_prodImgs3" type="file" class="form-control form-height-custom" id="upload_prodImg3">
                        
                    </div><!-- form-group Finish -->
 				<div class="form-group"><!-- form-group Begin -->
@@ -204,13 +94,15 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="modal fade" id="updateVarModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalCenterTitle">Update Product</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+				<h4 class="modal-title" id="modalLabel">Update Product</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
@@ -222,6 +114,7 @@
 						<input name="product_name" type="text" class="form-control" id="update_varName">
                    </div><!-- form-group Finish -->
 				<label class="col-md-3 control-label"> Product Images </label> 
+				<div class="form-group" id="displayVarProdImages"></div>
 				<div class="form-group"><!-- form-group Begin -->
                           
                           <input name="product_img1" type="file" class="form-control" id="update_prodImg1" >
@@ -249,8 +142,8 @@
 				</div><!-- form-group Finish -->
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-dark" onclick="UpdateVarDetails()">Save changes</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success" onclick="UpdateVarDetails()">Save changes</button>
 				<input type="hidden" id="hiddenvardata">
 			</div>
 			</div>
@@ -261,15 +154,76 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalCenterTitle">Are you sure you want to delete <?php echo $pro_var; ?>?</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<h4 class="modal-title" id="modalLabel">Delete Product?</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
 			</div>
 			<div class="modal-body">
-				...
+				<div class="form-group">
+					<label for="del_prodID">Product ID</label>
+					<input type="text" class="form-control" id="del_prodID" disabled>
+				</div>
+				<div class="form-group"><!-- form-group Begin -->
+                      <label for="del_prodName" class="col-md-3 control-label"> Product Name </label> 
+						<input name="product_name" type="text" class="form-control" id="del_prodName" disabled>
+                   </div><!-- form-group Finish -->
+				<div class="form-group">
+					<label for="del_prodInfo">Product Info</label><br>
+					<textarea name="del_prodInfo" cols="19" rows="6" class="form-control" id="del_prodInfo" disabled></textarea>
+				</div>
+				
+				<label class="col-md-3 control-label"> Product Images </label> 
+				<div id="displayDelProdImages"></div>
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="del_price" class="col-md-3 control-label"> Product Price </label> 
+					<input name="product_price" type="text" class="form-control" id="del_price" disabled>
+				</div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="del_quantity" class="col-md-3 control-label"> Quantity </label> 
+					<input name="product_quantity" type="text" class="form-control"  id="del_quantity" disabled>
+				</div><!-- form-group Finish -->
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<input type="hidden" id="hiddendeldata">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger" onclick="deleteDetails()">Delete</button>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="deleteVarModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalCenterTitle">Delete Product?</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="del_varID">Product ID</label>
+					<input type="text" class="form-control" id="del_varID" disabled>
+				</div>
+				<div class="form-group"><!-- form-group Begin -->
+                      <label for="del_varName" class="col-md-3 control-label"> Variation Name </label> 
+						<input name="product_name" type="text" class="form-control" id="del_varName" disabled>
+                   </div><!-- form-group Finish -->
+				<label class="col-md-3 control-label"> Product Images </label> 
+				<div class="form-group" id="displayDelVarProdImages"></div>
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="del_varprice" class="col-md-3 control-label"> Product Price </label> 
+					<input name="product_price" type="text" class="form-control" id="del_varprice" disabled>
+				</div><!-- form-group Finish -->
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="del_varquantity" class="col-md-3 control-label"> Quantity </label> 
+					<input name="product_quantity" type="text" class="form-control"  id="del_varquantity" disabled>
+				</div><!-- form-group Finish -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger" onclick="deleteVarDetails()">Delete</button>
+				<input type="hidden" id="hiddendelvardata">
 			</div>
 			</div>
 		</div>
@@ -299,9 +253,10 @@
 
 	<script>
 	
-		$(document).ready(function(){
+	$(document).ready(function(){
 				displayData(),
 				displayCatalog();
+				displayDelCategory();
 		});
 		
 		function displayCatalog(){
@@ -314,6 +269,84 @@
 				},
 				success:function(data,status){
 					$('#displayCatList').html(data);
+				}
+			})
+		}
+		
+		function displayDelCategory(){
+			var displayDelCategory="true";
+			$.ajax({
+				url:"includes/admin_products.inc.php",
+				type:'post',
+				data:{
+					displayCatSend: displayDelCategory
+				},
+				success:function(data,status){
+					$('#displayDelCatList').html(data);
+				}
+			})
+		}
+		
+		function displayImages(){
+			var displayImages="true";
+			var hiddenimgdata=$('#hiddendata').val();
+			$.ajax({
+				url:"includes/admin_products.inc.php",
+				type:'post',
+				data:{
+					displayImgSend: displayImages,
+					hiddenimgdata:hiddenimgdata
+				},
+				success:function(data,status){
+					$('#displayProdImages').html(data);
+				}
+			})
+		}
+		
+		function displayVarImages(){
+			var displayVarImages="true";
+			var hiddenimgdata=$('#hiddenvardata').val();
+			$.ajax({
+				url:"includes/admin_products.inc.php",
+				type:'post',
+				data:{
+					displayVarImgSend: displayVarImages,
+					hiddenimgdata:hiddenimgdata
+				},
+				success:function(data,status){
+					$('#displayVarProdImages').html(data);
+				}
+			})
+		}
+		
+		function displayDelImages(){
+			var displayDelImages="true";
+			var hiddenimgdata=$('#hiddendeldata').val();
+			$.ajax({
+				url:"includes/admin_products.inc.php",
+				type:'post',
+				data:{
+					displayImgSend: displayDelImages,
+					hiddenimgdata:hiddenimgdata
+				},
+				success:function(data,status){
+					$('#displayDelProdImages').html(data);
+				}
+			})
+		}
+		
+		function displayDelVarImages(){
+			var displayDelVarImages="true";
+			var hiddenimgdata=$('#hiddendelvardata').val();
+			$.ajax({
+				url:"includes/admin_products.inc.php",
+				type:'post',
+				data:{
+					displayVarImgSend: displayDelVarImages,
+					hiddenimgdata:hiddenimgdata
+				},
+				success:function(data,status){
+					$('#displayDelVarProdImages').html(data);
 				}
 			})
 		}
@@ -333,8 +366,6 @@
 		}
 		
 		function DeleteProduct(deleteid){
-			
-			var deleteid=$('#pro_id').val();
 	
 			$.ajax({
 				url:"includes/admin_products.inc.php",
@@ -372,14 +403,12 @@
 				$('#update_prodName').val(prodID.prodName)
 				$('#update_prodInfo').val(prodID.prodInfo)
 				$('#update_catID').val(prodID.catID)
-				/*$('#update_prodImg1').val(prodID.prodImg1)
-				$('#update_prodImg2').val(prodID.prodImg2)
-				$('#update_prodImg3').val(prodID.prodImg3) */
 				$('#update_price').val(prodID.price)
 				$('#update_quantity').val(prodID.quantity)
 			});
 			
 			$('#updateModal').modal('show');
+			displayImages();
 		}
 		
 		function GetVarDetails(updatevarid){
@@ -389,14 +418,43 @@
 				var varID = JSON.parse(data);
 				$('#update_varID').val(varID.prodID)
 				$('#update_varName').val(varID.prodVariation)
-				/* $('#update_prodImg1').val(varID.prodImg1)
-				$('#update_prodImg2').val(varID.prodImg2)
-				$('#update_prodImg3').val(varID.prodImg3) */
 				$('#update_varprice').val(varID.price)
 				$('#update_varquantity').val(varID.quantity)
 			});
 			
 			$('#updateVarModal').modal('show');
+			displayVarImages();
+		}
+		
+		function GetDelDetails(updateid){
+			$('#hiddendeldata').val(updateid);
+			
+			$.post("includes/admin_products.inc.php", {delid:updateid}, function(data,status){
+				var prodID = JSON.parse(data);
+				$('#del_prodID').val(prodID.prodID)
+				$('#del_prodName').val(prodID.prodName)
+				$('#del_prodInfo').val(prodID.prodInfo)
+				$('#del_price').val(prodID.price)
+				$('#del_quantity').val(prodID.quantity)
+			});
+			
+			$('#deleteModal').modal('show');
+			displayDelImages();
+		}
+		
+		function GetDelVarDetails(updatevarid){
+			$('#hiddendelvardata').val(updatevarid);
+			
+			$.post("includes/admin_products.inc.php", {delvarid:updatevarid}, function(data,status){
+				var varID = JSON.parse(data);
+				$('#del_varID').val(varID.prodID)
+				$('#del_varName').val(varID.prodVariation)
+				$('#del_varprice').val(varID.price)
+				$('#del_varquantity').val(varID.quantity)
+			});
+			
+			$('#deleteVarModal').modal('show');
+			displayDelVarImages();
 		}
 		
 		function updateDetails(){
@@ -404,6 +462,9 @@
 			var update_prodInfo=$('#update_prodInfo').val();
 			var update_catID=$('#update_catID').val();
 			var update_price=$('#update_price').val();
+			var update_prodImg1=$('#upload_prodImg1').val();
+			var update_prodImg2=$('#upload_prodImg2').val();
+			var update_prodImg3=$('#upload_prodImg3').val();
 			var update_quantity=$('#update_quantity').val();
 			var hiddendata=$('#hiddendata').val();
 			
@@ -413,6 +474,9 @@
 				update_catID:update_catID,
 				update_quantity:update_quantity,
 				update_price:update_price,
+				update_prodImg1:update_prodImg1,
+				update_prodImg2:update_prodImg2,
+				update_prodImg3:update_prodImg3,
 				hiddendata:hiddendata
 				}, function(data,status){
 					$('#updateModal').modal('hide');
@@ -438,19 +502,32 @@
 			});
 			
 		}
-	
-	
-		// var deleteForm = document.getElementById('addressForm'),
-		// button = document.getElementById('delete-icon'),
-		// submitForm = function(e){
-		//     e.preventDefault();
-		//     deleteForm.submit();
-		// };
-		// button.addEventListener("click",submitForm);
+		
+		function deleteDetails(){
+			var hiddendata=$('#hiddendeldata').val();
+			
+			$.post("includes/admin_products.inc.php", {
+				hiddendeldata:hiddendata
+				}, function(data,status){
+					$('#deleteModal').modal('hide');
+					displayData();
+			});
+			
+		}
+		
+		function deleteVarDetails(){
+			var hiddendata=$('#hiddendelvardata').val();
+			
+			$.post("includes/admin_products.inc.php", {
+				hiddendelvardata:hiddendata
+				}, function(data,status){
+					$('#deleteVarModal').modal('hide');
+					displayData();
+			});
+			
+		}
 	</script>
 
 </body>
-
-
 
 </html>

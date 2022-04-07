@@ -32,11 +32,11 @@
                         if(isset($_GET['refno'])){
                             $ref_no = $_GET['refno'];
                         
-                        echo "<input type='text' oninvalid='this.setCustomValidity('Enter Numbers')' onkeydown='return validateIsNumericInput(event)' name='track-reference' class='text-box text-center'
+                        echo "<input type='text' onkeydown='return validateIsNumericInput(event)' name='track-reference' class='text-box text-center'
                         value='$ref_no' required>";
                         } 
                         else{
-                            echo "<input type='text' oninvalid='this.setCustomValidity('Enter Numbers')' onkeydown='return validateIsNumericInput(event)' name='track-reference' class='text-box text-center'
+                            echo "<input type='text' onkeydown='return validateIsNumericInput(event)' name='track-reference' class='text-box text-center'
                             placeholder='Enter your reference number' required>";
                         }
                       ?>
@@ -97,7 +97,22 @@
 
            
         </div>
-
+        
+        <?php
+        if (isset($_GET["action"])) {
+            if ($_GET["action"] == "notfound") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Reference number not found. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
+        }
+        ?>
 
 
         <!--Bootsrap JS cdn-->

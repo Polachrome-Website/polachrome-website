@@ -3,10 +3,13 @@
 	
 	extract($_POST);
 	
-	if(isset($_POST['deletesend'])){
-		$unique=$_POST['deletesend'];
-		$sql = "DELETE from products WHERE prodID='".$unique."'";
-		$result = mysqli_query($conn,$sql);
+	if(isset($_POST['hiddendeldata'])){
+		$unique=$_POST['hiddendeldata'];
+		$queryorders = "DELETE from tbl_orders WHERE invoice_no='".$unique."'";
+		$result = mysqli_query($conn,$queryorders);
+
+        $querycustomers = "DELETE from tbl_orders_customers WHERE invoice_no='".$unique."'";
+        $result = mysqli_query($conn,$querycustomers);
 		
 	}
 	
@@ -47,6 +50,10 @@
                                 $order_status = $row_order['order_status'];
                                 $payment_proof = $row_order['payment_proof'];
                                 
+                                if(is_null($payment_proof)){
+                                    $null_payment = "N/A";
+                                }
+                                
                                 $get_products = "select * from products where prodID='$pro_id_order'";
                                 $run_products = mysqli_query($conn, $get_products);
                                 while ($row_products = mysqli_fetch_assoc($run_products)){
@@ -67,13 +74,14 @@
 								$i++;
 								$table.='<tr>
 									<td>'.$invoice_no.'</td>
-									<td>'.$pro_name.' 
-										
-									</td>
+									<td>'.$pro_name.' </td>
 									<td>'.$amount_order.'</td>
 									<td>'.$pro_qty_order.'</td>
+                                    
 									<td> 
-										<img src="../img/payments/'.$payment_proof.'" width="60" height="60">
+                                        <a href="#" class="pop">
+                                            <img src="../img/payments/'.$payment_proof.'" width="60" height="60">
+                                        </a>
 									</td>
 		
 									<td>
@@ -89,9 +97,10 @@
 											More Details
 										</button>
 
-										<button class = "btn btn-danger" onclick="DeleteProduct('.$invoice_no.')">Delete</button>
+										<button class = "btn btn-danger" onclick="GetDelDetails('.$invoice_no.')">Delete</button>
 									</td>
 									</tr><!-- tr finish -->
+
 									';
 									
 											
@@ -121,9 +130,10 @@
 	
 	if(isset($_POST['updateid'])){
 		
-		$prodID=$_POST['updateid'];
+		$invoice=$_POST['updateid'];
 		
-		$sql = "SELECT * FROM products WHERE prodID = $prodID";
+		$sql = "SELECT * FROM tbl_orders_customers where invoice_no=$invoice";
+  
 		$result = mysqli_query($conn, $sql);
 		$response = array();
 		while($row = mysqli_fetch_assoc($result)){
@@ -153,15 +163,17 @@
 	}
 	
 	if(isset($_POST['hiddendata'])){
+
 		$uniqueid=$_POST['hiddendata'];
-		$prodName=$_POST['update_prodName'];
-		$product_info = $_POST['update_prodInfo'];
-		$catID=$_POST['update_catID'];
-		$price=$_POST['update_price'];
-		$quantity=$_POST['update_quantity'];
-		
-		$sql = "UPDATE products SET prodName='".$prodName."', catID='".$catID."', price='".$price."', quantity='".$quantity."' WHERE prodID='".$uniqueid."'";
+		$update_order_status=$_POST['update_order_status'];
+
+        $sql = "UPDATE tbl_orders_customers SET order_status='$update_order_status' WHERE invoice_no='$uniqueid'";
+		// $sql = "UPDATE products SET prodName='".$prodName."', catID='".$catID."', price='".$price."', quantity='".$quantity."' WHERE prodID='".$uniqueid."'";
 		$result = mysqli_query($conn, $sql);
+
+        $sql_two = "UPDATE tbl_orders SET order_status='$update_order_status' WHERE invoice_no='$uniqueid'";
+        $result = mysqli_query($conn, $sql_two);
+
 	}
 	
 	if(isset($_POST['hiddenvardata'])){
@@ -172,6 +184,22 @@
 		
 		$sql = "UPDATE product_variation SET prodVariation='".$prodName."', price='".$price."', quantity='".$quantity."' WHERE varID='".$uniqueid."'";
 		$result = mysqli_query($conn, $sql);
+	}
+
+    if(isset($_POST['delid'])){
+		
+		$invoice_no=$_POST['delid'];
+		
+		$sql = "SELECT * FROM tbl_orders_customers WHERE invoice_no = $invoice_no";
+		$result = mysqli_query($conn, $sql);
+		$response = array();
+		while($row = mysqli_fetch_assoc($result)){
+			$response = $row;
+		}
+		echo json_encode($response);
+	}else{
+		$response['status']=200;
+		$response['message']="Invalid or data not found";
 	}
 	
 ?>

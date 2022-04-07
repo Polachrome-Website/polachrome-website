@@ -24,8 +24,11 @@
         <!--Body-->
        <div class="container">
            <h1>Products</h1>
-              
-            <div class="row"> 
+           <form action="includes/search.inc.php" method="post">
+            <input type="text" id="search_text" name="search-txt" class="search-data" placeholder="What are you looking for..." required>
+            <button type="submit" name="submit-search" class="fas fa-search"></button>
+          </form>
+            <div class="row" id="row-products">
                 
                 <?php
 
@@ -161,6 +164,9 @@
                 }
             });
 
+        </script>
+        <script>
+                     
         </script>
 
     

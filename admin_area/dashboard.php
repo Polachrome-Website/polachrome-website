@@ -79,14 +79,14 @@
                     <div class="col-xs-9 text-right"><!-- col-xs-9 text-right begin -->
                         <div class="huge"> <?php echo $count_customers; ?> </div>
                            
-                        <div> Customers </div>
+                        <div> Registered Users </div>
                         
                     </div><!-- col-xs-9 text-right finish -->
                     
                 </div><!-- panel-heading row finish -->
             </div><!-- panel-heading finish -->
             
-            <a href="index.php?view_customers"><!-- a href begin -->
+            <a href="index.php?view_registered"><!-- a href begin -->
                 <div class="panel-footer"><!-- panel-footer begin -->
                    
                     <span class="pull-left"><!-- pull-left begin -->
@@ -126,7 +126,7 @@
                 </div><!-- panel-heading row finish -->
             </div><!-- panel-heading finish -->
             
-            <a href="index.php?view_p_cats"><!-- a href begin -->
+            <a href="#"><!-- a href begin -->
                 <div class="panel-footer"><!-- panel-footer begin -->
                    
                     <span class="pull-left"><!-- pull-left begin -->
@@ -276,23 +276,7 @@
                           <td> <?php echo $qty; ?> </td>
                           <td> <?php echo $amount; ?> </td>
                           <td> <?php echo $order_date; ?> </td>
-                          <td>
-                              
-                              <?php 
-                              
-                                  if($order_status=='Pending'){
-                                      
-                                      echo $order_status='Pending';
-                                      
-                                  }else{
-                                      
-                                      echo $order_status='Complete';
-                                      
-                                  }
-                              
-                              ?>
-                              
-                          </td>
+                          <td> <?php echo $order_status; ?> </td>
                           
                       </tr><!-- tr finish -->
                       
@@ -333,9 +317,19 @@
                     <h5 class="text-muted"> Welcome, Admin! </h5>
                     
                     <p><!-- p begin -->
+
+                        <?php 
+                            $count_good = $count_products - $count_low;
+                        ?>
                         
                         Today is <?php echo date("Y-m-d") ?> <br/>
-                        There are total of ---- orders. <br/> Products are on good stock. Echo number of products that are low on stock have a link to redirect them to view products.
+                        There are total of <strong><?php echo $count_pending_orders ?></strong> orders. 
+                        <a href="index.php?view_orders">View Orders.</a>
+                        <br/></br>
+
+                        <?php echo $count_good ?> Products are on good stock. <br>
+                        <strong style="color:red;"><?php echo $count_low ?></strong> items are low on stock with less than 5 remaining.
+                        <a href="index.php?view_products">View Products.</a>
                         
                     </p><!-- p finish -->
                     

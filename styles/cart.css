@@ -1,8 +1,8 @@
 .btn-increment-decrement {
   display: inline-block;
-  padding: 5px 0px;
+  padding: 2px 0px;
   background: #e2e2e2;
-  width: 30px;
+  width: 25px;
   text-align: center;
   cursor:pointer;
 }
@@ -90,9 +90,9 @@ body{
 }
 
 .product-price p{
-  margin-top: 8.3px;
+  margin-top: 8px;
   font-size: 17px;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-right: 10px;
 }
 

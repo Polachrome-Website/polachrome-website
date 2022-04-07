@@ -175,32 +175,47 @@
                         <div class="row mb-3">
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" name="shipping_reg_pro_cit_brgy"
-                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Barangay, City, Province";}?>"
-                                value = "<?php if(isset($_SESSION["userID"]))
-                                { echo $address_brgy . ", " . $address_city . ", " . $address_region;}?>" required>
+                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Barangay, City, Province"; }
+                                if(isset($_SESSION["userID"])){ 
+                                    if(empty($address_brgy) && empty($address_city) && empty($address_region)){ echo "Barangay, City, Province"; }
+                                } ?>"
+                                value = "<?php if(isset($_SESSION["userID"])){ 
+                                    if(isset($address_brgy) && isset($address_city) && isset($address_region)){
+                                        echo $address_brgy . ", " . $address_city . ", " . $address_region;
+                                    }
+                                }
+                                
+                                ?>" 
+                                
+                                required>
                             </div>
                         </div>
                         <div class="row mb-3">
-                          
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" name="shipping_strt_bldg_hn"
-                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Street Name, Building, House no.";}?>"
-                                value = "<?php if(isset($_SESSION["userID"]))
-                                { echo $address_strt . ", " . $address_bldg;}?>" required>
+                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Street Name, Building, House no.";}
+                                if(isset($_SESSION["userID"])){ 
+                                    if(empty($address_strt) && empty($address_bldg)){ echo "Street Name, Building, House no.";}
+                                }?>"
+                                value = "<?php if(isset($_SESSION["userID"])){if(isset($address_strt) && isset($address_bldg)){echo $address_strt . ", " . $address_bldg;}
+                                }?>" required>
                             </div>
                         </div>
                         <div class="row mb-3 align-items-center g-3">
                             <div class="col-sm-6">
                                 <input type="text" class="form-control myInput" name="shipping_contact"
-                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Phone Number";}?>"
-                                value = "<?php if(isset($_SESSION["userID"])){ echo $address_contact;}?>"
-                                oninvalid="this.setCustomValidity('Enter Numers')" onkeydown="return validateIsNumericInput(event)" required>
+                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Phone Number";}
+                                 if(isset($_SESSION["userID"])){ if(empty($address_contact)){ echo "Phone Number";}}
+                                ?>"
+                                value = "<?php if(isset($_SESSION["userID"])){if(isset($address_contact)){echo $address_contact;}}?>"
+                                onkeydown="return validateIsNumericInput(event)" required>
                             </div>
                             <div class="col-sm-6">
                                     <input type="text" class="form-control myInput" name="shipping_zip" 
-                                    placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Postal Code";}?>"
-                                    value = "<?php if(isset($_SESSION["userID"])){ echo $address_zip;}?>"
-                                    oninvalid="this.setCustomValidity('Enter Numers')" onkeydown="return validateIsNumericInput(event)" required>
+                                    placeholder= "<?php if(!isset($_SESSION["userID"])){echo "Postal Code";}
+                                     if(isset($_SESSION["userID"])){ if(empty($address_zip)){echo "Postal Code";}}?>"
+                                    value = "<?php if(isset($_SESSION["userID"])){if(isset($address_zip)){echo $address_zip;}}?>"
+                                    onkeydown="return validateIsNumericInput(event)" required>
                             </div>
                         </div>
                         <?php
@@ -224,7 +239,7 @@
             </div>
             </form>   <!--end shipping form-->    
         </div>
-    <script src="navbar.js"></script>
+    <script src="scripts/navbar.js"></script>
 
     <script>
 

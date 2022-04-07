@@ -2,11 +2,16 @@
 
     // $active = 'Cart';
     include("includes/header.php");
-
+   
     if (isset($_POST['add-cart'])){
         print_r($_POST['prodID']);
     }
 
+    if($count==0){
+        //  echo "<script> console.log('WALA LAMAN CART MO');</script>";
+        echo "<script>window.open('product.php','_self')</script>";
+        exit();
+    }else{
 ?>
 
 
@@ -19,14 +24,14 @@
     <script>
 
    function increment_quantity(cart_id, price) {
-    // var productQuantity = $("$product-quantity");
+    var productQuantity = $("#product-quantity");
     var inputQuantityElement = $("#input-quantity-"+cart_id);
 
-    // if($(productQuantity).val() >= $(inputQuantityElement).val()){
+    if($(productQuantity).val()-1 >= $(inputQuantityElement).val()){
         var newQuantity = parseInt($(inputQuantityElement).val())+1;
         var newPrice = newQuantity * price;
         save_to_db(cart_id, newQuantity, newPrice);
-    // }
+    }
  
 }
 
@@ -45,9 +50,11 @@
         var priceElement = $("#cart-price-"+cart_id);
         $.ajax({
             url : "update_cart_quantity.php",
-            data : "cart_id="+cart_id+"&new_quantity="+new_quantity,
+            // data : "cart_id="+cart_id+"&new_quantity="+new_quantity,
+            data:{cart_id:cart_id, new_quantity:new_quantity},
             type : 'post',
             success : function(response) {
+                console.log(response);
                 $(inputQuantityElement).val(new_quantity);
                 $(priceElement).text("₱"+newPrice);
                 var totalQuantity = 0;
@@ -62,7 +69,7 @@
                     totalItemPrice = parseInt(totalItemPrice) + parseInt(cart_price);
                 });
 
-                $("#total-price").text(totalItemPrice);
+                $("#total-price").text("₱"+totalItemPrice);
             }
         });
     }
@@ -147,6 +154,8 @@
 
                     $product_img1 = $row_products['prodImg1'];
 
+                    $pro_price = $row_products['price'];
+
                     $product_quantity = $row_products['quantity'];
 
                     $only_price = $row_products['price'];
@@ -181,8 +190,12 @@
                             <div class="cart-header">
                                     <div class="product-info">
                                         <p class="product-name"><?php echo $_SESSION['product_title'];?></p>
-                                        <p class="product-variation">Color: White</p>
-                                        <p class="stocks"><?php echo "$product_quantity";?> stocks left!</i></p>
+                                        <p class="product-variation">Variation: Black</p>
+                                        <!-- <p class="stocks"><?php echo "$product_quantity";?> stocks left!</i></p> -->
+                                       
+                                        <p class="stocks">
+                                            <?php if($product_quantity <=5 ){echo $product_quantity . " stocks left!";} ?>
+                                       </i></p>
                                     </div>
                                     <!--product price in mobile ver-->
                                     <div class="product-price">
@@ -192,7 +205,7 @@
                             </div>
 
                             <div class="unit-price">
-                                <h6> ₱<?php echo "$only_price";?></h6>
+                                <p> ₱<?php echo "$only_price";?></p>
                             </div>
                             <div class="quantity-controls-md">
                                 <div class="quantity-edit-controls">
@@ -200,7 +213,7 @@
                                 <input type="hidden" id="product-quantity" value="<?php echo $row_products["quantity"]; ?>" readonly/>
                                 
                                 <div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
-                                <input type="number" class="input-quantity" id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
+                                <input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
                         
 
                                     <!-- <button>-</button>
@@ -213,24 +226,35 @@
                                 </div>
                             </div>
                             <div class="product-total" id="cart-price-<?php echo $row_cart["cart_id"]; ?>">
-                                <h6>₱<?php echo "$sub_total";?></h6>
+                                <p>₱<?php echo "$sub_total";?></p>
                             </div>
                             <div class="remove-md">
                                 <!-- <button type="submit" name="update"><span>Remove Item</span></button> -->
                                 <a id="remove-item" href="cart.php?action=remove&id=<?php echo $row_cart["cart_id"]; ?>">
-                                    Remove 
+                                    Remove Item
                                 </a>
                             </div>
                            
                             <!--remove item and quantity btn in mobile ver-->
                             <div class="cart-controls-sm">
                                 <div class="remove">
-                                    <span>Remove Item</span>
+                                    <a id="remove-item" href="cart.php?action=remove&id=<?php echo $row_cart["cart_id"]; ?>">
+                                        Remove Item
+                                    </a>
                                 </div>
                                 <div class="cart-quantity-controls-sm">
-                                    <button>-</button>
-                                    <input type="number" value="1"/>
-                                    <button>+</button>
+                                <input type="hidden" id="product-quantity" value="<?php echo $row_products["quantity"]; ?>" readonly/>
+                                
+                                <div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
+                                <input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
+                        
+
+                                    <!-- <button>-</button>
+                                    <input type="number " value="1" readonly/>
+                                    <button>+</button> -->
+
+                                <div class="btn-increment-decrement"
+                                onClick="increment_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">+</div>
                                 </div>   
                             </div>
 
@@ -246,9 +270,10 @@
             </div> <!--End mycart -->
                 <!--Action Buttons-->
                 <div class="checkout-subtotal">
-                    <div class="product-subtotal" id="cart-tot-price-<?php echo $row_cart["cart_id"]; ?>">
+                    <!-- <div class="product-subtotal" id="cart-tot-price-<?php echo $row_cart["cart_id"]; ?>"> -->
+                    <div class="product-subtotal">
                         <p>Subtotal:</p>
-                        <p class="sub-price" >
+                        <p class="sub-price" id="total-price" >
                             ₱<?php if($total>0){ echo $total; } else{echo "0.00";}?>
                         </p>
                     </div>
@@ -320,5 +345,5 @@
     </div>
 </footer>
 <!--End of footer section-->
-
+<?php } //end else statement if cart has item?> 
 </html>

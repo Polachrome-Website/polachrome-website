@@ -216,6 +216,7 @@ function loginUser($conn, $userName, $password){
         $_SESSION["userName"] = $uidExists["userName"];
         $_SESSION["fullName"] = $uidExists["fullName"];
         $_SESSION["email"] = $uidExists["email"];
+    
 
 
         header("location: ../index.php");
@@ -248,6 +249,87 @@ function adminUser($conn, $userName, $password){
             
     }
 
+}
+
+extract($_POST);
+
+if(isset($_POST['passUID'])){
+    include 'db.php';
+    $uniqueid=$_POST['passUID'];
+    $oldpw=$_POST['oldpw'];
+    $newpw=$_POST['newpw'];
+    $confpw=$_POST['confpw'];
+    
+    $sql = "SELECT password from user_account WHERE userID='".$uniqueid."'";
+    $query = mysqli_query($conn,$sql);
+    $result = mysqli_fetch_assoc($query);
+    $resultstring = $result['password'];
+    
+    if(password_verify($oldpw, $resultstring)) {
+        if(pwdStrength($newpw) !== false){
+            $divcontent = "Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character (!,@,#,$,%,^)";
+        } elseif ($newpw == $confpw) {
+            $newPwdHash = password_hash($newpw, PASSWORD_DEFAULT);
+            $sql = "UPDATE user_account SET password='".$newPwdHash."' WHERE userID='".$uniqueid."'";
+            $result = mysqli_query($conn,$sql);
+            $divcontent = "Password updated!";
+        } elseif ($newpw != $confpw) {
+            $divcontent = "New Password and Confirmation do not match.";
+        }
+    } else {
+        $divcontent = "Old Password mismatch.";
+    }
+    echo $divcontent;
+}
+
+if(isset($_POST['userUID'])){
+    include 'db.php';
+    $uniqueid=$_POST['userUID'];
+    $newfullname=$_POST['newfullname'];
+    $newusername=$_POST['newusername'];
+    $newemail=$_POST['newemail'];
+    $updatepass = 0;
+    if(empty($newfullname)){
+        $divcontent = "Please fill name field.<br>";
+    } else {
+        $sql = "UPDATE user_account SET fullName='".$newfullname."' WHERE userID='".$uniqueid."'";
+        $result = mysqli_query($conn,$sql);
+        $divcontent = "Name updated!<br>";
+        $updatepass += 1;
+    }
+    
+    if (empty($newusername)){
+        $divcontent .= "Please fill username field.<br>";
+    } elseif (invalidUserName($newusername) !== false) {
+        $divcontent .= "Username is invalid.<br>";
+    } else {
+        $sql = "UPDATE user_account SET userName='".$newusername."' WHERE userID='".$uniqueid."'";
+        $result = mysqli_query($conn,$sql);
+        $divcontent .= "Username updated!<br>";
+        $updatepass += 1;
+    }
+    
+    if (empty($newemail)){
+        $divcontent .= "Please fill email field.<br>";
+    } elseif (invalidEmail($newemail) !== false) {
+        $divcontent .= "Email is invalid.<br>";
+    } else {
+        $sql = "UPDATE user_account SET email='".$newemail."' WHERE userID='".$uniqueid."'";
+        $result = mysqli_query($conn,$sql);
+        $divcontent .= "Email updated!<br>";
+        $updatepass += 1;
+    }
+    
+    if($updatepass >= 1){
+        $uidExists = uidExists($conn, $newusername, $newusername);
+        session_start();
+        $_SESSION["userName"] = $uidExists["userName"];
+        $_SESSION["fullName"] = $uidExists["fullName"];
+        $_SESSION["email"] = $uidExists["email"];
+    }
+    
+    echo $divcontent;
+    
 }
 ?>
 

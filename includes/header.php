@@ -136,8 +136,6 @@
             
             } 
 
-
-            
             nav .logo img{
             width: 100%;
             height: 27px;
@@ -199,7 +197,7 @@
 
 
             nav .cartnv{
-            width: 26% !important;
+            width: 23% !important;
             position: absolute;
             left: 61%;
             top: 25%;
@@ -234,7 +232,21 @@
             border: none;
             }
 
+            .loginbtn {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            padding-right: 13px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            }
+
             .userbtn:focus{
+            outline: none;
+            }
+
+            .loginbtn:focus{
             outline: none;
             }
 
@@ -277,6 +289,10 @@
             color: #f04231;
             }
 
+            .username:hover .loginbtn {
+            background-color: white;
+            color: #f04231;
+            }
 
             .shopping-cart{
             background-color: white;
@@ -501,6 +517,16 @@
                 }
             
                 }
+            
+                .isDisabled{
+                color: currentColor;
+                cursor: not-allowed;
+                opacity: 0.5;
+                text-decoration: none;
+                pointer-events: none;
+                cursor: not-allowed;
+                opacity: 0.5;
+                }
 
         </style>
         
@@ -559,10 +585,7 @@
                     if(isset($_SESSION['admin_email'])){
                         echo "Viewing as ADMIN";
                     }
-                    if(!isset($_SESSION["userID"]) && (!isset($_SESSION['admin_email'])) ){
-                       echo "<li><a class='red' href='login.php'>LOG IN</a></li>";
-                    //    echo "G_ID: ".$_SESSION['guest_id'];
-                    }
+                    
 
                 ?>
 
@@ -599,6 +622,16 @@
                                 </div>
                             </div>
                     ";
+                 }if(!isset($_SESSION["userID"]) && (!isset($_SESSION['admin_email'])) ){
+                    // echo "<li><a class='red' href='login.php'>LOG IN</a></li>";
+                 //    echo "G_ID: ".$_SESSION['guest_id'];
+
+                 echo "
+                            <div class='username'>
+                                <a href='login.php'><button class='loginbtn'> LOGIN </button></a>
+                                </div>
+                                ";
+
                  }
                  if(isset($_SESSION['admin_email'])){
                     echo "
@@ -636,6 +669,7 @@
                     $count = mysqli_num_rows($run_cart);
 
                     $total = 0;
+
             ?>
             
              <!--cart-dropdown displayed on the navbar-->
@@ -706,10 +740,24 @@
                             <?php } } //end loops for fetch cart and product ?> 
                         </div>
                         <div class="subtotal">Subtotal: ₱<?php if($total>0){ echo $total; } else{echo "0.00";}?></div>
-                        <a href="cart.php" >
-                            <div class="view-cart">View Cart</div>
-                        </a>
-                      
+                        
+                        <?php 
+                        if($count!=0){
+                            echo"
+                            <a href='cart.php' >
+                                <div class='view-cart'>View Cart</div>
+                            </a>
+                            ";
+                        }else{
+                            echo"
+                            <div class='isDisabled'>
+                            <a href='#' aria-disabled='true' >
+                                <div class='view-cart'>View Cart</div>
+                            </a>
+                            </div>
+                            ";
+                        }
+                        ?>
                     </div>
                 </div>
                 

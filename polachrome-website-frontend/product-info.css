@@ -13,11 +13,13 @@
 }
 body{
     line-height: 1.5;
+    background-color: white;
+
 }
 .card-wrapper{
     max-width: 1100px;
     margin: 50px auto;
-    margin-top: 150px;
+    margin-top: 100px;
     border: none;
 }
 img{
@@ -27,6 +29,7 @@ img{
 .img-display{
     overflow: hidden;
     border-radius: 25px;
+    height: 70%;
 }
 .img-showcase{
     display: flex;
@@ -36,12 +39,20 @@ img{
 }
 .img-showcase img{
     min-width: 100%;
+    background-size: contain;
 }
 .img-select{
-    display: flex;
+  display: flex;    
+}
+
+.img-select img{
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
 }
 .img-item{
     margin: 0.3rem;
+    height: 10px;
 }
 .img-item:nth-child(1),
 .img-item:nth-child(2),
@@ -60,7 +71,6 @@ img{
     font-weight: 700;
     position: relative;
     color: black;
-    margin-top: 20px;
 }
 
 .product-link{
@@ -196,7 +206,7 @@ li{
     .product-imgs{
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: top;
     }
     .product-content{
         padding-top: 0;
@@ -205,7 +215,7 @@ li{
 
 
 
-/*Navbar Section*/
+*Navbar Section*/
 
 /*for manipulation of the total number of items in the cart dropdown*/
 :root{
@@ -225,7 +235,7 @@ nav{
   align-items: center;
   height: 55px;
   padding: 0 30px;
-  
+  font-style: normal;
 } 
 
 
@@ -298,7 +308,7 @@ nav .cart{
   width: 26% !important;
   position: absolute;
   left: 62%;
-  top: 25%;
+  top: 24%;
   font-size: 15px;
   cursor: pointer;
 }
@@ -382,7 +392,6 @@ nav .cart-icon:hover{
   margin-right: 18px;
   margin-top: 7px;
 }
-
 
 h5{
   padding: 8px 7px;
@@ -550,6 +559,7 @@ a:hover{
     nav .cart-icon{
       position: absolute;
       right: 58px;
+      left: 0px;
     }
     
     nav .menu-icon{
@@ -574,9 +584,12 @@ a:hover{
       padding-left: 40px;
     }
     .shopping-cart{
-      margin-top: 27px;
-      margin-right: 77px;
+      position: absolute;
+      width: 290px;
+      top: 20px;
+      right: 52px;
     }
+    
   
   }   
 
@@ -587,17 +600,14 @@ a:hover{
         right: 63px;
       }
   
+      nav .cart{
+        width: 23%;
+      }
+
       nav .cart-icon{
-       position: absolute;
-       right: 64px;
-      }
-    
-      nav .cancel-search-icon.show{
-        display: block;
         position: absolute;
-        right: 162px;
+        right: 68px;
       }
-  
     }
 
     /*Footer section*/  

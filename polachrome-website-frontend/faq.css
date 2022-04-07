@@ -532,7 +532,8 @@ a:hover{
 footer{
   background-color: black;
   color:white;
-  position: fixed;
+  position: relative;
+  margin-top: 40px;
   bottom: 0px;
   width: 100%;
   height: min-content;

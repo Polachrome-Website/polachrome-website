@@ -45,27 +45,30 @@
             <span class="fas fa-times"></span>
           </div>
     
-          <form action="#">
-            <input type="search" class="search-data" placeholder="Search" required>
-            <button type="submit" class="fas fa-search"></button>
-          </form>
-    
-        <div class="user-icon">
-            <span class="fas fa-user"></span>
-        </div>
-        <div class="cart-icon">
-            <span class="fas fa-shopping-cart"></span>
-        </div>
+          <!--username displayed on the navbar-->
+          <div class="username">
+            <button class="userbtn">Admin</button>
+            <div class="username-content">
+              <a href="admin-dashboard.html"> <i class="fas fa-user"></i>My Profile</a>
+              <a href="login.html"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </div>
+          </div>
 
-        <div class="menu-icon">
-            <span class="fas fa-bars"></span>
-        </div>
-    </nav>
-        
+    <div class="menu-icon">
+        <span class="fas fa-bars"></span>
+    </div>
+</nav>
+
+
+    <!--Admin Dashboard Sidebar-->    
     <div class="sidebar-container">
       <div class="sidebar-logo">
         Admin
       </div>
+      <div class="sidebar-btn" id="btn">
+        <span class="fas fa-bars"></span>
+      </div>
+   
       <ul class="sidebar-navigation">
         <li>
           <a href="#" class="active">
@@ -105,6 +108,7 @@
       </ul>
     </div>
     
+    <!--Admin Dashboard Content-->
     <div class="content-container">
       <div class="container-fluid">
         <main class="mt-3 pt-3">
@@ -162,21 +166,58 @@
                   </div>
                 </div>
               </div>
-            </div>
-          
-  </div>
-</main>
-    
+            </div> 
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="orders">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        
-      </div>
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="orders">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card mt-3">
+                  <div class="card-body">
+                    <div class="orders">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="card mt-3">
+                  <div class="card-body">
+                    <div class="orders">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </main>    
     </div>
+</div>
+
+
+    
+    <script src="admin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 </body>
-
-
-
-
 
 
 </html>

@@ -155,6 +155,7 @@ input[type=search]::-webkit-search-cancel-button {
 
 /*Navbar Section*/
 
+
 /*for manipulation of the total number of items in the cart dropdown*/
 :root{
   --after-content:'3'
@@ -173,7 +174,6 @@ nav{
   align-items: center;
   height: 55px;
   padding: 0 30px;
-  
 } 
 
 
@@ -231,18 +231,22 @@ nav .search-icon{
   width: 40px;
   text-align: center;
   margin: 0 50px;
-  font-size: 18px;
+  font-size: 15px;
+  padding-top: 1px;
   color: #fff;
   cursor: pointer;
   display: none;
 }
 
+nav .cancel-icon{
+  padding-top: 3px;
+}
 
 nav .cart{
   width: 26% !important;
   position: absolute;
-  left: 61%;
-  top: 25%;
+  left: 62%;
+  top: 24%;
   font-size: 15px;
   cursor: pointer;
 }
@@ -265,10 +269,11 @@ nav .cart-icon:hover{
   color: black;
 }
 
+/*Username*/
 .userbtn {
   background-color: white;
   color: black;
-  padding-right: 13px;
+  padding-right: 5px;
   font-size: 16px;
   font-weight: 600;
   border: none;
@@ -281,6 +286,7 @@ nav .cart-icon:hover{
 .username {
   position: relative;
   display: inline-block;
+  padding-top: 0.3px;
 }
 
 .username-content {
@@ -317,14 +323,13 @@ nav .cart-icon:hover{
   color: #f04231;
 }
 
-
+/*cart-dropdown*/
 .shopping-cart{
   background-color: white;
   border: 1px solid #efefefef;
   margin-right: 18px;
   margin-top: 7px;
 }
-
 
 h5{
   padding: 8px 7px;
@@ -362,6 +367,7 @@ a:hover{
 
 .cart-icon{
   text-align: right;
+  margin-top: 1.85px;
 }
 
 .cart-item{
@@ -445,103 +451,102 @@ a:hover{
 
 }
 
-@media (max-width: 1140px) {
-  nav{
-    padding: 0px;
-    margin: 0px;
-  }
+  @media (max-width: 1140px) {
+    nav{
+      padding: 0px;
+      margin: 0px;
+    }
 
-  nav .logo img{
-    padding-left: 40px;
-    width: 100%;
-  }
+    nav .logo img{
+      padding-left: 40px;
+      width: 100%;
+    }
 
-  nav form{
-    position: absolute;
-    right: 140px;
-  }
-  nav .nav-items.active{
-    right: 0px;
-  }
-  nav .nav-items li{
-    line-height: 40px;
-    margin: 30px 0;
-  }
+    nav .nav-items.active{
+      right: 0px;
+    }
+    nav .nav-items li{
+      line-height: 40px;
+      margin: 30px 0;
+    }
 
-  nav .nav-items{
-    position: fixed;
-    padding: 10px 50px 0 50px;
-    text-align: center;
-    z-index: 99;
-    top: 48px;
-    width: 100%;
-    right: -100%;
-    height: 100%;
-    background: white;
-    display: inline-block;
-    transition: right 0.3s ease;
-  }
- 
-  nav .nav-items li a{
-    font-size: 15px;
-  }
+    nav .nav-items{
+      position: fixed;
+      padding: 10px 50px 0 50px;
+      text-align: center;
+      z-index: 99;
+      top: 48px;
+      width: 100%;
+      right: -100%;
+      height: 100%;
+      background: white;
+      display: inline-block;
+      transition: right 0.3s ease;
+    }
   
-  nav .menu-icon{
-    display: block;
-    position: absolute;
-    right: 0px;
-    font-size: 17px;
-    padding-left: 40px;
-  }
+    nav .nav-items li a{
+      font-size: 15px;
+    }
 
-  nav .username{
-    position: absolute;
-    right: 54px;
-    text-decoration: none;
-  }
- 
+    nav .username{
+      position: absolute;
+      right: 67px;
+      text-decoration: none;
+    }
 
-  nav .cart{
-    position: absolute;
-    left: 700px;
-  }  
+    nav .cart-icon{
+      position: absolute;
+      right: 58px;
+      left: 0px;
+    }
+    
+    nav .menu-icon{
+      display: block;
+      position: absolute;
+      right: 0px;
+      font-size: 17px;
+      padding-left: 40px;
+    }
   
-   
-  nav .menu-icon span{
-    display: block;
-    color: black;
-  }
-  nav .menu-icon span.hide,
-  nav .search-icon.hide{
-    display: none;
-  }
-  nav .cancel-icon.show{
-    display: block;
-    color:black;
-    padding-left: 40px;
-  }
- 
-}   
+    nav .menu-icon span{
+      display: block;
+      color: black;
+    }
+    nav .menu-icon span.hide,
+    nav .search-icon.hide{
+      display: none;
+    }
+    nav .cancel-icon.show{
+      display: block;
+      color:black;
+      padding-left: 40px;
+    }
+    .shopping-cart{
+      position: absolute;
+      width: 290px;
+      top: 20px;
+      right: 52px;
+    }
+    
   
+  }   
+
     @media (max-width: 767px){
     
       nav .username{
         position: absolute;
-        right: 60px;
+        right: 63px;
       }
   
       nav .cart{
-        right: 77px;
+        width: 23%;
       }
-    
-      nav .cancel-search-icon.show{
-           display: block;
-           position: absolute;
-           right: 162px;
+
+      nav .cart-icon{
+        position: absolute;
+        right: 68px;
       }
-  
     }
-  
   
   /*Footer section*/  
   footer{

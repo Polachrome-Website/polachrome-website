@@ -18,13 +18,12 @@ body{
   flex-direction: column;
 }
 .bg-img{
-  background-image: url(img/contact.avif);
+  background-color: whitesmoke;
   background-size: cover;
   min-height:75vh;
   position:relative;
   background-repeat: no-repeat;
   color:white;
-  text-shadow: 5px 5px 5px rgba(0,0,0,.2)
 }
  /*main body*/
  
@@ -47,7 +46,7 @@ body{
   }
   
   .contact-info{
-    background:#f4f4f4;
+    background:white;
     border-radius: 5px;
     color: black;
     max-width: 400px;
@@ -76,11 +75,11 @@ body{
     font-size: 40px;
     margin-top: 30px;
     margin-bottom: 30px;
-    font-weight: 500;
+    font-weight: 700;
   }
   
   .contact-form .text-box{
-    background: #f4f4f4;
+    background: white;
     color: black;
     border: none;
     width: calc(50% - 10px);
@@ -98,7 +97,7 @@ body{
   }
   
   .contact-form textarea{
-    background: #f4f4f4;
+    background: white;
     color: black;
     border: none;
     width: 100%;
@@ -149,6 +148,7 @@ body{
   
     .contact-form .text-box{
       width: 100%;
+      background-color: white;
     }
   }
   

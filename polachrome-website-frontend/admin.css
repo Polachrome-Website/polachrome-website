@@ -357,6 +357,7 @@ nav .nav-items li a{
   border: 1px solid #efefefef;
   min-width: 140px;
   z-index: 1;
+  right: 10px;
 }
 
 .username-content i{

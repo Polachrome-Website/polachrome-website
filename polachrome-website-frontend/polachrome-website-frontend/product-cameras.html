@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cameras</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--Bootsrap 4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!--Font Awesome icons-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+        <!--Main css-->
+        <link rel="stylesheet" href="product.css">
+    </head>
+    <body>
+        <!--Navbar-->
+        <nav>
+            <div class="logo">
+                <img src="img/logo.png" alt="PolaChrome-logo">
+            </div>
+            <div class="nav-items">
+                <li><a class="red" href="home.html">HOME</a></li>
+                <li><a class="orange"  href="faq.html">FAQs</a></li>
+                <li><a class="yellow" style="color:#ffb80c;" href="product.html">PRODUCT</a></li>
+                <li><a class="green"  href="about.html">ABOUT</a></li>
+                <li><a class="blue"  href="contact.html">CONTACT US</a></li>
+                <li><a class="red" href="testimonial.html">TESTIMONIALS</a></li>
+                <li><a class="orange" href="track-order.html">TRACK ORDER</a></li>
+            </div>
+
+            <div class="search-icon">
+                <span class="fas fa-search"></span>
+              </div>
+
+              <div class="cancel-search-icon">
+                <span class="fas fa-times"></span>
+              </div>
+        
+              <div class="cancel-icon">
+                <span class="fas fa-times"></span>
+              </div>
+        
+                   <!--username displayed on the navbar-->
+                   <div class="username">
+                    <button class="userbtn">Juan Dela Cruz</button>
+                    <div class="username-content">
+                      <a href="user-profile.html"> <i class="fas fa-user"></i>My Profile</a>
+                      <a href="login.html"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                    </div>
+                  </div>
+    
+                <!--cart-dropdown displayed on the navbar-->
+                <div class="cart">
+                    <div class="cart-icon"> 
+                        <!--cart-total-items is the display of the total number of items added to the cart-->
+                        <span class="fas fa-shopping-cart cart-total-items"></span>
+                    </div>
+                    <!--hide class is used for the javascript code to hide and display the shopping cart-->
+                    <div class="shopping-cart hide">
+                        <h5>My Cart</h5>
+                        <div class="cart-wrapper">
+                            <!--item added to cart-->
+                            <div class="cart-item">
+                                <img src="img/polaroid-lab.png">
+                                <div class="product-info">
+                                    <h6>Polaroid Lab</h6>
+                                    <div class="variation">Color: White</div>
+                                    <div class="other-info">
+                                        <span class="quantity">Qty: 1</span>
+                                        <span class="price">$350</span>
+                                    </div>
+                                </div>
+                                <div class="cancel"><i class="fas fa-times cancel-btn"></i></div>
+                            </div>
+                            <!--item added to cart-->
+                            <div class="cart-item">
+                                <img src="img/polaroid-lab.png">
+                                <div class="product-info">
+                                    <h6>Polaroid Lab</h6>
+                                    <div class="variation">Color: White</div>
+                                    <div class="other-info">
+                                        <span class="quantity">Qty: 1</span>
+                                        <span class="price">$350</span>
+                                    </div>
+                                </div>
+                                <div class="cancel"><i class="fas fa-times cancel-btn"></i></div>
+                            </div>
+                            <!--item added to cart-->
+                            <div class="cart-item">
+                                <img src="img/polaroid-lab.png">
+                                <div class="product-info">
+                                    <h6>Polaroid Lab</h6>
+                                    <div class="variation">Color: White</div>
+                                    <div class="other-info">
+                                        <span class="quantity">Qty: 1</span>
+                                        <span class="price">$350</span>
+                                    </div>
+                                </div>
+                                <div class="cancel"><i class="fas fa-times cancel-btn"></i></div>
+                            </div>
+                        </div>
+                        <div class="subtotal">Subtotal: $1,050</div>
+                        <a href="cart.html" >
+                            <div class="view-cart">View Cart</div>
+                        </a>
+                      
+                    </div>
+                </div>
+            <div class="menu-icon">
+                <span class="fas fa-bars"></span>
+            </div>
+        </nav>
+        <!--End of Navbar section-->
+
+        <!--Body-->
+       <div class="container">
+           <h1>Cameras</h1>
+          <form action="#">
+            <input type="search" class="search-data" placeholder="What are you looking for..." required>
+            <button type="submit" class="fas fa-search"></button>
+          </form>
+
+            <div class="row">
+                <!--Polaroid Go Instant Camera-->
+                <div class="col">
+                     <a href="product-gocam.html" class="card">
+                         <div class="prod-img" style="background-image: url(img/products/go_black_side.webp);"></div>
+                         <p>Polaroid Go Instant Camera</p>
+                         <h6>₱7,699.00</h6>
+                     </a>
+                 </div>
+ 
+                  <!--Polaroid Now Instant Camera-->
+                 <div class="col">
+                     <a href="product-now.html" class="card">
+                         <div class="prod-img" style="background-image: url(img/products/now_front-tilted.webp);"></div>
+                         <p>Polaroid Now Instant Camera</p>
+                         <h6>₱8,899.00</h6>
+                     </a>
+                 </div>
+ 
+                 <!--Polaroid Now+ Instant Camera-->
+                 <div class="col">
+                     <a href="product-nowP.html" class="card">
+                         <div class="prod-img" style="background-image: url(img/products/now+.webp);"></div>
+                         <p>Polaroid Now+ Instant Camera</p>
+                         <h6>₱10,999.00</h6>
+                     </a>
+                 </div>
+ 
+                 <!--Polaroid SX-70 SLR-->
+                 <div class="col">
+                     <a href="product-sx70.html" class="card">
+                         <div class="prod-img" style="background-image: url(img/products/sx70-slr.jpg);"></div>
+                         <p>Polaroid SX-70 SLR</p>
+                         <h6>₱26,999.00 - ₱29,999</h6>
+                     </a>
+                 </div>
+                 
+             </div>
+
+
+             <!--Pagination-->
+               <div class="pagination">
+                <ul> <!--pages or li are comes from javascript --> </ul>
+              </div>
+       </div>
+
+
+               <!--Pagination-->
+               <div class="pagination">
+                <ul> <!--pages or li are comes from javascript --> </ul>
+              </div>
+       </div>
+
+       
+
+
+        <!--Bootsrap JS cdn-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="navbar.js"></script>
+        <script src="cart-dropdown.js"></script>
+        <script src="product-pagination.js"></script>
+      
+    </body>
+    <!--Footer Section-->
+    <footer class="footer">
+            <div class="row">
+                <!--Logo-->   
+                <div class="col-lg-3 col-md-6 col sm-6">
+                    <div class="footer-about">
+                        <h3>We're here to help</h3>
+                        <p><a href="contact.html">Get in touch</a> with our customer service team.</p>
+                        <img src="img/mop.png">
+                    </div>
+                </div>
+
+                <!--About-->
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h6>ABOUT</h6>
+                        <ul class="social-icon">
+                        <li><a href="about.html">PolaChrome</a></li>
+                        <li><a href="features.html">Polaroid Features</a></li>
+                        <li><a href="chart.html">Comparison Chart</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Follow us-->
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h6>FOLLOW US</h6>
+                        <ul class="social-icon">
+                            <li><a href="https://www.facebook.com/PolaChrome/"><i class="fab fa-facebook"></i> PolaChrome</i></a></li>
+                            <li><a href="https://www.instagram.com/pola.chrome/"><i class="fab fa-instagram-square"></i> PolaChrome</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Certificates-->
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h6>CERTIFICATES</h6>
+                        <div class="dti-logo">
+                            <img src="img/dti.png">
+                        </div>       
+                    </div>
+                </div>
+            </div>
+
+            <!--Copyright-->
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer-copyright-text">
+                        <p>Copyright &copy; 2022 All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    <!--End of footer section-->
+        
+</html>

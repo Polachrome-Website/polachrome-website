@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <title>Payment</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="payment.css">
+            <!--Bootstrap Cdn-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <!--Font Awesome icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+   <!--Polaroid Font 
+   <link href="//db.onlinewebfonts.com/c/1e5b7f8cdbcb1e579a6e53aaadaf0b67?family=FF+Real+Head" rel="stylesheet" type="text/css"/>--> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    
+
+
+    </head>
+
+    <body>
+         <!--Navbar-->
+         <nav>
+            <div class="logo">
+                <img src="img/logo.png" alt="PolaChrome-logo">
+            </div>
+            <div class="nav-items">
+                <li><a class="red" href="home.html">HOME</a></li>
+                <li><a class="orange"  href="faq.html">FAQs</a></li>
+                <li><a class="yellow"  href="product.html">PRODUCT</a></li>
+                <li><a class="green"  href="about.html">ABOUT</a></li>
+                <li><a class="blue"  href="contact.html">CONTACT US</a></li>
+                <li><a class="red" href="testimonial.html">TESTIMONIALS</a></li>
+                <li><a class="orange" href="track-order.html">TRACK ORDER</a></li>
+            </div>
+
+            <div class="search-icon">
+                <span class="fas fa-search"></span>
+              </div>
+
+              <div class="cancel-search-icon">
+                <span class="fas fa-times"></span>
+              </div>
+        
+              <div class="cancel-icon">
+                <span class="fas fa-times"></span>
+              </div>
+        
+                       <!--username displayed on the navbar-->
+                       <div class="username">
+                        <button class="userbtn">Juan Dela Cruz</button>
+                        <div class="username-content">
+                          <a href="user-profile.html"> <i class="fas fa-user"></i>My Profile</a>
+                          <a href="login.html"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                        </div>
+                      </div>
+        
+                    <!--cart-dropdown displayed on the navbar-->
+                    <div class="cart">
+                        <div class="cart-icon"> 
+                            <!--cart-total-items is the display of the total number of items added to the cart-->
+                            <span class="fas fa-shopping-cart cart-total-items"></span>
+                        </div>
+                        <!--hide class is used for the javascript code to hide and display the shopping cart-->
+                        <div class="shopping-cart hide">
+                            <h5>My Cart</h5>
+                            <div class="cart-wrapper">
+                                <!--item added to cart-->
+                                <div class="cart-item">
+                                    <img src="img/polaroid-lab.png">
+                                    <div class="product-info">
+                                        <h6>Polaroid Lab</h6>
+                                        <div class="variation">Color: White</div>
+                                        <div class="other-info">
+                                            <span class="quantity">Qty: 1</span>
+                                            <span class="price">₱350</span>
+                                        </div>
+                                    </div>
+                                    <div class="cancel"><i class="fas fa-times cancel-btn"></i></div>
+                                </div>
+                                <!--item added to cart-->
+                                <div class="cart-item">
+                                    <img src="img/polaroid-lab.png">
+                                    <div class="product-info">
+                                        <h6>Polaroid Lab</h6>
+                                        <div class="variation">Color: White</div>
+                                        <div class="other-info">
+                                            <span class="quantity">Qty: 1</span>
+                                            <span class="price">₱350</span>
+                                        </div>
+                                    </div>
+                                    <div class="cancel"><i class="fas fa-times cancel-btn"></i></div>
+                                </div>
+                                <!--item added to cart-->
+                                <div class="cart-item">
+                                    <img src="img/polaroid-lab.png">
+                                    <div class="product-info">
+                                        <h6>Polaroid Lab</h6>
+                                        <div class="variation">Color: White</div>
+                                        <div class="other-info">
+                                            <span class="quantity">Qty: 1</span>
+                                            <span class="price">₱350</span>
+                                        </div>
+                                    </div>
+                                    <div class="cancel"><i class="fas fa-times cancel-btn"></i></div>
+                                </div>
+                            </div>
+                            <div class="subtotal">Subtotal: ₱1,050</div>
+                            <a href="cart.html" >
+                                <div class="view-cart">View Cart</div>
+                            </a>
+                          
+                        </div>
+                    </div>
+
+            <div class="menu-icon">
+                <span class="fas fa-bars"></span>
+            </div>
+        </nav>
+
+        <!--Breadcrumb Navigation-->
+        <div class="sub-nav">
+            <ul class="breadcrumbs">
+                <li class="breadcrumbs_item">
+                    <a href="cart.html" class="cart-link">Cart</a>
+                </li>
+                <li class="breadcrumbs_item">
+                    <a href="shipping.html" class="shipping-link ">Shipping</a>
+                </li>
+                <li class="breadcrumbs_item">
+                    <a href="payment.html" class="payment-link active">Payment</a>
+                </li>
+                <li class="breadcrumbs_item">
+                    <a href="summary.html" class="summary-link">Summary</a>
+                </li>
+            </ul>
+        </div>
+
+        <!--Cart-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 order-md-2">
+                    <div class="card mt-1">
+                        <div class="row-header">
+                            <div class="header-summary">Order Summary</div>
+                            <p class="total-items rounded-circle p-2">2</p>
+                        </div>
+    
+                        <div class="row item mb-3">
+                            <div class="col-3 align-self-center mt-2">
+                                <img class="img-fluid" src="img/polaroid-lab.png">
+                            </div>
+                            
+                            <div class="col-8 mt-3">
+                                <div class="row-div product">
+                                    <div class="row product-name">Polaroid Lab</div>
+                                    <div class="row price">₱350</div>    
+                                </div>
+                                <div class="row variation">Color: White</div>
+                                <div class="row quantity">Qty: 2</div>
+                            </div>
+                        </div>
+                    
+                        <div class="row item mb-3">
+                            <div class="col-3 align-self-center mt-2 ">
+                                <img class="img-fluid" src="img/polaroid-lab.png">
+                            </div>
+                            <div class="col-8 mt-3 ml-2">
+                                <div class="row-div product">
+                                    <div class="row product-name">Polaroid Lab</div>
+                                    <div class="row price">₱350</div>    
+                                </div>
+                                <div class="row variation">Color: White</div>
+                                <div class="row quantity">Qty: 2</div>
+                            </div>
+                        </div>
+                        <!--Action Buttons-->
+                        <div class="row-subtotal">
+                            <div class="row">Subtotal</div>
+                            <div class="row">₱700.00</div>
+                        </div>
+                        <div class="row-discount">
+                            <div class="row">Rewards Discount:</div>
+                            <div class="row">₱0.00</div>
+                        </div>
+                        <div class="row-shipping-fee">
+                            <div class="row">Shipping Fee:</div>
+                            <div class="row">₱12.00</div>
+                        </div>
+                        <div class="row-total">
+                            <div class="row">Total:</div>
+                            <div class="row">₱712.00</div>
+                        </div>      
+                    </div>
+                </div>
+
+                <!--Payment Method-->
+                <div class="col-md-8 order-md-1 mt-1">
+                    <div class="card p-4">
+                        <div class="row-header-payment">
+                            <div class="header-payment">Choose payment method:</div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option1">
+                            <label class="form-check-label" for="option1">
+                              Gcash
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option2">
+                            <label class="form-check-label" for="option2">
+                             Paymaya
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option3">
+                            <label class="form-check-label" for="option3">
+                             Bank Transfer
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="option4">
+                            <label class="form-check-label" for="option4">
+                             Cash on Delivery
+                            </label>
+                        </div>
+
+                        <div class="row-guidelines">
+                            <div class="guidelines">Payment Guidelines:</div>
+                        </div>
+                        <div class="row-guidelines-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. 
+                                Sed finibus placerat tortor, tempus posuere quam dignissim eget. Mauris pharetra nunc consectetur, rutrum ex eget, bibendum lacus.
+                                 In et laoreet lectus. Integer tristique, lectus et egestas sagittis, leo tortor tincidunt nunc, vitae condimentum ex ex nec purus. 
+                                 Proin sollicitudin orci nec auctor volutpat..</p>
+                        </div>
+                     
+                    </div>
+                    <div class="action-btn">
+                        <button type="submit" class="btn btn-return">Return to Shipping</button>
+                        <button type="submit" class="btn btn-dark btn-proceed">View Order Summary</button>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    <script src="navbar.js"></script>
+    <script src="cart-dropdown.js"></script>
+    </body>
+
+   <!--Footer Section-->
+    <footer class="footer">
+        <div class="row">
+            <!--Logo-->   
+            <div class="col-lg-3 col-md-6 col sm-6">
+                <div class="footer-about">
+                    <h3>We're here to help</h3>
+                    <p><a href="contact.html">Get in touch</a> with our customer service team.</p>
+                    <img src="img/mop.png">
+                </div>
+            </div>
+    
+            <!--About-->
+            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="footer-widget">
+                    <h6>ABOUT</h6>
+                    <ul class="social-icon">
+                    <li><a href="about.html">PolaChrome</a></li>
+                    <li><a href="features.html">Polaroid Features</a></li>
+                    <li><a href="chart.html">Comparison Chart</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!--Follow us-->
+            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="footer-widget">
+                    <h6>FOLLOW US</h6>
+                    <ul class="social-icon">
+                        <li><a href="https://www.facebook.com/PolaChrome/"><i class="fab fa-facebook"></i> PolaChrome</i></a></li>
+                        <li><a href="https://www.instagram.com/pola.chrome/"><i class="fab fa-instagram-square"></i> PolaChrome</i></a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!--Certificates-->
+            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="footer-widget">
+                    <h6>CERTIFICATES</h6>
+                    <div class="dti-logo">
+                        <img src="img/dti.png">
+                    </div>       
+                </div>
+            </div>
+        </div>
+    
+        <!--Copyright-->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="footer-copyright-text">
+                    <p>Copyright &copy; 2022 All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--End of footer section-->
+</html>

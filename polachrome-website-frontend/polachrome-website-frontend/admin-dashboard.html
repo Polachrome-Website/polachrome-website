@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin.css">
+  <!--Bootstrap Cdn-->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<!--Font Awesome icons-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+<!--Polaroid Font 
+<link href="//db.onlinewebfonts.com/c/1e5b7f8cdbcb1e579a6e53aaadaf0b67?family=FF+Real+Head" rel="stylesheet" type="text/css"/>--> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<!--Boxicon link-->
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+   </head>
+       <body>
+       <!--Navbar-->
+       <nav>
+        <div class="logo">
+            <img src="img/logo.png" alt="PolaChrome-logo">
+        </div>
+        <div class="nav-items">
+          <li><a class="red" href="home.html">HOME</a></li>
+          <li><a class="orange"  href="faq.html">FAQs</a></li>
+          <li><a class="yellow" href="product.html">PRODUCT</a></li>
+          <li><a class="green"  href="about.html">ABOUT</a></li>
+          <li><a class="blue"  href="contact.html">CONTACT US</a></li>
+          <li><a class="red" href="testimonial.html">TESTIMONIALS</a></li>
+          <li><a class="orange" href="track-order.html">TRACK ORDER</a></li>
+      </div>
+
+        <div class="search-icon">
+            <span class="fas fa-search"></span>
+          </div>
+
+          <div class="cancel-search-icon">
+            <span class="fas fa-times"></span>
+          </div>
+    
+          <div class="cancel-icon">
+            <span class="fas fa-times"></span>
+          </div>
+    
+          <!--username displayed on the navbar-->
+          <div class="username">
+            <button class="userbtn">Admin</button>
+            <div class="username-content">
+              <a href="admin-dashboard.html"> <i class="fas fa-user"></i>My Profile</a>
+              <a href="login.html"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </div>
+          </div>
+
+        <div class="menu-icon">
+            <span class="fas fa-bars"></span>
+        </div>
+     </nav>
+
+     <div class="header">
+      <a href="#" class="nav-trigger"><span></span></a>
+     </div>
+
+     <div class="side-nav" style="height:160vh">
+       <div class="sidebar-logo">Admin</div>
+         <ul>
+           <li>
+             <a href="admin.html" class="active">
+               <span><i class="fa fa-home"></i></span>
+               <span>Dashboard</span>
+             </a>
+           </li>
+
+           <li>
+             <a href="admin-profile.html">
+               <span><i class="fa fa-user"></i></span>
+               <span>My Profile</span>
+             </a>
+           </li>
+
+           <li>
+            <a href="admin-products.html">
+              <span><i class="fa fa-tag"></i></span>
+              <span>Products</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span><i class="fa fa-cog"></i></span>
+              <span>Categories</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span><i class="fa fa-users"></i></span>
+              <span>Customers</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span><i class="fa fa-cart-plus"></i></span>
+              <span>Orders</span>
+            </a>
+          </li>
+
+         </ul>
+
+     </div>
+
+    <div class="main-content">
+        <!--Admin Dashboard Content-->
+    <div class="content-container">
+      <div class="container-fluid">
+        <main class="mt-3 pt-3">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Dashboard</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <div class="card bg-primary text-white h-100 overflow-hidden">
+                  <div class="row-div card-body py-4">
+                    <img class="icon1" src="img/dashboard/icon1.png">
+                    <p><span class="quantity">20</span></br><span class="products">Products</span></p>
+                  </div>
+                  <div class="card-footer bg-white text-primary d-flex">
+                    View Details
+                    <span class="ms-auto card1">
+                      <i class="fa fa-chevron-circle-right"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <div class="card bg-warning text-white h-100 overflow-hidden">
+                  <div class="row-div card-body py-4">
+                    <img class="icon2" src="img/dashboard/icon2.png">
+                    <p><span class="quantity">4</span></br><span class="products">Categories</span></p>
+                  </div>
+                  <div class="card-footer bg-white text-warning d-flex">
+                    View Details
+                    <span class="ms-auto card2">
+                      <i class="fa fa-chevron-circle-right"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <div class="card bg-success text-white h-100 overflow-hidden">
+                  <div class="row-div card-body py-4">
+                    <img class="icon3" src="img/dashboard/icon3.png">
+                    <p><span class="quantity">14</span></br><span class="products">Customers</span></p>
+                  </div>
+                  <div class="card-footer bg-white text-success d-flex">
+                    View Details
+                    <span class="ms-auto card3">
+                      <i class="fa fa-chevron-circle-right"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <div class="card bg-danger text-white h-100 overflow-hidden">
+                  <div class="row-div card-body py-4">
+                    <img class="icon4" src="img/dashboard/icon4.png">
+                    <p><span class="quantity">3</span></br><span class="products">Orders</span></p>
+                  </div>
+                  <div class="card-footer bg-white text-danger d-flex">
+                    View Details
+                    <span class="ms-auto card4">
+                      <i class="fa fa-chevron-circle-right"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card card-scroll">
+                  <div class="card-body">
+                    <div class="title">Orders</div>
+                    <div class="overflow-auto">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th style="width: 38%">Order reference No.</th>
+                              <th style="width: 45%">Status</th>
+                            </tr>
+                          </thead>
+    
+                          <tbody>
+                            <tr>
+                              <td>
+                                <a href="#" >2022030901</a>
+                              </td>
+                              <td>Delivered</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">2022030902</a>
+                              </td>
+                              <td>Preparing</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">2022030903</a>
+                              </td>
+                              <td>Shipped Out</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">2022030904</a>
+                              </td>
+                              <td>Delivered</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">2022030905</a>
+                              </td>
+                              <td>Preparing</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">2022030906</a>
+                              </td>
+                              <td>Delivered</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">2022030907</a>
+                              </td>
+                              <td>Preparing</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                         
+                          </tbody>
+                        </table>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body card-scroll">
+                    <div class="profile">
+                      <div class="title mb-3">My Profile</div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Name</h6>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" value="Admin1">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Username</h6>
+                                </div>
+                                <div class="col-sm-9 ">
+                                    <input type="text" class="form-control" value="admin">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" value="admin@gmail.com">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-9">
+                                    <input type="button" class="btn-update" value="Update">
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+              <div class="col-md-6">
+                <div class="card mt-3">
+                  <div class="card-body card-scroll">
+                    <div class="products">
+                       <div class="title">Products</div>
+                       <div class="overflow-auto">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th style="width: 30%">Product Name</th>
+                              <th style="width: 48%">Quantity</th>
+                              <th style="width: 20%">Price</th>
+                            </tr>
+                          </thead>
+    
+                          <tbody>
+                            <tr>
+                              <td>
+                                <a href="#" >Product X</a>
+                              </td>
+                              <td>10</td>
+                              <td>₱60.00</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Product Y</a>
+                              </td>
+                              <td>5</td>
+                              <td>₱799.00</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Product Z</a>
+                              </td>
+                              <td>10</td>
+                              <td>₱899.00</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Product A</a>
+                              </td>
+                              <td>6</td>
+                              <td>₱80.00</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td> 
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Product B</a>
+                              </td>
+                              <td>4</td>
+                              <td>₱100.00</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Product C</a>
+                              </td>
+                              <td>4</td>
+                              <td>₱160.00</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Product D</a>
+                              </td>
+                              <td>4</td>
+                              <td>₱90.00</td>
+                              <td>
+                                <a href="#" class="editBtn">edit</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="card mt-3">
+                  <div class="card-body card-scroll">
+                    <div class="users">
+                      <div class="title">Registered Users</div>
+                     <div class="overflow-auto">
+                        <table class="users">
+                          <thead>
+                            <tr>
+                              <th>Username</th>
+                              <th>Points</th>
+                              <th class="orders-head">Orders</th>
+                            </tr>
+                          </thead>
+    
+                          <tbody>
+                            <tr>
+                              <td>
+                                <a href="#" >Juan Dela Cruz</a>
+                              </td>
+                              <td>1250</td>
+                              <td>1</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Juan Dela Cruz</a>
+                              </td>
+                              <td>590</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Juan Dela Cruz</a>
+                              </td>
+                              <td>800</td>
+                              <td>2</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Juan Dela Cruz</a>
+                              </td>
+                              <td>0</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Juan Dela Cruz</a>
+                              </td>
+                              <td>660</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Juan Dela Cruz</a>
+                              </td>
+                              <td>660</td>
+                              <td>0</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="#">Juan Dela Cruz</a>
+                              </td>
+                              <td>660</td>
+                              <td>0</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                  </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </main>    
+    </div>
+</div>
+
+        <!--Bootsrap JS cdn-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="navbar.js"></script>
+      </body>
+
+<!--Footer Section-->
+<footer class="footer">
+  <div class="row">
+      <!--Logo-->   
+      <div class="col-lg-3 col-md-6 col sm-6">
+          <div class="footer-about">
+              <h3>Contact Us</h3>
+              <p><a href="contact.html">Get in touch</a> with our customer service team.</p>
+              <img src="img/mop.png">
+          </div>
+      </div>
+
+      <!--About-->
+      <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+          <div class="footer-widget">
+              <h6>ABOUT</h6>
+              <ul class="social-icon">
+              <li><a href="about.html">PolaChrome</a></li>
+              <li><a href="features.html">Polaroid Features</a></li>
+              <li><a href="chart.html">Comparison Chart</a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!--Follow us-->
+      <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+          <div class="footer-widget">
+              <h6>FOLLOW US</h6>
+              <ul class="social-icon">
+                  <li><a href="https://www.facebook.com/PolaChrome/"><i class="fab fa-facebook"></i> PolaChrome</i></a></li>
+                  <li><a href="https://www.instagram.com/pola.chrome/"><i class="fab fa-instagram-square"></i> PolaChrome</i></a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!--Certificates-->
+      <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+          <div class="footer-widget">
+              <h6>CERTIFICATES</h6>
+              <div class="dti-logo">
+                  <img src="img/dti.png">
+              </div>       
+          </div>
+      </div>
+  </div>
+
+  <!--Copyright-->
+  <div class="row">
+      <div class="col-lg-12 text-center">
+          <div class="footer-copyright-text">
+              <p>Copyright &copy; 2022 All rights reserved.</p>
+          </div>
+      </div>
+  </div>
+</footer>
+<!--End of footer section-->
+
+    
+  </html>

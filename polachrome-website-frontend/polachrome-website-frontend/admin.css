@@ -60,6 +60,10 @@ body{
   background-color: #666; 
 }
 
+.side-nav--active{
+  background-color: #007bff;
+}
+
 
 .main-content{
   padding-top: 55px;
@@ -88,6 +92,8 @@ body{
   .side-nav ul li i{
     font-size: 20px;
   }
+
+  
 
   .main-content{
     margin-left: 80px;
@@ -252,6 +258,22 @@ tbody tr td:nth-child(3){
 
 /*Admin-Products content*/
 
+/*Admin-Customers content*/
+.text-box{
+  background: whitesmoke;
+  color: black;
+  border: none;
+  
+  width: 300px;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  margin-left: 15px;
+  position: relative;
+}
+
+/*Admin-Orders content*/
+
 
 
 /*Navbar section*/
@@ -341,6 +363,7 @@ nav .nav-items li a{
   border: 1px solid #efefefef;
   min-width: 140px;
   z-index: 1;
+  right: 10px;
 }
 
 .username-content i{

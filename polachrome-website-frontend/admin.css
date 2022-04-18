@@ -60,6 +60,10 @@ body{
   background-color: #666; 
 }
 
+.side-nav--active{
+  background-color: #007bff;
+}
+
 
 .main-content{
   padding-top: 55px;
@@ -88,6 +92,8 @@ body{
   .side-nav ul li i{
     font-size: 20px;
   }
+
+  
 
   .main-content{
     margin-left: 80px;

@@ -20,11 +20,12 @@ body{
 }
 
 .side-nav{
-  position: absolute;
+  position: fixed;
   width: 200px;
   background-color: #161616;
   z-index: 3;
   padding-top: 55px;
+  overflow: auto;
 }
 
 .side-nav ul{
@@ -52,17 +53,18 @@ body{
   color: #ABAFD1;
 }
 
+.side-nav ul li.active{
+  background: grey;
+}
+
+.side-nav ul li.active a{
+  color: black;
+}
+
 .side-nav ul li:hover{
-  background: #666;
+  background: grey;
 }
 
-.side-nav > .active > a { 
-  background-color: #666; 
-}
-
-.side-nav--active{
-  background-color: #007bff;
-}
 
 
 .main-content{

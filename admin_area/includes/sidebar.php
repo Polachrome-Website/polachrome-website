@@ -136,11 +136,7 @@
                 </a><!-- a href finish -->
             </li><!-- li finish -->
             
-            <li><!-- li begin -->
-                <a href="index.php?view_payments"><!-- a href begin -->
-                    <i class="fa fa-fw fa-money"></i> View Payments
-                </a><!-- a href finish -->
-            </li><!-- li finish -->
+      
         
             <li><!-- li begin -->
                 <a href="logout.php"><!-- a href begin -->

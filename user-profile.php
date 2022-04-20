@@ -48,42 +48,10 @@
                 </div>
 
                 <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="d-flex align-items-center mb-3">My Profile</h5>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Name</h6>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input id="newfullname" type="text" class="form-control" value="<?=$_SESSION["fullName"]?>">
-                                </div>
-                            </div>
-							<div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Username</h6>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input id="newusername" type="text" class="form-control" value="<?=$_SESSION["userName"]?>">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Email</h6>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input id="newemail" type="email" class="form-control" value="<?=$_SESSION["email"]?>">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9 ">
-                                    <input type="button" class="btn-update" onclick="updateUser(<?=$_SESSION["userID"]?>)" value="Update">
-                                </div>
-                            </div>
-                           
-                        </div>
+                    <div id="displayUserCard">
+                        
                     </div>
+                
              
                <div class="row">
                    <div class="col-sm-12">
@@ -524,24 +492,43 @@
     </script> -->
 
     <script>
+
+    $(document).ready(function(){
+            displayData();
+        });
+
+        function displayData(){
+            var displayData="true";
+            $.ajax({
+                url:"includes/functions.inc.php",
+                type:'post',
+                data:{
+                    displaySend: displayData
+                },
+                success:function(data,status){
+                    $('#displayUserCard').html(data);
+                }
+            })
+        }
 	
 	
     function updateUser(userID){
-		var newfullname=$('#newfullname').val();
-		var newemail=$('#newemail').val();
-		var newusername=$('#newusername').val();
-		
-		$.post("includes/functions.inc.php", {
-			newfullname:newfullname,
-			newemail:newemail,
-			newusername:newusername,
-			userUID:userID
-			}, function(data,status){
-				$('#userModal').modal('show');
-				$('#displayUserResult').html(data);
-		});
-		
-	}
+        var newfullname=$('#newfullname').val();
+        var newemail=$('#newemail').val();
+        var newusername=$('#newusername').val();
+
+        $.post("includes/functions.inc.php", {
+            newfullname:newfullname,
+            newemail:newemail,
+            newusername:newusername,
+            userUID:userID
+            }, function(data,status){
+                $('#userModal').modal('show');
+                $('#displayUserResult').html(data);
+                displayData();
+        });
+
+    }
 	
 	function updatePassword(userID){
 

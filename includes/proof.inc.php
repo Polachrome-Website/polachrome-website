@@ -1,6 +1,17 @@
 <?php
     require_once 'db.php';
 
+    //     $extensions = array("jpeg","jpg","png","gif");
+    //     if(in_array($image_type,$extensions)=== false){
+    //         $refence_no = $_POST['reference_no'];
+
+    //         echo "<script>alert('Image size is larger or invlaid format');</script>";
+    //         echo "<script>window.location='upload-payment.php?status=error&refno='$reference_no''</script>";
+    //         // echo "<script>window.open('upload-payment.php?status=error&refno='$reference_no','_self')</script>";
+    //         exit();
+           
+    // }
+
     if(isset($_POST['payment-upload'])){
 
         $refence_no = $_POST['reference_no'];
@@ -19,8 +30,6 @@
         // while($row_products = mysqli_fetch_array($run_qty_update)){
         //     //di ko sure kung ano pwede makuha, pero in case lang para ready
         // }
-
-
 
         $select_cart = "SELECT * from cart where user_id='$customer_id'";
         $run_cart = mysqli_query($conn,$select_cart);
@@ -45,6 +54,9 @@
         $temp_name1 = $_FILES['img_payment']['tmp_name'];
 
         move_uploaded_file($temp_name1,"../img/payments/$img_payment");
+
+        $update_customers = "UPDATE tbl_orders_customers SET order_status='Processing' WHERE invoice_no = '$refence_no'";
+        $run_update = mysqli_query($conn, $update_customers);
 
         $query = "UPDATE tbl_orders SET order_status=?,payment_proof=? where invoice_no = ?";
         $stmt = mysqli_stmt_init($conn);

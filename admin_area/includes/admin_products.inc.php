@@ -58,9 +58,20 @@
 									<td>'.$pro_info.'</td>
 									<td>'.$pro_cat.'</td>
 									<td> 
-										<img src="product_images/'.$pro_img1.'" width="60" height="60">
-										<img src="product_images/'.$pro_img2.'" width="60" height="60">
-										<img src="product_images/'.$pro_img3.'" width="60" height="60">
+										<img src="product_images/'.$pro_img1.'" width="60" height="60">';
+										if($pro_img2 == NULL)
+										{
+											$table .= "";
+										} else {
+											$table .= '<img src="product_images/'.$pro_img2.'" width="60" height="60">';
+										}
+										if($pro_img3 == NULL)
+										{
+											$table .= "";
+										} else {
+											'<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+										}
+										$table .= '
 									</td>
 									<td> ₱'. $pro_price.' </td>
 									<td> '. $pro_quant.' </td>
@@ -76,9 +87,14 @@
 										<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="GetDetails('.$pro_id.')">
 											Update
 										</button>
+										<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateImgModal" onclick="GetImgs('.$pro_id.')">
+											Change Image
+										</button>
+		
 										<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="GetDelDetails('.$pro_id.')">
 											Delete
 										</button>
+										
 									</td>
 									</tr><!-- tr finish -->
 									';
@@ -107,10 +123,21 @@
 													<input type="hidden" id="pro_quant" value="<?=$pro_quant?>" />
 												</td>
 												<td> 
-													<img src="product_images/'.$pro_img1.'" width="60" height="60">
-													<img src="product_images/'.$pro_img2.'" width="60" height="60">
-													<img src="product_images/'.$pro_img3.'" width="60" height="60">
-												</td>
+										<img src="product_images/'.$pro_img1.'" width="60" height="60">';
+										if($pro_img2 == NULL)
+										{
+											$table .= "";
+										} else {
+											$table .= '<img src="product_images/'.$pro_img2.'" width="60" height="60">';
+										}
+										if($pro_img3 == NULL)
+										{
+											$table .= "";
+										} else {
+											'<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+										}
+										$table .= '
+									</td>
 												<td> ₱'.$pro_price.' </td>
 												<td>'.$pro_quant.' </td>
 												<td> 
@@ -118,6 +145,10 @@
 														Update
 													</button>
 													<!-- <button class = "btn btn-danger" onclick="DeleteVariation('.$pro_id.')">Delete</button> -->
+	
+													<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateImgModal" onclick="GetImgsvar('.$var_id.')">
+														Change Image
+													</button>  
 													<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteVarModal" onclick="GetDelVarDetails('.$var_id.')">
 														Delete
 													</button>
@@ -298,9 +329,22 @@
 		$pro_img1 = $row_pro['prodImg1'];
 		$pro_img2 = $row_pro['prodImg2'];
 		$pro_img3 = $row_pro['prodImg3'];
-		$images = '<center><img src="product_images/'.$pro_img1.'" width="60" height="60">
-			<img src="product_images/'.$pro_img2.'" width="60" height="60">
-			<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+		$images = '<center>
+				<img src="product_images/'.$pro_img1.'" width="60" height="60">';
+				if($pro_img2 == NULL)
+				{
+					$images .= "";
+				} else {
+					$images .= '<img src="product_images/'.$pro_img2.'" width="60" height="60">';
+				}
+				if($pro_img3 == NULL)
+				{
+					$images .= "";
+				} else {
+					'<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+				}
+				$images .= '
+			</center>';
 			
 		echo $images;
 	}
@@ -313,11 +357,117 @@
 		$pro_img1 = $row_pro['prodImg1'];
 		$pro_img2 = $row_pro['prodImg2'];
 		$pro_img3 = $row_pro['prodImg3'];
-		$images = '<center><img src="product_images/'.$pro_img1.'" width="60" height="60">
-			<img src="product_images/'.$pro_img2.'" width="60" height="60">
-			<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+		$images = '<center>
+				<img src="product_images/'.$pro_img1.'" width="60" height="60">';
+				if($pro_img2 == NULL)
+				{
+					$images .= "";
+				} else {
+					$images .= '<img src="product_images/'.$pro_img2.'" width="60" height="60">';
+				}
+				if($pro_img3 == NULL)
+				{
+					$images .= "";
+				} else {
+					'<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+				}
+				$images .= '
+			</center>';
 			
 		echo $images;
 	}
-	
+
+    if(isset($_POST['submitUpdateImg'])){
+
+        include 'db.php';
+
+        $pro_id = $_POST['hiddenimgsdata'];
+        $get_img ="select * from products WHERE prodID = '" . $pro_id . "'";
+        $run_img = mysqli_query($conn, $get_img);
+        $row_pro=mysqli_fetch_array($run_img);
+        $old_img1 = $row_pro['prodImg1'];
+        $old_img2 = $row_pro['prodImg2'];
+        $old_img3 = $row_pro['prodImg3'];
+
+        $product_img1 = $_FILES['update_prodImg1']['name'];
+        $product_img2 = $_FILES['update_prodImg2']['name'];
+        $product_img3 = $_FILES['update_prodImg3']['name'];
+
+
+        if(empty($product_img1)){
+            $product_img1 =    $old_img1;
+        }else {
+            $temp_name1 = $_FILES['update_prodImg1']['tmp_name'];
+            move_uploaded_file($temp_name1,"../product_images/$product_img1");
+        }
+
+        if(empty($product_img2)){
+            $product_img2 = $old_img2;
+        }else {
+            $temp_name2 = $_FILES['update_prodImg2']['tmp_name'];
+            move_uploaded_file($temp_name2,"../product_images/$product_img2");
+        }
+
+        if(empty($product_img3)){
+            $product_img3 = $old_img3;
+        }else {
+            $temp_name3 = $_FILES['update_prodImg3']['tmp_name'];
+            move_uploaded_file($temp_name3,"../product_images/$product_img3");
+        }
+
+        $update_product = "update products set prodImg1='$product_img1',prodImg2='$product_img2',prodImg3='$product_img3' where prodID='$pro_id'";
+        $run_product = mysqli_query($conn,$update_product);
+
+		echo "<script>window.open('../index.php?view_products','_self')</script>";
+
+    }
+
+	if(isset($_POST['submitvarUpdateImg'])){
+		
+		include 'db.php';
+			
+		$pro_id = $_POST['hiddenimgsvardata'];
+		$get_img ="select * from product_variation WHERE varID = '" . $pro_id . "'";
+		$run_img = mysqli_query($conn, $get_img);
+		$row_pro=mysqli_fetch_array($run_img);
+		$old_img1 = $row_pro['prodImg1'];
+		$old_img2 = $row_pro['prodImg2'];
+		$old_img3 = $row_pro['prodImg3'];
+		
+		$product_img1 = $_FILES['update_varprodImg1']['name'];
+		$product_img2 = $_FILES['update_varprodImg2']['name'];
+		$product_img3 = $_FILES['update_varprodImg3']['name'];
+    
+		
+		if(empty($product_img1)){
+			$product_img1 =	$old_img1;
+		}else {
+			$temp_name1 = $_FILES['update_varprodImg1']['tmp_name'];
+			move_uploaded_file($temp_name1,"../product_images/$product_img1");
+		}
+		
+		if(empty($product_img2)){
+			$product_img2 = $old_img2;
+		}else {
+			$temp_name2 = $_FILES['update_varprodImg2']['tmp_name'];
+			move_uploaded_file($temp_name2,"../product_images/$product_img2");
+		}
+		
+		if(empty($product_img3)){
+			$product_img3 = $old_img3;
+		}else {
+			$temp_name3 = $_FILES['update_varprodImg3']['tmp_name'];
+			move_uploaded_file($temp_name3,"../product_images/$product_img3");
+		}
+		
+		
+		
+		$update_product = "update product_variation set prodImg1='$product_img1',prodImg2='$product_img2',prodImg3='$product_img3' where varID='$pro_id'";
+		$run_product = mysqli_query($conn,$update_product);
+
+		echo "<script>window.open('../index.php?view_products','_self')</script>";
+	}
+
+
 ?>
+

@@ -100,9 +100,13 @@
           </div>
 
         <!--From price to add to cart-->
-        <div class = "product-price">
-            <p class = "price"><span>₱<?php echo $pro_price; ?></span></p>
-            <p class = "stocks"><span><?php echo $pro_quantity; ?> stocks left!</span></p>
+        <div class="product-price">
+            <p class="price-pro"><span>₱<?php echo $pro_price; ?></span></p>
+            <p class="stocks">
+            <?php if($pro_quantity <=5 ){echo $pro_quantity . " stocks left!";} 
+                  else{echo $pro_quantity . " stocks left!";}
+            ?>
+            </i></p>
         </div>  
 
         <!--quantity-->

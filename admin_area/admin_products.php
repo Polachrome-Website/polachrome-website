@@ -58,25 +58,7 @@
 				<label class="col-md-3 control-label" for="update_catID"> Category </label> 
 				<div id="displayCatList"></div>
 				
-				<label class="col-md-3 control-label"> Product Images </label> 
-				<div class="form-group" id="displayProdImages"></div>
-				<div class="form-group"><!-- form-group Begin -->
-                          
-                          <input name="upload_prodImgs1" type="file" class="form-control" id="upload_prodImg1" >
-                       
-                 </div><!-- form-group Finish -->
-                   
-                   <div class="form-group"><!-- form-group Begin -->
-                          
-                          <input name="upload_prodImgs2" type="file" class="form-control" id="upload_prodImg2">
-                       
-                   </div><!-- form-group Finish -->
-                   
-                   <div class="form-group"><!-- form-group Begin -->
-                          
-                          <input name="upload_prodImgs3" type="file" class="form-control form-height-custom" id="upload_prodImg3">
-                       
-                   </div><!-- form-group Finish -->
+				
 				<div class="form-group"><!-- form-group Begin -->
 					<label for="update_price" class="col-md-3 control-label"> Product Price </label> 
 					<input name="product_price" type="text" class="form-control" id="update_price" >
@@ -113,25 +95,7 @@
                       <label for="update_varName" class="col-md-3 control-label"> Variation Name </label> 
 						<input name="product_name" type="text" class="form-control" id="update_varName">
                    </div><!-- form-group Finish -->
-				<label class="col-md-3 control-label"> Product Images </label> 
-				<div class="form-group" id="displayVarProdImages"></div>
-				<div class="form-group"><!-- form-group Begin -->
-                          
-                          <input name="product_img1" type="file" class="form-control" id="update_prodImg1" >
-                       
-                 </div><!-- form-group Finish -->
-                   
-                   <div class="form-group"><!-- form-group Begin -->
-                          
-                          <input name="product_img2" type="file" class="form-control" id="update_prodImg2">
-                       
-                   </div><!-- form-group Finish -->
-                   
-                   <div class="form-group"><!-- form-group Begin -->
-                          
-                          <input name="product_img3" type="file" class="form-control form-height-custom" id="update_prodImg3">
-                       
-                   </div><!-- form-group Finish -->
+		
 				<div class="form-group"><!-- form-group Begin -->
 					<label for="update_varprice" class="col-md-3 control-label"> Product Price </label> 
 					<input name="product_price" type="text" class="form-control" id="update_varprice">
@@ -229,6 +193,89 @@
 		</div>
 	</div>
 
+	<div class="modal fade" id="updateImgModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <form action="includes/admin_products.inc.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalCenterTitle">Update Product Image</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+            <label class="col-md-3 control-label"> Product Images </label> 
+			<br><br>
+            <div id="displayProdImages"></div>
+
+            <div class="form-group"><!-- form-group Begin -->
+                <input name="update_prodImg1" type="file" class="form-control" id="update_prodImg1" />
+
+            </div><!-- form-group Finish -->
+            <div class="form-group">
+
+                <input name="update_prodImg2" type="file" class="form-control" id="update_prodImg2">
+
+            </div>
+
+            <div class="form-group">
+
+                <input name="update_prodImg3" type="file" class="form-control form-height-custom" id="update_prodImg3">
+
+            </div><!-- form-group Finish -->
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="submitUpdateImg">Update</button>
+                <input type="hidden" name="hiddenimgsdata" id="hiddenimgsdata">
+            </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+	<div class="modal fade" id="updatevarImgModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <form action="includes/admin_products.inc.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Update Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+            <label class="col-md-3 control-label"> Product Images </label> 
+            <div id="displayVarProdImages"></div>
+
+            <div class="form-group"><!-- form-group Begin -->
+                <input name="update_varprodImg1" type="file" class="form-control" >
+
+            </div><!-- form-group Finish -->
+            <div class="form-group">
+
+                <input name="update_varprodImg2" type="file" class="form-control" >
+
+            </div>
+
+            <div class="form-group">
+
+                <input name="update_varprodImg3" type="file" class="form-control form-height-custom" >
+
+            </div><!-- form-group Finish -->
+
+
+            </div>
+            <div class="modal-footer">
+            <input type="text" name="hiddenimgsvardata" id="hiddenimgsvardata">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="submitvarUpdateImg">Update</button>
+            </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
 	<div class="row"><!-- row 2 begin -->
 		<div class="col-lg-12"><!-- col-lg-12 begin -->
 			<div class="panel panel-default"><!-- panel panel-default begin -->
@@ -286,10 +333,30 @@
 				}
 			})
 		}
+
+		function GetImgs(updateid){
+                $('#hiddenimgsdata').val(updateid);
+
+                $.post("includes/admin_products.inc.php", {updateid:updateid}, function(data,status){
+                });
+
+                $('#updateImgModal').modal('show');
+                displayImages();
+            }
+
+			function GetImgsvar(updateid){
+                $('#hiddenimgsvardata').val(updateid);
+
+                $.post("includes/admin_products.inc.php", {updateid:updateid}, function(data,status){
+                });
+
+                $('#updatevarImgModal').modal('show');
+                displayVarImages();
+            }
 		
 		function displayImages(){
 			var displayImages="true";
-			var hiddenimgdata=$('#hiddendata').val();
+            var hiddenimgdata=$('#hiddenimgsdata').val();
 			$.ajax({
 				url:"includes/admin_products.inc.php",
 				type:'post',
@@ -304,20 +371,20 @@
 		}
 		
 		function displayVarImages(){
-			var displayVarImages="true";
-			var hiddenimgdata=$('#hiddenvardata').val();
-			$.ajax({
-				url:"includes/admin_products.inc.php",
-				type:'post',
-				data:{
-					displayVarImgSend: displayVarImages,
-					hiddenimgdata:hiddenimgdata
-				},
-				success:function(data,status){
-					$('#displayVarProdImages').html(data);
-				}
-			})
-		}
+            var displayVarImages="true";
+            var hiddenimgdata=$('#hiddenimgsvardata').val();
+            $.ajax({
+                url:"includes/admin_products.inc.php",
+                type:'post',
+                data:{
+                    displayVarImgSend: displayVarImages,
+                    hiddenimgdata:hiddenimgdata
+                },
+                success:function(data,status){
+                    $('#displayVarProdImages').html(data);
+                }
+            })
+        }
 		
 		function displayDelImages(){
 			var displayDelImages="true";

@@ -247,16 +247,16 @@
             $("input[type='radio']").change(function(){  //enable radio btn change and change the text as the selection change
                 switch ($("input[type='radio']:checked").val()){
                     case 'Gcash':
-                        $("#payment-guideline").text("GCASH ang iyong napili. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
+                        $("#payment-guideline").text("GCASH was chosen as payment method. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
                         break;
                     case 'Paymaya':
-                        $("#payment-guideline").text("PAYMAYA ang iyong napili. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
+                        $("#payment-guideline").text("PAYMAYA was chosen as payment method. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
                         break;
                     case 'Bank Transfer':
-                        $("#payment-guideline").text("BANK TRANSFER ang iyong napili. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
+                        $("#payment-guideline").text("BANK TRANSFER was chosen as payment method. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
                         break;
                     case 'Cash on Delivery':
-                        $("#payment-guideline").text("CASH ON DELIVERY ang iyong napili. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
+                        $("#payment-guideline").text("CASH ON DELIVERY was chosen as payment method. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis purus ut nisi aliquam, ac venenatis ipsum sagittis. vitae condimentum ex ex nec purus. Sed finibus placerat tortor, tempus posuere quam dignissim eget. Sed finibus placerat tortor, tempus posuere quam dignissim eget.");
                         break;
                     default:
                         $("#payment-guideline").text("Instructions for each payment method displayed here");

@@ -236,7 +236,7 @@ try {
         mysqli_stmt_close($stmt);
 
         echo "<script>alert('Variation has been added sucessfully')</script>";
-        echo "<script>window.open('insert_product.php','_self')</script>";
+        echo "<script>window.open('index.php?add_variation','_self')</script>";
        
     }
     

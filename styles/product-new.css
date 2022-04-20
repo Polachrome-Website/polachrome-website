@@ -10,7 +10,7 @@ body{
 }
 
 /*Search bar */
- form{
+ .form{
   display: flex;
   height: 34px;
   padding: 2px;
@@ -19,7 +19,7 @@ body{
   border-radius: 20px;
   margin-bottom: 24px;
 }
- form .search-data{
+ .form .search-data{
   width: 100%;
   height: 100%;
   padding: 0px 10px;
@@ -30,7 +30,7 @@ body{
   background: none;
 }
 
- form button{
+ .form button{
   padding: 0 17px;
   color: #fff;
   font-size: 12px;

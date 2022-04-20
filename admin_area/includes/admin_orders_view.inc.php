@@ -31,6 +31,7 @@
 									<th> Product: </th>
 									<th> Amount: </th>
 									<th> Quantity: </th>
+                                    <th> Order Status: </th>
                                     <th> Payment Proof: </th>
 									<th> Manage: </th>
 								</tr><!-- tr finish -->
@@ -77,11 +78,16 @@
 									<td>'.$pro_name.' </td>
 									<td>'.$amount_order.'</td>
 									<td>'.$pro_qty_order.'</td>
+                                    <td>'.$order_status.'</td>
                                     
-									<td> 
-                                        <a href="#" class="pop">
-                                            <img src="../img/payments/'.$payment_proof.'" width="60" height="60">
-                                        </a>
+									<td>';
+                                        
+                                            if($payment_proof == NULL){
+                                                $table .= "N/A";
+                                            }else{
+                                                $table .= '<a href="#" class="pop"><img src="../img/payments/'.$payment_proof.'" width="60" height="60"></a>';
+                                            }
+                                            $table .= '
 									</td>
 		
 									<td>

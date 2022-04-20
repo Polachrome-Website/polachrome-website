@@ -41,14 +41,14 @@ if(isset($_POST['confirm-order'])){
 
     $order_status = "Pending";
 
-    $insert_customer_details = "INSERT into tbl_orders_customers (customer_id, invoice_no, pay_mode, c_full_name, c_address, c_email, c_contact) 
-    VALUES(?,?,?,?,?,?,?)";
+    $insert_customer_details = "INSERT into tbl_orders_customers (customer_id, invoice_no, pay_mode, order_status, c_full_name, c_address, c_email, c_contact) 
+    VALUES(?,?,?,?,?,?,?,?)";
     $customer_details_stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($customer_details_stmt, $insert_customer_details)) {
         header("location: ../summary.php?error=stmtfailed");
         exit();
     }else{
-        mysqli_stmt_bind_param($customer_details_stmt, "iisssss", $user_id, $invoice_no, $payment_mode, $shipping_full_name, $address, $shipping_email, $shipping_contact);
+        mysqli_stmt_bind_param($customer_details_stmt, "iissssss", $user_id, $invoice_no, $payment_mode, $order_status, $shipping_full_name, $address, $shipping_email, $shipping_contact);
         mysqli_stmt_execute($customer_details_stmt);
         mysqli_stmt_close($customer_details_stmt);   
     }

@@ -24,8 +24,16 @@
     <script>
 
    function increment_quantity(cart_id, price) {
-    var productQuantity = $("#product-quantity");
+    var productQuantity = $("#product-quantity-"+cart_id);
+    // var quantity = pro_qty;
+    
     var inputQuantityElement = $("#input-quantity-"+cart_id);
+
+    // if(quantity >= $(inputQuantityElement).val()){
+    //     var newQuantity = parseInt($(inputQuantityElement).val())+1;
+    //     var newPrice = newQuantity * price;
+    //     save_to_db(cart_id, newQuantity, newPrice);
+    // }
 
     if($(productQuantity).val()-1 >= $(inputQuantityElement).val()){
         var newQuantity = parseInt($(inputQuantityElement).val())+1;
@@ -210,7 +218,8 @@
                             <div class="quantity-controls-md">
                                 <div class="quantity-edit-controls">
                                    
-                                <input type="hidden" id="product-quantity" value="<?php echo $row_products["quantity"]; ?>" readonly/>
+                                <input type="hidden" id="product-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $row_products["quantity"]; ?>" readonly/>
+
                                 
                                 <div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
                                 <input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
@@ -243,7 +252,7 @@
                                     </a>
                                 </div>
                                 <div class="cart-quantity-controls-sm">
-                                <input type="hidden" id="product-quantity" value="<?php echo $row_products["quantity"]; ?>" readonly/>
+                                <input type="hidden" id="product-quantity-<?php echo $row_cart["cart_id"]; ?>" readonly/>
                                 
                                 <div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
                                 <input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">

@@ -54,7 +54,7 @@
         <input name="reference_no" type="hidden" value="<?php echo $reference_no ?>">
         <p> Reference No.: <?php echo $reference_no ?> </p>
 
-        <input type="file" name="img_payment" class="choose-file" required>
+        <input type="file" id="upload_img" name="img_payment" class="choose-file" accept="image/*" required>
     
         <!-- <h5>kindly send your image <a href="">here</a></h5> -->
        
@@ -75,6 +75,7 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
      <script src="scripts/navbar.js"></script>
      <script>Dropzone.discover();</script>
+    
 
      
      <?php 

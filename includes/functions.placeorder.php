@@ -165,7 +165,7 @@ function add_cart(){
 
 
 function add_cart_guest(){
-   
+    $_SESSION['guest_id'] = hexdec(uniqid());
     $user_id = $_SESSION['guest_id'];
  
     $shoppingCart = new ShoppingCart();

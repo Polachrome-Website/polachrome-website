@@ -71,28 +71,28 @@
                 <h2>Best Seller Cameras</h2>
                 <div class="row">
                     <div class="col">
-                        <a href="product_polaroid-go.html" class="card">
+                        <a href="product.php" class="card">
                             <div class="prod-img" style="background-image: url(img/products/go_black_side.webp);"></div>
                             <h3>Polaroid Go</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product_polaroid-now.html" class="card">
+                        <a href="product.php" class="card">
                             <div class="prod-img" style="background-image: url(img/products/now_front-tilted.webp);"></div>
                             <h3>Polaroid Now</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product_polaroid-nowplus.html" class="card">
+                        <a href="product.php" class="card">
                             <div class="prod-img" style="background-image: url(img/products/now+.webp);"></div>
                             <h3>Polaroid Now+</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product_sx70.html" class="card">
+                        <a href="product.php" class="card">
                             <div class="prod-img" style="background-image: url(img/products/sx2.png);"></div>
                             <h3>Polaroid SX70</h3>
                             <input type="button" class="featured-btn" value ="More info">
@@ -106,28 +106,28 @@
                 <h2>Best Seller Films</h2>
                 <div class="row">
                     <div class="col">
-                        <a href="product_600-film.html" class="card">
+                        <a href="product.php" class="card">
                             <div class="prod-img" style="background-image: url(img/products/f600-Film.webp);"></div>
                             <h3>600 Film</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product_iType-film.html" class="card">
+                        <a href="product.php" class="card">
                             <div class="prod-img" style="background-image: url(img/products/i-Type.webp);"></div>
                             <h3>Polaroid iType Film</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product_sx70-film.html" class="card">
+                        <a href="product.php" class="card">
                             <div class="prod-img" style="background-image: url(img/products/sx70-film.webp);"></div>
                             <h3>Polaroid SX70 Film</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product_go-film.html" class="card">
+                        <a href="product.php" class="card">
                             <div class="prod-img" style="background-image: url(img/products/go-film.webp);"></div>
                             <h3>Polaroid SX70</h3>
                             <input type="button" class="featured-btn" value ="More info">
@@ -147,7 +147,7 @@
                             <p>An effortless accessory for Polaroid Now, OneStep+ and OneStep 2 cameras. Featuring Polaroid branding and a no-snag plastic 
                                 release, grab this wide and flat camera strap for more hands-off moments.
                             </p>
-                            <a href="product_flat-strap.html"><button class="btn">More info</button></a>
+                            <a href="product.php"><button class="btn">More info</button></a>
                         </div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2">

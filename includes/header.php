@@ -1,10 +1,11 @@
 <?php
-    session_start();
+    session_start()==TRUE;
     $session_id = 12345;
     
     // $sessionkey = hash("sha256", openssl_random_pseudo_bytes($session_key_length));
     // $_SESSION['guest_id']  = mt_rand();
     $_SESSION['guest_id'] = $session_id;
+    // echo $_SESSION['guest_id'];
     include("includes/db.php");
     include("includes/functions.placeorder.php");
 ?>
@@ -729,9 +730,9 @@
                                 <img src="admin_area/product_images/<?php echo $product_img1; ?>">
                                 <div class="product-info">
                                     <h6><?php echo $_SESSION['product_title'];?></h6>
-                                    <div class="variation">Color: White</div>
+                                    <div class="variation">Variation: Black</div>
                                     <div class="other-info">
-                                        <span class="quantity">Qty: <?php echo $pro_qty; ?> </span>
+                                        <!-- <span class="quantity">Qty: <?php echo $pro_qty; ?> </span> -->
                                         <span class="price">₱<?php echo "$sub_total";?></span>
                                     </div>
                                 </div>

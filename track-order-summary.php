@@ -1,6 +1,17 @@
 <?php
     include("includes/header.php");
 
+?>
+
+<head>
+        <title>Track your Order</title>
+    
+        <!--Main css-->
+        <link rel="stylesheet" href="styles/track-order.css">
+
+    </head>
+<?php
+
     if(isset($_POST['track-submit'])){
     
         $reference_no = $_POST['track-reference'];
@@ -10,7 +21,26 @@
         $run_order = mysqli_query($conn,$select_order);
 
         $count = mysqli_num_rows($run_order);
+    }
 
+    if($count==0){
+        echo "<script>window.open('track-order.php?action=notfound','_self')</script>";
+
+    }
+    else{
+?>
+  
+        
+    <body>
+
+      <!--Body-->
+      <div class="container">
+            <div class="row">
+                <h5>Order Summary - <?php echo $reference_no ?></h5>
+        </div>
+
+        <?php
+        
         while($row_order=mysqli_fetch_array($run_order)){
 
             $reference_no = $row_order['invoice_no'];
@@ -25,7 +55,7 @@
 
             $order_status = $row_order['order_status'];
 
-        }
+        
 
         $select_order_customers = "SELECT * from tbl_orders_customers where invoice_no='$reference_no'";
 
@@ -42,58 +72,45 @@
         while($row_product=mysqli_fetch_array($run_product)){
             $pro_name = $row_product['prodName'];
         }
+        echo"
+        <div class='table-responsive'><!-- table-responsive begin -->
+        <table class='table table-striped table-bordered table-hover'>
+        <thead><!-- thead begin -->
+                            <tr><!-- tr begin -->
+                                <th> Product Name </th>
+                                <th> Quantity </th>
+                                <th> Amount </th>
+                                <th> Date Placed </th>
+                                <th> Mode of Payment </th>
+                                <th> Order Status </th>
+                                
+                            </tr><!-- tr finish -->
+                        </thead><!-- thead finish -->
+                        
+                    <tbody>
+
+                        <td>$pro_name</td>
+                        <td>$pro_qty</td>
+                        <td>$amount</td>
+                        <td>$order_date</td>
+                        <td>$pay_mode</td>
+                        <td>$order_status</td>
+                       
+                    </tbody>
+                </table><!-- table table-striped table-bordered table-hover finish -->
+            </div><!-- table-responsive finish -->
+       
+       
+
+        
+        ";
+        
     }
-
-    if($count==0){
-        echo "<script>window.open('track-order.php?action=notfound','_self')</script>";
-
-    }
-    else{
-?>
-    <head>
-        <title>Track your Order</title>
-    
-        <!--Main css-->
-        <link rel="stylesheet" href="styles/track-order.css">
-
-    </head>
-
-    <body>
-
-      <!--Body-->
-      <div class="container">
-            <div class="row">
-                <h5>Order Summary - <?php echo $reference_no ?></h5>
-        </div>
-            <div class="table-responsive"><!-- table-responsive begin -->
-            <table class="table table-striped table-bordered table-hover">
-            <thead><!-- thead begin -->
-								<tr><!-- tr begin -->
-									<th> Product Name </th>
-									<th> Quantity </th>
-									<th> Amount </th>
-									<th> Date Placed </th>
-									<th> Mode of Payment </th>
-									<th> Order Status </th>
-									
-								</tr><!-- tr finish -->
-							</thead><!-- thead finish -->
-							
-                        <tbody>
-
-                            <td><?php echo $pro_name?></td>
-                            <td><?php echo $pro_qty?></td>
-                            <td><?php echo $amount?></td>
-                            <td><?php echo $order_date?></td>
-                            <td><?php echo $pay_mode?></td>
-                            <td><?php echo $order_status?></td>
-                           
-                        </tbody>
-                    </table><!-- table table-striped table-bordered table-hover finish -->
-                </div><!-- table-responsive finish -->
-           
-        </div>
-
+        
+        ?>
+         </div>
+            
+            
 
 
         <!--Bootsrap JS cdn-->

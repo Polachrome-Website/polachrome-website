@@ -327,7 +327,7 @@
                         <a href="index.php?view_orders">View Orders.</a>
                         <br/></br>
 
-                        <?php echo $count_good ?> Products are on good stock. <br>
+                        <?php echo $count_good ?> items are on good stock. <br>
                         <strong style="color:red;"><?php echo $count_low ?></strong> items are low on stock with less than 5 remaining.
                         <a href="index.php?view_products">View Products.</a>
                         

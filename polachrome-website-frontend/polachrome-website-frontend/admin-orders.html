@@ -110,10 +110,10 @@
  
       </div>
 
-     <div class="main-content pb-3">
+     <div class="main-content pb-5">
         <div class="header-profile mb-2 mt-3">Orders</div>
        <div class="col-md-11 mx-auto">
-         <div class="card mb-3">
+         <div class="card mb-5">
            <div class="card-body card-scroll">
                <table class="table">
                 <thead>
@@ -178,47 +178,71 @@
            </div>
          </div>
 
-         <div class="card mb-3">
-          <div class="card-body">
-              <!--Order ID, Customer ID-->
-            <div class="row">
-                <div class="col">
-                    <p>Order ID<input type="text" name="name" class="text-box" disabled="disabled" placeholder="2022030902"></p>
-                </div>
-                <div class="col">
-                    <p>Customer ID<input type="text" name="email" class="text-box" disabled="disabled" placeholder="jdelacruz2"></p>
-                </div>
+       <div class="card mb-5">
+        <div class="card-body">
+          <form>
+            <!--Order ID, Customer ID-->
+            <div class="row align-items-center mb-3">
+              <div class="col-sm-2">
+                  <label for="orderID">Order ID</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" disabled="disabled" placeholder="2022030902"  name="orderID">
+              </div>
+                 <div class="col-sm-2">
+                  <label for="custID">Customer ID</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" disabled="disabled" placeholder="jdelacruz2" name="custID">
+              </div>
             </div>
-
-               <!--Order Total, Order Points-->
-            <div class="row">
-                <div class="col">
-                    <p>Order Total<input type="number" name="name"  disabled="disabled" class="text-box" placeholder="₱ 60.00"></p>
-                </div>
-                <div class="col">
-                    <p>Order Points<input type="text" name="email" disabled="disabled" class="text-box" placeholder="60"></p>
-                </div>
+             <!--Order Total, Order Points-->
+            <div class="row align-items-center mb-3">
+              <div class="col-sm-2">
+                  <label for="orderTotal">Order Total</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" disabled="disabled" class="text-box" placeholder="₱60.00"  name="orderTotal">
+              </div>
+                 <div class="col-sm-2">
+                  <label for="orderPoints">Order Points</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" disabled="disabled" class="text-box" placeholder="60" name="orderPoints">
+              </div>
             </div>
-
-               <!--Payment Method, Payment Status-->
-            <div class="row">
-                <div class="col">
-                    <p>Payment Method<input type="text" name="name"  disabled="disabled" style="width: 270px;" class="text-box" placeholder="paymaya"></p>
-                </div>
-                <div class="col">
-                    <p>Payment Status<input type="text" name="email" disabled="disabled" class="text-box" placeholder="received"></p>
-                </div>
+            <!--Payment Method, Payment Status-->
+            <div class="row align-items-center mb-3">
+              <div class="col-sm-2">
+                  <label for="payMethod">Payment Method</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" disabled="disabled" placeholder="paymaya" name="payMethod">
+              </div>
+                 <div class="col-sm-2">
+                  <label for="payStat">Payment Status</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" disabled="disabled" placeholder="received" name="payStat">
+              </div>
             </div>
-
-            <div class="row">
-                <div class="col">
-                    <p>Order Status<input type="text" name="name"  disabled="disabled" style="width: 800px;" class="text-box" placeholder="preparing"></p>
-                </div>
+            <!--Order Status-->
+            <div class="row align-items-center">
+              <div class="col-sm-2">
+                  <label for="orderStat">Order Status</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" disabled="disabled" placeholder="preparing" name="orderStat">
+              </div>
             </div>
-          </div>
-       </div>
+          </form>
+   
+        </div>
+      </div>
 
     </div>
+
+     </div>
 
   
       </body>

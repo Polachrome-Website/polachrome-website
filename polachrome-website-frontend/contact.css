@@ -50,7 +50,7 @@ body{
     border-radius: 5px;
     color: black;
     max-width: 400px;
-    line-height: 70px;
+    line-height: 86px;
     padding-left: 50px;
     font-size: 16px;
     margin-right: 20px;
@@ -75,7 +75,7 @@ body{
     font-size: 40px;
     margin-top: 30px;
     margin-bottom: 30px;
-    font-weight: 700;
+    font-weight: 800;
   }
   
   .contact-form .text-box{
@@ -579,7 +579,7 @@ a:hover{
 footer{
     background-color: black;
     color:white;
-    position: absolute;
+    position: relative;
     width: 100%;
     height: min-content;
     bottom: 0;

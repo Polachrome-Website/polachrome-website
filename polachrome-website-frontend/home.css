@@ -34,6 +34,7 @@ body{
   }
 }
 
+/*content*/ 
 .bg-img{
     height: fit-content;
     background-image: url(img/bg-home-final.png);

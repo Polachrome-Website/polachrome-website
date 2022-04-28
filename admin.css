@@ -1,0 +1,651 @@
+body{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.sidebar-logo{
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.side-nav{
+  position: fixed;
+  width: 200px;
+  background-color: #161616;
+  z-index: 3;
+  padding-top: 55px;
+  overflow: auto;
+}
+
+.side-nav ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-nav ul li span:nth-child(2) {
+  margin-left: 10px;
+}
+
+
+.side-nav ul li{
+  padding: 18px 10px;
+  border-bottom: 1px solid white;
+}
+
+.side-nav ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+.side-nav ul li a i{
+  color: #ABAFD1;
+}
+
+.side-nav ul li.active{
+  background: grey;
+}
+
+.side-nav ul li.active a{
+  color: black;
+}
+
+.side-nav ul li:hover{
+  background: grey;
+}
+
+
+
+.main-content{
+  padding-top: 55px;
+  margin-left: 200px;
+  background-color: #f4f4f4;
+}
+
+
+@media screen and (max-width: 900px){
+  .sidebar-logo{
+    font-size: 14px;
+  }
+  .side-nav{
+    width: 80px;
+    height: 200vh;
+  }
+
+  .side-nav ul li span:nth-child(2) {
+    display: none;
+  }
+
+  .side-nav ul li{
+    text-align: center;
+  }
+
+  .side-nav ul li i{
+    font-size: 20px;
+  }
+
+  
+
+  .main-content{
+    margin-left: 80px;
+  }
+}
+
+/*Admin dashboard content*/
+.row-div img {
+  width: 80px;
+  height: 11vh;
+  min-height: 9vh;
+}
+
+.card1 .fa-chevron-circle-right{
+  color: #007bff;
+}
+
+.card2 .fa-chevron-circle-right{
+  color: #ffc107;
+}
+
+.card3 .fa-chevron-circle-right{
+  color: #28a745;
+}
+
+.card4 .fa-chevron-circle-right{
+  color: #dc3545;
+}
+
+.card-footer{
+  background-color: rgb(172, 136, 136);
+}
+
+
+.row-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.row-div p{
+  margin-top: 10px;
+  padding-top: 10px;
+  line-height: 20px;
+}
+
+.row-div .quantity{
+  float: right;
+}
+
+p .quantity{
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 8px;
+}
+
+p .products{
+  font-size: 16px;
+}
+
+
+.title{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card-scroll{
+  /*When additional data are added and exceeds max-height, y-scroll will enable*/
+  max-height: 310px;
+  height: 300px;
+  overflow-y: auto;
+}
+
+
+table thead tr th{
+  padding-top: 10px;
+}
+
+table thead tr th:nth-child(2){
+  text-align: center;
+}
+
+
+
+tbody tr td:nth-child(2){
+  text-align: center;
+}
+
+
+tbody tr td:nth-child(1) a{
+  text-decoration: none;
+  color: black;
+}
+
+
+.editBtn{
+  padding-left: 48px;
+}
+
+.card-body .profile{
+  padding-bottom: 12px;
+}
+
+.form-control{
+  background-color: whitesmoke !important;
+  border: none !important;
+  border-radius: 7px !important;
+  padding: 7px;
+}
+
+.form-control:focus{
+  border: none;
+  outline: none;
+}
+
+.btn-update{
+background:black;
+color: white;
+width: 200px;
+border:none;
+align-items: center;
+text-align: center;
+border-radius: 7px !important;
+padding: 7px!important;
+margin-top: 20px;
+font-size: 14px;
+}
+
+.btn-update:hover{
+  background-color: white;
+  color: black;
+  border: solid black 1px;
+}
+
+
+.users{
+  width:90%;
+}
+table thead tr th:nth-child(3){
+  text-align: center;
+ 
+}
+
+tbody tr td:nth-child(3){
+  text-align: center;
+ 
+}
+
+/*Admin-Profile content*/
+.header-profile{
+  font-size: 22px;
+  font-weight: 600;
+  margin-left: 40px;
+}
+
+.profile-title{
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+
+/*Admin-Products content*/
+
+/*Admin-Customers content*/
+.text-box{
+  background: whitesmoke;
+  color: black;
+  border: none;
+  
+  width: 300px;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  margin-left: 15px;
+  position: relative;
+}
+
+/*Admin-Orders content*/
+
+
+
+/*Navbar section*/
+nav{
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 55px;
+  padding: 0 30px;
+  
+}
+
+nav .logo img{
+  width: 100%;
+  height: 27px;
+}
+
+nav .nav-items{
+  display: flex;
+  flex: 1;
+  padding: 0 0 0 30px;  
+}
+
+nav .nav-items li{
+  list-style: none;
+  padding-left: 0px;
+  padding: 0 15px;;
+}
+
+nav .nav-items li a{
+  color: black;
+  font-size: 16px;
+  font-weight: 630;
+  text-decoration: none;
+}
+
+.red:hover,
+.testimonials:hover{
+  color: #F04231;
+}
+
+.orange:hover{
+  color: #FF8200;
+}
+
+.yellow:hover{
+  color: #FFB80C;
+}
+
+.green:hover{
+  color: #78BE20;
+}
+
+.blue:hover{
+  color: #198CD9;
+}
+
+/*Username*/
+.userbtn{
+  background-color: white;
+  color: black;
+  margin-right: 5px;
+  font-size: 16px;
+  margin-top: 4px;
+  font-weight: 600;
+  border: none;
+}
+
+
+
+.userbtn:focus{
+  outline: none;
+}
+
+.username{
+  display: inline-block;
+  padding-top: 0.3px;
+}
+
+.username-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #efefefef;
+  min-width: 150px;
+  right: 0px;
+  margin-top: 3px;
+  z-index: 1;
+}
+
+
+
+.username-content i{
+  padding-right: 7px;
+  color: gray;
+}
+
+.username-content a {
+  color: black;
+  font-weight: 500;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.username-content .user{
+  border-bottom: 2px solid #efefefef;
+  pointer-events: none;
+}
+
+.username-content a:hover {
+  background-color: #efefefef;
+}
+
+
+.username:hover .username-content {
+  display: block;
+}
+
+
+
+.username:hover .userbtn {
+  background-color: white;
+  color: #f04231;
+}
+
+a:hover{
+  color: black!important;
+}
+
+  
+.userbtn .fa-user-alt{
+  font-size: 16px;
+  
+}
+
+nav .menu-icon,
+nav .cancel-icon,
+nav .search-icon{
+  width: 40px;
+  text-align: center;
+  margin: 0 50px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+nav .user-icon,
+nav .cart-icon{
+  padding-left: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+nav .menu-icon span,
+nav .cancel-icon,
+nav .search-icon{
+  display: none;
+  cursor: pointer;
+}
+
+nav .cancel-search-icon{
+  display: none;
+}
+
+nav .user-icon:hover{
+  color: #f04231;
+}
+nav .cart-icon:hover{
+  color: #f04231;
+}
+
+@media (max-width: 1245px) {
+  nav{
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 1140px) {
+  nav{
+    padding: 0px;
+    margin: 0px;
+  }
+
+  nav .logo img{
+    padding-left: 40px;
+    width: 100%;
+  }
+
+  nav .nav-items.active{
+    right: 0px;
+  }
+  nav .nav-items li{
+    line-height: 40px;
+    margin: 30px 0;
+  }
+
+  nav .nav-items{
+    position: fixed;
+    padding: 10px 50px 0 50px;
+    text-align: center;
+    z-index: 99;
+    top: 48px;
+    width: 100%;
+    right: -100%;
+    height: 100%;
+    background: white;
+    display: inline-block;
+    transition: right 0.3s ease;
+  }
+ 
+  nav .nav-items li a{
+    font-size: 16px;
+  }
+  
+  .username{
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 87%;
+  }
+
+  .username-content{
+    margin-top: 5px;
+  }
+
+
+  nav .menu-icon{
+    display: block;
+    position: absolute;
+    margin-top: 5px;
+    left: 88%;
+  }
+ 
+
+
+
+  nav .menu-icon span{
+    display: block;
+    color: black;
+    font-size: 16px;
+  }
+  nav .menu-icon span.hide,
+  nav .search-icon.hide{
+    display: none;
+  }
+  nav .cancel-icon.show{
+    display: block;
+    color:black;
+    padding-left: 40px;
+  }
+ 
+}
+
+  @media (max-width: 767px){
+
+    nav .user-icon{
+      right: 120px;
+    }
+
+    nav .cart-icon{
+      right: 77px;
+    }
+
+    nav .cancel-search-icon.show{
+         display: block;
+         position: absolute;
+         right: 162px;
+    }
+
+  }
+
+  /*Footer section*/  
+footer{
+  background-color: black;
+  color:white;
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  height: min-content;
+
+}
+
+.footer-about{
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.footer-about a:hover{
+  color: #f04231;
+}
+
+.footer-about img{
+  max-width: 100%;
+  height:40px;
+  margin-left: 10px;
+}
+
+
+.footer-about h3{
+  font-family: font-face="FF Real Head";
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.footer-about p{
+  font-family: font-face="FF Real Head";
+  font-size: 12px;
+  margin-left: 15px;
+}
+
+.footer-widget{
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-widget H6{
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.social-icon ul{
+  padding-left: 0;
+}
+
+.footer-widget li{
+  line-height: 25px;
+  list-style: none;
+  font-family: font-face="FF Real Head";
+}
+
+.footer-widget ul li a{
+  line-height: 20px;
+  list-style: none;
+  }
+
+.footer-widget ul li:hover{
+  color: #F04231;
+}
+
+.social-icon li a{
+  color: white;
+  font-family: font-face="FF Real Head";
+}
+
+.social-icon li{
+  color: white;
+  font-family: font-face="FF Real Head";
+}
+
+.social-icon li a:hover{
+  color: #F04231;
+}
+
+.dti-logo img{
+  max-width: 100%;
+  height:40px;
+}
+
+.footer-copyright-text{
+  font-family: font-face="FF Real Head";
+  font-size: 12px;
+}

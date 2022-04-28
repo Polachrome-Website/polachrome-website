@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        
+        <!--Bootsrap 4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!--Font Awesome icons-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+        <!--Bangers font gFonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+        <!--Main css-->
+        <link rel="stylesheet" href="sample-guest.css">
+    </head>
+    <body>
+     <!--Navbar-->
+     <nav>
+        <div class="logo">
+            <img src="img/logo.png" alt="PolaChrome-logo">
+        </div>
+        <div class="nav-items">
+            <li><a class="red" style="color: #f04231;" href="home.html">HOME</a></li>
+            <li><a class="orange"  href="faq.html">FAQs</a></li>
+            <li><a class="yellow" href="product.html">PRODUCT</a></li>
+            <li><a class="green"  href="about.html">ABOUT</a></li>
+            <li><a class="blue"  href="contact.html">CONTACT US</a></li>
+            <li><a class="red" href="testimonial.html">TESTIMONIALS</a></li>
+            <li><a class="orange" href="track-order.html">TRACK</a></li>
+        </div>
+
+   
+      
+         <!--cart-dropdown displayed on the navbar-->
+        <div class="cart">
+            <div class="cart-icon"> 
+                <!--cart-total-items is the display of the total number of items added to the cart-->
+                <span class="fa fa-shopping-cart cart-total-items"></span>
+            </div>
+            <!--hide class is used for the javascript code to hide and display the shopping cart-->
+            <div class="shopping-cart hide">
+                <p class="cart-header">My Cart</p>
+                <div class="cart-wrapper">
+                    <!--item added to cart-->
+                    <div class="cart-item">
+                        <img src="img/polaroid-lab.png">
+                        <div class="product-info">
+                            <h6>Polaroid Lab</h6>
+                            <div class="variation">Color: White</div>
+                            <div class="other-info">
+                                <span class="quantity">Qty: 1</span>
+                                <span class="price">₱350</span>
+                            </div>
+                        </div>
+                        <div class="cancel"><i class="fas fa-times cancel-btn"></i></div>
+                    </div>
+                    <!--item added to cart-->
+                    <div class="cart-item">
+                        <img src="img/polaroid-lab.png">
+                        <div class="product-info">
+                            <h6>Polaroid Lab</h6>
+                            <div class="variation">Color: White</div>
+                            <div class="other-info">
+                                <span class="quantity">Qty: 1</span>
+                                <span class="price">₱350</span>
+                            </div>
+                        </div>
+                        <div class="cancel"><i class="fas fa-times cancel-btn"></i></div>
+                    </div>
+                    <!--item added to cart-->
+                    <div class="cart-item">
+                        <img src="img/polaroid-lab.png">
+                        <div class="product-info">
+                            <h6>Polaroid Lab</h6>
+                            <div class="variation">Color: White</div>
+                            <div class="other-info">
+                                <span class="quantity">Qty: 1</span>
+                                <span class="price">₱350</span>
+                            </div>
+                        </div>
+                        <div class="cancel"><i class="fas fa-times cancel-btn"></i></div>
+                    </div>
+                </div>
+                <div class="subtotal">Subtotal: ₱1,050</div>
+                <a href="cart.html" >
+                    <div class="view-cart">View Cart</div>
+                </a>
+              
+            </div>
+        </div>
+          
+     <!--login button-->
+     <div class="login-btn">
+        <button type="submit" class="btn btn-dark">LOGIN</button>
+    </div>
+        
+
+
+        <div class="menu-icon">
+            <span class="fas fa-bars"></span>
+        </div>
+        <div class="cancel-icon">
+            <span class="fas fa-times"></span>
+          </div>
+          <div class="search-icon">
+            <span class="fas fa-search"></span>
+          </div>
+
+          <div class="cancel-search-icon">
+            <span class="fas fa-times"></span>
+          </div>
+    
+         
+    </nav>
+    <!--End of Navbar section-->
+
+        <!--Body-->
+
+        <!--Fixed Background-->
+        <div class="bg-img">
+            <h1 class="title" style="margin-top: 340px; font-size: 100px; 
+            text-shadow: 1px 2px rgba(0,0,0,0.5);">PolaChrome</h1>
+            <h5 class="title">Bringing Polaroid products in the Philippines</h5>
+            <a href="product.html"><input type="button" class="btn-main" value ="SHOP NOW"></a>
+            <!--Cameras-->
+            <div class="section-1 box">
+                <h2 style="text-align:left;">Product Categories</h2>
+
+                <!--Product Categories-->
+                <div class="row">
+                    <div class="cameras col">
+                        <div class="overlay">
+                            <h3>Cameras</h3>
+                            <p>Take pictures, view and share prints instantly.</p>
+                            <a href="product-cameras.html"><input type="button" class="sm-btn" value ="Shop Now"></a>
+                        </div>
+                    </div>
+
+                    <div class="films col">
+                        <div class="overlay">
+                            <h3>Films</h3>
+                            <p>Stock up your Polaroid films.</p>
+                            <a href="product-films.html"><input type="button" class="sm-btn" value ="Shop Now"></a>
+                        </div>
+                    </div>
+                    
+                    <div class="accessories col">
+                        <div class="overlay">
+                            <h3>Accessories</h3>
+                            <p>Take your camera anywhere with our Polaroid camera bags and straps.</p>
+                            <a href="product-accessories.html"><input type="button" class="sm-btn" value ="Shop Now"></a>
+                        </div>
+                    </div>
+
+                    <div class="none col">
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!--Featured Cameras-->
+            <div class="section-2 box">
+                <h2>Cameras</h2>
+                <div class="row">
+                    <div class="col">
+                        <a href="product-gocam.html" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/go_black_side.webp);"></div>
+                            <h3>Polaroid Go</h3>
+                            <input type="button" class="featured-btn" value ="More info">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="product-now.html" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/now_front-tilted.webp);"></div>
+                            <h3>Polaroid Now</h3>
+                            <input type="button" class="featured-btn" value ="More info">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="product-nowP.html" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/now+.webp);"></div>
+                            <h3>Polaroid Now+</h3>
+                            <input type="button" class="featured-btn" value ="More info">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="product-sx70.html" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/sx2.png);"></div>
+                            <h3>Polaroid SX70</h3>
+                            <input type="button" class="featured-btn" value ="More info">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Featured Films-->
+            <div class="section-2 box">
+                <h2>Films</h2>
+                <div class="row">
+                    <div class="col">
+                        <a href="product-600film.html" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/f600-Film.webp);"></div>
+                            <h3>600 Film</h3>
+                            <input type="button" class="featured-btn" value ="More info">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="product-iTypefilm.html" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/sx70-film.webp);"></div>
+                            <h3>Polaroid iType Film</h3>
+                            <input type="button" class="featured-btn" value ="More info">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="product-sx70film.html" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/sx70-film.webp);"></div>
+                            <h3>Polaroid SX70 Film</h3>
+                            <input type="button" class="featured-btn" value ="More info">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="product-gofilm.html" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/gofilm1.webp);"></div>
+                            <h3>Polaroid Go Film</h3>
+                            <input type="button" class="featured-btn" value ="More info">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Featured Accessories-->
+            <div class="section-2 box" style ="margin-bottom: 30px;">
+                <div class="col-lg-auto">
+                    <h2>Accessories</h2>
+                    <h3 style="margin-top: 30px;">Polaroid Camera Flat Strap</h3>
+                    <div class=row>
+                        <!--Straps-->
+                        <div class="col-sm-6" style="width:fit-content; float: right;">
+                            <p>An effortless accessory for Polaroid Now, OneStep+ and OneStep 2 cameras. Featuring Polaroid branding and a no-snag plastic 
+                                release, grab this wide and flat camera strap for more hands-off moments.
+                            </p>
+                            <a href="product-flatstrap.html"><button class="btn">More info</button></a>
+                        </div>
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-2">
+                            <div class="featured-img" style="background-image: url(img/products/flat-strap-yellow.webp)"></div> 
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+
+    
+        <!--End of Body-->
+
+
+        <!--Bootsrap JS cdn-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="navbar.js"></script>
+        <script src="cart-dropdown.js"></script>
+      
+    </body>
+    
+    <!--Footer Section-->
+    <footer class="footer">
+            <div class="row">
+                <!--Logo-->   
+                <div class="col-lg-3 col-md-6 col sm-6">
+                    <div class="footer-about">
+                        <h3>Contact Us</h3>
+                        <p><a href="contact.html">Get in touch</a> with our customer service team.</p>
+                        <img src="img/mop.png">
+                    </div>
+                </div>
+
+                <!--About-->
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h6>ABOUT</h6>
+                        <ul class="social-icon">
+                        <li><a href="about.html">PolaChrome</a></li>
+                        <li><a href="features.html">Polaroid Features</a></li>
+                        <li><a href="chart.html">Comparison Chart</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Follow us-->
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h6>FOLLOW US</h6>
+                        <ul class="social-icon">
+                            <li><a href="https://www.facebook.com/PolaChrome/"><i class="fab fa-facebook"></i> PolaChrome</i></a></li>
+                            <li><a href="https://www.instagram.com/pola.chrome/"><i class="fab fa-instagram-square"></i> PolaChrome</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Certificates-->
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h6>CERTIFICATES</h6>
+                        <div class="dti-logo">
+                            <img src="img/dti.png">
+                        </div>       
+                    </div>
+                </div>
+            </div>
+
+            <!--Copyright-->
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer-copyright-text">
+                        <p>Copyright &copy; 2022 All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    <!--End of footer section-->
+        
+</html>

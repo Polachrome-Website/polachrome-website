@@ -27,12 +27,12 @@
 							
 							<thead><!-- thead begin -->
 								<tr><!-- tr begin -->
-									<th> Reference#: </th>
+									<th> Reference: </th>
 									<th> Product: </th>
 									<th> Amount: </th>
 									<th> Quantity: </th>
-                                    <th> Order Status: </th>
-                                    <th> Payment Proof: </th>
+                                    <th> Status: </th>
+                                    <th> Proof: </th>
 									<th> Manage: </th>
 								</tr><!-- tr finish -->
 							</thead><!-- thead finish -->

@@ -57,31 +57,30 @@ include("includes/db.php");
                        <label class="col-md-3 control-label"> Product Name </label> 
                        
                        <div class="col-md-6"><!-- col-md-6 Begin -->
-                           
-                           <select name="product_name" class="form-control"><!-- form-control Begin -->
+					   
+                           <select name="prodID" class="form-control"><!-- form-control Begin -->
                                
-                               <option> Select a Product </option>
-                               
-                               <?php 
-                               
-                               $get_var = "select * from products ORDER BY prodName";
-                               $run_var = mysqli_query($conn,$get_var);
-                               
-                               while ($row_var=mysqli_fetch_array($run_var)){
-                                   
-                                   $prodID = $row_var['prodID'];
-                                   $prodName = $row_var['prodName'];
-                                   
-                                   echo "
-                                   
-                                   <option value='$prodName'> $prodName </option>
-                                   
-                                   "; 
-                               }
-                               
-                               ?>
-                                <input type="hidden" name="prodID"  class="text-box" value="<?php echo $prodID ?>">
-                               
+								<option> Select a Product </option>
+								
+								<?php 
+								
+								$get_var = "select * from products ORDER BY prodName";
+								$run_var = mysqli_query($conn,$get_var);
+								
+								while ($row_var=mysqli_fetch_array($run_var)){
+									
+									$prodID = $row_var['prodID'];
+									
+									$prodName = $row_var['prodName'];
+									
+									?>
+									<option name="prodID" value='<?=$prodID?>'> <?=$prodName?> </option>
+									
+									
+									<?php
+								}
+								
+								?>
                            </select><!-- form-control Finish -->
                            
                        </div><!-- col-md-6 Finish -->
@@ -142,7 +141,7 @@ include("includes/db.php");
                       
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
-                          <input name="product_img2" type="file" class="form-control" required>
+                          <input name="product_img2" type="file" class="form-control">
                           
                       </div><!-- col-md-6 Finish -->
                        

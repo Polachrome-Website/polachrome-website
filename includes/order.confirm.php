@@ -48,7 +48,7 @@ if(isset($_POST['confirm-order'])){
         header("location: ../summary.php?error=stmtfailed");
         exit();
     }else{
-        mysqli_stmt_bind_param($customer_details_stmt, "iissssss", $user_id, $invoice_no, $payment_mode, $order_status, $shipping_full_name, $address, $shipping_email, $shipping_contact);
+        mysqli_stmt_bind_param($customer_details_stmt, "sissssss", $user_id, $invoice_no, $payment_mode, $order_status, $shipping_full_name, $address, $shipping_email, $shipping_contact);
         mysqli_stmt_execute($customer_details_stmt);
         mysqli_stmt_close($customer_details_stmt);   
     }
@@ -129,7 +129,7 @@ if(isset($_POST['confirm-order'])){
                }
             else{
 
-                mysqli_stmt_bind_param($order_stmt, "iiiiiss", $user_id, $invoice_no, $pro_id, $pro_qty, $total_fee, $date_now, $order_status);
+                mysqli_stmt_bind_param($order_stmt, "siiiiss", $user_id, $invoice_no, $pro_id, $pro_qty, $total_fee, $date_now, $order_status);
                 mysqli_stmt_execute($order_stmt);
                 mysqli_stmt_close($order_stmt);
 

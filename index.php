@@ -26,9 +26,10 @@
 
         <!--Fixed Background-->
         <div class="bg-img">
-            <h1 class="title" style="color: black; margin-top: 450px; font-size: 100px;text-shadow: 1px 2px rgba(255,255,255,0.5);">PolaChrome</h1>
-            <h5 class="title">Bringing Polaroid products in Philippines</h5>
-            <a href="product.php"><input type="button" class="btn-main" value ="Shop Now"></a>
+            <h1 class="title" style="margin-top: 340px; font-size: 100px; 
+            text-shadow: 1px 2px rgba(0,0,0,0.5);">PolaChrome</h1>
+            <h5 class="title">Bringing Polaroid products in the Philippines</h5>
+            <a href="product.php"><input type="button" class="btn-main" value ="SHOP NOW"></a>
             <!--Cameras-->
             <div class="section-1 box">
                 <h2 style="text-align:left;">Product Categories</h2>
@@ -68,7 +69,7 @@
 
             <!--Featured Cameras-->
             <div class="section-2 box">
-                <h2>Best Seller Cameras</h2>
+                <h2>Cameras</h2>
                 <div class="row">
                     <div class="col">
                         <a href="product.php" class="card">
@@ -103,7 +104,7 @@
 
             <!--Featured Films-->
             <div class="section-2 box">
-                <h2>Best Seller Films</h2>
+                <h2>Films</h2>
                 <div class="row">
                     <div class="col">
                         <a href="product.php" class="card">
@@ -114,7 +115,7 @@
                     </div>
                     <div class="col">
                         <a href="product.php" class="card">
-                            <div class="prod-img" style="background-image: url(img/products/i-Type.webp);"></div>
+                            <div class="prod-img" style="background-image: url(img/products/sx70-film.webp);"></div>
                             <h3>Polaroid iType Film</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
@@ -128,8 +129,8 @@
                     </div>
                     <div class="col">
                         <a href="product.php" class="card">
-                            <div class="prod-img" style="background-image: url(img/products/go-film.webp);"></div>
-                            <h3>Polaroid SX70</h3>
+                            <div class="prod-img" style="background-image: url(img/products/gofilm1.webp);"></div>
+                            <h3>Polaroid Go Film</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
@@ -139,7 +140,7 @@
             <!--Featured Accessories-->
             <div class="section-2 box" style ="margin-bottom: 30px;">
                 <div class="col-lg-auto">
-                    <h2>Best Seller Accessories</h2>
+                    <h2>Accessories</h2>
                     <h3 style="margin-top: 30px;">Polaroid Camera Flat Strap</h3>
                     <div class=row>
                         <!--Straps-->
@@ -159,8 +160,7 @@
             </div>
 
 
-       
-        
+    
         <!--End of Body-->
 
 

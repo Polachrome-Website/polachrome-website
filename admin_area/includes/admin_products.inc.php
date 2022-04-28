@@ -24,14 +24,14 @@
 							
 							<thead><!-- thead begin -->
 								<tr><!-- tr begin -->
-									<th> Product ID: </th>
-									<th> Product Name: </th>
-									<th> Product Info: </th>
-									<th> Product Category: </th>
-									<th> Product Images: </th>
-									<th> Product Price: </th>
-									<th> Product Quantity: </th>
-									<th> Product Manage: </th>
+									<th> ID </th>
+									<th> Name </th>
+									<th> Info </th>
+									<th> Category </th>
+									<th> Images </th>
+									<th> Price </th>
+									<th> Quantity </th>
+									<th> Manage </th>
 								</tr><!-- tr finish -->
 							</thead><!-- thead finish -->
 							
@@ -84,14 +84,15 @@
 										<input type="hidden" id="pro_img3" value="<?=$pro_img3?>" />
 										<input type="hidden" id="pro_price" value="<?=$pro_price?>" />
 										<input type="hidden" id="pro_quant" value="<?=$pro_quant?>" />
-										<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="GetDetails('.$pro_id.')">
+										<button type="button" style="margin-bottom:3px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="GetDetails('.$pro_id.')">
 											Update
 										</button>
-										<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateImgModal" onclick="GetImgs('.$pro_id.')">
+										
+										<button type="button" style="margin-bottom:3px;" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateImgModal" onclick="GetImgs('.$pro_id.')">
 											Change Image
 										</button>
 		
-										<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="GetDelDetails('.$pro_id.')">
+										<button type="button" style="margin-bottom:3px;" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="GetDelDetails('.$pro_id.')">
 											Delete
 										</button>
 										
@@ -141,15 +142,15 @@
 												<td> ₱'.$pro_price.' </td>
 												<td>'.$pro_quant.' </td>
 												<td> 
-													<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateVarModal" onclick="GetVarDetails('.$var_id.')">
+													<button type="button" style="margin-bottom:3px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateVarModal" onclick="GetVarDetails('.$var_id.')">
 														Update
 													</button>
 													<!-- <button class = "btn btn-danger" onclick="DeleteVariation('.$pro_id.')">Delete</button> -->
 	
-													<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateImgModal" onclick="GetImgsvar('.$var_id.')">
+													<button type="button" style="margin-bottom:3px;" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateImgModal" onclick="GetImgsvar('.$var_id.')">
 														Change Image
 													</button>  
-													<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteVarModal" onclick="GetDelVarDetails('.$var_id.')">
+													<button type="button" style="margin-bottom:3px;" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteVarModal" onclick="GetDelVarDetails('.$var_id.')">
 														Delete
 													</button>
 													

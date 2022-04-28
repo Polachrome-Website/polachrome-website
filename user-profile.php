@@ -94,15 +94,19 @@
                             if (isset($_GET["addressid"])) {
                                 $query = mysqli_query($conn, "SELECT * FROM user_account_address WHERE addressID = '" . $_GET["addressid"] . "'");
                                 $row = mysqli_fetch_array($query);
+
+                                
                             ?>
 
                             <div class="row mb-3 align-items-center g-3">
                             <div class="col-sm-6">
-                                <input type="text" name="fullname" class="form-control myInput" placeholder="Full Name" value="<?php echo $_SESSION['fullName'];?>" required>
+                                <input type="text" name="fullname" class="form-control myInput" placeholder=<?php if(isset($_SESSION["userID"])){ 
+                                        echo "Full Name";
+                                    } ?> value="<?php echo $_SESSION['fullName'];?>" required>
                             </div>
                             <div class="col-sm-6">
                                     <input type="text" name="bldg" class="form-control myInput" 
-                                    placeholder= "<?php if($check_address < 1){ echo "Building or Unit Number";}?>"
+                                    placeholder= "<?php if($check_address < 1){ echo "Building or Unit Number";} ?>"
                                     value="<?php echo $row['bldg'] ?>" required>
                             </div>
                         </div>
@@ -158,45 +162,45 @@
                                 </div>
                                 <div class="col-sm-6">
                                         <input type="text" name="bldg" class="form-control myInput" 
-                                        placeholder= "<?php if($check_address < 1){ echo "Building or Unit Number";}?>"
+                                        placeholder= "<?php if(isset($_SESSION["userID"])){ echo "Building or Unit Number";}?>"
                                         value = "<?php if($check_address >= 1){ echo $address_bldg;}?>" required>
                                 </div>
                                 </div>
                                 <div class="row mb-3 align-items-center g-3">
                                 <div class="col-sm-6">
                                     <input type="text" name="strt" class="form-control myInput" 
-                                    placeholder= "<?php if($check_address < 1){ echo "Street";}?>"
+                                    placeholder= "<?php  if(isset($_SESSION["userID"])){ echo "Street";}?>"
                                     value = "<?php if($check_address >= 1){ echo $address_strt;}?>"
                                     required>
                                 </div>
                                 <div class="col-sm-6">
                                         <input type="text" name="brgy" class="form-control myInput" 
-                                        placeholder= "<?php if($check_address < 1){ echo "Barangay";}?>"
+                                        placeholder= "<?php  if(isset($_SESSION["userID"])){ echo "Barangay";}?>"
                                         value = "<?php if($check_address >= 1){ echo $address_brgy;}?>" required>
                                 </div>
                                 </div>
                                 <div class="row mb-3 align-items-center g-3">
                                 <div class="col-sm-6">
                                     <input type="text" name="city" class="form-control myInput" 
-                                    placeholder= "<?php if($check_address < 1){ echo "City";}?>"
+                                    placeholder= "<?php  if(isset($_SESSION["userID"])){ echo "City";}?>"
                                     value = "<?php if($check_address >= 1){ echo $address_city;}?>" required>
                                 </div>
                                 <div class="col-sm-6">
                                         <input type="text" name="region" class="form-control myInput" 
-                                        placeholder= "<?php if($check_address < 1){ echo "Province";}?>"
+                                        placeholder= "<?php  if(isset($_SESSION["userID"])){ echo "Province";}?>"
                                     value = "<?php if($check_address >= 1){ echo $address_region;}?>" required>
                                 </div>
                                 </div>
                                 <div class="row mb-3 align-items-center g-3">
                                 <div class="col-sm-6">
                                     <input type="text" name="contactNum" class="form-control myInput" 
-                                    placeholder= "<?php if($check_address < 1){ echo "Phone Number";}?>"
-                                    value = "<?php if($check_address >= 1){ echo $address_contact;}?>" required>
+                                    placeholder= "<?php  if(isset($_SESSION["userID"])){ echo "Phone Number";}?>"
+                                    value = "<?php if($check_address >= 1){ echo $address_contact;}?>" onkeydown="return validateIsNumericInput(event)" required>
                                 </div>
                                 <div class="col-sm-6">
                                         <input type="text" name="zip" class="form-control myInput" 
-                                        placeholder= "<?php if($check_address < 1){ echo "Postal Code";}?>"
-                                        value = "<?php if($check_address >= 1){ echo $address_zip;}?>" required>
+                                        placeholder= "<?php  if(isset($_SESSION["userID"])){ echo "Postal Code";}?>"
+                                        value = "<?php if($check_address >= 1){ echo $address_zip;}?>" onkeydown="return validateIsNumericInput(event)" required>
                                 </div>
                                 </div> 
                    
@@ -369,19 +373,19 @@
                          <div class="row mb-3">
                             
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="oldpw" placeholder="Old Password" required>
+                                <input type="password" class="form-control" id="oldpw" placeholder="Old Password" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="newpw" placeholder="New Password" required>
+                                <input type="password" class="form-control" id="newpw" placeholder="New Password" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                           
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="confpw" placeholder="Re-enter new password" required>
+                                <input type="password" class="form-control" id="confpw" placeholder="Re-enter new password" required>
                             </div>
                         </div>
                             
@@ -625,6 +629,30 @@
         //     deleteForm.submit();
         // };
         // button.addEventListener("click",submitForm);
+    </script>
+
+    <script>
+
+    /**
+    Checks the ASCII code input by the user is one of the following:
+        - Between 48 and 57: Numbers along the top row of the keyboard
+        - Between 96 and 105: Numbers in the numeric keypad
+        - Either 8 or 46: The backspace and delete keys enabling user to change their input
+        - Either 37 or 39: The left and right cursor keys enabling user to navigate their input
+    */
+
+    function validateIsNumericInput(evt) {
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        permittedKeys = [8, 46, 37, 39]
+        if ((ASCIICode >= 48 && ASCIICode <= 57) || (ASCIICode >= 96 && ASCIICode <= 105)) {
+            return true;
+        };
+        if (permittedKeys.includes(ASCIICode)) {
+            return true;
+        };
+        return false;
+    }
+
     </script>
 
 </body>

@@ -1,17 +1,15 @@
 <?php
-    session_start()==TRUE;
-    $session_id = 12345;
+    session_start();
     
-    // $sessionkey = hash("sha256", openssl_random_pseudo_bytes($session_key_length));
-    // $_SESSION['guest_id']  = mt_rand();
-    $_SESSION['guest_id'] = $session_id;
-    // echo $_SESSION['guest_id'];
     include("includes/db.php");
     include("includes/functions.placeorder.php");
+
+    
 ?>
 
 <?php
-
+    $guest_id = md5(getRealIpUser());
+    $_SESSION['guest_id'] = $guest_id;
     //begin fetch address if user exists
     if(isset($_SESSION['userID'])){
         
@@ -76,6 +74,10 @@
         $pro_img2 = $row_product['prodImg2'];
 
         $pro_img3 = $row_product['prodImg3'];
+
+        $pro_img4 = $row_product['prodImg4'];
+
+        $pro_img5 = $row_product['prodImg5'];
 
         // $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
         
@@ -661,8 +663,10 @@
                     }
             
                     else{ //fetch guest id for selecting cart item
-                        $guest_id = $_SESSION['guest_id'];
+                        // $guest_id = $_SESSION['guest_id'];
+                        // $guest_id = md5(getRealIpUser());
                         $select_cart = "select * from cart where user_id='$guest_id'";
+                      
                     }
                                       
                     $run_cart = mysqli_query($conn,$select_cart);

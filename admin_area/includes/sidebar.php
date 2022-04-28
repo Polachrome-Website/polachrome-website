@@ -38,7 +38,7 @@
             
             <ul class="dropdown-menu"><!-- dropdown-menu begin -->
                 <li><!-- li begin -->
-                    <a href="index.php?user_profile=<?php echo $admin_id; ?>"><!-- a href begin -->
+                    <a href="index.php?dashboard"><!-- a href begin -->
                         
                         <i class="fa fa-fw fa-user"></i> Profile
                         
@@ -48,7 +48,7 @@
                 <li><!-- li begin -->
                     <a href="index.php?view_products"><!-- a href begin -->
                         
-                        <i class="fa fa-fw fa-envelope"></i> Products
+                        <i class="fa fa-fw fa-tag"></i> Products
                         
                         <span class="badge"><?php echo $count_products; ?></span>
                         
@@ -56,7 +56,7 @@
                 </li><!-- li finish -->
                 
                 <li><!-- li begin -->
-                    <a href="index.php?view_customers"><!-- a href begin -->
+                    <a href="index.php?view_registered"><!-- a href begin -->
                         
                         <i class="fa fa-fw fa-users"></i> Registered Users
                         
@@ -64,17 +64,7 @@
                         
                     </a><!-- a href finish -->
                 </li><!-- li finish -->
-                
-                <li><!-- li begin -->
-                    <a href="index.php?view_cats"><!-- a href begin -->
-                        
-                        <i class="fa fa-fw fa-gear"></i> Product Categories
-                        
-                        <span class="badge"><?php echo $count_p_categories; ?></span>
-                        
-                    </a><!-- a href finish -->
-                </li><!-- li finish -->
-                
+        
                 <li class="divider"></li>
                 
                 <li><!-- li begin -->

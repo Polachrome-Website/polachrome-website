@@ -323,13 +323,26 @@
                         ?>
                         
                         Today is <?php echo date("Y-m-d") ?> <br/>
+                        <?php if($count_low != null){
+
+                        ?>
                         There are total of <strong><?php echo $count_pending_orders ?></strong> orders. 
-                        <a href="index.php?view_orders">View Orders.</a>
+                        <a href="index.php?view_orders">View Orders</a>
+                        <?php } else{
+
+                        ?>
+                        There are no recorded orders.
+                        <?php } ?>
+
                         <br/></br>
 
-                        <?php echo $count_good ?> items are on good stock. <br>
+                        <!-- <?php echo $count_good ?> items are on good stock. <br> -->
+                        <?php if($count_low != null){
+
+                        ?>
                         <strong style="color:red;"><?php echo $count_low ?></strong> items are low on stock with less than 5 remaining.
-                        <a href="index.php?view_products">View Products.</a>
+                        <a href="index.php?view_products">View Products</a>
+                        <?php }  ?>
                         
                     </p><!-- p finish -->
                     

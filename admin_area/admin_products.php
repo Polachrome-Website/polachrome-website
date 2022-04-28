@@ -594,6 +594,8 @@
 			
 		}
 	</script>
+	<!-- <script src="js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea'});</script> -->
 
 </body>
 

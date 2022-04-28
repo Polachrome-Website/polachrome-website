@@ -120,10 +120,10 @@
                             <div class="row">Subtotal</div>
                             <div class="row">₱<?php echo "$total";?></div>
                         </div>
-                        <div class="row-discount">
+                        <!-- <div class="row-discount">
                             <div class="row">Rewards Discount:</div>
                             <div class="row">₱0.00</div>
-                        </div>
+                        </div> -->
                         <div class="row-shipping-fee">
                             <div class="row">Shipping Fee:</div>
                             <div class="row">₱<?php echo "$ship_fee";?></div>

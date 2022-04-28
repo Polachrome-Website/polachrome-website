@@ -92,9 +92,10 @@
             $select_cart = "select * from cart where user_id='$user_id'";
         }
 
-        else{
-            $guest_id = $_SESSION['guest_id'];
-            $select_cart = "select * from cart where user_id='$guest_id'";
+        if(!isset($_SESSION['userID'])){
+            // $guest_id = $_SESSION['guest_id'];
+            $guest_id = md5(getRealIpUser());
+            $select_cart = "select * from cart where user_id=837";
         }
         // if(isset($_SESSION['guestID'])){
         //     $user_id = $_SESSION['guestID'];

@@ -125,10 +125,10 @@
                             <div class="row">Subtotal</div>
                             <div class="row">₱<?php echo "$total";?></div>
                         </div>
-                        <div class="row-discount">
+                        <!-- <div class="row-discount">
                             <div class="row">Rewards Discount:</div>
                             <div class="row">₱0.00</div>
-                        </div>
+                        </div> -->
                         <div class="row-shipping-fee">
                             <div class="row">Shipping Fee:</div>
                             <div class="row">₱<?php echo "$ship_fee";?></div>
@@ -159,7 +159,11 @@
                             <div class="col-sm-12">
                                 <form action="payment.php" method="post">   <!--begin shipping form--> 
                                 <input type="text" class="form-control" name="shipping_full_name"
-                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Full Name";}?>"
+                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Full Name";}
+                                     if(isset($_SESSION["userID"])){ 
+                                        echo "Full Name";
+                                    }
+                                ?>"
                                 value = "<?php if(isset($_SESSION["userID"])){ echo $_SESSION["fullName"];}?>"
                                 required> 
                             </div>
@@ -167,7 +171,11 @@
                         <div class="row mb-3">
                             <div class="col-sm-12">
                             <input type="email" class="form-control" name="shipping_email"
-                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Email";}?>"
+                                placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Email";}
+                                  if(isset($_SESSION["userID"])){ 
+                                        echo "Email";
+                                    }
+                                ?>"
                                 value = "<?php if(isset($_SESSION["userID"])){ echo $_SESSION["email"];}?>"
                                 required> 
                             </div>
@@ -177,7 +185,7 @@
                                 <input type="text" class="form-control" name="shipping_reg_pro_cit_brgy"
                                 placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Barangay, City, Province"; }
                                 if(isset($_SESSION["userID"])){ 
-                                    if(empty($address_brgy) && empty($address_city) && empty($address_region)){ echo "Barangay, City, Province"; }
+                                    if(isset($address_brgy) && isset($address_city) && isset($address_region)){ echo "Barangay, City, Province"; }
                                 } ?>"
                                 value = "<?php if(isset($_SESSION["userID"])){ 
                                     if(isset($address_brgy) && isset($address_city) && isset($address_region)){
@@ -195,7 +203,7 @@
                                 <input type="text" class="form-control" name="shipping_strt_bldg_hn"
                                 placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Street Name, Building, House no.";}
                                 if(isset($_SESSION["userID"])){ 
-                                    if(empty($address_strt) && empty($address_bldg)){ echo "Street Name, Building, House no.";}
+                                    if(isset($address_strt) && isset($address_bldg)){ echo "Street Name, Building, House no.";}
                                 }?>"
                                 value = "<?php if(isset($_SESSION["userID"])){if(isset($address_strt) && isset($address_bldg)){echo $address_strt . ", " . $address_bldg;}
                                 }?>" required>
@@ -205,7 +213,7 @@
                             <div class="col-sm-6">
                                 <input type="text" class="form-control myInput" name="shipping_contact"
                                 placeholder= "<?php if(!isset($_SESSION["userID"])){ echo "Phone Number";}
-                                 if(isset($_SESSION["userID"])){ if(empty($address_contact)){ echo "Phone Number";}}
+                                 if(isset($_SESSION["userID"])){ if(isset($address_contact)){echo "Phone Number";}}
                                 ?>"
                                 value = "<?php if(isset($_SESSION["userID"])){if(isset($address_contact)){echo $address_contact;}}?>"
                                 onkeydown="return validateIsNumericInput(event)" required>
@@ -213,7 +221,7 @@
                             <div class="col-sm-6">
                                     <input type="text" class="form-control myInput" name="shipping_zip" 
                                     placeholder= "<?php if(!isset($_SESSION["userID"])){echo "Postal Code";}
-                                     if(isset($_SESSION["userID"])){ if(empty($address_zip)){echo "Postal Code";}}?>"
+                                     if(isset($_SESSION["userID"])){ if(isset($address_zip)){echo "Postal Code";}}?>"
                                     value = "<?php if(isset($_SESSION["userID"])){if(isset($address_zip)){echo $address_zip;}}?>"
                                     onkeydown="return validateIsNumericInput(event)" required>
                             </div>

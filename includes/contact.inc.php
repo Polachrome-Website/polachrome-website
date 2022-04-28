@@ -31,13 +31,13 @@ if (isset($_POST["contact-us-submit"])){
 
 		//Recipients
 		$mail->isHTML(true);      //Set email format to HTML
-		$mail->setFrom($email, "Inquiry from Contact Us -  $name ");
+		$mail->setFrom($email, "Inquiry from Contact Us");
 		$mail->addAddress('mchacks996@gmail.com');     //Add a recipient
 		$mail->addReplyTo($email);
 
 		//Content
 	                             
-		$mail->Subject = 'Polachrome Inquiry';
+		$mail->Subject = "Polachrome Inquiry - $name";
 		$mail->Body    = '
 
 		<h4> You have received an inquiry from the contact us section. The message is as follows:

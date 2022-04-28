@@ -49,7 +49,14 @@ function add_cart(){
                     $p_id = $_GET["code"];
     
                     $pro_qty = $_POST["product_qty"];
+
+                    $pro_variation = $_POST["product_variation"];
+
+                    if($pro_variation != null){
+                        $pro_variation = 0;
+                    }
     
+                    $pro_variation = 0;
                     $get_products = "SELECT * FROM products WHERE prodID='$p_id'";
     
                     //get cart items by product
@@ -80,7 +87,7 @@ function add_cart(){
                     }
                     else{
     
-                        $insert_cart = "INSERT into cart (prod_id, user_id, qty) VALUES (?,?,?)";
+                        $insert_cart = "INSERT into cart (prod_id, var_id, user_id, qty) VALUES (?,?,?,?)";
             
                         $cart_stmt = mysqli_stmt_init($db);
             
@@ -89,7 +96,7 @@ function add_cart(){
                             exit();
                            }
                         else{
-                            mysqli_stmt_bind_param($cart_stmt, "iii", $p_id, $user_id, $pro_qty);
+                            mysqli_stmt_bind_param($cart_stmt, "iiii", $p_id, $pro_variation, $user_id, $pro_qty);
                             mysqli_stmt_execute($cart_stmt);
                             mysqli_stmt_close($cart_stmt);
     
@@ -131,6 +138,102 @@ function add_cart(){
     }
 }
 
+if(isset($_GET['varaction'])){
+    switch ($_GET['varaction']){
+        case "add_cart":
+            if(!empty($_POST["product_qty"])){ //begin !empty product qty post
+                
+                global $db;
+
+                $p_id = $_GET["code"];
+
+                $pro_qty = $_POST["product_qty"];
+
+                $pro_variation = $_POST["product_variation"];
+                
+                $pro_variation = $_GET["varcode"];
+                
+                $get_products = "SELECT * FROM products WHERE prodID='$p_id'";
+
+                //get cart items by product
+                $get_cart = "SELECT * FROM cart WHERE prod_id='$p_id' and user_id='$user_id'";
+
+                $run_cart = mysqli_query($db,$get_cart);
+
+                while($row_cart = mysqli_fetch_array($run_cart)){
+
+                    $cart_id = $row_cart['cart_id'];
+
+                    $cart_qty = $row_cart['qty'];
+                }
+        
+                $count = mysqli_num_rows($run_cart);
+
+
+                if(!empty($count)){
+                    //update cart item quantity in database
+                    $newQuantity = $cart_qty + $pro_qty;
+
+                    $update_qty = "UPDATE cart SET qty='$newQuantity' WHERE cart_id='$cart_id'";
+
+                    $run_cart = mysqli_query($db,$update_qty);
+
+                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+
+                }
+                else{
+
+                    $insert_cart = "INSERT into cart (prod_id, var_id, user_id, qty) VALUES (?,?,?,?)";
+        
+                    $cart_stmt = mysqli_stmt_init($db);
+        
+                    if (!mysqli_stmt_prepare($cart_stmt, $insert_cart)) {
+                        header("location: ../product-info.php?prodID=" . $p_id . "&error=stmtfailed");
+                        exit();
+                       }
+                    else{
+                        mysqli_stmt_bind_param($cart_stmt, "iiii", $p_id, $pro_variation, $user_id, $pro_qty);
+                        mysqli_stmt_execute($cart_stmt);
+                        mysqli_stmt_close($cart_stmt);
+
+                        echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
+                        exit();
+                }
+            }
+
+        }//finish !empty product qty post
+        break;
+        case "remove":
+        // Delete single entry from the cart
+        
+        //get cart items by product
+           
+        global $db;
+
+        $cart_id = $_GET["id"];
+
+        $delete_cart = "DELETE from cart WHERE cart_id='$cart_id'";
+
+        $run_cart = mysqli_query($db,$delete_cart);
+
+        echo "<script>window.open('cart.php','_self')</script>";
+
+        break;
+
+        case "empty":
+            // Empty cart
+            global $db;
+
+            $empty_cart = "DELETE from cart WHERE user_id='$user_id'";
+
+            $run_empty = mysqli_query($db,$empty_cart);
+
+            echo "<script>window.open('cart.php','_self')</script>";
+
+            break;
+}
+}
+
 
 // global $db;
 
@@ -165,7 +268,8 @@ function add_cart(){
 
 
 function add_cart_guest(){
-    $_SESSION['guest_id'] = hexdec(uniqid());
+    // $_SESSION['guest_id'] = hexdec(uniqid());
+    // $_SESSION['guest_id'] = getRealIpUser();
     $user_id = $_SESSION['guest_id'];
  
     $shoppingCart = new ShoppingCart();
@@ -179,6 +283,12 @@ function add_cart_guest(){
                     $p_id = $_GET["code"];
     
                     $pro_qty = $_POST["product_qty"];
+
+                    $pro_variation = $_POST["product_variation"];
+
+                    if($pro_variation != null){
+                        $pro_variation = 0;
+                    }
     
                     $get_products = "SELECT * FROM products WHERE prodID='$p_id'";
 
@@ -222,8 +332,12 @@ function add_cart_guest(){
                         }
                     }
                     else{
+
+                        if($pro_variation == null){
+                            $pro_variation = 0;
+                        }
     
-                        $insert_cart = "INSERT into cart (prod_id, user_id, qty) VALUES (?,?,?)";
+                        $insert_cart = "INSERT into cart (prod_id, var_id, user_id, qty) VALUES (?,?,?,?)";
             
                         $cart_stmt = mysqli_stmt_init($db);
             
@@ -232,7 +346,7 @@ function add_cart_guest(){
                             exit();
                            }
                         else{
-                            mysqli_stmt_bind_param($cart_stmt, "iii", $p_id, $user_id, $pro_qty);
+                            mysqli_stmt_bind_param($cart_stmt, "iisi", $p_id, $pro_variation, $user_id, $pro_qty);
                             mysqli_stmt_execute($cart_stmt);
                             mysqli_stmt_close($cart_stmt);
     
@@ -305,11 +419,13 @@ function items(){
 function guest_items(){
     global $db;
 
-    // $ip_add = getRealIpUser();
-    $guest_id = $_SESSION['guest_id'];
-    // else{
-    //     $user_id = mt_rand(2000,9000);
-    // }
+    // $guest_id = $_SESSION['guest_id'];
+    if(!isset($_SESSION['userID'])){
+        $guest_id = $_SESSION['guest_id'];
+    }
+  
+
+    // $guest_id = md5(getRealIpUser());
     
     $get_items = "select * from cart where user_id='$guest_id'";
 

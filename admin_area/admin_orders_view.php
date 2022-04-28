@@ -74,7 +74,7 @@
 
 			</div> 	<!-- end modal body -->
 			<div class="modal-footer">
-				<input type="text" id="hiddendata">
+				<input type="hidden" id="hiddendata">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-success" onclick="updateDetails()">Save changes</button>
 			</div>

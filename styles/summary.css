@@ -522,11 +522,11 @@ nav{
   
     }
 
-    /*Footer section*/  
+   /*Footer section*/  
 footer{
   background-color: black;
   color:white;
-  position: relative;
+  position: fixed;
   bottom: 0px;
   width: 100%;
   height: min-content;

@@ -165,7 +165,31 @@ if(!isset($_SESSION['admin_email'])){
                       </div><!-- col-md-6 Finish -->
                        
                    </div><!-- form-group Finish -->
-                   
+
+                   <div class="form-group"><!-- form-group Begin -->
+                       
+                       <label class="col-md-3 control-label"> Product Image 4 </label> 
+                       
+                       <div class="col-md-6"><!-- col-md-6 Begin -->
+                           
+                           <input name="product_img4" type="file" class="form-control form-height-custom">
+                           
+                       </div><!-- col-md-6 Finish -->
+                        
+                    </div><!-- form-group Finish -->
+
+                    <div class="form-group"><!-- form-group Begin -->
+                       
+                       <label class="col-md-3 control-label"> Product Image 5 </label> 
+                       
+                       <div class="col-md-6"><!-- col-md-6 Begin -->
+                           
+                           <input name="product_img5" type="file" class="form-control form-height-custom">
+                           
+                       </div><!-- col-md-6 Finish -->
+                        
+                    </div><!-- form-group Finish -->
+                    
                    <div class="form-group"><!-- form-group Begin -->
                        
                       <label class="col-md-3 control-label"></label> 
@@ -189,6 +213,8 @@ if(!isset($_SESSION['admin_email'])){
 </div><!-- row Finish -->
         
     <script src="js/jquery-331.min.js"></script>
+    <!-- <script src="js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea'});</script> -->
 
 
 </body>
@@ -209,14 +235,20 @@ try {
         $product_img1 = $_FILES['product_img1']['name'];
         $product_img2 = $_FILES['product_img2']['name'];
         $product_img3 = $_FILES['product_img3']['name'];
+        $product_img4 = $_FILES['product_img4']['name'];
+        $product_img5 = $_FILES['product_img5']['name'];
         
         $temp_name1 = $_FILES['product_img1']['tmp_name'];
         $temp_name2 = $_FILES['product_img2']['tmp_name'];
         $temp_name3 = $_FILES['product_img3']['tmp_name'];
+        $temp_name4 = $_FILES['product_img4']['tmp_name'];
+        $temp_name5 = $_FILES['product_img5']['tmp_name'];
         
         move_uploaded_file($temp_name1,"product_images/$product_img1");
         move_uploaded_file($temp_name2,"product_images/$product_img2");
         move_uploaded_file($temp_name3,"product_images/$product_img3");
+        move_uploaded_file($temp_name4,"product_images/$product_img4");
+        move_uploaded_file($temp_name5,"product_images/$product_img5");
 
         // echo "<p>$product_category </p>";
 
@@ -231,7 +263,7 @@ try {
             
         // }
 
-        $sql = "INSERT INTO products (prodName,catID,prodInfo,prodImg1,prodImg2,prodImg3,quantity,price) VALUES (?,?,?,?,?,?,?,?);"; 
+        $sql = "INSERT INTO products (prodName,catID,prodInfo,prodImg1,prodImg2,prodImg3,prodImg4,prodImg5,quantity,price) VALUES (?,?,?,?,?,?,?,?,?,?);"; 
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -239,7 +271,7 @@ try {
             exit();
         }
 
-        mysqli_stmt_bind_param($stmt, "sissssss", $product_name, $product_category, $product_info, $product_img1, $product_img2, $product_img3, $product_quantity, $product_price);
+        mysqli_stmt_bind_param($stmt, "sissssssss", $product_name, $product_category, $product_info, $product_img1, $product_img2, $product_img3, $product_img4, $product_img5, $product_quantity, $product_price);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 

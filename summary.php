@@ -5,6 +5,7 @@
         <title>Summary</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/summary.css">
+        
     </head>
 
     <body>
@@ -138,10 +139,10 @@
                             <div class="row">Subtotal</div>
                             <div class="row">₱<?php echo "$total";?></div>
                         </div>
-                        <div class="row-discount">
+                        <!-- <div class="row-discount">
                             <div class="row">Rewards Discount:</div>
                             <div class="row">₱0.00</div>
-                        </div>
+                        </div> -->
                         <div class="row-shipping-fee">
                             <div class="row">Shipping Fee:</div>
                             <div class="row">₱<?php echo "$ship_fee";?></div>
@@ -180,7 +181,7 @@
                     <div class="card p-4">
                         <div class="row-buyer-summary">
                             <div class="buyer-summary">Buyer Information</div>
-                            <a href="shipping.php">Edit</a>
+                            <a href="#" onclick="showEditBuyer()">Edit</a>    
                         </div>
                 
                         <form action="includes/order.confirm.php" id="formOrderSubmit" method="POST">
@@ -195,40 +196,40 @@
                                     }
                                 ?>" required >
 
-                            <p class="name"><?php echo $_SESSION['s_shipping_full_name']; ?></p>
+                            <p class="name" id="txt_full_name"><?php echo $_SESSION['s_shipping_full_name']; ?></p>
 
-                            <input type="hidden" id="full_name" name="s_shipping_full_name"  value="<?php echo $_SESSION['s_shipping_full_name']; ?>" required >
+                            <input type="hidden" id="full_name" name="s_shipping_full_name" value="<?php echo $_SESSION['s_shipping_full_name']; ?>" required >
 
-                            <p class="email"><?php echo $_SESSION['s_shipping_email']; ?></p>
+                            <p class="email" id="txt_email"><?php echo $_SESSION['s_shipping_email']; ?></p>
                             <input type="hidden" id="email" name="s_shipping_email"  value="<?php echo $_SESSION['s_shipping_email']; ?>" required >
 
-                            <p class="number"><?php echo $_SESSION['s_shipping_contact']; ?></p>
+                            <p class="number" id="txt_contact"><?php echo $_SESSION['s_shipping_contact']; ?></p>
                             <input type="hidden" id="contact" name="s_shipping_contact"  value="<?php echo $_SESSION['s_shipping_contact']; ?>" required >
 
                         </div>
 
                         <div class="row-shipping-summary">
                             <div class="shipping-summary">Shipping Information</div>
-                            <a href="#">Edit</a>
+                            <a href="#" onclick="showEditShipping()">Edit</a>    
                         </div>
 
                         <div class="shipping-content">
-                            <p class="name"><?php echo $_SESSION['s_shipping_full_name']; ?></p>
-                            <p class="address"><?php echo $_SESSION['s_shipping_strt_bldg_hn']; ?></p>
+                            <p class="name" id="txt_full_name"><?php echo $_SESSION['s_shipping_full_name']; ?></p>
+                            <p class="address" id="txt_strt_bldg_hn"><?php echo $_SESSION['s_shipping_strt_bldg_hn']; ?></p>
                             <input type="hidden" id="strt_bldg_hn" name="s_shipping_strt_bldg_hn"  value="<?php echo $_SESSION['s_shipping_strt_bldg_hn']; ?>" required >
 
-                            <p class="address-cont"><?php echo $_SESSION['s_shipping_reg_pro_cit_brgy']; ?></p>
+                            <p class="address-cont" id="txt_reg_pro_cit_brgy"><?php echo $_SESSION['s_shipping_reg_pro_cit_brgy']; ?></p>
                             <input type="hidden" id="reg_pro_cit_brgy" name="s_shipping_reg_pro_cit_brgy"  value="<?php echo $_SESSION['s_shipping_reg_pro_cit_brgy']; ?>" required >
 
                         </div>
 
                         <div class="row-payment-summary">
                             <div class="payment-summary">Mode of Payment</div>
-                            <a href="#">Edit</a>
+                            <a href="#" onclick="showEditPayment()">Edit</a>    
                         </div>
 
                         <div class="payment-content">
-                            <p class="payment-mode"><?php echo $_SESSION['s_mode_payment']; ?></p>
+                            <p class="payment-mode" id="txt_payment"><?php echo $_SESSION['s_mode_payment']; ?></p>
                             <input type="hidden" id="pay_mode" name="payment_mode"  value="<?php echo $_SESSION['s_mode_payment'];  ?>" required >
                         </div>
                     </div>
@@ -243,14 +244,233 @@
             </div>
             </form>
         </div>
+
+        <!-- Modal -->
+	    <div class="modal fade" id="editBuyerInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalLabel">Buyer Information</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="update_full_name">Full Name</label>
+					<input type="text" name="update_full_name" class="form-control" id="update_full_name" value="<?php echo $_SESSION['s_shipping_full_name'] ?>" >
+				</div>
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="update_email" class="col-md-3 control-label">Email</label> 
+					<input type="text" name="update_email" class="form-control" id="update_email" value="<?php echo $_SESSION['s_shipping_email']; ?>">
+				</div><!-- form-group Finish -->
+                <div class="form-group"><!-- form-group Begin -->
+					<label for="update_contact" class="col-md-3 control-label">Contact</label> 
+					<input type="text" name="update_contact" class="form-control" id="update_contact" value="<?php echo $_SESSION['s_shipping_contact']; ?>" onkeydown="return validateIsNumericInput(event)">
+				</div><!-- form-group Finish -->
+		
+			</div>
+			<div class="modal-footer">
+				<input type="hidden" id="hiddendata">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success" onclick="updateBuyer()">Save changes</button>
+			</div>
+			</div>
+		</div>
+	</div>
+    
+        <!-- Modal -->
+	    <div class="modal fade" id="editShippingInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalLabel">Shipping Information</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="update_s_full_name">Full Name</label>
+					<input type="text" name="update_s_full_name" class="form-control" id="update_s_full_name" value="<?php echo $_SESSION['s_shipping_full_name'] ?>" >
+				</div>
+				<div class="form-group"><!-- form-group Begin -->
+					<label for="update_strt_bldg_hn">Street Name, Bldg, House No.</label> 
+					<input type="text" name="update_strt_bldg_hn" class="form-control" id="update_strt_bldg_hn" value="<?php echo $_SESSION['s_shipping_strt_bldg_hn'];?>">
+				</div><!-- form-group Finish -->
+                <div class="form-group"><!-- form-group Begin -->
+					<label for="update_reg_pro_cit_brgy">Barangay, City, Province</label> 
+					<input type="text" name="update_reg_pro_cit_brgy" class="form-control" id="update_reg_pro_cit_brgy" value="<?php echo $_SESSION['s_shipping_reg_pro_cit_brgy'];?>">
+				</div><!-- form-group Finish -->
+		
+			</div>
+			<div class="modal-footer">
+				<input type="hidden" id="hiddendata">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success" onclick="updateShipping()">Save changes</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+     <!-- Modal -->
+     <div class="modal fade" id="editPaymentInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalLabel">Mode of Payment</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<div class="form-group">
+
+                    <label for="update_payment">Payment Method</label> 
+				    <select name="update_payment" class="form-control" id="update_payment" value="<?php $_SESSION['s_mode_payment'];?>"><!-- form-control Begin -->
+                        
+                        <option value='Gcash'> Gcash </option>
+                        <option value='Paymaya'> Paymaya </option>
+                        <option value='Bank Transfer'> Bank Transfer </option>
+                        <option value='Cash on Delivery'> Cash on Delivery </option>
+                        
+                    </select>
+                
+                </div>
+				
+			</div>
+			<div class="modal-footer">
+				<input type="hidden" id="hiddendata">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success" onclick="updatePayment()">Save changes</button>
+			</div>
+			</div>
+		</div>
+	</div>
        
     <script src="scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
 
     
+    <script>
+
+        function showEditBuyer(){
+            $('#editBuyerInfoModal').modal('show');
+        }
+        function showEditShipping(){
+            $('#editShippingInfoModal').modal('show');
+        }
+        function showEditPayment(){
+            $('#editPaymentInfoModal').modal('show');
+        }
+
+        function updateBuyer(){
+            var edit_full_name = $("#update_full_name").val();  //value from editing
+            // console.log(edit_full_name);
+            var new_name = $("*[id^='txt_full_name']").text(edit_full_name).change(); //value from frontend
+            var input_new_name = $("#full_name").val(edit_full_name).change(); //value to pass on server
+
+            var edit_email = $("#update_email").val();
+            var new_email = $("#txt_email").text(edit_email).change();
+            var input_new_email = $("#email").val(edit_email).change();
+
+            var edit_contact = $("#update_contact").val();
+            var new_contact = $("#txt_contact").text(edit_contact).change();
+            var input_new_contact = $("#contact").val(edit_contact).change();
+
+            $.ajax({
+                url:"includes/order.confirm.php",
+                type:"POST",
+                data:{
+                    s_shipping_full_name:edit_full_name,
+                    s_shipping_email:edit_email,
+                    s_shipping_contact:edit_contact
+                },
+                success:function(data,status){
+                    $('#editBuyerInfoModal').modal('hide');
+                    console.log(data);
+				}
+            });
+        }
+
+        function updateShipping(){
+
+            var edit_full_name = $("#update_s_full_name").val();  //value from editing
+            var new_name = $("*[id^='txt_full_name']").text(edit_full_name).change(); //value from frontend
+            var input_new_name = $("#full_name").val(edit_full_name).change(); //value to pass on server
+
+            var edit_strt_bldg_hn = $("#update_strt_bldg_hn").val();
+            var new_strt_bldg_hn = $("#txt_strt_bldg_hn").text(edit_strt_bldg_hn).change();
+            var input_new_strt_bldg_hn = $("#strt_bldg_hn").val(edit_strt_bldg_hn).change();
+
+            var edit_reg_pro_cit_brgy = $("#update_reg_pro_cit_brgy").val();
+            var new_reg_pro_cit_brgy = $("#txt_reg_pro_cit_brgy").text(edit_reg_pro_cit_brgy).change();
+            var input_new_reg_pro_cit_brgy = $("#reg_pro_cit_brgy").val(edit_reg_pro_cit_brgy).change();
+
+            
+            $.ajax({
+                url:"includes/order.confirm.php",
+                type:"POST",
+                data:{
+                    s_shipping_full_name:edit_full_name,
+                    s_shipping_strt_bldg_hn:edit_strt_bldg_hn,
+                    s_shipping_reg_pro_cit_brgy:edit_reg_pro_cit_brgy
+                },
+                success:function(data,status){
+                    $('#editShippingInfoModal').modal('hide');
+                    console.log(data);
+				}
+            });
+        }
+
+        function updatePayment(){
+            var edit_payment = $("#update_payment").val();  //value from editing
+            var new_payment = $("#txt_payment").text(edit_payment).change(); //value from frontend
+            var input_new_payment = $("#pay_mode").val(edit_payment).change(); //value to pass on server
+
+            $.ajax({
+                url:"includes/order.confirm.php",
+                type:"POST",
+                data:{
+                    payment_mode:edit_payment,
+                },
+                success:function(data,status){
+                    $('#editPaymentInfoModal').modal('hide');
+                    console.log(data);
+				}
+            });
+        }
+
+    </script>
+
+    <script>
+
+    /**
+    Checks the ASCII code input by the user is one of the following:
+        - Between 48 and 57: Numbers along the top row of the keyboard
+        - Between 96 and 105: Numbers in the numeric keypad
+        - Either 8 or 46: The backspace and delete keys enabling user to change their input
+        - Either 37 or 39: The left and right cursor keys enabling user to navigate their input
+    */
+
+    function validateIsNumericInput(evt) {
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        permittedKeys = [8, 46, 37, 39]
+        if ((ASCIICode >= 48 && ASCIICode <= 57) || (ASCIICode >= 96 && ASCIICode <= 105)) {
+            return true;
+        };
+        if (permittedKeys.includes(ASCIICode)) {
+            return true;
+        };
+        return false;
+    }
+
+    </script>
+
     </body>
 
    <!--Footer Section-->
@@ -309,4 +529,5 @@
         </div>
     </footer>
     <!--End of footer section-->
+
 </html>

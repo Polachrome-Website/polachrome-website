@@ -485,7 +485,7 @@ a .view-cart{
 width: 90%;
 text-align: center;
 cursor: pointer;
-background-color: #f04231;
+background-color: black;
 color: white;
 font-weight: 400;
 font-size: 15px;
@@ -493,6 +493,12 @@ margin: 7px auto 15px;
 padding:7px;
 border: none;
 border-radius: 7px;
+}
+
+a .view-cart:hover{
+  background-color: white;
+  color: black;
+  outline: solid black 1px;
 }
 
 a:hover{
@@ -560,20 +566,20 @@ text-align: right;
 display: none;
 }
 
-.cart-total-items::after{
-content: '3';
-font-size: 13px;
-color: white;
-width: 20px;
-height: 20px;
-padding-top: 3px;
-display: inline-block;
-text-align: center;
-position: relative;
-background-color: #f04231;
-border-radius: 50%;
-top: -10px;
-right: 20%;
+#cart-total-items{
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  width: 17px;
+  height: 17px;
+  padding-top: 1px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  background-color: #f04231;
+  border-radius: 50%;
+  top: -10px;
+  right: 29%;
 }
 
 
@@ -614,9 +620,7 @@ nav{
   right: 14.3%;
 }
 
-nav .cart-icon{
-  left: 70%;
-}
+
 
 
 }

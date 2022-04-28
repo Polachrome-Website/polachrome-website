@@ -441,20 +441,20 @@ a:hover{
   display: none;
 }
 
-.cart-total-items::after{
-  content: '3';
-  font-size: 12px;
+#cart-total-items{
+  font-size: 10px;
+  font-weight: 600;
   color: white;
-  width: 20px;
-  height: 20px;
-  padding-top: 3.6px;
+  width: 17px;
+  height: 17px;
+  padding-top: 1px;
   display: inline-block;
   text-align: center;
   position: relative;
   background-color: #f04231;
   border-radius: 50%;
   top: -10px;
-  right: 20%;
+  right: 29%;
 }
 
 

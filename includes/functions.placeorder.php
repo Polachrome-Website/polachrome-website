@@ -2,9 +2,21 @@
 require_once "shoppingCart.php";
 
 
+ // RemoteMySQL Connection
+
+ $server = "remotemysql.com";
+ $username = "kgNGVMmxvF";
+ $password = "WAQHRpOvnw";
+ $db = "kgNGVMmxvF";
+ 
+ $db = mysqli_connect($server,$username,$password,$db);
+
+ 
+//connect local DB
+
+// $db = mysqli_connect("localhost","root","123456","polachrome_db");
 
 
-$db = mysqli_connect("localhost","root","123456","polachrome_db");
 /// begin getRealIpUser functions ///
 
 function getRealIpUser(){

@@ -3,14 +3,22 @@
 
 class DBController
 {
+    
+    // RemoteMySQL Connection
 
-    private $host = "localhost";
+    private $host = "remotemysql.com";
+    private $user = "kgNGVMmxvF";
+    private $password = "WAQHRpOvnw";
+    private $database = "kgNGVMmxvF";
 
-    private $user = "root";
+    //localhost connection DB
+    // private $host = "localhost";
 
-    private $password = "123456";
+    // private $user = "root";
 
-    private $database = "polachrome_db";
+    // private $password = "123456";
+
+    // private $database = "polachrome_db";
 
     private $conn;
 

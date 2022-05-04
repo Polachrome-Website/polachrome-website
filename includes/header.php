@@ -901,7 +901,17 @@
                                 <img src="admin_area/product_images/<?php echo $product_img1; ?>">
                                 <div class="product-info">
                                     <h6><?php echo $_SESSION['product_title'];?></h6>
-                                    <div class="variation">Variation: N/A</div>
+                                    <div class="variation">Variation: <?php
+                                                    if($product_title === 'Go Film'){echo "White Frame";}
+                                                    elseif($product_title === 'Polaroid Go Instant Camera'){echo "Black";}
+                                                    elseif($product_title === 'Polaroid Now Instant Camera'){echo "Black";}
+                                                    elseif($product_title === 'Polaroid Now+ Instant Camera'){echo "Black";}
+                                                    elseif($product_title === 'Polaroid SX-70 SLR'){echo "SX-70 Original";}
+                                                    elseif($product_title === 'Photo Album'){echo "Small (40 Photos)";}
+                                                    elseif($product_title === 'Camera Strap - Flat'){echo "Yellow";}
+                                                    elseif($product_title === 'Camera Strap - Round'){echo "Yellow";}
+                                                    else{echo "N/A";}
+                                                ?></div>
                                     <div class="other-info">
                                         <!-- <span class="quantity">Qty: <?php echo $pro_qty; ?> </span> -->
                                         <span class="price">₱<?php echo "$sub_total";?></span>

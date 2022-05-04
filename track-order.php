@@ -60,7 +60,7 @@
                 <div class="row">
                     <div class="col">
                         <br>
-                        <button type="submit" class="btn" name="track-submit">Submit</button>
+                        <button type="submit" class="btn-track" name="track-submit">Submit</button>
                     </div>
                 </div>
                 <div class="row">

@@ -3,19 +3,11 @@
 <head>
 	<title>View Products</title>
 	<meta name="viewport" conntent="width=device-width, initial-scale=1.0">
-	<!-- <link rel="stylesheet" href="admin-dashboard.css"> -->
-	<!--Bootstrap Cdn-->
-	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
--->
-	<!--Font Awesome iconns-->
+
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
 	<link href='https://unpkg.com/boxiconns@2.0.7/css/boxiconns.min.css' rel='stylesheet'>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
-
-<!--Polaroid Font 
-<link href="//db.onlinewebfonts.com/c/1e5b7f8cdbcb1e579a6e53aaadaf0b67?family=FF+Real+Head" rel="stylesheet" type="text/css"/>--> 
 </head>
 
 <body>
@@ -61,11 +53,11 @@
 				
 				<div class="form-group"><!-- form-group Begin -->
 					<label for="update_price" class="col-md-3 control-label"> Product Price </label> 
-					<input name="product_price" type="text" class="form-control" id="update_price" >
+					<input name="product_price" type="text" class="form-control" id="update_price" onkeydown="return validateIsNumericInput(event)">
 				</div><!-- form-group Finish -->
 				<div class="form-group"><!-- form-group Begin -->
 					<label for="update_quantity" class="col-md-3 control-label"> Quantity </label> 
-					<input name="product_quantity" type="text" class="form-control"  id="update_quantity" >
+					<input name="product_quantity" type="text" class="form-control" onkeydown="return validateIsNumericInput(event)" id="update_quantity" >
 				</div><!-- form-group Finish -->
 			</div>
 			<div class="modal-footer">
@@ -98,11 +90,11 @@
 		
 				<div class="form-group"><!-- form-group Begin -->
 					<label for="update_varprice" class="col-md-3 control-label"> Product Price </label> 
-					<input name="product_price" type="text" class="form-control" id="update_varprice">
+					<input name="product_price" type="text" class="form-control" onkeydown="return validateIsNumericInput(event)" id="update_varprice">
 				</div><!-- form-group Finish -->
 				<div class="form-group"><!-- form-group Begin -->
 					<label for="update_varquantity" class="col-md-3 control-label"> Quantity </label> 
-					<input name="product_quantity" type="text" class="form-control"  id="update_varquantity">
+					<input name="product_quantity" type="text" class="form-control" onkeydown="return validateIsNumericInput(event)" id="update_varquantity">
 				</div><!-- form-group Finish -->
 			</div>
 			<div class="modal-footer">
@@ -181,7 +173,7 @@
 				</div><!-- form-group Finish -->
 				<div class="form-group"><!-- form-group Begin -->
 					<label for="del_varquantity" class="col-md-3 control-label"> Quantity </label> 
-					<input name="product_quantity" type="text" class="form-control"  id="del_varquantity" disabled>
+					<input name="product_quantity" type="text" class="form-control" id="del_varquantity" disabled>
 				</div><!-- form-group Finish -->
 			</div>
 			<div class="modal-footer">
@@ -208,22 +200,35 @@
             <div id="displayProdImages"></div>
 
             <div class="form-group"><!-- form-group Begin -->
-                <input name="update_prodImg1" type="file" class="form-control" id="update_prodImg1" />
+                <input name="update_prodImg1" type="file" class="form-control" accept="image/*" id="update_prodImg1" />
 
             </div><!-- form-group Finish -->
             <div class="form-group">
 
-                <input name="update_prodImg2" type="file" class="form-control" id="update_prodImg2">
+                <input name="update_prodImg2" type="file" class="form-control"  accept="image/*"  id="update_prodImg2">
 
             </div>
 
             <div class="form-group">
 
-                <input name="update_prodImg3" type="file" class="form-control form-height-custom" id="update_prodImg3">
+                <input name="update_prodImg3" type="file" class="form-control form-height-custom"  accept="image/*" id="update_prodImg3">
 
             </div><!-- form-group Finish -->
 
+			<div class="form-group">
 
+                <input name="update_prodImg4" type="file" class="form-control form-height-custom"  accept="image/*" id="update_prodImg4">
+
+            </div><!-- form-group Finish -->
+
+			<div class="form-group">
+
+                <input name="update_prodImg5" type="file" class="form-control form-height-custom"  accept="image/*" id="update_prodImg5">
+				<h6 style="color:red;"><i>&nbsp&nbsp&nbsp&nbspNotes: Image files only. Max size - 5MB. Preferred Resolution - 800x800px </i></h6> 
+
+            </div><!-- form-group Finish -->
+
+		
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -249,25 +254,38 @@
             <div id="displayVarProdImages"></div>
 
             <div class="form-group"><!-- form-group Begin -->
-                <input name="update_varprodImg1" type="file" class="form-control" >
+                <input name="update_varprodImg1" type="file" accept="image/*" class="form-control" >
 
             </div><!-- form-group Finish -->
             <div class="form-group">
 
-                <input name="update_varprodImg2" type="file" class="form-control" >
+                <input name="update_varprodImg2" type="file" accept="image/*" class="form-control" >
 
             </div>
 
             <div class="form-group">
 
-                <input name="update_varprodImg3" type="file" class="form-control form-height-custom" >
+                <input name="update_varprodImg3" type="file" accept="image/*" class="form-control form-height-custom" >
+				
 
             </div><!-- form-group Finish -->
+
+			<div class="form-group">
+
+				<input name="update_varprodImg4" type="file" accept="image/*" class="form-control form-height-custom" >
+
+			</div><!-- form-group Finish -->
+
+			<div class="form-group">
+
+				<input name="update_varprodImg5" type="file" accept="image/*" class="form-control form-height-custom" >
+				<h6 style="color:red;"><i>&nbsp&nbsp&nbsp&nbspNotes: Image files only. Max size - 5MB. Preferred Resolution - 800x800px </i></h6>
+			</div><!-- form-group Finish -->
 
 
             </div>
             <div class="modal-footer">
-            <input type="text" name="hiddenimgsvardata" id="hiddenimgsvardata">
+            <input type="hidden" name="hiddenimgsvardata" id="hiddenimgsvardata">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" name="submitvarUpdateImg">Update</button>
             </div>
@@ -592,6 +610,38 @@
 					displayData();
 			});
 			
+		}
+
+		/**
+		Checks the ASCII code input by the user is one of the following:
+			- Between 48 and 57: Numbers along the top row of the keyboard
+			- Between 96 and 105: Numbers in the numeric keypad
+			- Either 8 or 46: The backspace and delete keys enabling user to change their input
+			- Either 37 or 39: The left and right cursor keys enabling user to navigate their input
+		*/
+
+		function validateIsNumericInput(evt) {
+			var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+			permittedKeys = [8, 46, 37, 39]
+			if ((ASCIICode >= 48 && ASCIICode <= 57) || (ASCIICode >= 96 && ASCIICode <= 105)) {
+				return true;
+			};
+			if (permittedKeys.includes(ASCIICode)) {
+				return true;
+			};
+			return false;
+		}
+
+		function validateIsNumericInputQuantity(evt) {
+			var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+			permittedKeys = [8, 46, 37, 39]
+			if ((ASCIICode >= 49 && ASCIICode <= 57) || (ASCIICode >= 97 && ASCIICode <= 105)) {
+				return true;
+			};
+			if (permittedKeys.includes(ASCIICode)) {
+				return true;
+			};
+			return false;
 		}
 	</script>
 	<!-- <script src="js/tinymce/tinymce.min.js"></script>

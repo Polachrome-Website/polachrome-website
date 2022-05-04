@@ -1,9 +1,10 @@
 <?php
 
+
 if (isset($_POST["address-edit"])){
 	$addressid = $_POST['address'];
 	include('db.php');
-	header("LOCATION: ../user-profile.php?addressid=" . $addressid);
+	redirect("LOCATION: ../user-profile.php?addressid=" . $addressid);
 	// echo "<script>window.open('../user-profile.php?addressid=$addressid','_self')</script>";
 }
 
@@ -11,7 +12,7 @@ if (isset($_POST["address-edit"])){
 if (isset($_POST["address-select"])){
 	$addressid = $_POST['address'];
 	include('db.php');
-	header("LOCATION: ../user-profile.php?addressid=" . $addressid . "addresssuccess");
+	header("LOCATION: ../user-profile.php?addressid=" . $addressid);
 	// echo "<script>window.open('../user-profile.php?addressid=$addressid','_self')</script>";
 }
 

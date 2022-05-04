@@ -2,7 +2,6 @@
     $active = 'Contact';
 	include("includes/header.php");
 ?>
-
     <head>
 
     <title>Ask PolaChrome</title>
@@ -13,12 +12,13 @@
   </head>
   <body>
 
-    <!--Left side, addresses-->
-  	<div class="contact-section">
+  <div class="bg-img">  <!--start bg-img-->
+   <!--Left side, addresses-->
+   <div class="contact-section" style="margin-top: 90px;">
       <div class="contact-info">
-        <div><i class="fas fa-map-marker-alt"></i>Manila, Philippines</div>
-        <div><i class="fas fa-envelope"></i>email@ust.edu.ph</div>
-        <div><i class="fas fa-phone"></i>+00 0000 000 000</div>
+        <div><i class="fas fa-map-marker-alt"></i>Mexico, Pampanga and Sampaloc, Manila</div>
+        <div><i class="fas fa-envelope"></i>polacrom@gmail.com</div>
+        <div><i class="fas fa-phone"></i>0919 069 7815</div>
         <div><i class="fas fa-clock"></i>Mon - Fri 8:00 AM to 5:00 PM</div>
       </div>
 	  
@@ -44,6 +44,7 @@
         </form>
       </div>
     </div>
+</div> <!--end bg-img-->
         <?php
 			if (isset($_GET["inquiry"])) {
 				if ($_GET["inquiry"] == "success") {

@@ -29,6 +29,7 @@
 								<tr><!-- tr begin -->
 									<th> Reference: </th>
 									<th> Product: </th>
+									<th> Variation: </th>
 									<th> Amount: </th>
 									<th> Quantity: </th>
                                     <th> Status: </th>
@@ -45,6 +46,55 @@
 								$customer_id = $row_order['customer_id'];
 								$invoice_no = $row_order['invoice_no'];
 								$pro_id_order = $row_order['pro_id'];
+								$pro_var = $row_order['var_id'];
+
+								if($pro_var == 0){
+									$get_products = "select * from products where prodID='$pro_id_order'";
+
+									$run_prod = mysqli_query($conn,$get_products);
+
+									while($row_products = mysqli_fetch_array($run_prod)){
+										$prod_name = $row_products['prodName'];
+
+										if($prod_name === 'Go Film'){
+											$product_varname = 'White Frame';
+										}
+										elseif($prod_name === 'Polaroid Go Instant Camera'){
+											$product_varname = 'Black';
+										}
+										elseif($prod_name === 'Polaroid Now Instant Camera'){
+											$product_varname = 'Black';
+										}
+										elseif($prod_name === 'Polaroid Now+ Instant Camera'){
+											$product_varname = 'Black';
+										}
+										elseif($prod_name === 'Polaroid SX-70 SLR'){
+											$product_varname = 'SX-70 Original';
+										}
+										elseif($prod_name === 'Photo Album'){
+											$product_varname = 'Small (40 Photos)';
+										}
+										else{
+											$product_varname = '';
+										}
+									}	
+								}
+								if($pro_var !=0){
+									$get_products = "select * from products where prodID='$pro_id_order'";
+					
+									$run_products = mysqli_query($conn,$get_products);
+					
+									while($row_products = mysqli_fetch_array($run_products)){
+										$get_productsvar = "select  * from product_variation where varID='$pro_var'";
+					
+										$run_productsvar = mysqli_query($conn,$get_productsvar);
+														
+										$row_provar=mysqli_fetch_array($run_productsvar);
+					
+										$product_varname = $row_provar['prodVariation'];
+									}
+								}
+				
 								$pro_qty_order = $row_order['pro_qty'];
                                 $amount_order = $row_order['amount'];
                                 $order_date = $row_order['order_date'];
@@ -76,6 +126,7 @@
 								$table.='<tr>
 									<td>'.$invoice_no.'</td>
 									<td>'.$pro_name.' </td>
+									<td>'.$product_varname.' </td>
 									<td>'.$amount_order.'</td>
 									<td>'.$pro_qty_order.'</td>
                                     <td>'.$order_status.'</td>
@@ -85,7 +136,7 @@
                                             if($payment_proof == NULL){
                                                 $table .= "N/A";
                                             }else{
-                                                $table .= '<a href="#" class="pop"><img src="../img/payments/'.$payment_proof.'" width="60" height="60"></a>';
+                                                $table .= '<a href="#" class="pop" onclick="enlargeImg('.$invoice_no.')"><img src="../img/payments/'.$payment_proof.'" width="60" height="60"></a>';
                                             }
                                             $table .= '
 									</td>
@@ -206,6 +257,22 @@
 	}else{
 		$response['status']=200;
 		$response['message']="Invalid or data not found";
+	}
+
+	if(isset($_POST['displayImgSend'])){
+		$refno = $_POST['hiddenimgdata'];
+		$get_img ="select * from tbl_orders WHERE invoice_no = '" . $refno . "'";
+		$run_img = mysqli_query($conn, $get_img);
+		$row_orders=mysqli_fetch_array($run_img);
+
+		$payment_proof = $row_orders['payment_proof'];
+
+		$images = '<center>
+			<img src="../img/payments/'.$payment_proof.'" width="100%" height="100%">';
+
+		
+	echo $images;
+
 	}
 	
 ?>

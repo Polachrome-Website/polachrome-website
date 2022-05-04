@@ -5,7 +5,11 @@
         
         <title>User Profile</title>
         <link rel="stylesheet" href="styles/user-profile.css">
-           
+        <style>
+    .error{
+        outline: 1px solid red;
+    }    
+</style>
     </head>
 
 <?php
@@ -156,7 +160,7 @@
 
                                 <input type="hidden" name="addressid"  class="text-box" value="<?php echo $address_id ?>" >
                                 <input type="hidden" name="userID"  class="text-box" value="<?php echo $_SESSION["userID"] ?>" required >
-                                <div class="row mb-3 align-items-center g-3">
+                                <div class="row mb-3 align-items-center g-3" id="addressDisplay">
                                 <div class="col-sm-6">
                                     <input type="text" name="fullname" class="form-control myInput" placeholder="Full Name" value="<?php echo $_SESSION['fullName'];?>" required>
                                 </div>
@@ -285,9 +289,10 @@
                                                 while($row = mysqli_fetch_array($query))
                                                 {
                                                     ?>
-                                                    <input type="radio" id="address<?php echo $count ?>" name="address" value="<?php echo $row['addressID'] ?>">
+                                                    <input type="radio" class="addressID" id="address<?php echo $count ?>" name="address" value="<?php echo $row['addressID'] ?>">
                                                     <label for="address<?php echo $count ?>"><?php echo $row['bldg'], ", ", $row['strt'], ", ", $row['brgy'], ", ", $row['city'], ", ", $row['region'], ", ", $row['zip'], ", ", $row['contactNum'] ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                      
+                                                    <input type="hidden" name="hiddenaddressdata" id="hiddenaddressdata">
+
                                                             <!-- <a href="#" style="cursor:pointer;" id="submit-delete-address" class="fa fa-trash delete-icon" name="address-delete"></a> -->
                                                             <!-- <a href="" onclick="subForm('delete-address')" style="cursor:pointer;" id="delete-icon" name="address-delete" class="fa fa-trash delete-icon" ></a> -->
                                                           
@@ -388,7 +393,6 @@
                                 <input type="password" class="form-control" id="confpw" placeholder="Re-enter new password" required>
                             </div>
                         </div>
-                            
                          
                         <div class="row">
                             <div class="col-sm-3"></div>
@@ -400,6 +404,7 @@
                     </div>
                 </div>
             </div>
+       
 
               
             </div>
@@ -515,11 +520,35 @@
             })
         }
 	
+    function selectAddress(){
+        var addressID = $('.addressID').val();
+
+        $.post("includes/address.inc.php", {addressID:addressID}, function(data,status){
+        });
+    }
+
+    function displayAddress(){
+        var displayAddress="true";
+        var addressID = $('.addressID').val();
+
+        $.ajax({
+				url:"includes/address.inc.php",
+				type:'post',
+				data:{
+					displayAddress: displayAddress,
+					addressID:addressID
+				},
+				success:function(data,status){
+					$('#displayProofImage').html(data);
+				}
+			})
+    }
 	
     function updateUser(userID){
         var newfullname=$('#newfullname').val();
         var newemail=$('#newemail').val();
         var newusername=$('#newusername').val();
+        
 
         $.post("includes/functions.inc.php", {
             newfullname:newfullname,
@@ -539,7 +568,7 @@
 		var oldpw=$('#oldpw').val();
 		var newpw=$('#newpw').val();
 		var confpw=$('#confpw').val();
-		
+        
 		$.post("includes/functions.inc.php", {
 			oldpw:oldpw,
 			newpw:newpw,
@@ -663,7 +692,7 @@
         <!--Logo-->   
         <div class="col-lg-3 col-md-6 col sm-6">
             <div class="footer-about">
-                <h3>We're here to help</h3>
+                <h3>Contact Us</h3>
                 <p><a href="contact.php">Get in touch</a> with our customer service team.</p>
                 <img src="img/mop.png">
             </div>

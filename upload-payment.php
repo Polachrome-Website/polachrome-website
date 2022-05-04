@@ -102,6 +102,17 @@
                 
                 </script>";
             }
+            if ($_GET["status"] == "errorupload") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'There was an error uploading your file. Please ensure to upload correct image format (jpg, jpeg, png) and a file size of less than 5MB.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+                
+                </script>";
+            }
         }
 
     ?>
@@ -115,7 +126,7 @@
         <!--Logo-->   
         <div class="col-lg-3 col-md-6 col sm-6">
             <div class="footer-about">
-                <h3>We're here to help</h3>
+                <h3>Contact Us</h3>
                 <p><a href="contact.php">Get in touch</a> with our customer service team.</p>
                 <img src="img/mop.png">
             </div>

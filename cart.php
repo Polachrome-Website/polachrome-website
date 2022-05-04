@@ -92,10 +92,9 @@
             $select_cart = "select * from cart where user_id='$user_id'";
         }
 
-        if(!isset($_SESSION['userID'])){
-            // $guest_id = $_SESSION['guest_id'];
-            $guest_id = md5(getRealIpUser());
-            $select_cart = "select * from cart where user_id=837";
+        else{
+            $guest_id = $_SESSION['guest_id'];
+            $select_cart = "select * from cart where user_id='$guest_id'";
         }
         // if(isset($_SESSION['guestID'])){
         //     $user_id = $_SESSION['guestID'];
@@ -152,8 +151,12 @@
             $pro_id = $row_cart['prod_id'];
 
             $pro_qty = $row_cart['qty'];
-
-                $get_products = "select * from products where prodID='$pro_id'";
+			
+			$pro_var = $row_cart['var_id'];
+			
+			if ($pro_var == 0) {
+				
+				$get_products = "select * from products where prodID='$pro_id'";
 
                 $run_products = mysqli_query($conn,$get_products);
 
@@ -185,6 +188,150 @@
 
                     $_SESSION['total'] = $total;
                 
+				?>  
+				 <?php add_cart();
+				 ?>
+				 <!-- <?php echo $user_id; ?> -->
+						<!--Cart Items-->
+						<div class="cart-item">
+								<form action="shipping.php">
+									<div class="cart-product">
+									<div>
+									<img class="product-image" src="admin_area/product_images/<?php echo $product_img1; ?>" alt="Product Img">
+									 </div> 
+									<div class="cart-header-cart">
+											<div class="product-info">
+												<p class="product-name"><?php echo $_SESSION['product_title'];?></p>
+												<p class="product-variation">Variation: <?php
+                                                    if($product_title === 'Go Film'){echo "White Frame";}
+                                                    elseif($product_title === 'Polaroid Go Instant Camera'){echo "Black";}
+                                                    elseif($product_title === 'Polaroid Now Instant Camera'){echo "Black";}
+                                                    elseif($product_title === 'Polaroid Now+ Instant Camera'){echo "Black";}
+                                                    elseif($product_title === 'Polaroid SX-70 SLR'){echo "SX-70 Original";}
+                                                    elseif($product_title === 'Photo Album'){echo "Small (40 Photos)";}
+                                                    elseif($product_title === 'Camera Strap - Flat'){echo "Yellow";}
+                                                    elseif($product_title === 'Camera Strap - Round'){echo "Yellow";}
+                                                    else{echo "N/A";}
+                                                ?></p>
+												<!-- <p class="stocks"><?php echo "$product_quantity";?> stocks left!</i></p> -->
+											   
+												<p class="stocks">
+													<?php if($product_quantity <=5 ){echo $product_quantity . " stocks left!";} ?>
+											   </i></p>
+											</div>
+											<!--product price in mobile ver-->
+											<div class="product-price">
+												<p class="price-sm">₱<?php echo "$sub_total";?></p>
+										   </div>
+										</div>
+									</div>
+
+									<div class="unit-price">
+										<p> ₱<?php echo "$only_price";?></p>
+									</div>
+									<div class="quantity-controls-md">
+										<div class="quantity-edit-controls">
+										   
+										<input type="hidden" id="product-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $row_products["quantity"]; ?>" readonly/>
+
+										
+										<div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
+										<input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
+								
+
+											<!-- <button>-</button>
+											<input type="number " value="1" readonly/>
+											<button>+</button> -->
+
+										<div class="btn-increment-decrement"
+										onClick="increment_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">+</div>
+												
+										</div>
+									</div>
+									<div class="product-total" id="cart-price-<?php echo $row_cart["cart_id"]; ?>">
+										<p>₱<?php echo "$sub_total";?></p>
+									</div>
+									<div class="remove-md">
+										<!-- <button type="submit" name="update"><span>Remove Item</span></button> -->
+										<a id="remove-item" href="cart.php?action=remove&id=<?php echo $row_cart["cart_id"]; ?>">
+											Remove Item
+										</a>
+									</div>
+								   
+									<!--remove item and quantity btn in mobile ver-->
+									<div class="cart-controls-sm">
+										<div class="remove">
+											<a id="remove-item" href="cart.php?action=remove&id=<?php echo $row_cart["cart_id"]; ?>">
+												Remove Item
+											</a>
+										</div>
+										<div class="cart-quantity-controls-sm">
+										<input type="hidden" id="product-quantity-<?php echo $row_cart["cart_id"]; ?>" readonly/>
+										
+										<div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
+										<input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
+								
+
+											<!-- <button>-</button>
+											<input type="number " value="1" readonly/>
+											<button>+</button> -->
+
+										<div class="btn-increment-decrement"
+										onClick="increment_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">+</div>
+										</div>   
+									</div>
+
+								</form>
+							</div>
+
+						<?php 
+								} 
+					   
+					
+			} else {
+				
+				$get_products = "select * from products where prodID='$pro_id'";
+
+                $run_products = mysqli_query($conn,$get_products);
+
+                while($row_products = mysqli_fetch_array($run_products)){
+
+                    $product_title = $row_products['prodName'];
+					
+					$get_productsvar = "select  * from product_variation where varID='$pro_var'";
+
+					$run_productsvar = mysqli_query($conn,$get_productsvar);
+					
+					$row_provar=mysqli_fetch_array($run_productsvar);
+
+                    $product_img1 = $row_provar['prodImg1'];
+						
+					$product_varname = $row_provar['prodVariation'];
+
+                    $pro_price = $row_provar['price'];
+
+                    $product_quantity = $row_provar['quantity'];
+
+                    $only_price = $row_provar['price'];
+
+                    $sub_total = $row_provar['price']*$pro_qty;
+
+                    $total += $sub_total;  
+                    
+                    $_SESSION['product_title'] = $product_title;
+                    
+                    $_SESSION['product_img1'] = $product_img1;
+					
+					$_SESSION['product_varname'] = $product_varname;
+
+                    $_SESSION['product_quantity'] = $product_quantity;
+
+                    $_SESSION['only_price'] = $only_price;
+
+                    $_SESSION['sub_total'] = $sub_total;
+
+                    $_SESSION['total'] = $total;
+                
         ?>  
          <?php add_cart();
          ?>
@@ -196,10 +343,10 @@
                             <div>
                             <img class="product-image" src="admin_area/product_images/<?php echo $product_img1; ?>" alt="Product Img">
                              </div> 
-                            <div class="cart-header">
+                            <div class="cart-header-cart">
                                     <div class="product-info">
                                         <p class="product-name"><?php echo $_SESSION['product_title'];?></p>
-                                        <p class="product-variation">Variation: Black</p>
+                                        <p class="product-variation">Variation: <?php echo $_SESSION['product_varname'];?></p>
                                         <!-- <p class="stocks"><?php echo "$product_quantity";?> stocks left!</i></p> -->
                                        
                                         <p class="stocks">
@@ -219,19 +366,20 @@
                             <div class="quantity-controls-md">
                                 <div class="quantity-edit-controls">
                                    
-                                <input type="hidden" id="product-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $row_products["quantity"]; ?>" readonly/>
+                                <input type="hidden" id="product-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $row_provar["quantity"]; ?>" readonly/>
 
                                 
-                                <div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
-                                <input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
+                                <div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_provar["price"]; ?>')">-</div>
+                                <input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_provar["quantity"]; ?>">
                         
 
                                     <!-- <button>-</button>
                                     <input type="number " value="1" readonly/>
                                     <button>+</button> -->
-
+									
+								
                                 <div class="btn-increment-decrement"
-                                onClick="increment_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">+</div>
+                                onClick="increment_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_provar["price"]; ?>')">+</div>
                                         
                                 </div>
                             </div>
@@ -255,8 +403,8 @@
                                 <div class="cart-quantity-controls-sm">
                                 <input type="hidden" id="product-quantity-<?php echo $row_cart["cart_id"]; ?>" readonly/>
                                 
-                                <div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
-                                <input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
+                                <div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_provar["price"]; ?>')">-</div>
+                                <input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_provar["quantity"]; ?>">
                         
 
                                     <!-- <button>-</button>
@@ -264,7 +412,7 @@
                                     <button>+</button> -->
 
                                 <div class="btn-increment-decrement"
-                                onClick="increment_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">+</div>
+                                onClick="increment_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_provar["price"]; ?>')">+</div>
                                 </div>   
                             </div>
 
@@ -274,6 +422,11 @@
                 <?php 
                         } 
                 ?>
+				
+			<?php
+			}
+			?>
+                
                 
                 <?php } ?>   <!-- end while loop for fetch cart -->
 
@@ -288,7 +441,7 @@
                         </p>
                     </div>
                     <div class="cart-btn">
-                    <button type="submit" class="btn btn-dark btn-checkout"><a href="shipping.php" style="all:unset;">Proceed to Checkout</button></a>
+                    <button type="submit" class="btn btn-checkout" onclick="location.href='shipping.php'">Proceed to Checkout</button>
                     </div> 
                 </div>
             </div>
@@ -305,7 +458,7 @@
         <!--Logo-->   
         <div class="col-lg-3 col-md-6 col sm-6">
             <div class="footer-about">
-                <h3>We're here to help</h3>
+                <h3>Contact Us</h3>
                 <p><a href="contact.html">Get in touch</a> with our customer service team.</p>
                 <img src="img/mop.png">
             </div>

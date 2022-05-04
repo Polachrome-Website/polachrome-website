@@ -4,7 +4,7 @@
                 <!--Logo-->   
                 <div class="col-lg-3 col-md-6 col sm-6">
                     <div class="footer-about">
-                        <h3>We're here to help</h3>
+                        <h3>Contact Us</h3>
                         <p><a href="">Get in touch</a> with our customer service team.</p>
                         <img src="images/mop.png">
                     </div>
@@ -28,7 +28,7 @@
                         <h6>FOLLOW US</h6>
                         <ul class="social-icon">
                             <li><a href="https://www.facebook.com/PolaChrome/"><i class="fab fa-facebook"></i> PolaChrome</i></a></li>
-                            <li><a href="https://www.instagram.com/pola.chrome//"><i class="fab fa-instagram-square"></i> PolaChrome</i></a></li>
+                            <li><a href="https://www.instagram.com/pola.chrome/"><i class="fab fa-instagram-square"></i> PolaChrome</i></a></li>
                         </ul>
                     </div>
                 </div>

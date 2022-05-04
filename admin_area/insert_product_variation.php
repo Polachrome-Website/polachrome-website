@@ -105,8 +105,9 @@ include("includes/db.php");
                        
                        <div class="col-md-6"><!-- col-md-6 Begin -->
                            
-                           <input name="product_quantity" type="text" class="form-control" required>
-                           
+                           <input name="product_quantity" type="text" class="form-control"  onkeydown='return validateIsNumericInput(event)' required>
+                           <!-- <h6 style="color:red;"><i>***does not accept 0 as value</i></h6>  -->
+
                        </div><!-- col-md-6 Finish -->
                         
                     </div><!-- form-group Finish -->
@@ -117,7 +118,7 @@ include("includes/db.php");
                        
                        <div class="col-md-6"><!-- col-md-6 Begin -->
                            
-                           <input name="product_price" type="text" class="form-control" required>
+                           <input name="product_price" type="text" class="form-control"  onkeydown='return validateIsNumericInput(event)' required>
                            
                        </div><!-- col-md-6 Finish -->
                         
@@ -129,7 +130,7 @@ include("includes/db.php");
                       
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
-                          <input name="product_img1" type="file" class="form-control" required>
+                          <input name="product_img1" type="file" class="form-control" accept="image/*"  required>
                           
                       </div><!-- col-md-6 Finish -->
                        
@@ -141,7 +142,7 @@ include("includes/db.php");
                       
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
-                          <input name="product_img2" type="file" class="form-control">
+                          <input name="product_img2" type="file" accept="image/*"  class="form-control">
                           
                       </div><!-- col-md-6 Finish -->
                        
@@ -153,11 +154,37 @@ include("includes/db.php");
                       
                       <div class="col-md-6"><!-- col-md-6 Begin -->
                           
-                          <input name="product_img3" type="file" class="form-control form-height-custom">
+                          <input name="product_img3" type="file" accept="image/*"  class="form-control form-height-custom">
                           
                       </div><!-- col-md-6 Finish -->
                        
                    </div><!-- form-group Finish -->
+
+                   <div class="form-group"><!-- form-group Begin -->
+                       
+                       <label class="col-md-3 control-label"> Product Image 4 </label> 
+                       
+                       <div class="col-md-6"><!-- col-md-6 Begin -->
+                           
+                           <input name="product_img4" type="file" accept="image/*" class="form-control form-height-custom">
+                           
+                       </div><!-- col-md-6 Finish -->
+                        
+                    </div><!-- form-group Finish -->
+
+                    <div class="form-group"><!-- form-group Begin -->
+                       
+                       <label class="col-md-3 control-label"> Product Image 5 </label> 
+                       
+                       <div class="col-md-6"><!-- col-md-6 Begin -->
+                           
+                           <input name="product_img5" type="file" accept="image/*" class="form-control form-height-custom">
+
+                           <h6 style="color:red;"><i>Notes: Image files only. Max size - 5MB. Preferred Resolution - 800x800px </i></h6> 
+                           
+                       </div><!-- col-md-6 Finish -->
+                        
+                    </div><!-- form-group Finish -->
                    
                    <div class="form-group"><!-- form-group Begin -->
                        
@@ -183,6 +210,43 @@ include("includes/db.php");
         
     <script src="js/jquery-331.min.js"></script>
 
+    <script>
+
+    /**
+    Checks the ASCII code input by the user is one of the following:
+        - Between 48 and 57: Numbers along the top row of the keyboard
+        - Between 96 and 105: Numbers in the numeric keypad
+        - Either 8 or 46: The backspace and delete keys enabling user to change their input
+        - Either 37 or 39: The left and right cursor keys enabling user to navigate their input
+    */
+
+    function validateIsNumericInput(evt) {
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        permittedKeys = [8, 46, 37, 39]
+        if ((ASCIICode >= 48 && ASCIICode <= 57) || (ASCIICode >= 96 && ASCIICode <= 105)) {
+            return true;
+        };
+        if (permittedKeys.includes(ASCIICode)) {
+            return true;
+        };
+        return false;
+    }
+
+    function validateIsNumericInputQuantity(evt) {
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        permittedKeys = [8, 46, 37, 39]
+        if ((ASCIICode >= 49 && ASCIICode <= 57) || (ASCIICode >= 97 && ASCIICode <= 105)) {
+            return true;
+        };
+        if (permittedKeys.includes(ASCIICode)) {
+            return true;
+        };
+        return false;
+    }
+
+    </script>
+
+
 </body>
 </html>
 
@@ -197,47 +261,64 @@ try {
         $product_quantity = $_POST['product_quantity'];
         $product_price = $_POST['product_price'];
         
+        //image process
+
+        $allowed = array('jpg', 'jpeg', 'png', 'webp', 'jfif', 'tfif');
+        
         $product_img1 = $_FILES['product_img1']['name'];
+        $img1Error = $_FILES['product_img1']['error'];
+        $file1Size = $_FILES['product_img1']['size'];
+        $file1Ext = explode('.', $product_img1);
+        $file1ActualExt = strtolower(end($file1Ext));
+        
+
         $product_img2 = $_FILES['product_img2']['name'];
+        $img2Error = $_FILES['product_img2']['error'];
+        $file2Size = $_FILES['product_img2']['size'];
+        $file2Ext = explode('.', $product_img2);
+        $file2ActualExt = strtolower(end($file2Ext));
+
         $product_img3 = $_FILES['product_img3']['name'];
-        
-        $temp_name1 = $_FILES['product_img1']['tmp_name'];
-        $temp_name2 = $_FILES['product_img2']['tmp_name'];
-        $temp_name3 = $_FILES['product_img3']['tmp_name'];
-        
-        move_uploaded_file($temp_name1,"product_images/$product_img1");
-        move_uploaded_file($temp_name2,"product_images/$product_img2");
-        move_uploaded_file($temp_name3,"product_images/$product_img3");
+        $img3Error = $_FILES['product_img3']['error'];
+        $file3Size = $_FILES['product_img3']['size'];
 
-        // echo "<p>$product_category </p>";
+        $product_img4 = $_FILES['product_img4']['name'];
+        $img4Error = $_FILES['product_img4']['error'];
+        $file4Size = $_FILES['product_img4']['size'];
 
-        // $insert_product = "insert into products (catID,prodName,prodInfo,prodImg1,prodImg2,prodImg3,quantity,price) values 
-        // ('$product_category','$product_name','$product_info','$product_img1','$product_img2','$product_img3','$product_quantity','$product_price')";
-        
-        // $run_product = mysqli_query($conn,$insert_product);
+        $product_img5 = $_FILES['product_img5']['name'];
+        $img5Error = $_FILES['product_img5']['error'];
+        $file5Size = $_FILES['product_img5']['size'];
 
-        // if($run_product){
-
-         
+            $temp_name1 = $_FILES['product_img1']['tmp_name'];
+            $temp_name2 = $_FILES['product_img2']['tmp_name'];
+            $temp_name3 = $_FILES['product_img3']['tmp_name'];
+            $temp_name4 = $_FILES['product_img4']['tmp_name'];
+            $temp_name5 = $_FILES['product_img5']['tmp_name'];
             
-        // }
+            move_uploaded_file($temp_name1,"product_images/$product_img1");
+            move_uploaded_file($temp_name2,"product_images/$product_img2");
+            move_uploaded_file($temp_name3,"product_images/$product_img3");
+            move_uploaded_file($temp_name4,"product_images/$product_img4");
+            move_uploaded_file($temp_name5,"product_images/$product_img5");
 
-        $sql = "INSERT INTO product_variation (prodID,prodVariation,prodImg1,prodImg2,prodImg3,quantity,price) VALUES (?,?,?,?,?,?,?);"; 
-        $stmt = mysqli_stmt_init($conn);
+            $sql = "INSERT INTO product_variation (prodID,prodVariation,prodImg1,prodImg2,prodImg3,prodImg4,prodImg5,quantity,price) VALUES (?,?,?,?,?,?,?,?,?);"; 
+            $stmt = mysqli_stmt_init($conn);
 
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("location: /insert_product_variation.php?error=stmtfailed");
-            exit();
-        }
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                header("location: /insert_product_variation.php?error=stmtfailed");
+                exit();
+            }
 
-        mysqli_stmt_bind_param($stmt, "sssssss", $prodID, $product_variation, $product_img1, $product_img2, $product_img3, $product_quantity, $product_price);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
+            mysqli_stmt_bind_param($stmt, "sssssssss", $prodID, $product_variation, $product_img1, $product_img2, $product_img3, $product_img4, $product_img5, $product_quantity, $product_price);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
 
-        echo "<script>alert('Variation has been added sucessfully')</script>";
-        echo "<script>window.open('index.php?add_variation','_self')</script>";
-       
-    }
+            echo "<script>alert('Variation has been added sucessfully')</script>";
+            echo "<script>window.open('index.php?add_variation','_self')</script>";
+
+            }
+    
     
 } catch(Exception $e) {
     echo 'Message: ' .$e->getMessage();

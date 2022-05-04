@@ -25,12 +25,9 @@
 
     if($count==0){
         echo "<script>window.open('track-order.php?action=notfound','_self')</script>";
-
     }
     else{
 ?>
-  
-        
     <body>
 
       <!--Body-->
@@ -47,6 +44,16 @@
 
             $pro_id = $row_order['pro_id'];
 
+            $get_product = "select * from products where prodID='$pro_id'";
+
+            $run_product = mysqli_query($conn,$get_product);
+
+            $row_product = mysqli_fetch_array($run_product);
+
+            $prod_name = $row_product['prodName'];
+
+            $pro_var = $row_order['var_id'];
+
             $pro_qty = $row_order['pro_qty'];
 
             $amount = $row_order['amount'];
@@ -54,6 +61,45 @@
             $order_date = $row_order['order_date'];
 
             $order_status = $row_order['order_status'];
+
+            if($pro_var == 0){
+                if($prod_name === 'Go Film'){
+                    $product_varname = 'White Frame';
+                }
+                elseif($prod_name === 'Polaroid Go Instant Camera'){
+                    $product_varname = 'Black';
+                }
+                elseif($prod_name === 'Polaroid Now Instant Camera'){
+                    $product_varname = 'Black';
+                }
+                elseif($prod_name === 'Polaroid Now+ Instant Camera'){
+                    $product_varname = 'Black';
+                }
+                elseif($prod_name === 'Polaroid SX-70 SLR'){
+                    $product_varname = 'SX-70 Original';
+                }
+                elseif($prod_name === 'Photo Album'){
+                    $product_varname = 'Small (40 Photos)';
+                }
+                else{
+                    $product_varname = '';
+                }
+            }
+            if($pro_var !=0){
+                $get_products = "select * from products where prodID='$pro_id'";
+
+                $run_products = mysqli_query($conn,$get_products);
+
+                while($row_products = mysqli_fetch_array($run_products)){
+                    $get_productsvar = "select  * from product_variation where varID='$pro_var'";
+
+                    $run_productsvar = mysqli_query($conn,$get_productsvar);
+                                    
+                    $row_provar=mysqli_fetch_array($run_productsvar);
+
+                    $product_varname = $row_provar['prodVariation'];
+                }
+            }
 
         
 
@@ -78,8 +124,8 @@
         <thead><!-- thead begin -->
                             <tr><!-- tr begin -->
                                 <th> Product Name </th>
+                                <th> Variation </th>
                                 <th> Quantity </th>
-                                <th> Amount </th>
                                 <th> Date Placed </th>
                                 <th> Mode of Payment </th>
                                 <th> Order Status </th>
@@ -90,8 +136,8 @@
                     <tbody>
 
                         <td>$pro_name</td>
+                        <td>$product_varname</td>
                         <td>$pro_qty</td>
-                        <td>$amount</td>
                         <td>$order_date</td>
                         <td>$pay_mode</td>
                         <td>$order_status</td>
@@ -99,15 +145,16 @@
                     </tbody>
                 </table><!-- table table-striped table-bordered table-hover finish -->
             </div><!-- table-responsive finish -->
-       
-       
+        
+      ";
+    } 
 
-        
-        ";
-        
-    }
-        
-        ?>
+
+    
+    ?>
+
+        <h6> Total Amount of Order: ₱<?php echo $amount ?> </h6>
+  
          </div>
             
             

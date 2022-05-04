@@ -37,7 +37,7 @@
                             <div class="header-summary">Order Summary</div>
                             <p class="total-items rounded-circle p-2"><?php items_qty() ?></p>
                         </div>
-                        
+                        <div class="order-wrapper"> <!-- begin order-wrapper -->
                         <?php
 
                             if(isset($_SESSION['userID'])){
@@ -80,6 +80,10 @@
                                 $pro_id = $row_cart['prod_id'];
                     
                                 $pro_qty = $row_cart['qty'];
+                    
+                                $pro_var = $row_cart['var_id'];
+
+                                if($pro_var == 0){
                     
                                     $get_products = "select * from products where prodID='$pro_id'";
                     
@@ -124,17 +128,95 @@
                                     <div class="row product-name"><?php echo "$product_title";?></div>
                                     <div class="row price">₱<?php echo "$sub_total";?></div>    
                                 </div>
-                                <div class="row variation">Color: White</div>
+                                <div class="row variation">Variation: <?php 
+                                                    if($product_title === 'Go Film'){echo "White Frame";}
+                                                    elseif($product_title === 'Polaroid Go Instant Camera'){echo "Black";} 
+                                                    elseif($product_title === 'Polaroid Now Instant Camera'){echo "Black";} 
+                                                    elseif($product_title === 'Polaroid Now+ Instant Camera'){echo "Black";} 
+                                                    elseif($product_title === 'Polaroid SX-70 SLR'){echo "SX-70 Original";} 
+                                                    elseif($product_title === 'Photo Album'){echo "Small (40 Photos)";}
+                                                    elseif($product_title === 'Camera Strap - Flat'){echo "Yellow";}
+                                                    elseif($product_title === 'Camera Strap - Round'){echo "Yellow";}
+                                                    else{echo "N/A";}
+                                                ?></div>
                                 <div class="row quantity">Qty: <?php echo "$pro_qty";?></div>
                             </div>
                         </div>
 
                         <?php 
                                     } 
-                                }                                
+                                }
+                                
+                                  // if product has variation
+                                else{
+                                    $get_products = "select * from products where prodID='$pro_id'";
+
+                                    $run_products = mysqli_query($conn,$get_products);
+
+                                    while($row_products = mysqli_fetch_array($run_products)){
+
+                                        $product_title = $row_products['prodName'];
+                                        
+                                        $get_productsvar = "select  * from product_variation where varID='$pro_var'";
+
+                                        $run_productsvar = mysqli_query($conn,$get_productsvar);
+                                        
+                                        $row_provar=mysqli_fetch_array($run_productsvar);
+
+                                        $product_img1 = $row_provar['prodImg1'];
+                                            
+                                        $product_varname = $row_provar['prodVariation'];
+
+                                        $pro_price = $row_provar['price'];
+
+                                        $product_quantity = $row_provar['quantity'];
+
+                                        $only_price = $row_provar['price'];
+
+                                        $sub_total = $row_provar['price']*$pro_qty;
+
+                                        $total += $sub_total;  
+
+                                        $total_fee = $total + $ship_fee;     
+                                        
+                                        $_SESSION['product_title'] = $product_title;
+                                        
+                                        $_SESSION['product_img1'] = $product_img1;
+                                        
+                                        $_SESSION['product_varname'] = $product_varname;
+
+                                        $_SESSION['product_quantity'] = $product_quantity;
+
+                                        $_SESSION['only_price'] = $only_price;
+
+                                        $_SESSION['sub_total'] = $sub_total;
+
+                                        $_SESSION['total'] = $total;                             
                             
                         ?>
+                            <div class="row item mb-3">
+                            <div class="col-3 align-self-center mt-2">
+                                <img class="img-fluid" src="admin_area/product_images/<?php echo $product_img1; ?>">
+                            </div>
 
+                            <div class="col-8 mt-3">
+                                <div class="row-div product">
+                                    <div class="row product-name"><?php echo "$product_title";?></div>
+                                    <div class="row price">₱<?php echo "$sub_total";?></div>    
+                                </div>
+                                <div class="row variation">Variation: <?php echo $_SESSION['product_varname'] ?></div>
+                                <div class="row quantity">Qty: <?php echo "$pro_qty";?></div>
+                            </div>
+                            </div>
+
+                            <?php    
+
+                                    } //end while loop for fetch prod var  
+                                } //end else statement for fetch prod var
+                            } //end while for cart fetch
+                                            
+                            ?>
+                          </div>   <!-- end order-wrapper -->
                         <div class="row-subtotal">
                             <div class="row">Subtotal</div>
                             <div class="row">₱<?php echo "$total";?></div>
@@ -186,7 +268,7 @@
                 
                         <form action="includes/order.confirm.php" id="formOrderSubmit" method="POST">
                         <div class="buyer-content">
-                            
+                        <input type="hidden" name="totalFee" value=<?php echo "$total_fee";?> />
                             <input type="hidden" id="user_id" name="s_shipping_user_id"  
                                 value="<?php 
                                     if(isset($_SESSION['userID'])){
@@ -236,10 +318,10 @@
                       
                     <!--Action Buttons-->
                     <div class="action-btn">
-                        <button type="submit" class="btn btn-return"><a href="payment.php" style="all:unset;">Return to Payment</button></a>
-                        <button type="submit" id="orderConfirm" name="confirm-order" class="btn btn-dark btn-proceed">Confirm Order</button>
+                        <p style="color:red;"><em>By confirming, you agree that all details are correct. There will be no cancellation of orders and change of payment method.  </em></p>
+                        <button type="button" class="btn btn-return" onclick="location.href='payment.php'">Return to Payment</button>
+                        <button type="submit" id="orderConfirm" name="confirm-order" class="btn btn-proceed">Confirm Order</button>
                     </div>
-                    
                 </div>
             </div>
             </form>
@@ -479,7 +561,7 @@
             <!--Logo-->   
             <div class="col-lg-3 col-md-6 col sm-6">
                 <div class="footer-about">
-                    <h3>We're here to help</h3>
+                    <h3>Contact Us</h3>
                     <p><a href="contact.php">Get in touch</a> with our customer service team.</p>
                     <img src="img/mop.png">
                 </div>

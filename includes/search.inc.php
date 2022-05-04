@@ -23,7 +23,7 @@
 		
 		$cards = '<h1>Products</h1>
             <div class="form">
-            <input type="text" id="search_text" name="search-txt" class="search-data" placeholder="What are you looking for..." required>
+            <input type="search" id="search_text" name="search-txt" class="search-data" placeholder="What are you looking for..." required>
             <button class="fas fa-search" onclick="displayData()"></button>
             </div>
             <div class="row" id="row-products">';
@@ -65,7 +65,7 @@
 					<div class='col'>
 						<a href='product-info.php?prodID=$prodID' class='card'>
 					<div class='prod-img img-fluid' style='background-image: url(admin_area/product_images/$prodImg1);'></div>
-						<h6>$prodName</h2>
+						<p>$prodName</p>
 						<h6>₱$prodPrice </h6>
 						</a>
 					</div>
@@ -77,7 +77,7 @@
 					<div class='col isDisabled'>
 						<a href='product-info.php?prodID=$prodID' class='card' aria-disabled='true'>
 					<div class='prod-img img-fluid' style='background-image: url(admin_area/product_images/$prodImg1);'></div>
-						<h6>$prodName</h6>
+						<p>$prodName</p>
 						<h6>₱$prodPrice </h6>
 						<h6 style='color:red;'>Out of Stock</h6>
 						</a>

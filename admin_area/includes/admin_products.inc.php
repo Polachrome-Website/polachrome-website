@@ -47,6 +47,8 @@
 								$pro_img1 = $row_pro['prodImg1'];
 								$pro_img2 = $row_pro['prodImg2'];
 								$pro_img3 = $row_pro['prodImg3'];
+								$pro_img4 = $row_pro['prodImg4'];
+								$pro_img5 = $row_pro['prodImg5'];
 								$pro_price = $row_pro['price'];
 								$pro_quant = $row_pro['quantity'];
 								$i++;
@@ -330,6 +332,8 @@
 		$pro_img1 = $row_pro['prodImg1'];
 		$pro_img2 = $row_pro['prodImg2'];
 		$pro_img3 = $row_pro['prodImg3'];
+		$pro_img4 = $row_pro['prodImg4'];
+		$pro_img5 = $row_pro['prodImg5'];
 		$images = '<center>
 				<img src="product_images/'.$pro_img1.'" width="60" height="60">';
 				if($pro_img2 == NULL)
@@ -341,8 +345,23 @@
 				if($pro_img3 == NULL)
 				{
 					$images .= "";
-				} else {
-					'<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+				} 
+				else {
+					$images .= '<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+				}
+				if($pro_img4 == NULL)
+				{
+					$images .= "";
+				} 
+				else {
+					$images .= '<center><img src="product_images/'.$pro_img4.'" width="60" height="60"></center>';
+				}
+				if($pro_img5 == NULL)
+				{
+					$images .= "";
+				} 
+				else {
+					$images .= '<center><img src="product_images/'.$pro_img5.'" width="60" height="60"></center>';
 				}
 				$images .= '
 			</center>';
@@ -358,6 +377,8 @@
 		$pro_img1 = $row_pro['prodImg1'];
 		$pro_img2 = $row_pro['prodImg2'];
 		$pro_img3 = $row_pro['prodImg3'];
+		$pro_img4 = $row_pro['prodImg4'];
+		$pro_img5 = $row_pro['prodImg5'];
 		$images = '<center>
 				<img src="product_images/'.$pro_img1.'" width="60" height="60">';
 				if($pro_img2 == NULL)
@@ -370,7 +391,21 @@
 				{
 					$images .= "";
 				} else {
-					'<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+					$images .= '<img src="product_images/'.$pro_img3.'" width="60" height="60"></center>';
+				}
+				if($pro_img4 == NULL)
+				{
+					$images .= "";
+				} 
+				else {
+					$images .= '<center><img src="product_images/'.$pro_img4.'" width="60" height="60"></center>';
+				}
+				if($pro_img5 == NULL)
+				{
+					$images .= "";
+				} 
+				else {
+					$images .= '<center><img src="product_images/'.$pro_img5.'" width="60" height="60"></center>';
 				}
 				$images .= '
 			</center>';
@@ -389,11 +424,15 @@
         $old_img1 = $row_pro['prodImg1'];
         $old_img2 = $row_pro['prodImg2'];
         $old_img3 = $row_pro['prodImg3'];
+		$old_img4 = $row_pro['prodImg4'];
+		$old_img5 = $row_pro['prodImg5'];
 
         $product_img1 = $_FILES['update_prodImg1']['name'];
         $product_img2 = $_FILES['update_prodImg2']['name'];
         $product_img3 = $_FILES['update_prodImg3']['name'];
-
+		$product_img4 = $_FILES['update_prodImg4']['name'];
+		$product_img5 = $_FILES['update_prodImg5']['name'];
+		
 
         if(empty($product_img1)){
             $product_img1 =    $old_img1;
@@ -416,7 +455,21 @@
             move_uploaded_file($temp_name3,"../product_images/$product_img3");
         }
 
-        $update_product = "update products set prodImg1='$product_img1',prodImg2='$product_img2',prodImg3='$product_img3' where prodID='$pro_id'";
+		if(empty($product_img4)){
+            $product_img4 = $old_img4;
+        }else {
+            $temp_name4 = $_FILES['update_prodImg4']['tmp_name'];
+            move_uploaded_file($temp_name4,"../product_images/$product_img4");
+        }
+
+		if(empty($product_img5)){
+            $product_img5 = $old_img5;
+        }else {
+            $temp_name5 = $_FILES['update_prodImg5']['tmp_name'];
+            move_uploaded_file($temp_name5,"../product_images/$product_img5");
+        }
+
+        $update_product = "update products set prodImg1='$product_img1',prodImg2='$product_img2',prodImg3='$product_img3',prodImg4='$product_img4',prodImg5='$product_img5' where prodID='$pro_id'";
         $run_product = mysqli_query($conn,$update_product);
 
 		echo "<script>window.open('../index.php?view_products','_self')</script>";
@@ -434,11 +487,15 @@
 		$old_img1 = $row_pro['prodImg1'];
 		$old_img2 = $row_pro['prodImg2'];
 		$old_img3 = $row_pro['prodImg3'];
+		$old_img4 = $row_pro['prodImg4'];
+		$old_img5 = $row_pro['prodImg5'];
 		
 		$product_img1 = $_FILES['update_varprodImg1']['name'];
 		$product_img2 = $_FILES['update_varprodImg2']['name'];
 		$product_img3 = $_FILES['update_varprodImg3']['name'];
-    
+		$product_img4 = $_FILES['update_varprodImg4']['name'];
+		$product_img5 = $_FILES['update_varprodImg5']['name'];
+		
 		
 		if(empty($product_img1)){
 			$product_img1 =	$old_img1;
@@ -461,9 +518,22 @@
 			move_uploaded_file($temp_name3,"../product_images/$product_img3");
 		}
 		
+		if(empty($product_img4)){
+			$product_img4 = $old_img4;
+		}else {
+			$temp_name4 = $_FILES['update_varprodImg4']['tmp_name'];
+			move_uploaded_file($temp_name4,"../product_images/$product_img4");
+		}
+
+		if(empty($product_img5)){
+			$product_img5 = $old_img5;
+		}else {
+			$temp_name5 = $_FILES['update_varprodImg5']['tmp_name'];
+			move_uploaded_file($temp_name5,"../product_images/$product_img5");
+		}
 		
 		
-		$update_product = "update product_variation set prodImg1='$product_img1',prodImg2='$product_img2',prodImg3='$product_img3' where varID='$pro_id'";
+		$update_product = "update product_variation set prodImg1='$product_img1',prodImg2='$product_img2',prodImg3='$product_img3',prodImg4='$product_img4',prodImg5='$product_img5' where varID='$pro_id'";
 		$run_product = mysqli_query($conn,$update_product);
 
 		echo "<script>window.open('../index.php?view_products','_self')</script>";

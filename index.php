@@ -72,28 +72,28 @@
                 <h2>Cameras</h2>
                 <div class="row">
                     <div class="col">
-                        <a href="product.php" class="card">
-                            <div class="prod-img" style="background-image: url(img/products/go_black_side.webp);"></div>
+                        <a href="product-info.php?prodID=1034" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/go_black_side.webp); transform: scaleX(-1);"></div>
                             <h3>Polaroid Go</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product.php" class="card">
+                        <a href="product-info.php?prodID=1033" class="card">
                             <div class="prod-img" style="background-image: url(img/products/now_front-tilted.webp);"></div>
                             <h3>Polaroid Now</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product.php" class="card">
-                            <div class="prod-img" style="background-image: url(img/products/now+.webp);"></div>
+                        <a href="product-info.php?prodID=1032" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/now+.webp); height: 80px; margin-top: 60px; margin-bottom: 35px;"></div>
                             <h3>Polaroid Now+</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product.php" class="card">
+                        <a href="product-info.php?prodID=1031" class="card">
                             <div class="prod-img" style="background-image: url(img/products/sx2.png);"></div>
                             <h3>Polaroid SX70</h3>
                             <input type="button" class="featured-btn" value ="More info">
@@ -107,29 +107,29 @@
                 <h2>Films</h2>
                 <div class="row">
                     <div class="col">
-                        <a href="product.php" class="card">
+                        <a href="product-info.php?prodID=1038" class="card">
                             <div class="prod-img" style="background-image: url(img/products/f600-Film.webp);"></div>
                             <h3>600 Film</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product.php" class="card">
-                            <div class="prod-img" style="background-image: url(img/products/sx70-film.webp);"></div>
-                            <h3>Polaroid iType Film</h3>
+                        <a href="product-info.php?prodID=1037" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/i-Type.webp);"></div>
+                            <h3>Polaroid i-Type Film</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product.php" class="card">
+                        <a href="product-info.php?prodID=1036" class="card">
                             <div class="prod-img" style="background-image: url(img/products/sx70-film.webp);"></div>
                             <h3>Polaroid SX70 Film</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="product.php" class="card">
-                            <div class="prod-img" style="background-image: url(img/products/gofilm1.webp);"></div>
+                        <a href="product-info.php?prodID=1035" class="card">
+                            <div class="prod-img" style="background-image: url(img/products/gofilm2.webp);"></div>
                             <h3>Polaroid Go Film</h3>
                             <input type="button" class="featured-btn" value ="More info">
                         </a>
@@ -140,7 +140,7 @@
             <!--Featured Accessories-->
             <div class="section-2 box" style ="margin-bottom: 30px;">
                 <div class="col-lg-auto">
-                    <h2>Accessories</h2>
+                    <h2>Featured Product</h2>
                     <h3 style="margin-top: 30px;">Polaroid Camera Flat Strap</h3>
                     <div class=row>
                         <!--Straps-->
@@ -148,7 +148,7 @@
                             <p>An effortless accessory for Polaroid Now, OneStep+ and OneStep 2 cameras. Featuring Polaroid branding and a no-snag plastic 
                                 release, grab this wide and flat camera strap for more hands-off moments.
                             </p>
-                            <a href="product.php"><button class="btn">More info</button></a>
+                            <a href="product-info.php?prodID=1028"><button class="btn">More info</button></a>
                         </div>
                         <div class="col-lg-2"></div>
                         <div class="col-lg-2">
@@ -194,7 +194,7 @@
                 <!--Logo-->   
                 <div class="col-lg-3 col-md-6 col sm-6">
                     <div class="footer-about">
-                        <h3 style="color:white;">We're here to help</h3>
+                        <h3 style="color:white;">Contact Us</h3>
                         <p><a href="contact.php">Get in touch</a> with our customer service team.</p>
                         <img src="img/mop.png">
                     </div>

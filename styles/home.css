@@ -156,6 +156,7 @@ flex-direction: column;
 .overlay .sm-btn:hover{
 background:transparent;
 color: black;
+cursor:pointer;
 border: solid black 1px;
 }
 
@@ -306,6 +307,7 @@ margin-right: auto;
 .featured-btn:hover{
 background-color:white;
 color:black;
+cursor:pointer;
 outline: solid black 1px;
 }
 
@@ -363,146 +365,6 @@ nav .logo img{
   height: 27px;
 }
 
-nav .nav-items{
-  display: flex;
-  flex: 1;
-  padding: 0 0 0 30px;
-  
-}  
-  
-nav .nav-items li{
-  list-style: none;
-  padding-left: 0px;
-  padding: 0 15px;;
-}
-
-nav .nav-items li a{
-  color: black;
-  font-size: 16px;
-  font-weight: 630;
-  text-decoration: none;
-}
-
-.red:hover,
-.testimonials:hover{
-  color: #F04231;
-}
-
-.orange:hover{
-  color: #FF8200;
-}
-
-.yellow:hover{
-  color: #FFB80C;
-}
-
-.green:hover{
-  color: #78BE20;
-}
-
-.blue:hover{
-  color: #198CD9;
-}  
-  
-
-nav .menu-icon,
-nav .cancel-icon,
-nav .search-icon{
-  width: 40px;
-  text-align: center;
-  margin: 0 50px;
-  font-size: 15px;
-  padding-top: 1px;
-  color: #fff;
-  cursor: pointer;
-  display: none;
-}
-
-nav .cancel-icon{
-  padding-top: 3px;
-}
-
-nav .cart{
-  width: 26% !important;
-  position: absolute;
-  left: 62%;
-  top: 24%;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-nav .menu-icon span,
-nav .cancel-icon,
-nav .search-icon{
-  display: none;
-  cursor: pointer;
-}
-
-nav .cancel-search-icon{
-  display: none;
-}
-
-nav .user-icon:hover{
-  color: #f04231;
-}
-nav .cart-icon:hover{
-  color: black;
-}
-
-/*Username*/
-.userbtn {
-  background-color: white;
-  color: black;
-  padding-right: 5px;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-}
-
-.userbtn:focus{
-  outline: none;
-}
-
-.username {
-  position: relative;
-  display: inline-block;
-  padding-top: 0.3px;
-
-}
-
-.username-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  border: 1px solid #efefefef;
-  min-width: 140px;
-  z-index: 1;
-}
-
-.username-content i{
-  padding-right: 7px;
-  color: gray;
-}
-
-.username-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.username-content a:hover {
-  background-color: #efefefef;
-}
-
-.username:hover .username-content {
-  display: block;
-}
-
-.username:hover .userbtn {
-  background-color: white;
-  color: #f04231;
-}
 
 
 /*Footer section*/  

@@ -47,9 +47,61 @@
     //     $_SESSION['guestID'] = mt_rand(2000,9000);
     // }
 
+     //begin fetch product for prod-info
+	if(isset($_GET['varID'])){
+		if(isset($_GET['prodID'])){
+			
+			$var_id = $_GET['varID'];
 
-    //begin fetch product for prod-info
-    if(isset($_GET['prodID'])){
+			$product_id = $_GET['prodID'];
+
+			$get_product = "select * from product_variation where varID='$var_id'";
+
+			$run_product = mysqli_query($conn,$get_product);
+
+			$row_product = mysqli_fetch_array($run_product);
+
+			// $p_cat_id = $row_product['p_cat_id'];
+
+			$pro_title = $row_product['prodVariation'];
+
+			$pro_price = $row_product['price'];
+
+			$pro_quantity = $row_product['quantity'];
+
+			$pro_img1 = $row_product['prodImg1'];
+
+			$pro_img2 = $row_product['prodImg2'];
+
+			$pro_img3 = $row_product['prodImg3'];
+
+            $pro_img4 = $row_product['prodImg4'];
+
+            $pro_img5 = $row_product['prodImg5'];    
+			
+			$get_product = "select * from products where prodID='$product_id'";
+
+			$run_product = mysqli_query($conn,$get_product);
+
+			$row_product = mysqli_fetch_array($run_product);
+			
+			$pro_title = $row_product['prodName'];
+			
+			$pro_desc = $row_product['prodInfo'];
+
+            $cat_id = $row_product['catID'];
+
+			// $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
+			
+			// $run_p_cat = mysqli_query($con,$get_p_cat);
+
+			// $row_p_cat = mysqli_fetch_array($run_p_cat);
+
+			// $p_cat_title = $row_p_cat['p_cat_title'];
+
+		}//end fetch product for prod-info
+
+	}elseif(isset($_GET['prodID'])){
 
         $product_id = $_GET['prodID'];
 
@@ -59,7 +111,7 @@
 
         $row_product = mysqli_fetch_array($run_product);
 
-        // $p_cat_id = $row_product['p_cat_id'];
+        $cat_id = $row_product['catID'];
 
         $pro_title = $row_product['prodName'];
 
@@ -124,191 +176,216 @@
             }
 
             nav{
-            background-color: white;
-            display: flex;
-            justify-content: space-between;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-            flex-wrap: wrap;
-            align-items: center;
-            height: 55px;
-            padding: 0 30px;
-            
-            } 
+                background-color: white;
+                display: flex;
+                justify-content: space-between;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+                flex-wrap: wrap;
+                align-items: center;
+                height: 55px;
+                padding: 0 30px;
+                } 
 
-            nav .logo img{
-            width: 100%;
-            height: 27px;
-            }
+                nav .logo img{
+                width: 100%;
+                height: 27px;
+                }
 
-            nav .nav-items{
-            display: flex;
-            flex: 1;
-            padding: 0 0 0 30px;
-            
-            }  
-            
-            nav .nav-items li{
-            list-style: none;
-            padding-left: 0px;
-            padding: 0 15px;;
-            }
+                nav .nav-items{
+                display: flex;
+                flex: 1;
+                padding: 0 0 0 30px;
+                
+                }  
+                
+                nav .nav-items li{
 
-            nav .nav-items li a{
-            color: black;
-            font-size: 16px;
-            font-weight: 630;
-            text-decoration: none;
-            }
+                list-style: none;
+                padding-left: 0px;
+                padding: 0 15px;;
+                }
 
-            .red:hover,
-            .testimonials:hover{
-            color: #F04231;
-            }
+                nav .nav-items li a{
+                color: black;
+                font-size: 16px;
+                font-weight: 630;
+                text-decoration: none;
+                }
 
-            .orange:hover{
-            color: #FF8200;
-            }
+                .red:hover,
+                .testimonials:hover{
+                color: #F04231;
+                }
 
-            .yellow:hover{
-            color: #FFB80C;
-            }
+                .orange:hover{
+                color: #FF8200;
+                }
 
-            .green:hover{
-            color: #78BE20;
-            }
+                .yellow:hover{
+                color: #FFB80C;
+                }
 
-            .blue:hover{
-            color: #198CD9;
-            }  
-            
+                .green:hover{
+                color: #78BE20;
+                }
 
-            nav .menu-icon,
-            nav .cancel-icon,
-            nav .search-icon{
-            width: 40px;
-            text-align: center;
-            margin: 0 50px;
-            font-size: 18px;
-            color: #fff;
-            cursor: pointer;
-            display: none;
-            }
+                .blue:hover{
+                color: #198CD9;
+                }  
+                
+
+                nav .menu-icon,
+                nav .cancel-icon,
+                nav .search-icon{
+                width: 40px;
+                text-align: center;
+                margin: 0 50px;
+                font-size: 15px;
+                padding-top: 1px;
+                color: #fff;
+                cursor: pointer;
+                display: none;
+                }
+
+                nav .cancel-icon{
+                padding-top: 3px;
+                }
 
 
-            nav .cartnv{
-            width: 23% !important;
-            position: absolute;
-            left: 61%;
-            top: 25%;
-            font-size: 15px;
-            cursor: pointer;
-            }
+                nav .cart-icon{
+                position: absolute;
+                <?php 
+                    if(isset($_SESSION["userID"])){
+                        echo "left: 91%;";
+                        echo "top: 31%;";
+                    }
+                    if(!isset($_SESSION["userID"])){
+                        echo "right: 13%;";
+                        echo "top: 32%;";
+                    }
+                ?>
+                font-size: 15px;
+                cursor: pointer;
+                }
 
-            nav .menu-icon span,
-            nav .cancel-icon,
-            nav .search-icon{
-            display: none;
-            cursor: pointer;
-            }
+                nav .menu-icon span,
+                nav .cancel-icon,
+                nav .search-icon{
+                display: none;
+                cursor: pointer;
+                }
 
-            nav .cancel-search-icon{
-            display: none;
-            }
+                nav .cancel-search-icon{
+                display: none;
+                }
 
-            nav .user-icon:hover{
-            color: #f04231;
-            }
-            nav .cart-icon:hover{
-            color: black;
-            }
+                nav .user-icon:hover{
+                color: #f04231;
+                }
+                nav .cart-icon:hover{
+                color: black;
+                }
 
-            .userbtn {
-            background-color: white;
-            color: black;
-            padding-right: 13px;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            }
+                /*Username*/
+                .userbtn{
+                background-color: white;
+                color: black;
+                margin-right: 5px;
+                font-size: 16px;
+                margin-top: 4px;
+                font-weight: 600;
+                border: none;
+                }
 
-            .loginbtn {
-            background-color: white;
-            color: black;
-            cursor: pointer;
-            padding-right: 13px;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            }
+                .userbtn:focus{
+                outline: none;
+                }
 
-            .userbtn:focus{
-            outline: none;
-            }
+                .username{
+                display: inline-block;
+                padding-top: 0.3px;
+                }
 
-            .loginbtn:focus{
-            outline: none;
-            }
+                .username-content {
+                display: none;
+                position: absolute;
+                background-color: white;
+                border: 1px solid #efefefef;
+                min-width: 150px;
+                right: 0px;
+                margin-top: 3px;
+                z-index: 1;
+                }
 
-            .username {
-            position: relative;
-            display: inline-block;
-            }
+                .username-content i{
+                padding-right: 7px;
+                color: gray;
+                }
 
-            .username-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #efefefef;
-            min-width: 140px;
-            z-index: 1;
-            }
+                .username-content a {
+                color: black;
+                font-weight: 500;
+                padding: 10px 16px;
+                text-decoration: none;
+                display: block;
+                }
 
-            .username-content i{
-            padding-right: 7px;
-            color: gray;
-            }
+                .username-content .user{
+                border-bottom: 2px solid #efefefef;
+                pointer-events: none;
+                }
 
-            .username-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            }
+                .username-content a:hover {
+                background-color: #efefefef;
+                }
 
-            .username-content a:hover {
-            background-color: #efefefef;
-            }
 
-            .username:hover .username-content {
-            display: block;
-            }
+                .username:hover .username-content {
+                display: block;
+                }
 
-            .username:hover .userbtn {
-            background-color: white;
-            color: #f04231;
-            }
 
-            .username:hover .loginbtn {
-            background-color: white;
-            color: #f04231;
-            }
 
+                .username:hover .userbtn {
+                background-color: white;
+                color: #f04231;
+                }
+
+                
+                .userbtn .fa-user-alt{
+                font-size: 16px;
+                
+                }
+
+
+            /*cart-dropdown*/
             .shopping-cart{
-            background-color: white;
-            border: 1px solid #efefefef;
-            margin-right: 18px;
-            margin-top: 7px;
+                position: absolute;
+                width: 26%;
+                background-color: white;
+                border: 1px solid #efefefef;
+                <?php 
+                    if(isset($_SESSION["userID"])){
+                        echo "right: 7.7%;";
+                    }
+                    if(!isset($_SESSION["userID"])){
+                        echo "right: 14.3%;";
+                    }
+                ?>
+                top: 80%;
             }
 
-
-            h5{
-            padding: 8px 7px;
-            margin-bottom: 0;
+            .cart-header{
+                padding: 4px 7px;
+                margin-bottom: 0;
+                font-size: 22px;
+                font-weight: 600;
             }
+
 
             .cart-wrapper{
             overflow-y: auto;
@@ -323,24 +400,36 @@
             }
 
             a .view-cart{
-            width: 90%;
-            text-align: center;
-            cursor: pointer;
-            background-color: #f04231;
-            color: white;
-            font-weight: 400;
-            font-size: 15px;
-            margin: 7px auto 15px;
-            padding:5px 10px;
+                width: 90%;
+                text-align: center;
+                cursor: pointer;
+                background-color: black;
+                color: white;
+                font-weight: 400;
+                font-size: 15px;
+                margin: 7px auto 15px;
+                padding:7px;
+                border: none;
+                border-radius: 7px;
+            }
+
+            a{
+                text-decoration: none;
+            }
+
+            a .view-cart:hover{
+            background-color: white;
+            color: black;
+            outline: solid black 1px;
             }
 
             a:hover{
             text-decoration: none;
             }
 
-
             .cart-icon{
             text-align: right;
+            margin-top: 1.85px;
             }
 
             .cart-item-nav-nav-nav{
@@ -355,12 +444,12 @@
             }
 
             .cart-item-nav-nav-nav img{
-            width: 85%;
+                width: 85%;
             }
 
             .cart-item-nav-nav-nav .product-info .variation{
-            font-size: 13px;
-            margin-bottom: 10px;
+                font-size: 13px;
+                margin-bottom: 10px;
             }
 
             .cart-item-nav-nav-nav h6{
@@ -398,129 +487,201 @@
             display: none;
             }
 
-            .cart-total-items::after{
+            #cart-total-items::after{
             content: var(--after-content);
-            font-size: 17px;
-            width: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+            width: 17px;
+            height: 17px;
+            padding-top: 1px;
             display: inline-block;
             text-align: center;
             position: relative;
             background-color: #f04231;
             border-radius: 50%;
             top: -10px;
-            right: 20%;
+            right: 29%;
             }
 
+            /* Start Styles Login Btn for Guest */
+
+            .login-btn .btn{
+            background:black;
+            font-size: 11px !important;
+            color: white;
+            width: 100px;
+            font-weight: bold;
+            border:none;
+            border-radius: 7px !important;
+            padding: 7px;
+            }
+
+            .login-btn{
+            position: absolute;
+            right: 2%;
+            bottom: 21.5%;
+            }
+
+            .login-btn .btn:hover{
+            background: transparent;
+            color: black;
+            outline: solid black 1px;
+            }
+
+            .login-btn .btn:focus{
+            box-shadow: none !important;
+            }
+            /* END Styles Login Btn for Guest */
 
             @media (max-width: 1245px) {
             nav{
                 padding: 0 50px;
             }
 
-            nav .username{
-                position: absolute;
-                right: 30px;
-            }
+            <?php 
+                if(isset($_SESSION["userID"])){
+                 echo ".shopping-cart{ right: 10.3%; }";
+                }
+                if(!isset($_SESSION["userID"])){
+                    echo ".shopping-cart{ right: 14.3%; }";
+                }
+            ?>
+        
+            <?php 
+                if(isset($_SESSION["userID"])){
+                 echo "nav .cart-icon{ left: 88%; }";
+                }
+            ?>
 
             }
 
             @media (max-width: 1140px) {
             nav{
-                padding: 0px;
-                margin: 0px;
+            padding: 0px;
+            margin: 0px;
             }
 
             nav .logo img{
-                padding-left: 40px;
-                width: 100%;
+            padding-left: 40px;
+            width: 100%;
             }
 
-            nav form{
-                position: absolute;
-                right: 140px;
-            }
             nav .nav-items.active{
-                right: 0px;
+            right: 0px;
             }
             nav .nav-items li{
-                line-height: 40px;
-                margin: 30px 0;
+            line-height: 40px;
+            margin: 30px 0;
             }
 
             nav .nav-items{
-                position: fixed;
-                padding: 10px 50px 0 50px;
-                text-align: center;
-                z-index: 99;
-                top: 48px;
-                width: 100%;
-                right: -100%;
-                height: 100%;
-                background: white;
-                display: inline-block;
-                transition: right 0.3s ease;
+            position: fixed;
+            padding: 10px 50px 0 50px;
+            text-align: center;
+            z-index: 99;
+            top: 48px;
+            width: 100%;
+            right: -100%;
+            height: 100%;
+            background: white;
+            display: inline-block;
+            transition: right 0.3s ease;
             }
-            
+        
             nav .nav-items li a{
-                font-size: 15px;
-            }
-            
-            nav .menu-icon{
-                display: block;
-                position: absolute;
-                right: 0px;
-                font-size: 17px;
-                padding-left: 40px;
+            font-size: 16px;
             }
 
+            <?php 
+                if(isset($_SESSION["userID"])){
+                    echo "nav .cart-icon{ top: 28%; left: 83%; }";
+                }
+                if(!isset($_SESSION["userID"])){
+                    echo "nav .cart-icon{  top: 33%; right: 21.5%; }";
+                }
+            ?>
+
+            .login-btn{
+                position: absolute;
+                right: 10%;
+                bottom: 20%;
+            }
+        
             nav .username{
-                position: absolute;
-                right: 54px;
-                text-decoration: none;
+            display: block;
+            position: absolute;
+            top: 24%;
+            left: 88.5%;
             }
-            
 
-            nav .cartnv{
-                position: absolute;
-                left: 700px;
-            }  
-            
-            
+            .username-content{
+            margin-top: 5px;
+            }
+        
+
+            nav .menu-icon{
+            position: absolute;
+            display: block;
+            <?php 
+            if(isset($_SESSION["userID"])){
+                echo "margin-top: 5px;";
+            }    
+            ?>
+            left: 87%;
+            }
+        
             nav .menu-icon span{
-                display: block;
-                color: black;
+            display: block;
+            color: black;
+            font-size: 16px;
             }
             nav .menu-icon span.hide,
             nav .search-icon.hide{
-                display: none;
+            display: none;
             }
             nav .cancel-icon.show{
-                display: block;
-                color:black;
-                padding-left: 40px;
+            position: absolute;
+            display: block;
+            <?php 
+            if(isset($_SESSION["userID"])){
+                echo "margin-top: 5px;";
+            }    
+            ?>
+            color:black;
+            left: 87%;
+            
+            }
+            .shopping-cart{
+            position: absolute;
+            width: 290px;
+            top: 85%;
+            <?php 
+            if(isset($_SESSION["userID"])){
+                echo  "right: 15%;";
+            } 
+            if(!isset($_SESSION["userID"])){
+                echo  "right: 23%;";
+            }    
+            ?>
             }
             
-            }   
+        
+        }   
             
-                @media (max-width: 767px){
-                
-                nav .username{
-                    position: absolute;
-                    right: 60px;
-                }
-            
-                nav .cartnv{
-                    right: 77px;
-                }
-                
-                nav .cancel-search-icon.show{
-                    display: block;
-                    position: absolute;
-                    right: 162px;
-                }
-            
-                }
-            
+        @media (max-width: 767px){
+            <?php 
+            if(isset($_SESSION["userID"])){
+                echo  ".shopping-cart{ right: 15%; }";
+            } 
+
+            if(!isset($_SESSION["userID"])){
+                echo  ".shopping-cart{ right: 25.7%; }";
+                echo "nav .cart-icon{ right: 24%; } ";
+            } 
+            ?>   
+        }
+
                 .isDisabled{
                 color: currentColor;
                 cursor: not-allowed;
@@ -617,11 +778,12 @@
                     //   username displayed on navbar
                     echo "
                             <div class='username'>
-                                <button class='userbtn'> ". $_SESSION['fullName'] ." </button>
+                                <button class='userbtn'><i class='fas fa-user-alt'></i></button>
 
                                 <div class='username-content'>
-                                <a href='user-profile.php'> <i class='fas fa-user'></i>My Profile</a>
-                                <a href='includes/logout.inc.php'><i class='fas fa-sign-out-alt'></i>Logout</a>
+                                <a class='user'>". $_SESSION['fullName'] ." </a>
+                                <a href='user-profile.php'>My Profile</a>
+                                <a href='includes/logout.inc.php'>Logout</a>
                                 </div>
                             </div>
                     ";
@@ -630,8 +792,8 @@
                  //    echo "G_ID: ".$_SESSION['guest_id'];
 
                  echo "
-                            <div class='username'>
-                                <a href='login.php'><button class='loginbtn'> LOGIN </button></a>
+                            <div class='login-btn'>
+                                <a href='login.php'><button class='btn btn-dark'> LOGIN </button></a>
                                 </div>
                                 ";
 
@@ -681,11 +843,12 @@
              <div class="cartnv">
                     <div class="cart-icon"> 
                         <!--cart-total-items is the display of the total number of items added to the cart-->
-                        <span class="fas fa-shopping-cart cart-total-items"></span>
+                        <span class="fas fa-shopping-cart"></span>
+                        <span id="cart-total-items"></span>
                     </div>
-                    <!--hide class is used for the javascript code to hide and display the shopping cart-->
+                     <!--hide class is used for the javascript code to hide and display the shopping cart-->
                     <div class="shopping-cart hide">
-                        <h5>My Cart</h5>
+                    <p class="cart-header">My Cart</p>
                         <div class="cart-wrapper">
 
                         <?php
@@ -695,6 +858,10 @@
                                 $pro_id = $row_cart['prod_id'];
 
                                 $pro_qty = $row_cart['qty'];
+
+                                $pro_var = $row_cart['var_id'];
+                                
+                                if($pro_var == 0){
 
                                     $get_products = "select * from products where prodID='$pro_id'";
 
@@ -729,12 +896,12 @@
                                  
                             ?>  
 
-                            <!--item added to cart-->
-                            <div class="cart-item-nav-nav-nav">
+                             <!--item added to cart-->
+                             <div class="cart-item-nav-nav-nav">
                                 <img src="admin_area/product_images/<?php echo $product_img1; ?>">
                                 <div class="product-info">
                                     <h6><?php echo $_SESSION['product_title'];?></h6>
-                                    <div class="variation">Variation: Black</div>
+                                    <div class="variation">Variation: N/A</div>
                                     <div class="other-info">
                                         <!-- <span class="quantity">Qty: <?php echo $pro_qty; ?> </span> -->
                                         <span class="price">₱<?php echo "$sub_total";?></span>
@@ -742,7 +909,81 @@
                                 </div>
                                 <!-- <div class="cancel"><i class="fas fa-times cancel-btn"></i></div> -->
                             </div>
-                            <?php } } //end loops for fetch cart and product ?> 
+                            <?php } //end loop for product 
+
+                            } //end if for pro_var == 0
+
+                            //if product has variation
+
+                            else{
+
+                                $get_products = "select * from products where prodID='$pro_id'";
+
+                                $run_products = mysqli_query($conn,$get_products);
+
+                                while($row_products = mysqli_fetch_array($run_products)){
+
+                                    $product_title = $row_products['prodName'];
+                                    
+                                    $get_productsvar = "select  * from product_variation where varID='$pro_var'";
+
+                                    $run_productsvar = mysqli_query($conn,$get_productsvar);
+                                    
+                                    $row_provar=mysqli_fetch_array($run_productsvar);
+
+                                    $product_img1 = $row_provar['prodImg1'];
+                                        
+                                    $product_varname = $row_provar['prodVariation'];
+
+                                    $pro_price = $row_provar['price'];
+
+                                    $product_quantity = $row_provar['quantity'];
+
+                                    $only_price = $row_provar['price'];
+
+                                    $sub_total = $row_provar['price']*$pro_qty;
+
+                                    $total += $sub_total;     
+                                    
+                                    $_SESSION['product_title'] = $product_title;
+                                    
+                                    $_SESSION['product_img1'] = $product_img1;
+                                    
+                                    $_SESSION['product_varname'] = $product_varname;
+
+                                    $_SESSION['product_quantity'] = $product_quantity;
+
+                                    $_SESSION['only_price'] = $only_price;
+
+                                    $_SESSION['sub_total'] = $sub_total;
+
+                                    $_SESSION['total'] = $total;     
+                                    
+                        ?>
+
+                         <!--item added to cart-->
+                         <div class="cart-item-nav-nav-nav">
+                                <img src="admin_area/product_images/<?php echo $product_img1; ?>">
+                                <div class="product-info">
+                                    <h6><?php echo $_SESSION['product_title'];?></h6>
+                                    <div class="variation">Variation: <?php echo $_SESSION['product_varname'] ?> </div>
+                                    <div class="other-info">
+                                        <!-- <span class="quantity">Qty: <?php echo $pro_qty; ?> </span> -->
+                                        <span class="price">₱<?php echo "$sub_total";?></span>
+                                    </div>
+                                </div>
+                                <!-- <div class="cancel"><i class="fas fa-times cancel-btn"></i></div> -->
+                            </div>
+
+                        <?php    
+                        
+                                } //end while fetch pro_var
+
+                            } //end else 
+                        
+                        } //end loop for fetch cart 
+                        
+                        ?> 
                         </div>
                         <div class="subtotal">Subtotal: ₱<?php if($total>0){ echo $total; } else{echo "0.00";}?></div>
                         

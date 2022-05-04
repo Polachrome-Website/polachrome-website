@@ -52,11 +52,12 @@ function add_cart(){
 
                     $pro_variation = $_POST["product_variation"];
 
-                    if($pro_variation != null){
-                        $pro_variation = 0;
-                    }
-    
                     $pro_variation = 0;
+    
+					if(isset($_GET['varcode'])){
+						$pro_variation = $_GET['varcode'];
+					}
+					
                     $get_products = "SELECT * FROM products WHERE prodID='$p_id'";
     
                     //get cart items by product
@@ -137,101 +138,6 @@ function add_cart(){
                 break;
     }
 }
-
-if(isset($_GET['varaction'])){
-    switch ($_GET['varaction']){
-        case "add_cart":
-            if(!empty($_POST["product_qty"])){ //begin !empty product qty post
-                
-                global $db;
-
-                $p_id = $_GET["code"];
-
-                $pro_qty = $_POST["product_qty"];
-
-                $pro_variation = $_POST["product_variation"];
-                
-                $pro_variation = $_GET["varcode"];
-                
-                $get_products = "SELECT * FROM products WHERE prodID='$p_id'";
-
-                //get cart items by product
-                $get_cart = "SELECT * FROM cart WHERE prod_id='$p_id' and user_id='$user_id'";
-
-                $run_cart = mysqli_query($db,$get_cart);
-
-                while($row_cart = mysqli_fetch_array($run_cart)){
-
-                    $cart_id = $row_cart['cart_id'];
-
-                    $cart_qty = $row_cart['qty'];
-                }
-        
-                $count = mysqli_num_rows($run_cart);
-
-
-                if(!empty($count)){
-                    //update cart item quantity in database
-                    $newQuantity = $cart_qty + $pro_qty;
-
-                    $update_qty = "UPDATE cart SET qty='$newQuantity' WHERE cart_id='$cart_id'";
-
-                    $run_cart = mysqli_query($db,$update_qty);
-
-                    echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
-
-                }
-                else{
-
-                    $insert_cart = "INSERT into cart (prod_id, var_id, user_id, qty) VALUES (?,?,?,?)";
-        
-                    $cart_stmt = mysqli_stmt_init($db);
-        
-                    if (!mysqli_stmt_prepare($cart_stmt, $insert_cart)) {
-                        header("location: ../product-info.php?prodID=" . $p_id . "&error=stmtfailed");
-                        exit();
-                       }
-                    else{
-                        mysqli_stmt_bind_param($cart_stmt, "iiii", $p_id, $pro_variation, $user_id, $pro_qty);
-                        mysqli_stmt_execute($cart_stmt);
-                        mysqli_stmt_close($cart_stmt);
-
-                        echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
-                        exit();
-                }
-            }
-
-        }//finish !empty product qty post
-        break;
-        case "remove":
-        // Delete single entry from the cart
-        
-        //get cart items by product
-           
-        global $db;
-
-        $cart_id = $_GET["id"];
-
-        $delete_cart = "DELETE from cart WHERE cart_id='$cart_id'";
-
-        $run_cart = mysqli_query($db,$delete_cart);
-
-        echo "<script>window.open('cart.php','_self')</script>";
-
-        break;
-
-        case "empty":
-            // Empty cart
-            global $db;
-
-            $empty_cart = "DELETE from cart WHERE user_id='$user_id'";
-
-            $run_empty = mysqli_query($db,$empty_cart);
-
-            echo "<script>window.open('cart.php','_self')</script>";
-
-            break;
-}
 }
 
 
@@ -262,7 +168,6 @@ if(isset($_GET['varaction'])){
     
 //     }
 //     }
-}
 
 /// finish add_cart functions ///
 

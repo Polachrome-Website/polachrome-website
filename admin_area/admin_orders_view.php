@@ -140,12 +140,14 @@
 			<div class="modal-body">
             <button type="button" class="close" data-dismiss="modal">
                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                
-                <img src="" class="imagepreview" style="width: 100%;" >
+
+				<center><label> Uploaded Proof of Payment </label></center>
+				<br><br>
+				<div id="displayProofImage"></div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<input type="hidden" name="hiddenimgsdata" id="hiddenimgsdata">
 			</div>
 			</div>
 		</div>
@@ -183,12 +185,31 @@
 				displayCatalog();
 		});
 
-        $(function() {
-		$('.pop').on('click', function() {
-			$('.imagepreview').attr('src', $(this).find('img').attr('src'));
-			$('#imageModal').modal('show');   
-		});		
-        });
+		function enlargeImg(refno){
+			$('#hiddenimgsdata').val(refno);
+
+			$.post("includes/admin_orders_view.inc.php", {refno:refno}, function(data,status){
+            });
+
+			$('#imageModal').modal('show');
+			displayImages();
+		}
+
+		function displayImages(){
+			var displayImages="true";
+            var hiddenimgdata=$('#hiddenimgsdata').val();
+			$.ajax({
+				url:"includes/admin_orders_view.inc.php",
+				type:'post',
+				data:{
+					displayImgSend: displayImages,
+					hiddenimgdata:hiddenimgdata
+				},
+				success:function(data,status){
+					$('#displayProofImage').html(data);
+				}
+			})
+		}
 		
 		function displayCatalog(){
 			var displayCatalog="true";

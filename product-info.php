@@ -205,7 +205,7 @@
                  $action = "product-info.php?action=add_cart&code=<?php echo $product_id;?>&var=<?php echo $var_id ?>";
             ?>
             <p style="margin-top:5px; border-top: solid 1px black;">Variation: 
-			<button class="circle" onclick="location.href='http://localhost/polachrome/product-info.php?prodID=<?php echo $_GET["prodID"] ?>'" type="button">
+			<button class="circle" onclick="location.href='https://polachrome.herokuapp.com/product-info.php?prodID=<?php echo $_GET["prodID"] ?>'" type="button">
       <?php if($pro_title === 'Go Film'){echo "White Frame";} 
             elseif($pro_title === 'Polaroid Go Instant Camera'){echo "Black";}
             elseif($pro_title === 'Polaroid Now Instant Camera'){echo "Black";}
@@ -223,7 +223,7 @@
             $var_quantity = $row["quantity"];
 						?>
 						<button <?php if($var_quantity >0){echo "class='circle'";} if($var_quantity == 0){echo "class='circle isDisabled'";} ?> 
-            onclick="location.href='http://localhost/polachrome/product-info.php?prodID=<?php echo $_GET["prodID"] ?>&varID=<?php echo $row["varID"] ?>'" type="button"><?php echo $row["prodVariation"] ?></button>
+            onclick="location.href='https://polachrome.herokuapp.com/product-info.php?prodID=<?php echo $_GET["prodID"] ?>&varID=<?php echo $row["varID"] ?>'" type="button"><?php echo $row["prodVariation"] ?></button>
     
 						<?php
 					}

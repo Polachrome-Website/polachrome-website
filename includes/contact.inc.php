@@ -23,8 +23,8 @@ if (isset($_POST["contact-us-submit"])){
 		// $mail->SMTPDebug = 1; 
 		//Server settings
 		$mail->isSMTP(); 
-		$mail->Host       = 'smtp.sendgrid.net';    //heroku mail server                                        //Send using SMTP
-		// $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+		// $mail->Host       = 'smtp.sendgrid.net';    //heroku mail server                                        //Send using SMTP
+		$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 		$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
 		$mail->Username   = 'mchacks996@gmail.com';                     //SMTP username
 		$mail->Password   = '!@#$%^&*()asdfghjkl';                               //SMTP 

@@ -162,7 +162,7 @@ if(isset($_POST['confirm-order'])){
              $mail = new PHPMailer(true);
              // $userEmail = "mchacks996@gmail.com";
              try {
-                $mail->SMTPDebug = 1; 
+                // $mail->SMTPDebug = 1; 
                  //Server settings
                  $mail->isSMTP();                                            //Send using SMTP
                  $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through

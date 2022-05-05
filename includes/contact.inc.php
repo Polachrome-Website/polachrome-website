@@ -20,7 +20,7 @@ if (isset($_POST["contact-us-submit"])){
 	$mail = new PHPMailer(true);
 
 	try {
-		$mail->SMTPDebug = 1; 
+		// $mail->SMTPDebug = 1; 
 		//Server settings
 		$mail->isSMTP(); 
 		$mail->Host       = 'smtp.sendgrid.net';    //heroku mail server                                        //Send using SMTP

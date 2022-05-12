@@ -361,13 +361,13 @@ padding: 0 30px;
 nav .logo img{
 width: 100%;
 height: 27px;
+float: left;
 }
 
 nav .nav-items{
 display: flex;
 flex: 1;
 padding: 0 0 0 30px;
-
 }  
 
 nav .nav-items li{
@@ -425,6 +425,7 @@ padding-top: 3px;
 
 
 nav .cart-icon{
+  display: inline;
   position: absolute;
   right: 13%;
   top: 32%;
@@ -596,6 +597,7 @@ display: none;
 
 .login-btn{
   position: absolute;
+  display: inline;
   right: 2%;
   bottom: 21.5%;
 }
@@ -610,6 +612,19 @@ display: none;
   box-shadow: none !important;
 }
 
+@media (max-width: 1600px){
+  nav .cart-icon{
+    
+    right: 12%;
+    margin-right: 10px;
+  }
+ 
+  .login-btn{
+    position: absolute;
+    margin-right: 7px;
+    bottom: 20%;
+  }
+}
 
 @media (max-width: 1245px) {
 nav{
@@ -622,18 +637,17 @@ nav{
 
 
 
-
 }
 
 @media (max-width: 1140px) {
   nav{
     padding: 0px;
-    margin: 0px;
+    margin: 0px
   }
 
   nav .logo img{
-    padding-left: 40px;
-    width: 100%;
+    padding-left: 20px;
+    
   }
 
   nav .nav-items.active{
@@ -665,23 +679,26 @@ nav{
   nav .cart-icon{
     top: 33%;
     right: 21.5%;
+    margin-right: 10px;
   }
  
   .login-btn{
     position: absolute;
-    right: 10%;
+    margin-right: 80px;
+    margin-left: 50px;
     bottom: 20%;
   }
 
 
   nav .menu-icon{
     position: absolute;
-    display: block;
-    left: 87%;
+    display: inline-block;
+    left: 91%;
+    padding-right: 30px;
   }
 
   nav .menu-icon span{
-    display: block;
+    display: inline-block;
     color: black;
     font-size: 16px;
   }
@@ -692,9 +709,9 @@ nav{
   nav .cancel-icon.show{
     position: absolute;
     display: block;
-   
     color:black;
-    left: 87%;
+    padding-right: 30px;
+    left: 91%;
     
   }
   .shopping-cart{

@@ -13,7 +13,8 @@
 body{
     line-height: 1.5;
     background-color: whitesmoke;
-    height: fit-content;
+    max-height: 100%;
+    max-width: 100%;
 }
 .card-wrapper{
     max-width: 1100px;
@@ -51,18 +52,24 @@ img{
 }
 .img-item{
     margin: 0.3rem;
-    height: 10px;
+    height: 10px;    
+    margin-bottom: 20px;
+    position: relative;
 }
 .img-item:nth-child(1),
 .img-item:nth-child(2),
 .img-item:nth-child(3){
     margin-right: 0;
+    margin-bottom: 20px;
+    position: relative;
 }
 .img-item:hover{
     opacity: 0.8;
 }
 .product-content{
     padding: 2rem 1rem;
+    position: relative;
+    margin-top: 50px;
 }
 .product-title{
     font-size: 30px;
@@ -221,7 +228,7 @@ li{
         padding: 20px;
     }
     .card-wrapper{
-        height: 100vh;
+        height: fit-content;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -610,6 +610,7 @@ a:hover{
     margin-top: 8vh;
     width: 100%;
     height: max-content;
+    padding-left: 20px;
   }
   
   .footer-about{

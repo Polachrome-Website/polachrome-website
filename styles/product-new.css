@@ -7,7 +7,16 @@ body{
 
 .container{
   min-height:75vh;
+  justify-content: center;
+  align-items: center;
 }
+
+.products{
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /*Search bar */
  .form{

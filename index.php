@@ -35,7 +35,7 @@
                 <h2 style="text-align:left;">Product Categories</h2>
 
                 <!--Product Categories-->
-                <div class="row">
+                <div class="categories row">
                     <div class="cameras col">
                         <div class="overlay">
                             <h3>Cameras</h3>
@@ -60,8 +60,8 @@
                         </div>
                     </div>
 
-                    <div class="none col">
-                    </div>
+                    <!-- <div class="none col">
+                    </div> -->
 
 
                 </div>

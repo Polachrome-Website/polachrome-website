@@ -10,7 +10,8 @@
         </head>
 
         <!--Body-->
-        <div class="d-flex justify-content-center">
+        <div class="bg-img"> <!--Background img-->
+        <div class="d-flex justify-content-center" style="max-height:100%; margin-bottom:60px;">
             <div class="card">
                 <div class="row">
                     <div class="col-md-6">
@@ -48,6 +49,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
         <?php 

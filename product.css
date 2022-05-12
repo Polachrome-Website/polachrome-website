@@ -1,7 +1,7 @@
 body{
   min-height: 100%;
+  min-width: 100%;
   font-family: font-face="Polaroid";
-  min-width: 100vh;
   background-color: #f2f2f2;
 }
 
@@ -12,7 +12,7 @@ body{
 }
 
 .products{
-  padding-left: 20px;
+  margin-left: auto;
   justify-content: center;
   align-items: center;
 }
@@ -608,7 +608,7 @@ a:hover{
     color:white;
     position: relative;
     margin-top: 8vh;
-    width: 100%;
+    min-width: 100%;
     height: max-content;
     padding-left: 20px;
   }

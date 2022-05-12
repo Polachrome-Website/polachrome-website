@@ -28,7 +28,7 @@
                 <input type="search" id="search_text" name="search-txt" class="search-data" placeholder="What are you looking for..." required>
                 <button class="fas fa-search" onclick="displayData()"></button>
             </div>
-            <div class="row" id="row-products">
+            <div class="products row" id="row-products">
                 
                 <?php
 

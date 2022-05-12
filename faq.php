@@ -10,6 +10,7 @@
     </head>
     <body>
         <!--Body-->
+        <div class="bg-img">
         <div class="container">
             <!--Left (picture)-->
             <div class="left">
@@ -72,6 +73,7 @@
                 </p>
             </div>
 
+        </div>
         </div>
         </div>
 

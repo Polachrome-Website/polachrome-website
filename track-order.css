@@ -416,6 +416,7 @@ a:hover{
 @media (max-width: 1245px) {
   nav{
     padding: 0 50px;
+    
   }
 
   .shopping-cart{
@@ -436,8 +437,7 @@ a:hover{
     }
 
     nav .logo img{
-      padding-left: 40px;
-      width: 100%;
+      padding-left: 30px;
     }
 
     nav .nav-items.active{
@@ -468,7 +468,7 @@ a:hover{
 
     nav .cart-icon{
       top: 28%;
-      left: 83%;
+      left: 81%;
     }
    
 
@@ -476,7 +476,7 @@ a:hover{
       display: block;
       position: absolute;
       top: 24%;
-      left: 88.5%;
+      left: 88%;
     }
 
     .username-content{
@@ -488,7 +488,8 @@ a:hover{
       position: absolute;
       display: block;
       margin-top: 5px;
-      left: 87%;
+      left: 90%;
+      padding-right: 20px;
     }
   
     nav .menu-icon span{
@@ -505,25 +506,48 @@ a:hover{
       display: block;
       margin-top: 5px;
       color:black;
-      left: 87%;
+      left: 90%;
+      padding-right: 20px;
       
     }
     .shopping-cart{
       position: absolute;
       width: 290px;
       top: 85%;
-      right: 15%;
+      right: 17%;
     }
     
   
   }   
 
-    @media (max-width: 767px){
+    @media (max-width: 768px){
+
+      nav .menu-icon{
+        left: 92%;
+        padding-right: 20px;
+      }
+
+      nav .cancel-icon.show{
+        left: 92%;
+        padding-right: 20px !important;
+        
+      }
+     
+
+      nav .cart-icon{
+        left: 83%;
+      }
      
   
+      .username{
+        left: 91%;
+      }
+
       .shopping-cart{
         right: 15%;
       }
+
+
     }
 
   

@@ -678,14 +678,13 @@ nav{
 
   nav .cart-icon{
     top: 33%;
-    right: 21.5%;
+    right: 20%;
     margin-right: 10px;
   }
  
   .login-btn{
     position: absolute;
-    margin-right: 80px;
-    margin-left: 50px;
+    right: 8%;
     bottom: 20%;
   }
 
@@ -693,8 +692,10 @@ nav{
   nav .menu-icon{
     position: absolute;
     display: inline-block;
-    left: 91%;
-    padding-right: 30px;
+    right: 0%;
+    padding-left: 35px;
+
+    
   }
 
   nav .menu-icon span{
@@ -710,30 +711,35 @@ nav{
     position: absolute;
     display: block;
     color:black;
-    padding-right: 30px;
-    left: 91%;
+    right: 0%;
+    padding-left: 35px;
     
   }
   .shopping-cart{
     position: absolute;
     width: 290px;
     top: 85%;
-    right: 23%;
+    right: 22.7%;
   }
   
 
 }   
 
   @media (max-width: 767px){
-   
-
-    .shopping-cart{
-      right: 25.7%;
+    .login-btn{
+      right: 11.8%
     }
 
     nav .cart-icon{
-      right: 24%;
+      right: 28%;
     }
+   
+
+    .shopping-cart{
+      right: 31.4%;
+    }
+
+  
   }
 
 

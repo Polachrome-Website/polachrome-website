@@ -315,11 +315,16 @@ nav .cart-icon:hover{
   border-radius: 7px;
 }
 
+a{
+  text-decoration: none;
+}
+
 a .view-cart:hover{
   background-color: white;
   color: black;
   outline: solid black 1px;
 }
+
 
 
 a:hover{
@@ -405,9 +410,12 @@ a:hover{
 
 
 
+
+
 @media (max-width: 1245px) {
   nav{
     padding: 0 50px;
+    
   }
 
   .shopping-cart{
@@ -428,8 +436,7 @@ a:hover{
     }
 
     nav .logo img{
-      padding-left: 40px;
-      width: 100%;
+      padding-left: 30px;
     }
 
     nav .nav-items.active{
@@ -468,7 +475,7 @@ a:hover{
       display: block;
       position: absolute;
       top: 24%;
-      left: 88.5%;
+      left: 89.3%;
     }
 
     .username-content{
@@ -480,7 +487,8 @@ a:hover{
       position: absolute;
       display: block;
       margin-top: 5px;
-      left: 87%;
+      left: 90%;
+      padding-right: 20px;
     }
   
     nav .menu-icon span{
@@ -497,7 +505,8 @@ a:hover{
       display: block;
       margin-top: 5px;
       color:black;
-      left: 87%;
+      left: 90%;
+      padding-right: 20px;
       
     }
     .shopping-cart{
@@ -510,13 +519,37 @@ a:hover{
   
   }   
 
-    @media (max-width: 767px){
+    @media (max-width: 768px){
+
+      nav .menu-icon{
+        left: 89%;
+        padding-right: 20px;
+      }
+
+      nav .cancel-icon.show{
+        left: 89%;
+        padding-right: 20px !important;
+        
+      }
+     
+
+      nav .cart-icon{
+        left: 79%;
+      }
      
   
-      .shopping-cart{
-        right: 15%;
+      .username{
+        left: 87%;
       }
+
+      .shopping-cart{
+        right: 19%;
+      }
+
+
     }
+
+ 
 
 
 /*Footer section*/  

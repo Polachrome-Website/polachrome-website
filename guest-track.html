@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cameras</title>
+        <title>Track your Order</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <!--Bootsrap 4-->
@@ -9,24 +9,24 @@
 
         <!--Font Awesome icons-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
+        
         <!--Main css-->
-        <link rel="stylesheet" href="product.css">
+        <link rel="stylesheet" href="guest-track.css">
     </head>
     <body>
-           <!--Navbar-->
-     <nav>
+      <!--Navbar-->
+      <nav>
         <div class="logo">
             <img src="img/logo.png" alt="PolaChrome-logo">
         </div>
         <div class="nav-items">
-            <li><a class="red"  href="home.html">HOME</a></li>
-            <li><a class="orange"  href="faq.html">FAQs</a></li>
-            <li><a class="yellow" href="product.html">PRODUCT</a></li>
-            <li><a class="green"  href="about.html">ABOUT</a></li>
-            <li><a class="blue"  href="contact.html">CONTACT US</a></li>
-            <li><a class="red" href="testimonial.html">TESTIMONIALS</a></li>
-            <li><a class="orange" href="track-order.html">TRACK</a></li>
+            <li><a class="red" href="guest-home.html">HOME</a></li>
+            <li><a class="orange"  href="guest-faqs.html">FAQs</a></li>
+            <li><a class="yellow" href="guest-product.html">PRODUCT</a></li>
+            <li><a class="green"  href="guest-about.html">ABOUT</a></li>
+            <li><a class="blue"  href="guest-contact.html">CONTACT US</a></li>
+            <li><a class="red" href="guest-testimonial.html">TESTIMONIALS</a></li>
+            <li><a class="orange" style="color: #ff8200;" href="guest-track.html">TRACK</a></li>
         </div>
 
    
@@ -90,15 +90,10 @@
             </div>
         </div>
           
-         <!--username displayed on the navbar-->
-          <div class="username">
-            <button class="userbtn"><i class="fas fa-user-alt"></i></button>
-            <div class="username-content">
-              <a class="user">Juan Dela Cruz</a>
-              <a href="user-profile.html">My Profile</a>
-              <a href="login.html">Logout</a>
-            </div>
-          </div>
+     <!--login button-->
+     <div class="login-btn">
+        <button type="submit" class="btn btn-dark">LOGIN</button>
+    </div>
         
 
 
@@ -119,68 +114,52 @@
          
     </nav>
     <!--End of Navbar section-->
+
+
         <!--Body-->
-       <div class="container">
-           <h1>Cameras</h1>
-          <form action="#">
-            <input type="search" class="search-data" placeholder="What are you looking for..." required>
-            <button type="submit" class="fas fa-search"></button>
-          </form>
-
+        <div class="container">
             <div class="row">
-                <!--Polaroid Go Instant Camera-->
+                <h1>Track Order</h1>
+            </div>
+
+            <!--Order ID, Customer ID-->
+            <div class="row">
                 <div class="col">
-                     <a href="product-gocam.html" class="card">
-                         <div class="prod-img" style="background-image: url(img/products/go_black_side.webp);"></div>
-                         <p>Polaroid Go Instant Camera</p>
-                         <h6>₱7,699.00</h6>
-                     </a>
-                 </div>
- 
-                  <!--Polaroid Now Instant Camera-->
-                 <div class="col">
-                     <a href="product-now.html" class="card">
-                         <div class="prod-img" style="background-image: url(img/products/now_front-tilted.webp);"></div>
-                         <p>Polaroid Now Instant Camera</p>
-                         <h6>₱8,899.00</h6>
-                     </a>
-                 </div>
- 
-                 <!--Polaroid Now+ Instant Camera-->
-                 <div class="col">
-                     <a href="product-nowP.html" class="card">
-                         <div class="prod-img" style="background-image: url(img/products/now+.webp);"></div>
-                         <p>Polaroid Now+ Instant Camera</p>
-                         <h6>₱10,999.00</h6>
-                     </a>
-                 </div>
- 
-                 <!--Polaroid SX-70 SLR-->
-                 <div class="col">
-                     <a href="product-sx70.html" class="card">
-                         <div class="prod-img" style="background-image: url(img/products/sx70-slr.jpg);"></div>
-                         <p>Polaroid SX-70 SLR</p>
-                         <h6>₱26,999.00 - ₱29,999</h6>
-                     </a>
-                 </div>
-                 
-             </div>
+                    <p>Order ID<input type="text" name="name" class="text-box" placeholder="Order ID" required></p>
+                </div>
+                <div class="col">
+                    <p>Customer ID<input type="text" name="email" class="text-box" placeholder="Customer ID" required></p>
+                </div>
+            </div>
 
+            <!--Order Total, Order Points-->
+            <div class="row">
+                <div class="col">
+                    <p style="margin-left:-25px;">Order Total<input type="number" name="name"  disabled="disabled" class="text-box"></p>
+                </div>
+                <div class="col">
+                    <p>Order Points<input type="text" name="email" disabled="disabled" class="text-box"></p>
+                </div>
+            </div>
 
-             <!--Pagination-->
-               <div class="pagination">
-                <ul> <!--pages or li are comes from javascript --> </ul>
-              </div>
-       </div>
+            <!--Payment Method, Payment Status-->
+            <div class="row">
+                <div class="col">
+                    <p>Payment Method<input type="text" name="name"  disabled="disabled" style="width: 270px;" class="text-box"></p>
+                </div>
+                <div class="col">
+                    <p style="margin-left: -80px;">Payment Status<input type="text" name="email" disabled="disabled" style="width: 225px; margin-right: 7px;" class="text-box"><a href="upload-payment.html"><button class="btn">Upload</button></a></p>
+                </div>
+            </div>
 
+             <!--Order Status-->
+             <div class="row">
+                <p>Order Status<input type="text" name="name"  disabled="disabled" style="width: 880px;" class="text-box"></p>
+            </div>
 
-               <!--Pagination-->
-               <div class="pagination">
-                <ul> <!--pages or li are comes from javascript --> </ul>
-              </div>
-       </div>
+           
+        </div>
 
-       
 
 
         <!--Bootsrap JS cdn-->
@@ -189,16 +168,18 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="navbar.js"></script>
         <script src="cart-dropdown.js"></script>
-        <script src="product-pagination.js"></script>
-      
+        
+        <!--FAQs script-->
+        <script src="faq.js"></script>
+
     </body>
-    <!--Footer Section-->
-    <footer class="footer">
+        <!--Footer Section-->
+        <footer class="footer">
             <div class="row">
                 <!--Logo-->   
                 <div class="col-lg-3 col-md-6 col sm-6">
                     <div class="footer-about">
-                        <h3>We're here to help</h3>
+                        <h3>Contact Us</h3>
                         <p><a href="contact.html">Get in touch</a> with our customer service team.</p>
                         <img src="img/mop.png">
                     </div>
@@ -222,7 +203,7 @@
                         <h6>FOLLOW US</h6>
                         <ul class="social-icon">
                             <li><a href="https://www.facebook.com/PolaChrome/"><i class="fab fa-facebook"></i> PolaChrome</i></a></li>
-                            <li><a href="https://www.instagram.com/pola.chrome/"><i class="fab fa-instagram-square"></i> PolaChrome</i></a></li>
+                            <li><a href="https://www.instagram.com/pola.chrome"><i class="fab fa-instagram-square"></i> PolaChrome</i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -248,5 +229,4 @@
             </div>
     </footer>
     <!--End of footer section-->
-        
 </html>

@@ -361,7 +361,7 @@ nav{
   
 nav .cart-icon{
   position: absolute;
-  right: 8%;
+  right: 13%;
   top: 31%;
   font-size: 15px;
   cursor: pointer;
@@ -372,85 +372,8 @@ nav .cart-icon{
   margin-top: 1.85px;
 }
 
-  
- /*Username*/
-.userbtn{
-  background-color: white;
-  color: black;
-  margin-right: 5px;
-  font-size: 16px;
-  margin-top: 4px;
-  font-weight: 600;
-  border: none;
-}
 
 
-
-.userbtn:focus{
-  outline: none;
-}
-
-.username{
-  display: inline-block;
-  padding-top: 0.3px;
-}
-
-.username-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  border: 1px solid #efefefef;
-  min-width: 150px;
-  right: 0px;
-  margin-top: 3px;
-  z-index: 1;
-}
-
-
-
-.username-content i{
-  padding-right: 7px;
-  color: gray;
-}
-
-.username-content a {
-  color: black;
-  font-weight: 500;
-  padding: 10px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.username-content .user{
-  border-bottom: 2px solid #efefefef;
-  pointer-events: none;
-}
-
-.username-content a:hover {
-  background-color: #efefefef;
-}
-
-
-.username:hover .username-content {
-  display: block;
-}
-
-
-
-.username:hover .userbtn {
-  background-color: white;
-  color: #f04231;
-}
-
-a:hover{
-  color: black!important;
-}
-
-  
-.userbtn .fa-user-alt{
-  font-size: 16px;
-  
-}
   
   nav .menu-icon,
   nav .cancel-icon,
@@ -480,6 +403,34 @@ a:hover{
   nav .user-icon:hover{
     color: #f04231;
   }
+
+  .login-btn .btn{
+    background:black;
+    font-size: 11px !important;
+    color: white;
+    width: 100px;
+    font-weight: bold;
+    border:none;
+    border-radius: 7px !important;
+    padding: 7px;
+  }
+  
+  .login-btn{
+    position: absolute;
+    display: inline;
+    right: 2%;
+    bottom: 21.5%;
+  }
+  
+  .login-btn .btn:hover{
+    background: transparent;
+    color: black;
+    outline: solid black 1px;
+  }
+  
+  .login-btn .btn:focus{
+    box-shadow: none !important;
+  }
  
   
   @media (max-width: 1245px) {
@@ -488,7 +439,7 @@ a:hover{
     }
   
     nav .cart-icon{
-      right: 11%;
+      right: 14%;
     }
   
    
@@ -533,18 +484,13 @@ a:hover{
   
     nav .cart-icon{
       top: 28%;
-      right: 14%;
+      right: 21%;
     }
-  
-    .username{
-      display: block;
+    
+    .login-btn{
       position: absolute;
-      top: 20%;
-      right: 7%;
-    }
-  
-    .username-content{
-      margin-top: 5px;
+      right: 8%;
+      bottom: 20%;
     }
   
   
@@ -552,8 +498,9 @@ a:hover{
       display: block;
       position: absolute;
       margin-top: 5px;
-      right: 0%;
-      padding-left: 50px;
+      right: 0;
+      padding-left: 45px;
+
     }
   
   
@@ -573,8 +520,9 @@ a:hover{
       position: absolute;
       display: block;
       color:black;
-      right: 0%;
-      padding-left: 50px;
+      margin-top: 5px;
+      right: 0;
+      padding-left: 45px;
     }
    
   }
@@ -582,86 +530,91 @@ a:hover{
   
   
     @media (max-width: 768px){
-      .username{
-        right: 10%;
+    
+      .login-btn{
+        right: 11%;
       }
   
-      nav .cart-icon{
-        right: 19%;
-      }
-      
-      nav .menu-icon{
-        right: 0%;
-      padding-left: 50px;
-      }
-  
-      nav .cancel-icon.show{
-        right: 0%;
-        padding-left: 50px;
-      }
-  
-    }
-  
-    @media (max-width: 575px){
-  
-      .username{
-        right: 14%;
-      }
-  
-      nav .cart-icon{
-        right: 26%;
-      }
-      nav .menu-icon{
-        right: 0%;
-      padding-left: 50px;
-      }
-  
-      nav .cancel-icon.show{
-        right: 0%;
-        padding-left: 50px;
-      }
-  
-    }
-
-    @media (max-width: 422px){
-      .username{
-        right: 16%;
-      }
-
       nav .cart-icon{
         right: 29%;
       }
       nav .menu-icon{
-        right: 0%;
-      padding-left: 50px;
+        padding-left: 50px!important;
+        
       }
   
       nav .cancel-icon.show{
-        right: 0%;
-        padding-left: 50px;
+        padding-left: 50px!important;
+        
       }
+  
+    }
+  
+    @media (max-width: 644px){
+  
+      .login-btn{
+        right: 13%;
+      }
+  
+      nav .cart-icon{
+        right: 34%;
+      }
+      nav .menu-icon{
+        padding-left: 50px!important;
+       
+      }
+  
+      nav .cancel-icon.show{
+        padding-left: 50px!important;
+       
+      }
+  
+     
+  
     }
 
-    @media (max-width: 332px){
-      .username{
-        right: 20%;
-      }
+    @media (max-width: 544px){
 
       nav .cart-icon{
-        right: 36%;
+        right: 40%;
+      }
+
+      .login-btn{
+        right: 15.5%;
+      }
+
+      
+  
+      
+    }
+
+    @media (max-width: 414px){
+      nav .cart-icon{
+        right: 49%;
+      }
+
+      .login-btn{
+        right: 18%;
       }
 
       .breadcrumbs_item a{
+        font-size: 15px;
+      }
+
+    }
+
+    @media (max-width: 340px){
+      nav .cart-icon{
+        right: 59%;
+      }
+
+      .login-btn{
+        right: 22%;
+      }
+
+      
+      .breadcrumbs_item a{
         font-size: 10px;
-      }
-      nav .menu-icon{
-        right: 0%;
-      padding-left: 50px;
-      }
-  
-      nav .cancel-icon.show{
-        right: 0%;
-        padding-left: 50px;
       }
     }
 

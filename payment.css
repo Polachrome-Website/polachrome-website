@@ -332,7 +332,7 @@ nav .cancel-icon{
 
 nav .cart-icon{
   position: absolute;
-  left: 91%;
+  right: 8%;
   top: 31%;
   font-size: 15px;
   cursor: pointer;
@@ -573,126 +573,195 @@ a:hover{
 }
 
 
-
+  
 @media (max-width: 1245px) {
   nav{
     padding: 0 50px;
   }
 
-  .shopping-cart{
-    right: 10.3%;
+  nav .cart-icon{
+    right: 11%;
+  }
+
+ 
+}
+
+@media (max-width: 1140px) {
+  nav{
+    padding: 0px;
+    margin: 0px;
+  }
+
+  nav .logo img{
+    padding-left: 20px;
+    
+  }
+
+  nav .nav-items.active{
+    right: 0px;
+  }
+  nav .nav-items li{
+    line-height: 40px;
+    margin: 30px 0;
+  }
+
+  nav .nav-items{
+    position: fixed;
+    padding: 10px 50px 0 50px;
+    text-align: center;
+    z-index: 99;
+    top: 48px;
+    width: 100%;
+    right: -100%;
+    height: 100%;
+    background: white;
+    display: inline-block;
+    transition: right 0.3s ease;
+  }
+ 
+  nav .nav-items li a{
+    font-size: 16px;
   }
 
   nav .cart-icon{
-    left: 88%;
+    top: 28%;
+    right: 14%;
+  }
+
+  .username{
+    display: block;
+    position: absolute;
+    top: 20%;
+    right: 7%;
+  }
+
+  .username-content{
+    margin-top: 5px;
   }
 
 
+  nav .menu-icon{
+    display: block;
+    position: absolute;
+    margin-top: 5px;
+    right: 0%;
+    padding-left: 50px;
+  }
+
+
+  nav .menu-icon span{
+    display: block;
+    color: black;
+    font-size: 16px;
+  }
+  
+
+  nav .menu-icon span.hide,
+  nav .search-icon.hide{
+    display: none;
+  }
+
+  nav .cancel-icon.show{
+    position: absolute;
+    display: block;
+    color:black;
+    right: 0%;
+    padding-left: 50px;
+  }
+ 
 }
 
-  @media (max-width: 1140px) {
-    nav{
-      padding: 0px;
-      margin: 0px;
-    }
 
-    nav .logo img{
-      padding-left: 40px;
-      width: 100%;
-    }
 
-    nav .nav-items.active{
-      right: 0px;
-    }
-    nav .nav-items li{
-      line-height: 40px;
-      margin: 30px 0;
-    }
-
-    nav .nav-items{
-      position: fixed;
-      padding: 10px 50px 0 50px;
-      text-align: center;
-      z-index: 99;
-      top: 48px;
-      width: 100%;
-      right: -100%;
-      height: 100%;
-      background: white;
-      display: inline-block;
-      transition: right 0.3s ease;
-    }
-  
-    nav .nav-items li a{
-      font-size: 16px;
+  @media (max-width: 768px){
+    .username{
+      right: 10%;
     }
 
     nav .cart-icon{
-      top: 28%;
-      left: 83%;
-    }
-   
-
-    .username{
-      display: block;
-      position: absolute;
-      top: 24%;
-      left: 88.5%;
-    }
-
-    .username-content{
-      margin-top: 5px;
-    }
-  
-
-    nav .menu-icon{
-      position: absolute;
-      display: block;
-      margin-top: 5px;
-      left: 87%;
-    }
-  
-    nav .menu-icon span{
-      display: block;
-      color: black;
-      font-size: 16px;
-    }
-    nav .menu-icon span.hide,
-    nav .search-icon.hide{
-      display: none;
-    }
-    nav .cancel-icon.show{
-      position: absolute;
-      display: block;
-      margin-top: 5px;
-      color:black;
-      left: 87%;
-      
-    }
-    .shopping-cart{
-      position: absolute;
-      width: 290px;
-      top: 85%;
-      right: 15%;
+      right: 19%;
     }
     
-  
-  }   
-
-    @media (max-width: 767px){
-     
-  
-      .shopping-cart{
-        right: 15%;
-      }
+    nav .menu-icon{
+      right: 0%;
+    padding-left: 50px;
     }
 
+    nav .cancel-icon.show{
+      right: 0%;
+      padding-left: 50px;
+    }
+
+  }
+
+  @media (max-width: 575px){
+
+    .username{
+      right: 14%;
+    }
+
+    nav .cart-icon{
+      right: 26%;
+    }
+    nav .menu-icon{
+      right: 0%;
+    padding-left: 50px;
+    }
+
+    nav .cancel-icon.show{
+      right: 0%;
+      padding-left: 50px;
+    }
+
+  }
+
+  @media (max-width: 422px){
+    .username{
+      right: 16%;
+    }
+
+    nav .cart-icon{
+      right: 29%;
+    }
+    nav .menu-icon{
+      right: 0%;
+    padding-left: 50px;
+    }
+
+    nav .cancel-icon.show{
+      right: 0%;
+      padding-left: 50px;
+    }
+  }
+
+  @media (max-width: 332px){
+    .username{
+      right: 20%;
+    }
+
+    nav .cart-icon{
+      right: 36%;
+    }
+
+    .breadcrumbs_item a{
+      font-size: 10px;
+    }
+    nav .menu-icon{
+      right: 0%;
+    padding-left: 50px;
+    }
+
+    nav .cancel-icon.show{
+      right: 0%;
+      padding-left: 50px;
+    }
+  }
     /*Footer section*/  
 footer{
   background-color: black;
   color:white;
   width: 100%;
-  position: fixed;
+  position: relative;
   bottom: 0px;
   width: 100%;
   height: min-content;

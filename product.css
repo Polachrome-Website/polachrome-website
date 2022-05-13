@@ -24,6 +24,7 @@ body{
   padding: 2px;
   background: white;
   min-width: 18%!important; 
+  margin-left: 11px;
   border-radius: 20px;
   margin-bottom: 24px;
 }
@@ -399,11 +400,17 @@ nav .cart-icon:hover{
   border-radius: 7px;
 }
 
+a{
+  text-decoration: none;
+}
+
 a .view-cart:hover{
   background-color: white;
   color: black;
   outline: solid black 1px;
 }
+
+
 
 a:hover{
   text-decoration: none;
@@ -488,9 +495,12 @@ a:hover{
 
 
 
+
+
 @media (max-width: 1245px) {
   nav{
     padding: 0 50px;
+    
   }
 
   .shopping-cart{
@@ -504,6 +514,13 @@ a:hover{
 
 }
 
+@media (max-width: 1199px){
+  form{
+    width: 95%;
+  }
+}
+
+
   @media (max-width: 1140px) {
     nav{
       padding: 0px;
@@ -511,8 +528,7 @@ a:hover{
     }
 
     nav .logo img{
-      padding-left: 40px;
-      width: 100%;
+      padding-left: 30px;
     }
 
     nav .nav-items.active{
@@ -551,7 +567,7 @@ a:hover{
       display: block;
       position: absolute;
       top: 24%;
-      left: 88.5%;
+      left: 89.3%;
     }
 
     .username-content{
@@ -563,7 +579,8 @@ a:hover{
       position: absolute;
       display: block;
       margin-top: 5px;
-      left: 87%;
+      left: 90%;
+      padding-right: 20px;
     }
   
     nav .menu-icon span{
@@ -578,9 +595,10 @@ a:hover{
     nav .cancel-icon.show{
       position: absolute;
       display: block;
-      margin-top: 10px;
+      margin-top: 5px;
       color:black;
-      left: 87%;
+      left: 90%;
+      padding-right: 20px;
       
     }
     .shopping-cart{
@@ -589,18 +607,100 @@ a:hover{
       top: 85%;
       right: 15%;
     }
-    
   
-  }   
+  }
+  
+  @media(max-width: 980px){
+    form{
+      
+      width: 89%;
+    }
+  }
 
-    @media (max-width: 767px){
+    @media (max-width: 768px){
+
+      nav .menu-icon{
+        left: 86%;
+        padding-right: 20px;
+      }
+
+      nav .cancel-icon.show{
+        left: 86%;
+        padding-right: 20px !important;
+        
+      }
      
-  
       .shopping-cart{
         right: 15%;
       }
+
+      nav .cart-icon{
+        left: 76%;
+      }
+     
+  
+      .username{
+        left: 85%;
+      }
+
+      .shopping-cart{
+        right: 21%;
+      }
+
+
     }
 
+    @media (max-width: 467px){
+      nav .menu-icon{
+        left: 80%;
+        padding-right: 20px;
+      }
+
+      nav .cancel-icon.show{
+        left: 80%;
+        padding-right: 20px;
+        
+      }
+     
+      nav .cart-icon{
+        left: 69%;
+      }
+     
+  
+      .username{
+        left: 80%;
+      }
+
+      .shopping-cart{
+        right: 24%;
+      }
+    }
+
+    @media (max-width: 300px){
+      nav .menu-icon{
+        left: 75%;
+        padding-right: 20px;
+      }
+
+      nav .cancel-icon.show{
+        left: 75%;
+        padding-right: 20px;
+        
+      }
+
+      .username{
+        left: 78%;
+      }
+
+
+      nav .cart-icon{
+        left: 65%;
+      }
+
+      .shopping-cart{
+        right: 5%;
+      }
+    }
   
   /*Footer section*/  
   footer{

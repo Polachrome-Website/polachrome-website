@@ -3,49 +3,40 @@
     src: url(font/FF\ Real\ Head\ Pro/);
   }
   
-  *{
-      margin:0;
-      padding:0;
-      box-sizing: border-box;
-      outline: none;
-     
-  }
   
   body{
-      height: 100%;
-      background: white;
+      background-color: black;
+      max-height: fit-content;
       font-family: font-face="Polaroid";
       padding-top: 20px;
       overflow-x: hidden;
       flex-direction: column;
-      min-height: 100vh;
   }
 
 @media(max-width:1245px){
     .bg-img{
-      min-height: 60vh;
+      min-height: 100%;
     }
 }
   
 .bg-img{
-      background-image: url(img/faqs.jpg);
       background-size: cover;
-      min-height:90vh;
+      min-height:100%;
+      min-width: 100%;
       position:relative;
       background-repeat: no-repeat;
-      color:white;
-      text-shadow: 5px 5px 5px rgba(0,0,0,.2)
+      
 }
   
 .container{
+      position: relative;
       background: white;
       border: 1px solid black;
-      width: 70%;
       height: 100%;
       padding: 70px;
       border-radius: 15px;
-      margin-top: 70px;
-      margin-bottom: 20px;
+      margin-top: 90px;
+      margin-bottom: 50px;
       display: flex;
 }
   
@@ -643,6 +634,7 @@ footer{
   bottom: 0px;
   width: 100%;
   height: min-content;
+  padding-left: 20px;
 
 }
 

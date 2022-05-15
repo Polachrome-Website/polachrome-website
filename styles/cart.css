@@ -305,7 +305,7 @@ footer{
   background-color: black;
   color:white;
   width: 100%;
-  position: fixed;
+  position: relative;
   bottom: 0px;
   height: min-content;
   margin-top: 30px;

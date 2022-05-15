@@ -4,8 +4,8 @@
 if (isset($_POST["address-edit"])){
 	$addressid = $_POST['address'];
 	include('db.php');
-	redirect("LOCATION: ../user-profile.php?addressid=" . $addressid);
-	// echo "<script>window.open('../user-profile.php?addressid=$addressid','_self')</script>";
+	header("LOCATION: ../user-profile.php?addressid=" . $addressid);
+	
 }
 
 
@@ -13,7 +13,7 @@ if (isset($_POST["address-select"])){
 	$addressid = $_POST['address'];
 	include('db.php');
 	header("LOCATION: ../user-profile.php?addressid=" . $addressid);
-	// echo "<script>window.open('../user-profile.php?addressid=$addressid','_self')</script>";
+	
 }
 
 if (isset($_POST["address-save"])){
@@ -26,11 +26,9 @@ if (isset($_POST["address-save"])){
     $region = $_POST["region"];
     $zip = $_POST["zip"];
 
-	// console.log($addressid, $contactNum, $bldg, $strt, $brgy ,  $city , $region , $zip);
 	
 	require_once 'db.php';
 
-	// $sql = "UPDATE user_account_address SET city='" . $city . "' WHERE addressID= '" . $addressid . "';";
 	$sql = "UPDATE user_account_address SET contactNum='".$contactNum."', bldg='".$bldg."', strt='".$strt."', brgy='".$brgy."', city='".$city."', region='".$region."', zip='".$zip."'  WHERE addressID='".$addressid."'";
 	if (mysqli_query($conn, $sql)) {
 		echo "Record updated successfully";

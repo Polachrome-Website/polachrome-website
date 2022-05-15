@@ -2,13 +2,8 @@
 
     // $active = 'Cart';
     include("includes/header.php");
-   
-    if (isset($_POST['add-cart'])){
-        print_r($_POST['prodID']);
-    }
 
     if($count==0){
-        //  echo "<script> console.log('WALA LAMAN CART MO');</script>";
         echo "<script>window.open('product.php','_self')</script>";
         exit();
     }else{
@@ -20,20 +15,19 @@
         <title>Cart</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/cart.css">
+        <style>
+        <?php
+            if($count==1){
+               echo "footer{position: fixed;}"; 
+            }
+        ?>
+        </style>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>   
     <script>
 
    function increment_quantity(cart_id, price) {
     var productQuantity = $("#product-quantity-"+cart_id);
-    // var quantity = pro_qty;
-    
     var inputQuantityElement = $("#input-quantity-"+cart_id);
-
-    // if(quantity >= $(inputQuantityElement).val()){
-    //     var newQuantity = parseInt($(inputQuantityElement).val())+1;
-    //     var newPrice = newQuantity * price;
-    //     save_to_db(cart_id, newQuantity, newPrice);
-    // }
 
     if($(productQuantity).val()-1 >= $(inputQuantityElement).val()){
         var newQuantity = parseInt($(inputQuantityElement).val())+1;
@@ -58,7 +52,6 @@
         var priceElement = $("#cart-price-"+cart_id);
         $.ajax({
             url : "update_cart_quantity.php",
-            // data : "cart_id="+cart_id+"&new_quantity="+new_quantity,
             data:{cart_id:cart_id, new_quantity:new_quantity},
             type : 'post',
             success : function(response) {
@@ -96,15 +89,7 @@
             $guest_id = $_SESSION['guest_id'];
             $select_cart = "select * from cart where user_id='$guest_id'";
         }
-        // if(isset($_SESSION['guestID'])){
-        //     $user_id = $_SESSION['guestID'];
-        // }
-        
-
-       /// $ip_add = getRealIpUser();
-
-       
-                       
+               
         $run_cart = mysqli_query($conn,$select_cart);
         
         $count = mysqli_num_rows($run_cart);
@@ -238,11 +223,6 @@
 										<div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
 										<input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
 								
-
-											<!-- <button>-</button>
-											<input type="number " value="1" readonly/>
-											<button>+</button> -->
-
 										<div class="btn-increment-decrement"
 										onClick="increment_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">+</div>
 												
@@ -252,7 +232,6 @@
 										<p>₱<?php echo "$sub_total";?></p>
 									</div>
 									<div class="remove-md">
-										<!-- <button type="submit" name="update"><span>Remove Item</span></button> -->
 										<a id="remove-item" href="cart.php?action=remove&id=<?php echo $row_cart["cart_id"]; ?>">
 											Remove Item
 										</a>

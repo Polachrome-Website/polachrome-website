@@ -230,7 +230,7 @@ body{
 footer{
   background-color: black;
   color:white;
-  position: fixed;
+  position: relative;
   bottom: 0px;
   width: 100%;
   height: min-content;

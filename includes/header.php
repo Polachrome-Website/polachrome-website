@@ -264,6 +264,7 @@
                         echo "top: 31%;";
                     }
                     if(!isset($_SESSION["userID"])){
+                        echo "display: inline;";
                         echo "right: 13%;";
                         echo "top: 32%;";
                     }
@@ -534,6 +535,15 @@
             }
             /* END Styles Login Btn for Guest */
 
+            @media (max-width: 1600px){
+                <?php
+                    if(!isset($_SESSION["userID"])){
+                        echo "nav .cart-icon{ right: 12%; margin-right: 10px; }";
+                        echo " .login-btn{ position: absolute; margin-right: 7px; bottom: 20%;}";
+                    }
+                ?>
+            }
+    
             @media (max-width: 1245px) {
             nav{
                 padding: 0 50px;
@@ -598,7 +608,7 @@
                     echo "nav .cart-icon{ top: 28%; left: 83%; }";
                 }
                 if(!isset($_SESSION["userID"])){
-                    echo "nav .cart-icon{  top: 33%; right: 21.5%; }";
+                    echo "nav .cart-icon{  top: 33%; right: 20%; margin-right: 10px;}";
                 }
             ?>
 
@@ -619,23 +629,28 @@
             margin-top: 5px;
             }
         
-
-            nav .menu-icon{
-            position: absolute;
-            display: block;
             <?php 
             if(isset($_SESSION["userID"])){
-                echo "margin-top: 5px;";
-            }    
-            ?>
-            left: 87%;
+                echo "nav .menu-icon{ position: absolute; display: block; margin-top: 5px; left: 90%; padding-right: 20px; }";
             }
+            if(!isset($_SESSION["userID"])){
+                echo "nav .menu-icon{ position: absolute; display: inline-block; right: 0%; padding-left: 35px; }";
+            }
+            ?>
         
             nav .menu-icon span{
-            display: block;
+            <?php 
+            if(isset($_SESSION["userID"])){
+                echo "display: block;";
+            }
+            if(!isset($_SESSION["userID"])){
+                echo "display: inline-block;";
+            }    
+            ?>
             color: black;
             font-size: 16px;
             }
+
             nav .menu-icon span.hide,
             nav .search-icon.hide{
             display: none;
@@ -645,11 +660,14 @@
             display: block;
             <?php 
             if(isset($_SESSION["userID"])){
-                echo "margin-top: 5px;";
-            }    
+                echo "margin-top: 5px; left: 90%; padding-right: 20px;";
+            }
+            if(!isset($_SESSION["userID"])){
+                echo "right: 0%; padding-left: 35px;";
+            }        
             ?>
             color:black;
-            left: 87%;
+            
             
             }
             .shopping-cart{
@@ -658,30 +676,41 @@
             top: 85%;
             <?php 
             if(isset($_SESSION["userID"])){
-                echo  "right: 15%;";
+                echo  "top: 85%; right: 15%;";
             } 
             if(!isset($_SESSION["userID"])){
-                echo  "right: 23%;";
+                echo  "top: 85%; right: 22.7%;";
             }    
             ?>
             }
             
         
         }   
+
+        @media (max-width: 768px){
+            <?php 
+                 if(isset($_SESSION["userID"])){
+                    echo "nav .menu-icon{ left: 89%; padding-right: 20px; }";
+                    echo "nav .cancel-icon.show{ left: 89%; padding-right: 20px !important; }";
+                    echo "nav .cart-icon{ left: 79%;}";
+                    echo ".username{ left: 87%;}";
+                    echo ".shopping-cart{ right: 19%;}";
+                 }
+            
+            ?>
+        }
             
         @media (max-width: 767px){
             <?php 
-            if(isset($_SESSION["userID"])){
-                echo  ".shopping-cart{ right: 15%; }";
-            } 
 
             if(!isset($_SESSION["userID"])){
-                echo  ".shopping-cart{ right: 25.7%; }";
-                echo "nav .cart-icon{ right: 24%; } ";
+                echo " .login-btn{ right: 11.8%; }";
+                echo  ".shopping-cart{ right: 31.4%; }";
+                echo "nav .cart-icon{ right: 28%; } ";
             } 
             ?>   
         }
-
+        
                 .isDisabled{
                 color: currentColor;
                 cursor: not-allowed;
@@ -742,10 +771,7 @@
             <div class="nav-items">
 
             <?php
-                    // if(isset($_SESSION["userID"])){
-                    //    echo "<p> Welcome, " . $_SESSION["fullName"] . " </p>";
-                    //    echo "<li><a class='red' href='includes/logout.inc.php'>LOG OUT</a></li>";
-                    // }
+              
                     if(isset($_SESSION['admin_email'])){
                         echo "Viewing as ADMIN";
                     }
@@ -763,15 +789,6 @@
                 <span class="fas fa-times"></span>
               </div>
 
-            <!-- <div class="search-icon">
-                <span class="fas fa-search"></span>
-              </div>
-
-              <form action="#">
-                <input type="search" class="search-data" placeholder="Search" required>
-                <button type="submit" class="fas fa-search"></button>
-              </form>
-            -->
 
             <?php 
                   if(isset($_SESSION["userID"])){
@@ -1026,48 +1043,3 @@
         <script src="scripts/cart-dropdown.js"></script>
         
         <!--End of Navbar section-->
-
-<!-- <script>
-	//jquery method movemouse check
-	//when move mouse, capture time and date and store it into a session storage object named lastTimeStamp
-
-	$(function(){
-
-	    function timeChecker(){
-	
-            setInterval(function(){
-            var storedTimeStamp = sessionStorage.getItem("lastTimeStamp");
-
-                timeCompare(storedTimeStamp);
-                },3000); //3seconds
-            }
-        function timeCompare(timeString){
-                var currentTime = new Date();
-                var pastTime = new Date(timeString);
-                var timeDiff = currentTime - pastTime;
-                var minPast = Math.floor((timeDiff/60000));
-                
-                //greater than 1min
-                if(minPast > 1){
-                    sessionStorage.removeItem("lastTimeStamp");
-                    window.location = "../logout.inc.php";
-	                return false;
-
-	            }else{
-
-		            console.log(currentTime+" - "+ pastTime +" - "+minPast +" min past")
-	            }
-	        }
-
-
-        $(document).mousemove(function(){
-
-            var timeStamp = new Date();
-            sessionStorage.setItem("lastTimeStamp",timeStamp);
-            
-	    //session storage stores data during active session only.
-	        timeChecker();	  
-	});
-});
-
-</script> -->

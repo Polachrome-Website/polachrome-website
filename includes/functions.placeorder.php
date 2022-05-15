@@ -42,14 +42,7 @@ function add_cart(){
     if(isset($_SESSION['userID'])){
         $user_id = $_SESSION['userID'];
     }
-    // if(!isset($_SESSION['userID'])){
-    //     $user_id = $_SESSION['guest_id']
-    // }
-
-    // if(isset($_SESSION['guest'])){
-    //     $user_id = $_SESSION['guest'];
-    // }
-    
+   
     $shoppingCart = new ShoppingCart();
     if(isset($_GET['action'])){
         switch ($_GET['action']){
@@ -152,41 +145,11 @@ function add_cart(){
 }
 }
 
-
-// global $db;
-
-// // $ip_add = getRealIpUser();
-
-// $p_id = $_GET['code'];
-
-// $product_qty = $_POST['product_qty'];
-
-// $check_product = "select * from cart where user_id='$user_id' AND p_id='$p_id'";
-
-// $run_check = mysqli_query($db,$check_product);
-
-// if(mysqli_num_rows($run_check)>0){
-    
-//     echo "<script>alert('This product has already added in cart')</script>";
-//     echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
-    
-// }else{
-    
-//     $query = "insert into cart (p_id,user_id,qty) values ('$p_id','$user_id','$product_qty')";
-    
-//     $run_query = mysqli_query($db,$query);
-    
-//     echo "<script>window.open('product-info.php?prodID=$p_id','_self')</script>";
-    
-//     }
-//     }
-
 /// finish add_cart functions ///
 
 
 function add_cart_guest(){
-    // $_SESSION['guest_id'] = hexdec(uniqid());
-    // $_SESSION['guest_id'] = getRealIpUser();
+    
     $user_id = $_SESSION['guest_id'];
  
     $shoppingCart = new ShoppingCart();
@@ -311,13 +274,11 @@ function add_cart_guest(){
 function items(){
     global $db;
 
-    // $ip_add = getRealIpUser();
+
     if(isset($_SESSION['userID'])){
         $user_id = $_SESSION['userID'];
     }
-    // else{
-    //     $user_id = mt_rand(2000,9000);
-    // }
+  
     
     $get_items = "select * from cart where user_id='$user_id'";
 
@@ -336,13 +297,11 @@ function items(){
 function guest_items(){
     global $db;
 
-    // $guest_id = $_SESSION['guest_id'];
+
     if(!isset($_SESSION['userID'])){
         $guest_id = $_SESSION['guest_id'];
     }
   
-
-    // $guest_id = md5(getRealIpUser());
     
     $get_items = "select * from cart where user_id='$guest_id'";
 
@@ -385,53 +344,6 @@ function items_qty(){
         echo $row['qty_total'];
     }
 }
-
-
-// function customerDetails(){
-    
-//     if(isset($_POST['send_pay_mode'])){
-
-//         $user_id = $_POST['send_user_id'];
-    
-//         $shipping_full_name = $_POST['send_full_name'];
-    
-//         $shipping_email = $_POST['send_email'];
-    
-//         $shipping_contact = $_POST['send_contact'];
-    
-//         $shipping_strt_bldg_hn = $_POST['send_strt_bldg_hn'];
-    
-//         $shipping_reg_pro_cit_brgy = $_POST['send_reg_pro_cit_brgy'];
-    
-//         $address = $shipping_strt_bldg_hn . $shipping_reg_pro_cit_brgy;
-    
-//         $payment_mode = $_POST['send_pay_mode'];  
-    
-//         $total = 0;
-    
-//         $ship_fee = 45.00;
-    
-//         $invoice_no = mt_rand();
-    
-//         $date_now = date("Y-m-d");
-    
-//         $order_status = "Pending";
-    
-//         $insert_customer_details = "INSERT into tbl_orders_customers (customer_id, invoice_no, c_address, c_email, c_contact) 
-//         VALUES(?,?,?,?,?)";
-//         $customer_details_stmt = mysqli_stmt_init($conn);
-//         if (!mysqli_stmt_prepare($customer_details_stmt, $insert_customer_details)) {
-//             header("location: ../summary.php?error=stmtfailed");
-//             exit();
-//         }else{
-//             mysqli_stmt_bind_param($customer_details_stmt, "iissi", $user_id, $invoice_no, $address, $shipping_email, $shipping_contact);
-//             mysqli_stmt_execute($customer_details_stmt);
-//             mysqli_stmt_close($customer_details_stmt);
-//             exit();
-                
-//         }
-//     }
-// }
 
 
 ?>

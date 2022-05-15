@@ -94,13 +94,14 @@
                         <div class="card-body mb-3">
                          <h5 class="d-flex align-items-center mb-3">Shipping Address</h5>
                     
+                         <form action="includes/address.inc.php"  method="post"><!-- begin address display -->
                         <?php //begin address display from DB
                             if (isset($_GET["addressid"])) {
                                 $query = mysqli_query($conn, "SELECT * FROM user_account_address WHERE addressID = '" . $_GET["addressid"] . "'");
                                 $row = mysqli_fetch_array($query);
 
-                                
                             ?>
+
 
                             <div class="row mb-3 align-items-center g-3">
                             <div class="col-sm-6">
@@ -293,10 +294,8 @@
                                                     <label for="address<?php echo $count ?>"><?php echo $row['bldg'], ", ", $row['strt'], ", ", $row['brgy'], ", ", $row['city'], ", ", $row['region'], ", ", $row['zip'], ", ", $row['contactNum'] ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                     <input type="hidden" name="hiddenaddressdata" id="hiddenaddressdata">
 
-                                                            <!-- <a href="#" style="cursor:pointer;" id="submit-delete-address" class="fa fa-trash delete-icon" name="address-delete"></a> -->
-                                                            <!-- <a href="" onclick="subForm('delete-address')" style="cursor:pointer;" id="delete-icon" name="address-delete" class="fa fa-trash delete-icon" ></a> -->
-                                                          
-                                                        </label><br>
+                                                                                         
+                                                    </label><br>
                                                        
                                                     
   
@@ -305,12 +304,12 @@
                                                 }
                                             $count -= 1;
                                             ?>
-                                              <!-- <button type="submit" name="address-delete"><i class="fa fa-trash"></i></button> -->
+                                            
                                         </div>
                                         </form>
                                         <div class="modal-footer">
                                             <button type="submit" name="address-delete" class="btn btn-edit btn-danger">Delete</button>
-                                            <button type="submit" name="address-select" class="btn btn-success">Set Default</button>
+                                            <button type="submit" name="address-select" class="btn btn-success">Select</button>
                                         </div>
                                         </div>
                                     </div>
@@ -331,13 +330,13 @@
                                         <div class="modal-body">
 
                                                 <input type="hidden" id="addUserAddress" name="userID"  class="text-box" value="<?php echo $_SESSION["userID"] ?>" required >
-                                                <input type="text" id="addBldg" name="abldg" class="form-control myInput" placeholder="Building and Unit Number" required></br>
+                                                <input type="text" id="addBldg" name="abldg" class="form-control myInput" placeholder="Building or Unit Number" required></br>
                                                 <input type="text" id="addStrt" name="astrt" class="form-control myInput" placeholder= "Street" required></br>
                                                 <input type="text" id="addBrgy" name="abrgy" class="form-control myInput" placeholder="Barangay" required></br>
                                                 <input type="text" id="addCity" name="acity" class="form-control myInput" placeholder="City" required></br>
                                                 <input type="text" id="addRegion" name="aregion" class="form-control myInput" placeholder="Province" required></br>
-                                                <input type="text" id="addContact" name="acontactNum" class="form-control myInput" placeholder="Phone Number" required></br>
-                                                <input type="text" id="addZip" name="azip" class="form-control myInput" placeholder="Postal Code" required></br>
+                                                <input type="text" id="addContact" name="acontactNum" class="form-control myInput" placeholder="Phone Number" onkeydown="return validateIsNumericInput(event)" required></br>
+                                                <input type="text" id="addZip" name="azip" class="form-control myInput" placeholder="Postal Code" onkeydown="return validateIsNumericInput(event)" required></br>
                             
                                         </div>
                                         <div class="modal-footer">
@@ -473,33 +472,6 @@
     <!--FAQs script-->
     <script src="faq.js"></script>
 
-    <!-- <script>
-
-    $(document).ready(function (){
-        $('#orderConfirm').on('click',function(e){
-            e.preventDefault();
-
-            Swal.fire({
-                    title: "Confirm Order?",
-                    text: "Please make sure that all details are correct.",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#00C851",
-                    confirmButtonText: "Place Order",
-                    cancelButtonText: "Cancel",
-                 }).then((result) => {
-
-                    var oldpw=$('#oldpw').val();
-                    var newpw=$('#newpw').val();
-                    var confpw=$('#confpw').val();
-
-
-                 });
-        });
-    });
-            
-    </script> -->
-
     <script>
 
     $(document).ready(function(){
@@ -614,10 +586,6 @@
                 $('#AddressModal').modal('hide');
 
             });
-
-            // $('#submit-delete-address').click(function(){
-            //     document.getElementById("addressForm").submit();
-            // });
         });
 
         function addAddress(){
@@ -650,14 +618,6 @@
             });
         }
 
-    
-        // var deleteForm = document.getElementById('addressForm'),
-        // button = document.getElementById('delete-icon'),
-        // submitForm = function(e){
-        //     e.preventDefault();
-        //     deleteForm.submit();
-        // };
-        // button.addEventListener("click",submitForm);
     </script>
 
     <script>

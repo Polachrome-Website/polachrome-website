@@ -22,19 +22,18 @@ if (isset($_POST["contact-us-submit"])){
 	try {
 		// $mail->SMTPDebug = 1; 
 		//Server settings
-		$mail->isSMTP(); 
-		// $mail->Host       = 'smtp.sendgrid.net';    //heroku mail server                                        //Send using SMTP
+		$mail->isSMTP();                                    //Send using SMTP
 		$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 		$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-		$mail->Username   = 'mchacks996@gmail.com';                     //SMTP username
-		$mail->Password   = '!@#$%^&*()asdfghjkl';                               //SMTP 
+		$mail->Username   = 'polacromenoreply@gmail.com';                     //SMTP username
+		$mail->Password   = 'group4softwareeng2022';                               //SMTP 
 		$mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
 		$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 		//Recipients
 		$mail->isHTML(true);      //Set email format to HTML
 		$mail->setFrom($email, "Inquiry from Contact Us");
-		$mail->addAddress('mchacks996@gmail.com');     //Add a recipient
+		$mail->addAddress('polacromenoreply@gmail.com');     //Add a recipient
 		$mail->addReplyTo($email);
 
 		//Content
@@ -55,7 +54,7 @@ if (isset($_POST["contact-us-submit"])){
 
 		$mail->send();
 		// echo 'Message has been sent';
-		header("Location: ../contact.php?inquiry=success"); 
+		// header("Location: ../contact.php?inquiry=success"); 
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		header("Location: ../contact.php?inquiry=error"); 

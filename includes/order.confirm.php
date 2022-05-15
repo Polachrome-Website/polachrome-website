@@ -167,13 +167,13 @@ if(isset($_POST['confirm-order'])){
                  $mail->isSMTP();                                            //Send using SMTP
                  $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                  $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                 $mail->Username   = 'mchacks996@gmail.com';                     //SMTP username
-                 $mail->Password   = '!@#$%^&*()asdfghjkl';                               //SMTP password
+                 $mail->Username   = 'polacromenoreply@gmail.com';                     //SMTP username
+                 $mail->Password   = 'group4softwareeng2022';                               //SMTP 
                  $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
                  $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
                  //Recipients
-                 $mail->setFrom('mchacks996@gmail.com', 'Polachrome');
+                 $mail->setFrom('polacromenoreply@gmail.com', 'Polachrome');
                  $mail->addAddress($shipping_email);     //Add a recipient
                  // $mail->addReplyTo('no-reply@gmail.com', 'No reply');
 
@@ -310,13 +310,13 @@ if(isset($_POST['confirm-order'])){
                          $mail->isSMTP();                                            //Send using SMTP
                          $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                          $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                         $mail->Username   = 'mchacks996@gmail.com';                     //SMTP username
-                         $mail->Password   = '!@#$%^&*()asdfghjkl';                               //SMTP password
+                         $mail->Username   = 'polacromenoreply@gmail.com';                     //SMTP username
+                         $mail->Password   = 'group4softwareeng2022';                               //SMTP 
                          $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
                          $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
                          //Recipients
-                         $mail->setFrom('mchacks996@gmail.com', 'Polachrome');
+                         $mail->setFrom('polacromenoreply@gmail.com', 'Polachrome');
                          $mail->addAddress($shipping_email);     //Add a recipient
                          // $mail->addReplyTo('no-reply@gmail.com', 'No reply');
         

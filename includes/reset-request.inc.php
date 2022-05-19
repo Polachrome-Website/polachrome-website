@@ -99,7 +99,7 @@ if (isset($_POST["reset-request-submit"])){
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 		$mail->send();
-		echo $url; 
+		// echo $url; 
 	 	header("Location: ../reset-pw.php?reset=success"); 
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

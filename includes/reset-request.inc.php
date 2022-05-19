@@ -16,7 +16,7 @@ if (isset($_POST["reset-request-submit"])){
 
 	$user_email = $_POST['email'];
 
-	echo "<p> $user_email </p>";
+	// echo "<p> $user_email </p>";
 
 	$get_email = "select * from user_account where email='$user_email'";
 

@@ -68,6 +68,7 @@ if (isset($_POST["reset-request-submit"])){
 
 	try {
 		//Server settings
+		$mail->SMTPDebug = 1; 
 		$mail->isSMTP();                                            //Send using SMTP
 		$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 		$mail->SMTPAuth   = true;                                   //Enable SMTP authentication

@@ -54,7 +54,7 @@ if (isset($_POST["contact-us-submit"])){
 
 		$mail->send();
 		// echo 'Message has been sent';
-		// header("Location: ../contact.php?inquiry=success"); 
+		header("Location: ../contact.php?inquiry=success"); 
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		header("Location: ../contact.php?inquiry=error"); 

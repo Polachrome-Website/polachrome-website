@@ -45,7 +45,6 @@ if (isset($_POST["reset-request-submit"])){
 	} else {
 		mysqli_stmt_bind_param($stmt, "s", $userEmail);
 		mysqli_stmt_execute($stmt);
-		//header("LOCATION: ../login.php?newpwd=passwordupdated");
 	}
 	
 	$sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);";
@@ -60,8 +59,8 @@ if (isset($_POST["reset-request-submit"])){
 		
 	}
 	
-	mysqli_stmt_close($stmt);
-	mysqli_close($conn);
+	// mysqli_stmt_close($stmt);
+	// mysqli_close($conn);
 
 
 	$mail = new PHPMailer(true);

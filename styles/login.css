@@ -204,7 +204,7 @@ body{
 footer{
   background-color: black;
   color:white;
-  position: fixed;
+  position: relative;
   bottom: 0px;
   width: 100%;
   height: min-content;
@@ -295,8 +295,20 @@ footer{
   font-size: 12px;
 }
 
+/* @media(max-width:1140px){
+  footer{
+   position: fixed;
+  }
+}
+
 @media(max-width:740px){
   footer{
    position: relative;
   }
 }
+
+@media(max-width:640px){
+  footer{
+   position: relative;
+  }
+} */

@@ -24,10 +24,12 @@ if (isset($_POST["reset-request-submit"])){
 
 	$verify = mysqli_num_rows($run_email);
 
-	// if($verify==1){
+	if($verify==1){
 		$selector = bin2hex(random_bytes(8));
 	$token = random_bytes(32);
-
+	?>
+	<script>console.log("dumaan dito before url");</script>
+	<?php
 	$url = "https://polachrome.herokuapp.com/new-pw.php?selector=" . $selector . "&validator=" . bin2hex($token);
 	// $url = "www.polachrome.com/forgottenpassword/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token); 
 	
@@ -104,9 +106,9 @@ if (isset($_POST["reset-request-submit"])){
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 	}
-	// }else{
-	// 	header("Location: ../reset-pw.php?reset=notregistered"); 
-	// }
+	}else{
+		header("Location: ../reset-pw.php?reset=notregistered"); 
+	}
 
 }
 

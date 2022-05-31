@@ -34,7 +34,7 @@
 		
 		require 'db.php';
 		
-		$sql = "SELECT * FROM pwdReset WHERE pwdResetSelector=? AND pwdResetExpires >= ?";
+		$sql = "SELECT * FROM pwdreset WHERE pwdResetSelector=? AND pwdResetExpires >= ?";
 		$stmt = mysqli_stmt_init($conn);
 		if (!mysqli_stmt_prepare($stmt, $sql)) {
 			echo "There was an error! 1";
@@ -83,7 +83,7 @@
 								mysqli_stmt_bind_param($stmt, "ss", $newPwdHash, $tokenEmail);
 								mysqli_stmt_execute($stmt);
 								
-								$sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?;";
+								$sql = "DELETE FROM pwdreset WHERE pwdResetEmail=?;";
 								$stmt = mysqli_stmt_init($conn);
 								if (!mysqli_stmt_prepare($stmt, $sql)) {
 									echo "There was an error! 5";

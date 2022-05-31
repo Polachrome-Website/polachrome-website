@@ -16,8 +16,6 @@ if (isset($_POST["reset-request-submit"])){
 
 	$user_email = $_POST['email'];
 
-	// echo "<p> $user_email </p>";
-
 	$get_email = "select * from user_account where email='$user_email'";
 
 	$run_email = mysqli_query($conn,$get_email);
@@ -29,7 +27,6 @@ if (isset($_POST["reset-request-submit"])){
 	$token = random_bytes(32);
 
 	$url = "https://polachrome.herokuapp.com/new-pw.php?selector=" . $selector . "&validator=" . bin2hex($token);
-	// $url = "www.polachrome.com/forgottenpassword/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token); 
 	
 	$expires = date("U") + 180;
 	
@@ -37,7 +34,6 @@ if (isset($_POST["reset-request-submit"])){
 	
 	$userEmail = $_POST["email"];
 
-	echo '<script>console.log("dumaan dito before delete pwdResetEmail");</script>';
 	
 	$sql = "DELETE FROM pwdreset WHERE pwdResetEmail=?;";
 	$stmt = mysqli_stmt_init($conn);
@@ -61,15 +57,14 @@ if (isset($_POST["reset-request-submit"])){
 		
 	}
 	
-	// mysqli_stmt_close($stmt);
-	// mysqli_close($conn);
+	mysqli_stmt_close($stmt);
+	mysqli_close($conn);
 
-	echo '<script>console.log("dumaan dito before phpmailer");</script>';
 	$mail = new PHPMailer(true);
 
 	try {
 		//Server settings
-		$mail->SMTPDebug = 1; 
+		// $mail->SMTPDebug = 1; 
 		$mail->isSMTP();                                            //Send using SMTP
 		$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 		$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -79,7 +74,7 @@ if (isset($_POST["reset-request-submit"])){
 		$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 		//Recipients
-		$mail->setFrom('polacromenoreply@gmail.com', 'Test Password Reset');
+		$mail->setFrom('polacromenoreply@gmail.com', 'Request for Password Reset');
 		$mail->addAddress($userEmail);     //Add a recipient
 		// $mail->addReplyTo('no-reply@gmail.com', 'No reply');
 
@@ -104,7 +99,6 @@ if (isset($_POST["reset-request-submit"])){
 		echo $url; 
 	 	header("Location: ../reset-pw.php?reset=success"); 
 
-		 echo '<script>console.log("dumaan sa loob ng try");</script>';
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 	}

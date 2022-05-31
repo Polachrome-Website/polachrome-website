@@ -27,9 +27,7 @@ if (isset($_POST["reset-request-submit"])){
 	if($verify==1){
 		$selector = bin2hex(random_bytes(8));
 	$token = random_bytes(32);
-	?>
-	<script>console.log("dumaan dito before url");</script>
-	<?php
+
 	$url = "https://polachrome.herokuapp.com/new-pw.php?selector=" . $selector . "&validator=" . bin2hex($token);
 	// $url = "www.polachrome.com/forgottenpassword/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token); 
 	
@@ -38,6 +36,8 @@ if (isset($_POST["reset-request-submit"])){
 	require 'db.php';
 	
 	$userEmail = $_POST["email"];
+
+	echo '<script>console.log("dumaan dito before delete pwdResetEmail");</script>';
 	
 	$sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?;";
 	$stmt = mysqli_stmt_init($conn);
@@ -64,7 +64,7 @@ if (isset($_POST["reset-request-submit"])){
 	// mysqli_stmt_close($stmt);
 	// mysqli_close($conn);
 
-
+	echo '<script>console.log("dumaan dito before phpmailer");</script>';
 	$mail = new PHPMailer(true);
 
 	try {
@@ -103,6 +103,8 @@ if (isset($_POST["reset-request-submit"])){
 		$mail->send();
 		echo $url; 
 	 	header("Location: ../reset-pw.php?reset=success"); 
+
+		 echo '<script>console.log("dumaan sa loob ng try");</script>';
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 	}

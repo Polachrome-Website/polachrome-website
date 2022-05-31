@@ -91,7 +91,7 @@
 								} else {
 									mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
 									mysqli_stmt_execute($stmt);
-									header("LOCATION: ../login.php?newpwd=passwordupdated");
+									header("LOCATION: ../login.php?newpwd=passwordupdated&".$passwordRepeat);
 								}
 							}
 						}

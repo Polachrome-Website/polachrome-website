@@ -11,21 +11,21 @@
 		
 		$selector = $_POST["selector"];
 		$validator = $_POST["validator"];
-		$password = $_POST["pwd"];
+		$passwordNew = $_POST["pwd"];
 		$passwordRepeat = $_POST["pwd-repeat"];
 		
-		if(empty($password) || empty($passwordRepeat)) {
+		if(empty($passwordNew) || empty($passwordRepeat)) {
 
 			include("../new-pw.php?error=empty&selector=" . $selector . "&validator=" . $validator);
 			exit();
 		} 
 		
-		else if (pwdMatch($password, $passwordRepeat) !== false) {
+		else if (pwdMatch($passwordNew, $passwordRepeat) !== false) {
 			header ("Location: ../new-pw.php?error=pwdnotsame&selector=" . $selector . "&validator=" . $validator); 
 			exit();
 		}
 		
-		 else if(pwdStrength($password) !== false){
+		 else if(pwdStrength($passwordNew) !== false){
 			header ("Location: ../new-pw.php?error=weakpwd&selector=" . $selector . "&validator=" . $validator); 
 			exit();
 		}
@@ -79,7 +79,7 @@
 								echo "There was an error! 4";
 								exit();
 							} else {
-								$newPwdHash = password_hash($password, PASSWORD_DEFAULT);
+								$newPwdHash = password_hash($passwordRepeat, PASSWORD_DEFAULT);
 								mysqli_stmt_bind_param($stmt, "ss", $newPwdHash, $tokenEmail);
 								mysqli_stmt_execute($stmt);
 								

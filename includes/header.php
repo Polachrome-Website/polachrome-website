@@ -344,26 +344,26 @@
                 background-color: #efefefef;
                 }
 
-
-                /* .username:hover .username-content {
-                display: block;
-                } */
-
                 .username:hover .userbtn {
                 background-color: white;
                 color: #f04231;
+                cursor: pointer;
                 }
 
                 /* for the color of elements under .userbtn */
-                .username-content a:hover{
+                a:hover{
                  color: black!important;
                 }
 
-                
                 .userbtn .fa-user-alt{
                 font-size: 16px;
                 
                 }
+
+                .show {
+                    display: block;
+                }
+
 
 
             /*cart-dropdown*/
@@ -1044,4 +1044,5 @@
             </div>  
         </nav>
         <script src="scripts/cart-dropdown.js"></script>
+        <script src="scripts/user-dropdown.js"></script>
         <!--End of Navbar section-->

@@ -145,7 +145,7 @@ button[type="submit"]:focus{
 footer{
   background-color: black;
   color:white;
-  position: fixed;
+  position: relative!important;
   bottom: 0px;
   width: 100%;
   height: min-content;

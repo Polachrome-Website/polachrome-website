@@ -714,7 +714,47 @@
             } 
             ?>   
         }
-        
+
+        @media (max-width: 644px){
+            <?php
+                 if(!isset($_SESSION["userID"])){
+                    echo ".login-btn{ right: 13%; }";
+                    echo "nav .cart-icon{ right: 34%; } ";
+                    echo "nav .menu-icon{ padding-left: 50px!important;}";
+                    echo "nav .cancel-icon.show{padding-left: 50px!important;}";
+                 }
+            ?>
+        }
+
+        @media (max-width: 544px){
+            <?php
+                 if(!isset($_SESSION["userID"])){
+                    echo "nav .cart-icon{ right: 40%; } ";
+                    echo ".login-btn{right: 15.5%}";
+                 }
+            ?>
+        }
+
+        @media (max-width: 414px){
+            <?php
+                 if(!isset($_SESSION["userID"])){
+                    echo "nav .cart-icon{ right: 49%; } ";
+                    echo ".login-btn{right: 18%}";
+                 }
+            ?>
+        }
+
+        @media (max-width: 340px){
+            <?php
+                 if(!isset($_SESSION["userID"])){
+                    echo "nav .cart-icon{ right: 50%; } ";
+                    echo ".login-btn{right: 15%}";
+                    echo "nav .menu-icon{ left: 54px;}";
+                    echo "nav .cancel-icon.show{ left: 54px;}";
+                 }
+            ?>
+        }
+    
                 .isDisabled{
                 color: currentColor;
                 cursor: not-allowed;
@@ -804,14 +844,12 @@
                                     <div id='myUsername' class='username-content'>
                                         <a class='user'>Juan Dela Cruz</a>
                                         <a href='user-profile.php'>My Profile</a>
-                                        <a href='login.php'>Logout</a>
+                                        <a href='includes/logout.inc.php'>Logout</a>
                                     </div>
                             </div>
                     ";
                  }if(!isset($_SESSION["userID"]) && (!isset($_SESSION['admin_email'])) ){
-                    // echo "<li><a class='red' href='login.php'>LOG IN</a></li>";
-                 //    echo "G_ID: ".$_SESSION['guest_id'];
-
+    
                  echo "
                             <div class='login-btn'>
                                 <a href='login.php'><button class='btn btn-dark'> LOGIN </button></a>

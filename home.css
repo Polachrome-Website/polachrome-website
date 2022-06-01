@@ -492,22 +492,22 @@ nav .cart-icon:hover{
   background-color: #efefefef;
 }
 
-
-.username:hover .username-content {
-  display: block;
-}
-
-
-
 .username:hover .userbtn {
   background-color: white;
   color: #f04231;
 }
 
+a:hover{
+  color: black!important;
+}
+
   
 .userbtn .fa-user-alt{
-  font-size: 16px;
-  
+  font-size: 16px; 
+}
+
+.show {
+  display: block;
 }
 
 

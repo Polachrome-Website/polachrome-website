@@ -191,6 +191,7 @@
                 } 
 
                 nav .logo img{
+                object-fit:cover!important;
                 width: 100%;
                 height: 27px;
                 }

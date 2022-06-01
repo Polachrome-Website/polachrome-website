@@ -470,7 +470,7 @@
     <script src="scripts/navbar.js"></script>
     
     <!--FAQs script-->
-    <script src="faq.js"></script>
+    <script src="scripts/faq.js"></script>
 
     <script>
 

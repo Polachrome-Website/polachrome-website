@@ -3,7 +3,7 @@
     include("includes/header.php");
 ?>  
     <head>
-        <title>Testimonials</title>
+        <title>About Us</title>
 
         <!--Main css-->
         <link rel="stylesheet" href="styles/about.css">

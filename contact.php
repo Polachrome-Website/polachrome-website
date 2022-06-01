@@ -82,8 +82,6 @@
     <script src="scripts/script.js"></script>
   </body>
 
-
-  <!--Footer Section-->
   <!--Footer Section-->
   <footer class="footer">
     <div class="row">

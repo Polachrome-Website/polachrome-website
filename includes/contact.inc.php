@@ -60,8 +60,8 @@ if (isset($_POST["contact-us-submit"])){
 		header("Location: ../contact.php?inquiry=error"); 
 	}
 
-	echo $email;
-	echo $name;
-	echo $message;
+	// echo $email;
+	// echo $name;
+	// echo $message;
 
 }

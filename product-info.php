@@ -1,39 +1,5 @@
 <?php
     include("includes/header.php");
-   
-
-    // if (isset($_POST['add-cart'])){
-    //      print_r($_POST['productID']);
-    //     if(isset($_SESSION['cart'])){
-
-    //       $item_array_id = array_column($_SESSION['cart'],"productID"); //return array of productID
-
-    //       if(in_array($_POST['productID'],$item_array_id)){
-    //         echo "<script> alert('Product already added in cart') </script>";
-    //         echo "<script> window.location = product-info.php </script>";
-
-    //       }else{
-    //         $count = count($_SESSION['cart']);
-    //         $item_array = array(
-    //           $product_id = $_POST['productID']
-    //         );
-            
-    //         $_SESSION['cart'][$count] = $item_array;
-    //         print_r($_SESSION['cart']);
-    //       }
-
-    //     }else{
-    //       $item_array = array(
-    //         $product_id = $_POST['productID']
-    //       );
-
-    //       //create new session variable
-    //       $_SESSION['cart'][0] = $item_array;
-    //       print_r($_SESSION['cart']);
-    //     }
-
-    // }
-
 ?>
 
     <title>Product - <?php echo $pro_title; ?></title>

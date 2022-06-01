@@ -143,24 +143,10 @@ if(isset($_POST['confirm-order'])){
                 mysqli_stmt_execute($order_stmt);
                 mysqli_stmt_close($order_stmt);
 
-                // $data['id'] = $invoice_no; 
-                // $data['pay'] = $payment_mode; 
-                // echo json_encode($data);   //echo back from PHP script to be in the URL 
-                
-                // exit();
-                
-                
-                // header('Content-Type: application/json');
-                // echo json_encode(['location'=>'../upload-payment.php?status=success&refno=' . $invoice_no]);
-                // exit();
-
-                // header("location: ../upload-payment.php?status=success&refno=" . $invoice_no);
-                // exit();
             }
              // begin PHPMailer to send email order details //
 
              $mail = new PHPMailer(true);
-             // $userEmail = "mchacks996@gmail.com";
              try {
                 // $mail->SMTPDebug = 1; 
                  //Server settings
@@ -286,25 +272,10 @@ if(isset($_POST['confirm-order'])){
                         mysqli_stmt_bind_param($order_stmt, "siiiiiss", $user_id, $invoice_no, $pro_id, $pro_var, $pro_qty, $total_fee, $date_now, $order_status);
                         mysqli_stmt_execute($order_stmt);
                         mysqli_stmt_close($order_stmt);
-        
-                        // $data['id'] = $invoice_no; 
-                        // $data['pay'] = $payment_mode; 
-                        // echo json_encode($data);   //echo back from PHP script to be in the URL 
-                        
-                        // exit();
-                        
-                        
-                        // header('Content-Type: application/json');
-                        // echo json_encode(['location'=>'../upload-payment.php?status=success&refno=' . $invoice_no]);
-                        // exit();
-        
-                        // header("location: ../upload-payment.php?status=success&refno=" . $invoice_no);
-                        // exit();
                     }
                      // begin PHPMailer to send email order details //
         
                      $mail = new PHPMailer(true);
-                     // $userEmail = "mchacks996@gmail.com";
                      try {
                          //Server settings
                          $mail->isSMTP();                                            //Send using SMTP

@@ -345,15 +345,18 @@
                 }
 
 
-                .username:hover .username-content {
+                /* .username:hover .username-content {
                 display: block;
-                }
-
-
+                } */
 
                 .username:hover .userbtn {
                 background-color: white;
                 color: #f04231;
+                }
+
+                /* for the color of elements under .userbtn */
+                .username-content a:hover{
+                 color: black!important;
                 }
 
                 
@@ -789,19 +792,19 @@
                 <span class="fas fa-times"></span>
               </div>
 
-
+              <script src="scripts/user-dropdown.js"></script>
             <?php 
+                
                   if(isset($_SESSION["userID"])){
                     //   username displayed on navbar
                     echo "
                             <div class='username'>
-                                <button class='userbtn'><i class='fas fa-user-alt'></i></button>
-
-                                <div class='username-content'>
-                                <a class='user'>". $_SESSION['fullName'] ." </a>
-                                <a href='user-profile.php'>My Profile</a>
-                                <a href='includes/logout.inc.php'>Logout</a>
-                                </div>
+                                <button onclick='myFunction()' class='userbtn'><i class='fas fa-user-alt'></i></button>
+                                    <div id='myUsername' class='username-content'>
+                                        <a class='user'>Juan Dela Cruz</a>
+                                        <a href='user-profile.php'>My Profile</a>
+                                        <a href='login.php'>Logout</a>
+                                    </div>
                             </div>
                     ";
                  }if(!isset($_SESSION["userID"]) && (!isset($_SESSION['admin_email'])) ){
@@ -1041,5 +1044,4 @@
             </div>  
         </nav>
         <script src="scripts/cart-dropdown.js"></script>
-        
         <!--End of Navbar section-->

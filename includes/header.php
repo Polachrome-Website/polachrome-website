@@ -191,9 +191,10 @@
                 } 
 
                 nav .logo img{
-                object-fit:cover!important;
-                width: 100%;
+                width: 55px;
                 height: 27px;
+                align-items: flex-start;
+                
                 }
 
                 nav .nav-items{
@@ -244,7 +245,7 @@
                 nav .search-icon{
                 width: 40px;
                 text-align: center;
-                margin: 0 50px;
+                margin: 0 36px;
                 font-size: 15px;
                 padding-top: 1px;
                 color: #fff;
@@ -261,8 +262,8 @@
                 position: absolute;
                 <?php 
                     if(isset($_SESSION["userID"])){
-                        echo "left: 91%;";
-                        echo "top: 31%;";
+                        echo "right: 7%;";
+                        echo "top: 32%;";
                     }
                     if(!isset($_SESSION["userID"])){
                         echo "display: inline;";
@@ -375,7 +376,7 @@
                 border: 1px solid #efefefef;
                 <?php 
                     if(isset($_SESSION["userID"])){
-                        echo "right: 7.7%;";
+                        echo "right: 8.5%;";
                     }
                     if(!isset($_SESSION["userID"])){
                         echo "right: 14.3%;";
@@ -555,7 +556,7 @@
 
             <?php 
                 if(isset($_SESSION["userID"])){
-                 echo ".shopping-cart{ right: 10.3%; }";
+                 echo ".shopping-cart{ right: 10.7%; }";
                 }
                 if(!isset($_SESSION["userID"])){
                     echo ".shopping-cart{ right: 14.3%; }";
@@ -564,7 +565,7 @@
         
             <?php 
                 if(isset($_SESSION["userID"])){
-                 echo "nav .cart-icon{ left: 88%; }";
+                 echo "nav .cart-icon{ right: 9%; }";
                 }
             ?>
 
@@ -577,8 +578,7 @@
             }
 
             nav .logo img{
-            padding-left: 40px;
-            width: 100%;
+            padding-left: 12px;
             }
 
             nav .nav-items.active{
@@ -609,16 +609,16 @@
 
             <?php 
                 if(isset($_SESSION["userID"])){
-                    echo "nav .cart-icon{ top: 28%; left: 83%; }";
+                    echo "nav .cart-icon{ right: 10%; margin-right: 10px; }";
                 }
                 if(!isset($_SESSION["userID"])){
-                    echo "nav .cart-icon{  top: 33%; right: 20%; margin-right: 10px;}";
+                    echo "nav .cart-icon{  top: 33%; right: 19%; margin-right: 10px;}";
                 }
             ?>
 
             .login-btn{
                 position: absolute;
-                right: 10%;
+                right: 6.5%;
                 bottom: 20%;
             }
         
@@ -626,7 +626,7 @@
             display: block;
             position: absolute;
             top: 24%;
-            left: 88.5%;
+            right: 5.7%;
             }
 
             .username-content{
@@ -635,10 +635,10 @@
         
             <?php 
             if(isset($_SESSION["userID"])){
-                echo "nav .menu-icon{ position: absolute; display: block; margin-top: 5px; left: 90%; padding-right: 20px; }";
+                echo "nav .menu-icon{ position: absolute; display: block; margin-top: 6px; right: 0%; padding-left: 55px; }";
             }
             if(!isset($_SESSION["userID"])){
-                echo "nav .menu-icon{ position: absolute; display: inline-block; right: 0%; padding-left: 35px; }";
+                echo "nav .menu-icon{ position: absolute; display: inline-block; right: 0%; padding-left: 55px; }";
             }
             ?>
         
@@ -664,10 +664,10 @@
             display: block;
             <?php 
             if(isset($_SESSION["userID"])){
-                echo "margin-top: 5px; left: 90%; padding-right: 20px;";
+                echo "margin-top: 6px; right: 0%; padding-left: 55px;";
             }
             if(!isset($_SESSION["userID"])){
-                echo "right: 0%; padding-left: 35px;";
+                echo "right: 0%; padding-left: 55px;";
             }        
             ?>
             color:black;
@@ -680,10 +680,10 @@
             top: 85%;
             <?php 
             if(isset($_SESSION["userID"])){
-                echo  "top: 85%; right: 15%;";
+                echo  "top: 85%; right: 12.5%;";
             } 
             if(!isset($_SESSION["userID"])){
-                echo  "top: 85%; right: 22.7%;";
+                echo  "top: 85%; right: 22%;";
             }    
             ?>
             }
@@ -691,37 +691,48 @@
         
         }   
 
-        @media (max-width: 768px){
+        @media (max-width: 896px){
             <?php 
                  if(isset($_SESSION["userID"])){
-                    echo "nav .menu-icon{ left: 89%; padding-right: 20px; }";
-                    echo "nav .cancel-icon.show{ left: 89%; padding-right: 20px !important; }";
-                    echo "nav .cart-icon{ left: 79%;}";
-                    echo ".username{ left: 87%;}";
-                    echo ".shopping-cart{ right: 19%;}";
+                    echo "nav .cart-icon{ right: 11.5%;}";
+                    echo ".username{ right: 7%!important;}";
+                    echo ".shopping-cart{ right: 15%;}";
                  }
             
             ?>
         }
             
-        @media (max-width: 767px){
+        @media (max-width: 934px){
             <?php 
 
             if(!isset($_SESSION["userID"])){
-                echo " .login-btn{ right: 11.8%; }";
-                echo  ".shopping-cart{ right: 31.4%; }";
-                echo "nav .cart-icon{ right: 28%; } ";
+                echo " .login-btn{ right: 8%; }";
+                echo  ".shopping-cart{ right: 28%; }";
+                echo "nav .cart-icon{ right: 24%; } ";
             } 
             ?>   
         }
 
+        @media (max-width: 668px){
+            <?php 
+                 if(isset($_SESSION["userID"])){
+                    echo "nav .cart-icon{ right: 15%;}";
+                    echo ".username{ right: 9%!important;}";
+                    echo ".shopping-cart{ right: 20%;}";
+                 }
+            
+            ?>
+        }
+
+
         @media (max-width: 644px){
             <?php
                  if(!isset($_SESSION["userID"])){
-                    echo ".login-btn{ right: 13%; }";
-                    echo "nav .cart-icon{ right: 34%; } ";
+                    echo ".login-btn{ right: 10%; }";
+                    echo "nav .cart-icon{ right: 31%; } ";
                     echo "nav .menu-icon{ padding-left: 50px!important;}";
                     echo "nav .cancel-icon.show{padding-left: 50px!important;}";
+                    echo  ".shopping-cart{ right: 35%; }";
                  }
             ?>
         }
@@ -729,29 +740,51 @@
         @media (max-width: 544px){
             <?php
                  if(!isset($_SESSION["userID"])){
-                    echo "nav .cart-icon{ right: 40%; } ";
-                    echo ".login-btn{right: 15.5%}";
+                    echo "nav .cart-icon{ right: 32%; } ";
+                    echo ".login-btn{right: 10%}";
+                    echo  ".shopping-cart{ right: 33%; }";
                  }
+            ?>
+        }
+
+        @media (max-width: 467px){
+            <?php
+            if(isset($_SESSION["userID"])){
+                echo "nav .cart-icon{ right: 21%;}";
+                echo ".username{ right: 13%!important;}";
+                echo ".shopping-cart{ right: 21%;}";
+            }
             ?>
         }
 
         @media (max-width: 414px){
             <?php
                  if(!isset($_SESSION["userID"])){
-                    echo "nav .cart-icon{ right: 49%; } ";
-                    echo ".login-btn{right: 18%}";
+                    echo "nav .cart-icon{ right: 39%; } ";
+                    echo ".login-btn{right: 12%}";
+                    echo ".shopping-cart{ right: 20%;}";
                  }
             ?>
         }
 
         @media (max-width: 340px){
             <?php
-                 if(!isset($_SESSION["userID"])){
-                    echo "nav .cart-icon{ right: 50%; } ";
-                    echo ".login-btn{right: 15%}";
-                    echo "nav .menu-icon{ left: 54px;}";
-                    echo "nav .cancel-icon.show{ left: 54px;}";
+                 if(isset($_SESSION["userID"])){
+                    echo "nav .cart-icon{ right: 24%;}";
+                    echo ".username{ right: 15%!important;}";
+                    echo ".shopping-cart{ right: 3%;}";
+                    echo ".breadcrumbs_item a {font-size: 12px}";
                  }
+                 if(!isset($_SESSION["userID"])){
+                    echo "nav .cart-icon{ right: 48%; } ";
+                    echo ".login-btn{right: 14%}";
+                    echo "nav .menu-icon{ right: 0%;}";
+                    echo "nav .cancel-icon.show{ right: 0%;}";
+                    echo ".breadcrumbs_item a {font-size: 12px}";
+                    echo ".shopping-cart{ right: 15%;}";
+                    
+                 }
+                 
             ?>
         }
     

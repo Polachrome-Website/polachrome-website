@@ -63,6 +63,10 @@
                     var cart_quantity = $(this).val();
                     totalQuantity = parseInt(totalQuantity) + parseInt(cart_quantity);
                 });
+                $("div[id*='input-quantity-mobile-']").each(function() {
+                    var cart_quantity = $(this).val();
+                    totalQuantity = parseInt(totalQuantity) + parseInt(cart_quantity);
+                });
                 $("#total-quantity").text(totalQuantity);
                 var totalItemPrice = 0;
                 $("div[id*='cart-price-']").each(function() {
@@ -244,11 +248,11 @@
 												Remove Item
 											</a>
 										</div>
-										<div class="cart-quantity-controls-sm">
+										<div class="cart-quantity-controls-sm" id="qty-mobile">
 										<input type="hidden" id="product-quantity-<?php echo $row_cart["cart_id"]; ?>" readonly/>
 										
 										<div class="btn-increment-decrement" onClick="decrement_quantity('<?php echo $row_cart["cart_id"]; ?>', '<?php echo $row_products["price"]; ?>')">-</div>
-										<input type="text" disabled id="input-quantity-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
+										<input type="text" disabled id="input-quantity-mobile-<?php echo $row_cart["cart_id"]; ?>" value="<?php echo $pro_qty; ?>" min="1" max="<?php echo $row_products["quantity"]; ?>">
 								
 
 											<!-- <button>-</button>

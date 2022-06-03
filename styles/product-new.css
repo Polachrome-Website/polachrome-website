@@ -263,3 +263,17 @@ input[type=search]::-webkit-search-cancel-button {
     font-family: font-face="FF Real Head";
     font-size: 12px;
   }
+
+
+  @media (max-width: 1199px){
+    form{
+      width: 95%;
+    }
+  }
+  
+  @media(max-width: 980px){
+    form{
+      
+      width: 89%;
+    }
+  }

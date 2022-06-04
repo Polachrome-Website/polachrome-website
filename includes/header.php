@@ -875,7 +875,7 @@
                             <div class='username'>
                                 <button onclick='myFunction()' class='userbtn'><i class='fas fa-user-alt'></i></button>
                                     <div id='myUsername' class='username-content'>
-                                        <a class='user'>Juan Dela Cruz</a>
+                                        <a class='user'>". $_SESSION['fullName'] ."</a>
                                         <a href='user-profile.php'>My Profile</a>
                                         <a href='includes/logout.inc.php'>Logout</a>
                                     </div>

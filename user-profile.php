@@ -143,7 +143,7 @@
                         <div class="row mb-3 align-items-center g-3">
                             <div class="col-sm-6">
                                 <input type="text" name="contactNum" class="form-control myInput" 
-                                placeholder= "<?php if($check_address < 1){ echo "Phone Number";}?>"
+                                placeholder= "<?php if($check_address < 1){ echo "Phone Number (09131231234)";}?>"
                                 value="<?php echo $row['contactNum'] ?>" required>
                             </div>
                             <div class="col-sm-6">
@@ -199,8 +199,8 @@
                                 <div class="row mb-3 align-items-center g-3">
                                 <div class="col-sm-6">
                                     <input type="text" name="contactNum" class="form-control myInput" 
-                                    placeholder= "<?php  if(isset($_SESSION["userID"])){ echo "Phone Number";}?>"
-                                    value = "<?php if($check_address >= 1){ echo $address_contact;}?>" onkeydown="return validateIsNumericInput(event)" required>
+                                    placeholder= "<?php if(isset($_SESSION["userID"])){ echo "Phone Number (09131231234)";}?>"
+                                    value = "<?php if($check_address >= 1){ echo $address_contact;}?>" onkeydown="return validateIsNumericInput(event)" onInput="checkLength(11,this)" required>
                                 </div>
                                 <div class="col-sm-6">
                                         <input type="text" name="zip" class="form-control myInput" 
@@ -335,7 +335,7 @@
                                                 <input type="text" id="addBrgy" name="abrgy" class="form-control myInput" placeholder="Barangay" required></br>
                                                 <input type="text" id="addCity" name="acity" class="form-control myInput" placeholder="City" required></br>
                                                 <input type="text" id="addRegion" name="aregion" class="form-control myInput" placeholder="Province" required></br>
-                                                <input type="text" id="addContact" name="acontactNum" class="form-control myInput" placeholder="Phone Number" onkeydown="return validateIsNumericInput(event)" required></br>
+                                                <input type="text" id="addContact" name="acontactNum" class="form-control myInput" placeholder="Phone Number (09131231234)" onkeydown="return validateIsNumericInput(event)" onInput="checkLength(11,this)" required></br>
                                                 <input type="text" id="addZip" name="azip" class="form-control myInput" placeholder="Postal Code" onkeydown="return validateIsNumericInput(event)" required></br>
                             
                                         </div>
@@ -413,7 +413,60 @@
     </div>
     
     <?php
-        
+
+        if (isset($_GET["addaddress"])) {
+            if ($_GET["addaddress"] == "success") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Address was added successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                
+                </script>";
+            }
+        }
+
+        if (isset($_GET["addressdelete"])) {
+            if ($_GET["addressdelete"] == "success") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Address was deleted successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                </script>";
+            }
+        }
+
+        if (isset($_GET["addressupdate"])) {
+            if ($_GET["addressupdate"] == "success") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Address was updated successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                </script>";
+            }
+        }
+
+        if (isset($_GET["erroraddress"])) {
+            if ($_GET["erroraddress"] == "none") {
+                echo "<script type='text/javascript'>
+                
+                Swal.fire({
+                    text: 'Address was added successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                </script>";
+            }
+        }
+            
         if (isset($_GET["action"])) {
             if ($_GET["action"] == "updatepwsuccess") {
                 echo "<script type='text/javascript'>
@@ -640,6 +693,19 @@
             return true;
         };
         return false;
+    }
+
+    function checkLength(len,ele){
+        var fieldLength = ele.value.length;
+        if(fieldLength <= len){
+            return true;
+        }
+        else
+        {
+            var str = ele.value;
+            str = str.substring(0, str.length - 1);
+            ele.value = str;
+        }
     }
 
     </script>

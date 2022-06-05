@@ -3,7 +3,7 @@ function myFunction(){
 }
 
 window.onclick = function(event) {
-  if (!event.target.matches('.fa-user-alt')) {
+  if (!event.target.matches('.fa-user-alt, .userbtn')) {
     var dropdown = document.getElementsByClassName("username-content");
     var i;
     for (i = 0; i < dropdown.length; i++) {

@@ -364,8 +364,17 @@ nav{
   flex-wrap: wrap;
   align-items: center;
   height: 55px;
-  padding: 0 30px;
+  padding: 0 36px;
 } 
+
+nav .logo img{
+  width: 55px;
+  height: 27px;
+  align-items: flex-start;
+  
+}
+
+
 
 /*Footer section*/  
 footer{

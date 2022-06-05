@@ -350,6 +350,23 @@ border:solid black 1px;
 border-radius: 7px;
 }
 
+/*Navbar Section*/
+
+nav{
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 55px;
+  padding: 0 30px;
+} 
+
 /*Footer section*/  
 footer{
 background-color: black;

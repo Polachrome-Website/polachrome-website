@@ -43,10 +43,6 @@
 
     }//end fetch address if user exists
 
-    // if(! isset($_SESSION['userID'])){
-    //     $_SESSION['guestID'] = mt_rand(2000,9000);
-    // }
-
      //begin fetch product for prod-info
 	if(isset($_GET['varID'])){
 		if(isset($_GET['prodID'])){
@@ -91,14 +87,6 @@
 
             $cat_id = $row_product['catID'];
 
-			// $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
-			
-			// $run_p_cat = mysqli_query($con,$get_p_cat);
-
-			// $row_p_cat = mysqli_fetch_array($run_p_cat);
-
-			// $p_cat_title = $row_p_cat['p_cat_title'];
-
 		}//end fetch product for prod-info
 
 	}elseif(isset($_GET['prodID'])){
@@ -131,14 +119,6 @@
 
         $pro_img5 = $row_product['prodImg5'];
 
-        // $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
-        
-        // $run_p_cat = mysqli_query($con,$get_p_cat);
-
-        // $row_p_cat = mysqli_fetch_array($run_p_cat);
-
-        // $p_cat_title = $row_p_cat['p_cat_title'];
-
     }//end fetch product for prod-info
 
 ?>
@@ -157,14 +137,9 @@
         <link href="//db.onlinewebfonts.com/c/1e5b7f8cdbcb1e579a6e53aaadaf0b67?family=FF+Real+Head" rel="stylesheet" type="text/css"/>--> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
-        <!-- <link rel="stylesheet" href="styles/cart.header.scss"> -->
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <!-- <script src="sweetalert2.all.min.js"></script> -->
-
-        <!-- <script>
-            sessionStorage.setItem('guestID',"<?php echo $_SESSION['guestID'] ?>");
-        </script> -->
+       
 
         <style>
 
@@ -917,8 +892,7 @@
                     }
             
                     else{ //fetch guest id for selecting cart item
-                        // $guest_id = $_SESSION['guest_id'];
-                        // $guest_id = md5(getRealIpUser());
+                       
                         $select_cart = "select * from cart where user_id='$guest_id'";
                       
                     }
@@ -1009,7 +983,7 @@
                                         <span class="price">₱<?php echo "$sub_total";?></span>
                                     </div>
                                 </div>
-                                <!-- <div class="cancel"><i class="fas fa-times cancel-btn"></i></div> -->
+                             
                             </div>
                             <?php } //end loop for product 
 

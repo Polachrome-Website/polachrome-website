@@ -208,17 +208,11 @@ function loginUser($conn, $userName, $password){
     else if($checkPwd === true){
         session_start();
 
-        //1. ung uidExists function siya na nagsselect ng data from user_account table
-        //2. ngayon tatawagin natin ung superglobal variable na session para magset ng value sa kanya
-        //3. sstore natin sa session ung value na makukuha natin sa uidExists na table
-        // note pagka login matic nakaset tong mga values nato and pwede mo siya tawagin anywhere sa website provided na sstart mo ung session
         $_SESSION["userID"] = $uidExists["userID"]; 
         $_SESSION["userName"] = $uidExists["userName"];
         $_SESSION["fullName"] = $uidExists["fullName"];
         $_SESSION["email"] = $uidExists["email"];
     
-
-
         header("location: ../index.php");
         exit();
     }

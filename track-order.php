@@ -41,21 +41,10 @@
                         }
                       ?>
 
-                    <!-- <input type="text" oninvalid="this.setCustomValidity('Enter Numers')" onkeydown="return validateIsNumericInput(event)" name="track-reference" class="text-box text-center"
-                        placeholder="Enter your reference number"  required> -->
+                   
                     </div>
-                    <!-- <div class="col">
-                        <p>Customer ID<input type="text" name="email" class="text-box" placeholder="Customer ID" required></p>
-                    </div> -->
                     <br><br>
                 </div>
-
-                <!-- <div class="row">
-                    <div class="col">
-                        <br>
-                        <input type="text" name="track-email" class="text-box text-center" placeholder="Enter your email" required>
-                    </div>
-                </div> -->
 
                 <div class="row">
                     <div class="col">
@@ -69,33 +58,6 @@
                     </div>
                 </div>
             </form>
-
-            <!--Order Total, Order Points-->
-            <!-- <div class="row">
-                <div class="col">
-                    <p style="margin-left:-25px;">Order Total<input type="number" name="name"  disabled="disabled" class="text-box"></p>
-                </div>
-                <div class="col">
-                    <p>Order Points<input type="text" name="email" disabled="disabled" class="text-box"></p>
-                </div>
-            </div> -->
-
-            <!--Payment Method, Payment Status-->
-            <!-- <div class="row">
-                <div class="col">
-                    <p>Payment Method<input type="text" name="name"  disabled="disabled" style="width: 270px;" class="text-box"></p>
-                </div>
-                <div class="col">
-                    <p style="margin-left: -80px;">Payment Status<input type="text" name="email" disabled="disabled" style="width: 225px; margin-right: 7px;" class="text-box"><button class="btn">Upload</button></p>
-                </div>
-            </div> -->
-
-             <!--Order Status-->
-             <!-- <div class="row">
-                <p>Order Status<input type="text" name="name"  disabled="disabled" style="width: 880px;" class="text-box"></p>
-            </div> -->
-
-           
         </div>
         
         <?php

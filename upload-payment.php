@@ -8,29 +8,6 @@
 
     <title>Upload Payment</title>
 
-    <style>
-	
-		.dropzone {
-			/* position: relative;
-			border: 10px dotted #FFF;
-			border-radius: 20px;
-			color: white;
-			font: bold 24px/200px arial;
-			height: 400px;
-			margin: 100px auto;
-			text-align: center;
-			width: 400px; */
-           
-            /* height:50px;
-            width:550px;
-            border: none; */
-			} 
-            .choose-file{
-                margin-left:320px;
-            }
-					
-		</style>
-
     <!--Bootstrap Cdn-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!--Main CSS-->
@@ -56,9 +33,6 @@
 
         <input type="file" id="upload_img" name="img_payment" class="choose-file" accept="image/*" required>
     
-        <!-- <h5>kindly send your image <a href="">here</a></h5> -->
-       
-    
     </div>
     <button type="submit" name="payment-upload" class="btn">Upload</button>
     </form>
@@ -74,7 +48,6 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
      <script src="scripts/navbar.js"></script>
-     <script>Dropzone.discover();</script>
     
 
      

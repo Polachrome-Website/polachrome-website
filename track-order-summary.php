@@ -14,13 +14,22 @@
 
     if(isset($_POST['track-submit'])){
     
-        $reference_no = $_POST['track-reference'];
-    
+        $reference_post = $_POST['track-reference'];
+
+        echo "<script>window.open('track-order-summary.php?refno=$reference_post','_self')</script>";
+
+    }
+
+    if (isset($_GET["refno"])) {
+
+        $reference_no = $_GET["refno"];
+
         $select_order = "SELECT * from tbl_orders where invoice_no='$reference_no'";
 
         $run_order = mysqli_query($conn,$select_order);
 
         $count = mysqli_num_rows($run_order);
+
     }
 
     if($count==0){
@@ -129,7 +138,39 @@
                                 <th> Date Placed </th>
                                 <th> Mode of Payment </th>
                                 <th> Order Status </th>
-                                
+                                ";
+
+                                if($pay_mode != 'Cash on Delivery' && $order_status == 'Pending'){
+                                    echo "<th> Upload Proof of Payment </th>
+                                    </tr><!-- tr finish -->
+                        </thead><!-- thead finish -->
+                        
+                    <tbody>
+
+                        <td>$pro_name</td>
+                        <td>$product_varname</td>
+                        <td>$pro_qty</td>
+                        <td>$order_date</td>
+                        <td>$pay_mode</td>
+                        <td>$order_status <em> (no proof uploaded) </em> </td>
+                        <td>  
+                        <form action='includes/proof.inc.php' method='POST' enctype='multipart/form-data'>
+                              <input name='reference_no' id='reference_no' type='hidden' value=$reference_no>
+                             <input type='file' id='upload_img' name='img_payment' class='choose-file' accept='image/*' required>
+                              <br>
+                              <button type='submit' name='payment-upload' class='btn-track'>Upload</button>
+                        </form>
+                        </td>
+                       
+                    </tbody>
+                </table><!-- table table-striped table-bordered table-hover finish -->
+            </div><!-- table-responsive finish -->
+
+
+                                    ";
+                                }
+                                else{
+                                echo"
                             </tr><!-- tr finish -->
                         </thead><!-- thead finish -->
                         
@@ -147,6 +188,7 @@
             </div><!-- table-responsive finish -->
         
       ";
+    }
     } 
 
 
@@ -161,13 +203,22 @@
 
 
         <!--Bootsrap JS cdn-->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="scripts/navbar.js"></script>
         
         <!--FAQs script-->
         <script src="scripts/faq.js"></script>
+
+        <script>
+        function uploadProof(){
+            var reference_no = $("#reference_no").val();
+
+            $.post("includes/proof.inc.php", {reference_no:reference_no}, function(data,status){
+            });
+        }
+        </script>
 
     </body>
         <!--Footer Section-->

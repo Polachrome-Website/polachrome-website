@@ -41,8 +41,7 @@
                         }
                       ?>
 
-                    <!-- <input type="text" oninvalid="this.setCustomValidity('Enter Numers')" onkeydown="return validateIsNumericInput(event)" name="track-reference" class="text-box text-center"
-                        placeholder="Enter your reference number"  required> -->
+                   
                     </div>
                     <!-- <div class="col">
                         <p>Customer ID<input type="text" name="email" class="text-box" placeholder="Customer ID" required></p>
